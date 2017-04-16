@@ -1,46 +1,49 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Administrator extends User {
 
 	private Date startDate;
 	private float wage, contractHours;
+	// private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
 
 	/**
 	 * @param userName
-	 *            User's login name
+	 *            String User's login name
 	 * @param password
-	 *            User's login password
+	 *            String User's login password
 	 * @param firstName
-	 *            Employee's first name
+	 *            String Employee's first name
 	 * @param lastName
-	 *            Employee's last name
+	 *            String Employee's last name
 	 * @param emailAddress
 	 *            Employee's address
 	 * @param physicalAddress
-	 *            Employee's address
+	 *            String Employee's address
 	 * @param cityOfResidence
-	 *            Employee's city of residence
+	 *            String Employee's city of residence
 	 * @param postalCode
-	 *            Employee's postal code
+	 *            String Employee's postal code
 	 * @param country
-	 *            Employee's country of residence
+	 *            String Employee's country of residence
 	 * @param gender
-	 *            Employee's gender
+	 *            String Employee's gender
 	 * @param phoneNumber
-	 *            Employee's phone number
+	 *            String Employee's phone number
 	 * @param startDate
-	 *            Employee's start date according to contract
+	 *            Date Employee's start date according to contract
 	 * @param wage
-	 *            Employee's current wage
+	 *            Float Employee's current wage
 	 * @param contractHours
-	 *            Employee's hours by contract (for overtime purposes)
+	 *            Float Employee's hours by contract (for overtime purposes)
 	 */
 
 	public Administrator(String userName, String password, String firstName, String lastName, String emailAddress,
 			String physicalAddress, String cityOfResidence, String postalCode, String country, String gender,
-			int phoneNumber, Date startDate, float wage, float contractHours) {
+			String phoneNumber, Date startDate, float wage, float contractHours) {
 		super(userName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence, postalCode,
 				country, gender, phoneNumber);
 		this.startDate = startDate;
@@ -52,9 +55,9 @@ public class Administrator extends User {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
+	// public void setStartDate(Date startDate) {
+	// this.startDate = startDate;
+	// }
 
 	public float getWage() {
 		return wage;
@@ -71,5 +74,13 @@ public class Administrator extends User {
 	public void setContractHours(float contractHours) {
 		this.contractHours = contractHours;
 	}
+
 	// TODO Check if I'm missing something
+	@Override
+	public String toString() {
+		DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		String output = format.format(getStartDate());
+
+		return "Employee details:\nFirst name: " + getFirstName() + "\nStart date: " + output;
+	}
 }

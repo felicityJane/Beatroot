@@ -7,7 +7,7 @@ public class PremiumUser extends User {
 	private int bankCardNumber;
 	private Date expirationDate;
 	private String billingCardHolderName, billingAddress, billingCity, billingPostalCode, billingCountry, cardType;
-	private int billingPhoneNumber;
+	private String billingPhoneNumber;
 	private boolean isSameAsResidentAddress;
 
 	/**
@@ -46,7 +46,7 @@ public class PremiumUser extends User {
 
 	public PremiumUser(String userName, String password, String firstName, String lastName, String emailAddress,
 			String physicalAddress, String cityOfResidence, String postalCode, String country, String gender,
-			int phoneNumber, int bankCardNumber, Date expirationDate, String cardType) {
+			String phoneNumber, int bankCardNumber, Date expirationDate, String cardType) {
 		super(userName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence, postalCode,
 				country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
@@ -102,9 +102,9 @@ public class PremiumUser extends User {
 
 	public PremiumUser(String userName, String password, String firstName, String lastName, String emailAddress,
 			String physicalAddress, String cityOfResidence, String postalCode, String country, String gender,
-			int phoneNumber, int bankCardNumber, Date expirationDate, String cardType, String billingCardHolderName,
+			String phoneNumber, int bankCardNumber, Date expirationDate, String cardType, String billingCardHolderName,
 			String billingAddress, String billingCity, String billingPostalCode, String billingCountry,
-			int billingPhoneNumber) {
+			String billingPhoneNumber) {
 		super(userName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence, postalCode,
 				country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
@@ -183,11 +183,11 @@ public class PremiumUser extends User {
 		this.cardType = cardType;
 	}
 
-	public int getBillingPhoneNumber() {
+	public String getBillingPhoneNumber() {
 		return billingPhoneNumber;
 	}
 
-	public void setBillingPhoneNumber(int billingPhoneNumber) {
+	public void setBillingPhoneNumber(String billingPhoneNumber) {
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
 

@@ -8,7 +8,7 @@ public class TrialUser extends User {
 
 	public TrialUser(String userName, String password, String firstName, String lastName, String emailAddress,
 			String physicalAddress, String cityOfResidence, String postalCode, String country, String gender,
-			int phoneNumber, Date freeTrialEndDate) {
+			String phoneNumber, Date freeTrialEndDate) {
 		super(userName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence, postalCode,
 				country, gender, phoneNumber);
 		this.freeTrialEndDate = freeTrialEndDate;

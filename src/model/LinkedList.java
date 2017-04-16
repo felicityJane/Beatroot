@@ -18,13 +18,16 @@ public class LinkedList<T> implements ListInterface<T> {
 		// assert current != null;
 		//
 		// return current;
-		assert (firstNode != null) && (1 <= givenPosition)
-				&& (givenPosition <= numberOfEntries);
+		// assert
 		Node currentNode = firstNode;
-		// traverse the chain to locate the desired node
-		for (int counter = 1; counter < givenPosition; counter++)
-			currentNode = currentNode.getNext();
-		assert currentNode != null;
+		if ((firstNode != null) && (1 <= givenPosition) && (givenPosition <= numberOfEntries)) {
+
+			// traverse the chain to locate the desired node
+			for (int counter = 1; counter < givenPosition; counter++)
+				currentNode = currentNode.getNext();
+			// assert currentNode != null;
+			return currentNode;
+		}
 		return currentNode;
 	}
 
@@ -95,8 +98,8 @@ public class LinkedList<T> implements ListInterface<T> {
 	public T remove(int givenPosition) {
 		T result = null;
 
-		if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {
-			assert !isEmpty();
+		if ((givenPosition >= 1) && (givenPosition <= numberOfEntries) && isEmpty()) {
+			// assert !isEmpty();
 			if (givenPosition == 1) {
 				result = firstNode.getData();
 				firstNode = firstNode.getNext();
@@ -121,8 +124,8 @@ public class LinkedList<T> implements ListInterface<T> {
 	@Override
 	public boolean replace(int givenPosition, T newEntry) {
 		boolean isSucessful = true;
-		if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {
-			assert !isEmpty();
+		if ((givenPosition >= 1) && (givenPosition <= numberOfEntries) && !isEmpty()) {
+			// assert !isEmpty();
 			Node<T> desiredNode = getNodeAt(givenPosition);
 			desiredNode.setData(newEntry);
 		} else
@@ -135,8 +138,8 @@ public class LinkedList<T> implements ListInterface<T> {
 	public T getEntry(int givenPosition) {
 		T result = null;
 
-		if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {
-			assert !isEmpty();
+		if ((givenPosition >= 1) && (givenPosition <= numberOfEntries) && !isEmpty()) {
+			// assert !isEmpty();
 			result = (T) getNodeAt(givenPosition).getData();
 		}
 		return result;
@@ -174,12 +177,12 @@ public class LinkedList<T> implements ListInterface<T> {
 		//
 		// return result;
 		boolean result;
-		if (numberOfEntries == 0) // or getLength() == 0
+		if (numberOfEntries == 0 && firstNode == null) // or getLength() == 0
 		{
-			assert firstNode == null;
+			// assert firstNode == null;
 			result = true;
 		} else {
-			assert firstNode != null;
+			// assert firstNode != null;
 			result = false;
 		} // end if
 		return result;

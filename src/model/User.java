@@ -4,15 +4,14 @@ import java.util.ArrayList;
 
 public abstract class User {
 	private String userName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence, postalCode,
-			country, gender;
-	private int phoneNumber;
+			country, gender, phoneNumber;
 
 	private static Playlist defaultPlaylist = new Playlist("Default", 0, PrivacyLevel.PUBLIC);
 	private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
 
 	public User(String userName, String password, String firstName, String lastName, String emailAddress,
 			String physicalAddress, String cityOfResidence, String postalCode, String country, String gender,
-			int phoneNumber) {
+			String phoneNumber) {
 		this.userName = userName;
 		this.password = password;
 		this.firstName = firstName;
@@ -107,18 +106,21 @@ public abstract class User {
 		this.gender = gender;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public void getUserPlaylists() {
-		for (Playlist p : userPlaylists) {
-
-		}
+	// public void getUserPlaylists() {
+	// for (Playlist p : userPlaylists) {
+	//
+	// }
+	// }
+	public ArrayList<Playlist> getUserPlaylists() {
+		return userPlaylists;
 	}
 
 	private void createPlayList() {
