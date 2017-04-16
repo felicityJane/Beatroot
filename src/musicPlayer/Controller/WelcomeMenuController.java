@@ -64,6 +64,10 @@ public class WelcomeMenuController implements Initializable {
                         sliderPlay.setValue(newValue.toSeconds());
                         lblElapsedTime.setText(formatTime(mediaPlayer.getCurrentTime().toSeconds()));
                         lblTimeLeft.setText(formatTime(mediaPlayer.getTotalDuration().toSeconds() - mediaPlayer.getCurrentTime().toSeconds()));
+
+                       if (mediaPlayer.getTotalDuration().toSeconds() - mediaPlayer.getCurrentTime().toSeconds() < 0.0) {
+                           mediaPlayer.stop();
+                       }
                     }
                 );
                 sliderPlay.valueProperty().addListener( observable -> {
@@ -103,9 +107,12 @@ public class WelcomeMenuController implements Initializable {
     private void clickOnStopButton() {
         MediaPlayer.Status currentStatus = mediaPlayer.getStatus();
 
-        if (currentStatus == MediaPlayer.Status.PLAYING) {
+        if (currentStatus == MediaPlayer.Status.PLAYING || currentStatus == MediaPlayer.Status.STOPPED) {
             mediaPlayer.stop();
         }
+
+        lblElapsedTime.setText("00:00");
+        lblTimeLeft.setText(formatTime(mediaPlayer.getTotalDuration().toSeconds()));
 
     }
 
