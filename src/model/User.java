@@ -1,15 +1,15 @@
 package model;
 
+import java.util.ArrayList;
+
 public abstract class User {
 	private String userName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence, postalCode,
 			country, gender;
 	private int phoneNumber;
-	// private Playlist playlist;
 
-	/*
-	 * @Param User name Password First name Last Name email address Physical
-	 * address City of residence Postal code Country Gender Phone number
-	 */
+	private static Playlist defaultPlaylist = new Playlist("Default", 0, PrivacyLevel.PUBLIC);
+	private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
+
 	public User(String userName, String password, String firstName, String lastName, String emailAddress,
 			String physicalAddress, String cityOfResidence, String postalCode, String country, String gender,
 			int phoneNumber) {
@@ -24,6 +24,7 @@ public abstract class User {
 		this.country = country;
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
+		userPlaylists.add(defaultPlaylist);
 	}
 
 	public String getUserName() {
@@ -112,6 +113,12 @@ public abstract class User {
 
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public void getUserPlaylists() {
+		for (Playlist p : userPlaylists) {
+
+		}
 	}
 
 	private void createPlayList() {

@@ -12,13 +12,14 @@ public class TrialUser extends User {
 		super(userName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence, postalCode,
 				country, gender, phoneNumber);
 		this.freeTrialEndDate = freeTrialEndDate;
+
 	}
 
 	public Date getFreeTrialEndDate() {
 		return freeTrialEndDate;
 	}
 
-	private void upgradeToAccountHolder() {
+	private void upgradeToPremiumUser() {
 		// TODO Auto-generated method stub
 	}
 
