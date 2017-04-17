@@ -241,8 +241,6 @@ public class WelcomeMenuController implements Initializable {
             numOfMinutes = (int)(time / 60);
             return String.format("%02d:%02d", numOfMinutes, numOfSeconds);
         }
-
-
     }
 }
 
