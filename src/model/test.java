@@ -26,6 +26,7 @@ public class test {
 					startDate, 130.5f, 25.5f);
 
 			System.out.println(us.toString());
+			System.out.println(us.getUserPlaylists().toString());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

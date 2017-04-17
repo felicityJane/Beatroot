@@ -1,9 +1,12 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Playlist {
 	private String name;
 	private int numberOfEntries;
 	private PrivacyLevel visibility;
+	private ArrayList<MusicTrack> musicTracks = new ArrayList<MusicTrack>();
 
 	public Playlist(String name, int numberOfEntries, PrivacyLevel visibility) {
 		this.name = name;
@@ -31,4 +34,15 @@ public class Playlist {
 		this.visibility = visibility;
 	}
 
+	public void addMusicTracks(MusicTrack t) {
+		musicTracks.add(t);
+	}
+
+	public void removeMusicTracks(MusicTrack t) {
+		musicTracks.remove(t);
+	}
+
+	public ArrayList<MusicTrack> getMusicTracks() {
+		return new ArrayList<MusicTrack>(musicTracks);
+	}
 }

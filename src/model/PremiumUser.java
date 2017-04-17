@@ -200,7 +200,7 @@ public class PremiumUser extends User {
 	}
 
 	private void changePaymentInformation() {
-		// TODO Auto-generated method stub
+
 	}
 
 }
