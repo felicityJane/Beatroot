@@ -1,4 +1,10 @@
-package musicPlayer;
+package model;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.time.Duration;
 
@@ -40,4 +46,5 @@ public class MusicTrack {
     public void setTime(Duration time) {
         this.time = time;
     }
+
 }

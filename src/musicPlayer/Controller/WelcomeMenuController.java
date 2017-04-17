@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 
 import static java.lang.Math.floor;
 
-public class WelcomeMenuController implements Initializable {
+public class WelcomeMenuController implements Initializable{
 
     @FXML private Circle btnPlay;
     @FXML private Label lblTrackName;
@@ -39,7 +39,7 @@ public class WelcomeMenuController implements Initializable {
     Duration duration;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources){
         Image img = new Image("Play.jpg");
         btnPlay.setFill(new ImagePattern(img));
         Path path = Paths.get("ace of base - all that she wants.mp3");
