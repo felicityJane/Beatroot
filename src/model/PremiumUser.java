@@ -22,9 +22,9 @@ public class PremiumUser extends User {
 	 * @param lastName
 	 *            User's last name
 	 * @param emailAddress
-	 *            User's address
+	 *            User's email address
 	 * @param physicalAddress
-	 *            User's address
+	 *            User's address of residence
 	 * @param cityOfResidence
 	 *            User's city of residence
 	 * @param postalCode
