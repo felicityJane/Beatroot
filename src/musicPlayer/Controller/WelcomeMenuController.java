@@ -48,6 +48,8 @@ public class WelcomeMenuController implements Initializable {
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView;
+    private String temp = "";
+    private String selectedItem = "";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -198,14 +200,20 @@ public class WelcomeMenuController implements Initializable {
     @FXML
     private void clickOnListViewMainTracks() {
 
-        lstMainTracks.getSelectionModel().getSelectedItem();
-        Path path = Paths.get(lstMainTracks.getSelectionModel().getSelectedItem());
-        mediaPlayer.stop();
-        media = new Media(path.toUri().toString());
-        mediaPlayer = new MediaPlayer(media);
-        sliderVolume.setValue(mediaPlayer.getVolume() * 100);
-        runMediaPlayer(path);
-        mediaPlayer.play();
+        selectedItem = lstMainTracks.getSelectionModel().getSelectedItem();
+
+        //plays song only on double click
+        if (selectedItem.equals(temp)) {
+            Path path = Paths.get(lstMainTracks.getSelectionModel().getSelectedItem());
+            mediaPlayer.stop();
+            media = new Media(path.toUri().toString());
+            mediaPlayer = new MediaPlayer(media);
+            sliderVolume.setValue(mediaPlayer.getVolume() * 100);
+            runMediaPlayer(path);
+            mediaPlayer.play();
+        } else {
+            temp = lstMainTracks.getSelectionModel().getSelectedItem();
+        }
     }
 
     private void runMediaPlayer(Path path) {
