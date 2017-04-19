@@ -1,34 +1,33 @@
 package musicPlayer.Controller;
-
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Slider;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
+import musicPlayer.DialogBoxManager;
+import musicPlayer.SceneManager;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.DefaultHandler;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
-
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
-
 
 public class WelcomeMenuController implements Initializable {
 
@@ -51,8 +50,21 @@ public class WelcomeMenuController implements Initializable {
     private String temp = "";
     private String selectedItem = "";
 
+    @FXML private AnchorPane welcomeRootAnchor;
+    @FXML public MenuItem createNewPlaylistMenu;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //load menu bar onto scene
+        try {
+            SceneManager.sceneManager.loadMenuBar(welcomeRootAnchor);
+        } catch (IOException e) {
+            DialogBoxManager.errorDialogBox("Error occurred","Applying main menu to scene");
+            e.printStackTrace();
+        }
+
         Image img = new Image("PlayNormal.jpg");
         btnPlay.setFill(new ImagePattern(img));
         Image img1 = new Image("StopNormal.jpg");
@@ -73,21 +85,25 @@ public class WelcomeMenuController implements Initializable {
         imgVolume.setImage(new Image("VolumeHigh.png"));
         imgMain.setImage(tempAlbum.getAlbumCover());
 
-
-
-
-
         media = new Media(path.toUri().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView = new MediaView(mediaPlayer);
         sliderVolume.setValue(mediaPlayer.getVolume() * 100);
 
-
         runMediaPlayer(path);
+    }
 
-
-
-
+    @FXML
+    protected void onLogOutButtonPressed(ActionEvent event){
+        boolean answer = DialogBoxManager.confirmationDialogBox("Are you sure you want to log out?","click ok to continue");
+        if (answer){
+            try {
+                SceneManager.sceneManager.changeScene(event,"View/logInMenu.fxml");
+            }catch (Exception e){
+                DialogBoxManager.errorDialogBox("Error occurred","Changing from welcome scene to log in scene");
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML

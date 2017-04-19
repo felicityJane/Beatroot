@@ -14,9 +14,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicPlayer.Controller.SignUpMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicPlayer.Controller.SignUpMenuController">
    <children>
-      <GridPane layoutX="43.0" layoutY="120.0" prefHeight="406.0" prefWidth="287.0">
+       <AnchorPane fx:id="signUpRootAnchor" layoutX="3.0" layoutY="14.0" prefHeight="27.0" prefWidth="349.0" AnchorPane.bottomAnchor="698.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <GridPane layoutX="49.0" layoutY="153.0" prefHeight="406.0" prefWidth="287.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.0" minWidth="10.0" prefWidth="249.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="38.0" />
@@ -53,16 +54,16 @@
             <TextField promptText="Phone Number" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-      <Label layoutX="43.0" layoutY="550.0" prefHeight="19.0" prefWidth="69.0" text="Gender" />
-      <RadioButton layoutX="125.0" layoutY="550.0" mnemonicParsing="false" text="Male" />
-      <RadioButton layoutX="201.0" layoutY="550.0" mnemonicParsing="false" text="Female" />
-      <Button fx:id="signUpButton" layoutX="43.0" layoutY="587.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="249.0" text="Sign Up" />
-      <ImageView fitHeight="113.0" fitWidth="367.0" layoutX="5.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="49.0" layoutY="575.0" prefHeight="19.0" prefWidth="69.0" text="Gender" />
+      <RadioButton layoutX="131.0" layoutY="575.0" mnemonicParsing="false" text="Male" />
+      <RadioButton layoutX="207.0" layoutY="575.0" mnemonicParsing="false" text="Female" />
+      <Button fx:id="signUpButton" layoutX="49.0" layoutY="612.0" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="39.0" prefWidth="249.0" text="Sign Up" />
+      <ImageView fitHeight="113.0" fitWidth="367.0" layoutX="5.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/beatrootlogo.png" />
          </image>
       </ImageView>
-      <Label layoutX="43.0" layoutY="649.0" prefHeight="18.0" prefWidth="164.0" text="Already have an account? " />
-      <Label layoutX="216.0" layoutY="649.0" prefHeight="18.0" prefWidth="54.0" text="Log in" textFill="BLUE" underline="true" />
+      <Label layoutX="49.0" layoutY="674.0" prefHeight="18.0" prefWidth="164.0" text="Already have an account? " />
+      <Label layoutX="222.0" layoutY="674.0" prefHeight="18.0" prefWidth="54.0" text="Log in" textFill="BLUE" underline="true" />
    </children>
 </AnchorPane>

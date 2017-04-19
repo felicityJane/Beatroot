@@ -1,8 +1,40 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<GridPane fx:controller="musicPlayer.Controller.MainMenuController"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicPlayer.Controller.MainMenuController">
+   <children>
+      <MenuBar fx:id="menuBar" prefHeight="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <menus>
+            <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="createNewPlaylistMenu" disable="true" mnemonicParsing="false" text="Create New Playlist" />
+                  <MenuItem fx:id="searchMenu" disable="true" mnemonicParsing="false" onAction="#searchMenuOption" text="Search" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="logoutMenu" disable="true" mnemonicParsing="false" onAction="#logOutMenuOption" text="LogOut" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="exitMenu" mnemonicParsing="false" onAction="#exitMenuOption" text="Exit" />
+               </items>
+            </Menu>
+            <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem fx:id="personalInfoMenu" disable="true" mnemonicParsing="false" onAction="#personalInfoMenuOption" text="Personal Information" />
+                  <MenuItem fx:id="settingsMenu" disable="true" mnemonicParsing="false" onAction="#settingsMenuOption" text="Settings" />
+               </items>
+            </Menu>
+            <Menu fx:id="HelpMenu" mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem fx:id="aboutMenu" mnemonicParsing="false" onAction="#aboutMenuOption" text="About" />
+                  <MenuItem fx:id="faqsMenu" mnemonicParsing="false" onAction="#faqsMenuOption" text="FAQ's" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <AnchorPane fx:id="rootAnchor" layoutY="31.0" prefHeight="377.0" prefWidth="349.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0" />
+
+   </children>
+</AnchorPane>
