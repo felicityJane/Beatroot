@@ -45,6 +45,12 @@ public class WelcomeMenuController implements Initializable {
     @FXML private ImageView imgVolume;
     @FXML private ImageView imgMain;
     @FXML private ListView<String> lstMainTracks;
+    @FXML private ListView<String> lstPlaylists;
+    @FXML private ImageView imgNews1;
+    @FXML private ImageView imgNews2;
+    @FXML private ImageView imgNews3;
+    @FXML private ImageView imgNews4;
+    private TemporaryAlbumClass tempAlbum2 = new TemporaryAlbumClass();
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView;
@@ -68,13 +74,19 @@ public class WelcomeMenuController implements Initializable {
         tempAlbum.getTracks().add("04. Celldweller - Faction 05 .mp3");
         tempAlbum.getTracks().add("05. Celldweller - Faction 06 .mp3");
         tempAlbum.setAlbumCover(new Image("Celldweller_EoaE_BG_LOVE.jpg"));
+
+        tempAlbum2.getTracks().add("05 - I'LL BE GONE.mp3");
+        tempAlbum2.getTracks().add("06 - CASTLE OF GLASS.mp3");
+        tempAlbum2.getTracks().add("08 - ROADS UNTRAVELED.mp3");
+        tempAlbum2.setAlbumCover(new Image("Linkin Park - Living Things.jpg"));
         Path path = Paths.get(tempAlbum.getTracks().get(0));
         lstMainTracks.getItems().addAll(tempAlbum.getTracks());
         imgVolume.setImage(new Image("VolumeHigh.png"));
         imgMain.setImage(tempAlbum.getAlbumCover());
-
-
-
+        imgNews1.setImage(new Image("Linkin Park - Living Things.jpg"));
+        imgNews2.setImage(new Image("Konachan.jpg"));
+        imgNews3.setImage(new Image("EyeGirl.jpg"));
+        imgNews4.setImage(new Image("Hadean.jpg"));
 
 
         media = new Media(path.toUri().toString());
@@ -176,6 +188,21 @@ public class WelcomeMenuController implements Initializable {
     private void pressOnStopButton() {
         Image img = new Image("StopPressed.jpg");
         btnStop.setFill(new ImagePattern(img));
+    }
+
+    @FXML
+    private void hoverOnImgNews1() {
+        imgNews1.setImage(new Image("Linkin Park - Living ThingsHover.jpg"));
+    }
+
+    @FXML
+    private void pressOnImgNews1() {
+        imgNews1.setImage(new Image("Linkin Park - Living ThingsPressed.jpg"));
+    }
+
+    @FXML
+    private void leaveImgNews1() {
+        imgNews1.setImage(new Image("Linkin Park - Living Things.jpg"));
     }
 
     private String formatTime(double time) {
@@ -294,6 +321,15 @@ public class WelcomeMenuController implements Initializable {
             lblTrackName.setText(fileName);
         }
 
+
+    }
+
+    @FXML
+    private void clickOnImageView() {
+
+        lstMainTracks.getItems().clear();
+        lstMainTracks.getItems().addAll(tempAlbum2.getTracks());
+        imgMain.setImage(tempAlbum2.getAlbumCover());
 
     }
 }
