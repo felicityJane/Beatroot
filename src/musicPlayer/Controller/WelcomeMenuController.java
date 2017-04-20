@@ -50,20 +50,12 @@ public class WelcomeMenuController implements Initializable {
     private String temp = "";
     private String selectedItem = "";
 
-    @FXML private AnchorPane welcomeRootAnchor;
-    @FXML public MenuItem createNewPlaylistMenu;
-
+    @FXML private MainMenuController mainMenuController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        //load menu bar onto scene
-        try {
-            SceneManager.sceneManager.loadMenuBar(welcomeRootAnchor);
-        } catch (IOException e) {
-            DialogBoxManager.errorDialogBox("Error occurred","Applying main menu to scene");
-            e.printStackTrace();
-        }
+        mainMenuController.init(this);
+        mainMenuController.menuItemsWelcomeScene();
 
         Image img = new Image("PlayNormal.jpg");
         btnPlay.setFill(new ImagePattern(img));

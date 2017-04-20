@@ -20,11 +20,37 @@ public class MainMenuController implements Initializable{
 
     @FXML private MenuBar menuBar;
     @FXML private MenuItem createNewPlaylistMenu;
+    @FXML private MenuItem searchMenu;
+    @FXML private MenuItem logoutMenu;
+    @FXML private MenuItem personalInfoMenu;
+    @FXML private MenuItem settingsMenu;
+    @FXML private MenuItem aboutMenu;
     @FXML private MenuItem exitMenu;
+
+    private LogInMenuController logInMenuController;
+    private WelcomeMenuController welcomeMenuController;
+    private SignUpMenuController signUpMenuController;
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        exitMenu.setDisable(true);
+    }
+    public void init(LogInMenuController logInMenuController) {
+        this.logInMenuController = logInMenuController;
+    }
+    public void init(WelcomeMenuController welcomeMenuController) {
+        this.welcomeMenuController = welcomeMenuController;
+    }
+    public void init(SignUpMenuController signUpMenuController) {
+        this.signUpMenuController = signUpMenuController;
+    }
+    public void menuItemsWelcomeScene(){
+       createNewPlaylistMenu.setDisable(false);
+       searchMenu.setDisable(false);
+       logoutMenu.setDisable(false);
+       personalInfoMenu.setDisable(false);
+       searchMenu.setDisable(false);
+       settingsMenu.setDisable(false);
+       aboutMenu.setDisable(false);
     }
     private void createNewPlaylistMenuOption(){
         //refer to create playlist method here

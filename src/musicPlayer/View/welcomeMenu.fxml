@@ -12,7 +12,10 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1398.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicPlayer.Controller.WelcomeMenuController">
       <children>
-          <AnchorPane fx:id="welcomeRootAnchor" layoutX="3.0" layoutY="14.0" prefHeight="30.0" prefWidth="1398.0" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+          <AnchorPane fx:id="welcomeRootAnchor" layoutX="3.0" layoutY="14.0" prefHeight="30.0" prefWidth="1398.0" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <fx:include source="mainMenu.fxml" fx:id="mainMenu"/>
+         </children></AnchorPane>
           <Circle fx:id="btnPlay" fill="#ffffff00" layoutX="515.0" layoutY="249.0" onMouseClicked="#clickOnPlayButton" onMouseEntered="#hoverOnPlayButton" onMouseExited="#leavePlayButton" onMousePressed="#pressOnPlayButton" onMouseReleased="#leavePlayButton" radius="24.0" stroke="WHITE" strokeType="INSIDE" />
           <Slider fx:id="sliderPlay" layoutX="628.0" layoutY="230.0" prefHeight="36.0" prefWidth="228.0" />
           <Label fx:id="lblElapsedTime" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="571.0" layoutY="240.0" prefHeight="17.0" prefWidth="56.0" />

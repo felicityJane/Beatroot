@@ -15,19 +15,12 @@ public class SignUpMenuController implements Initializable{
 
     @FXML private TextField userName;
     @FXML private TextField userPassword;
-    @FXML
-    private AnchorPane signUpRootAnchor;
+
+    @FXML private MainMenuController mainMenuController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        //load menu bar onto scene
-        try {
-            SceneManager.sceneManager.loadMenuBar(signUpRootAnchor);
-        } catch (IOException e) {
-            DialogBoxManager.errorDialogBox("Error occurred","Applying main menu to scene");
-            e.printStackTrace();
-        }
+        mainMenuController.init(this);
     }
     @FXML
     private void handleSignUpButton(ActionEvent event){

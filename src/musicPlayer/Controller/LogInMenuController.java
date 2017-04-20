@@ -18,25 +18,14 @@ public class LogInMenuController implements Initializable{
 
     @FXML private TextField userName;
     @FXML private TextField userPassword;
-    @FXML private MenuItem createNewPlaylistMenu;
-    @FXML private MenuItem exitMenu;
-    @FXML private Menu fileMenu;
-    @FXML
-    private AnchorPane logInRootAnchor;
+    @FXML private MainMenuController mainMenuController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //load menu bar onto scene
-        try {
-            SceneManager.sceneManager.loadMenuBar(logInRootAnchor);
-        } catch (IOException e) {
-            DialogBoxManager.errorDialogBox("Error occurred","Applying main menu to scene");
-            e.printStackTrace();
-        }
+        mainMenuController.init(this);
     }
     @FXML
     private void handleLoginButton(ActionEvent event) {
-
         try {
             SceneManager.sceneManager.changeScene(event,"View/welcomeMenu.fxml");
         }catch (Exception e){
