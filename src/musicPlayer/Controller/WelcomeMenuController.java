@@ -1,34 +1,33 @@
 package musicPlayer.Controller;
-
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Slider;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
+import musicPlayer.DialogBoxManager;
+import musicPlayer.SceneManager;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.DefaultHandler;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
-
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
-
 
 public class WelcomeMenuController implements Initializable {
 
@@ -45,20 +44,19 @@ public class WelcomeMenuController implements Initializable {
     @FXML private ImageView imgVolume;
     @FXML private ImageView imgMain;
     @FXML private ListView<String> lstMainTracks;
-    @FXML private ListView<String> lstPlaylists;
-    @FXML private ImageView imgNews1;
-    @FXML private ImageView imgNews2;
-    @FXML private ImageView imgNews3;
-    @FXML private ImageView imgNews4;
-    private TemporaryAlbumClass tempAlbum2 = new TemporaryAlbumClass();
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView;
     private String temp = "";
     private String selectedItem = "";
 
+    @FXML private MainMenuController mainMenuController;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        mainMenuController.init(this);
+        mainMenuController.menuItemsWelcomeScene();
+
         Image img = new Image("PlayNormal.jpg");
         btnPlay.setFill(new ImagePattern(img));
         Image img1 = new Image("StopNormal.jpg");
@@ -74,32 +72,30 @@ public class WelcomeMenuController implements Initializable {
         tempAlbum.getTracks().add("04. Celldweller - Faction 05 .mp3");
         tempAlbum.getTracks().add("05. Celldweller - Faction 06 .mp3");
         tempAlbum.setAlbumCover(new Image("Celldweller_EoaE_BG_LOVE.jpg"));
-
-        tempAlbum2.getTracks().add("05 - I'LL BE GONE.mp3");
-        tempAlbum2.getTracks().add("06 - CASTLE OF GLASS.mp3");
-        tempAlbum2.getTracks().add("08 - ROADS UNTRAVELED.mp3");
-        tempAlbum2.setAlbumCover(new Image("Linkin Park - Living Things.jpg"));
         Path path = Paths.get(tempAlbum.getTracks().get(0));
         lstMainTracks.getItems().addAll(tempAlbum.getTracks());
         imgVolume.setImage(new Image("VolumeHigh.png"));
         imgMain.setImage(tempAlbum.getAlbumCover());
-        imgNews1.setImage(new Image("Linkin Park - Living Things.jpg"));
-        imgNews2.setImage(new Image("Konachan.jpg"));
-        imgNews3.setImage(new Image("EyeGirl.jpg"));
-        imgNews4.setImage(new Image("Hadean.jpg"));
-
 
         media = new Media(path.toUri().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView = new MediaView(mediaPlayer);
         sliderVolume.setValue(mediaPlayer.getVolume() * 100);
 
-
         runMediaPlayer(path);
+    }
 
-
-
-
+    @FXML
+    protected void onLogOutButtonPressed(ActionEvent event){
+        boolean answer = DialogBoxManager.confirmationDialogBox("Are you sure you want to log out?","click ok to continue");
+        if (answer){
+            try {
+                SceneManager.sceneManager.changeScene(event,"View/logInMenu.fxml");
+            }catch (Exception e){
+                DialogBoxManager.errorDialogBox("Error occurred","Changing from welcome scene to log in scene");
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
@@ -188,21 +184,6 @@ public class WelcomeMenuController implements Initializable {
     private void pressOnStopButton() {
         Image img = new Image("StopPressed.jpg");
         btnStop.setFill(new ImagePattern(img));
-    }
-
-    @FXML
-    private void hoverOnImgNews1() {
-        imgNews1.setImage(new Image("Linkin Park - Living ThingsHover.jpg"));
-    }
-
-    @FXML
-    private void pressOnImgNews1() {
-        imgNews1.setImage(new Image("Linkin Park - Living ThingsPressed.jpg"));
-    }
-
-    @FXML
-    private void leaveImgNews1() {
-        imgNews1.setImage(new Image("Linkin Park - Living Things.jpg"));
     }
 
     private String formatTime(double time) {
@@ -321,15 +302,6 @@ public class WelcomeMenuController implements Initializable {
             lblTrackName.setText(fileName);
         }
 
-
-    }
-
-    @FXML
-    private void clickOnImageView() {
-
-        lstMainTracks.getItems().clear();
-        lstMainTracks.getItems().addAll(tempAlbum2.getTracks());
-        imgMain.setImage(tempAlbum2.getAlbumCover());
 
     }
 }
