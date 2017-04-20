@@ -60,6 +60,11 @@
                   <Font size="21.0" />
                </font>
             </Label>
+            <Label layoutX="206.0" layoutY="557.0" text="Suggestions">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>
