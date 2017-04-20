@@ -1,14 +1,12 @@
-package model;
+package musicPlayer.model;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Administrator extends User {
 
 	private Date startDate;
 	private float wage, contractHours;
-	// private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
+	private String employeeID;
 
 	/**
 	 * @param userName
@@ -19,6 +17,8 @@ public class Administrator extends User {
 	 *            String Employee's first name
 	 * @param lastName
 	 *            String Employee's last name
+	 * @param dateOfBirth
+	 *            Date Employee's date of birth
 	 * @param emailAddress
 	 *            Employee's address
 	 * @param physicalAddress
@@ -41,23 +41,20 @@ public class Administrator extends User {
 	 *            Float Employee's hours by contract (for overtime purposes)
 	 */
 
-	public Administrator(String userName, String password, String firstName, String lastName, String emailAddress,
-			String physicalAddress, String cityOfResidence, String postalCode, String country, String gender,
-			String phoneNumber, Date startDate, float wage, float contractHours) {
-		super(userName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence, postalCode,
-				country, gender, phoneNumber);
+	public Administrator(String userName, String password, String firstName, String lastName, Date dateOfBirth,
+			String emailAddress, String physicalAddress, String cityOfResidence, String postalCode, String country,
+			String gender, String phoneNumber, Date startDate, float wage, float contractHours, String employeeID) {
+		super(userName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress, cityOfResidence,
+				postalCode, country, gender, phoneNumber);
 		this.startDate = startDate;
 		this.wage = wage;
 		this.contractHours = contractHours;
+		this.employeeID = employeeID;
 	}
 
 	public Date getStartDate() {
 		return startDate;
 	}
-
-	// public void setStartDate(Date startDate) {
-	// this.startDate = startDate;
-	// }
 
 	public float getWage() {
 		return wage;
@@ -75,12 +72,21 @@ public class Administrator extends User {
 		this.contractHours = contractHours;
 	}
 
-	// TODO Check if I'm missing something
-	@Override
-	public String toString() {
-		DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-		String output = format.format(getStartDate());
-
-		return "Employee details:\nFirst name: " + getFirstName() + "\nStart date: " + output;
+	public String getEmployeeID() {
+		return employeeID;
 	}
+
+	public void setEmployeeID(String employeeID) {
+		this.employeeID = employeeID;
+	}
+
+	// TODO Check if I'm missing something
+	// @Override
+	// public String toString() {
+	// DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+	// String output = format.format(getStartDate());
+	//
+	// return "Employee details:\nFirst name: " + getFirstName() + "\nStart
+	// date: " + output;
+	// }
 }

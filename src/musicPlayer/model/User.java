@@ -1,21 +1,24 @@
-package model;
+package musicPlayer.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public abstract class User {
 	private String userName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence, postalCode,
 			country, gender, phoneNumber;
-
-	private static Playlist defaultPlaylist = new Playlist("Default", 0, PrivacyLevel.PUBLIC);
+	private Date dateOfBirth;
+	private static Playlist defaultPlaylist;
 	private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
+	private ArrayList<Feedback> userFeedback = new ArrayList<Feedback>();
 
-	public User(String userName, String password, String firstName, String lastName, String emailAddress,
-			String physicalAddress, String cityOfResidence, String postalCode, String country, String gender,
-			String phoneNumber) {
+	public User(String userName, String password, String firstName, String lastName, Date dateOfBirth,
+			String emailAddress, String physicalAddress, String cityOfResidence, String postalCode, String country,
+			String gender, String phoneNumber) {
 		this.userName = userName;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
 		this.emailAddress = emailAddress;
 		this.physicalAddress = physicalAddress;
 		this.cityOfResidence = cityOfResidence;
@@ -23,6 +26,7 @@ public abstract class User {
 		this.country = country;
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
+		// TODO this.defaultPlaylist=new Playlist()
 		userPlaylists.add(defaultPlaylist);
 	}
 
@@ -32,6 +36,14 @@ public abstract class User {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public String getPassword() {
@@ -114,17 +126,43 @@ public abstract class User {
 		this.phoneNumber = phoneNumber;
 	}
 
-	// public void getUserPlaylists() {
-	// for (Playlist p : userPlaylists) {
-	//
-	// }
-	// }
 	public ArrayList<Playlist> getUserPlaylists() {
 		return userPlaylists;
 	}
 
-	private void createPlayList() {
-		// TODO Auto-generated method stub
+	public void setUserPlaylists(ArrayList<Playlist> userPlaylists) {
+		this.userPlaylists = userPlaylists;
 	}
 
+	public void addPlaylist(Playlist pl) {
+		if (userPlaylists.contains(pl))
+			return;
+		userPlaylists.add(pl);
+	}
+
+	public void removePlaylist(Playlist pl) {
+		if (!userPlaylists.contains(pl))
+			return;
+		userPlaylists.remove(pl);
+	}
+
+	public ArrayList<Feedback> getUserFeedback() {
+		return userFeedback;
+	}
+
+	public void setUserFeedback(ArrayList<Feedback> userFeedback) {
+		this.userFeedback = userFeedback;
+	}
+
+	public void addUserFeedback(Feedback fb) {
+		if (userFeedback.contains(fb.getFeedbackID()))
+			return;
+		userFeedback.add(fb);
+	}
+
+	public void removeUserFeedback(Feedback fb) {
+		if (!userFeedback.contains(fb.getFeedbackID()))
+			return;
+		userFeedback.remove(fb);
+	}
 }

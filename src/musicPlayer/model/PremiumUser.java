@@ -1,4 +1,4 @@
-package model;
+package musicPlayer.model;
 
 import java.util.Date;
 
@@ -6,9 +6,10 @@ public class PremiumUser extends User {
 
 	private int bankCardNumber;
 	private Date expirationDate;
-	private String billingCardHolderName, billingAddress, billingCity, billingPostalCode, billingCountry, cardType;
+	private String billingCardHolderName, billingAddress, billingCity, billingPostalCode, billingCountry;
 	private String billingPhoneNumber;
 	private boolean isSameAsResidentAddress;
+	private PaymentMethod PaymentMethod;
 
 	/**
 	 * Billing address is the same as the user's address
@@ -39,19 +40,18 @@ public class PremiumUser extends User {
 	 *            The card number for the person's payment plan
 	 * @param expirationDate
 	 *            Card's expiration date
-	 * @param cardType
-	 *            The card's type (e.g. master card, visa, visa electron, visa
-	 *            debit etc.)
+	 * @param PaymentMethod
+	 *            Enum {@link: PaymentMethod} The payment method.
 	 */
 
-	public PremiumUser(String userName, String password, String firstName, String lastName, String emailAddress,
-			String physicalAddress, String cityOfResidence, String postalCode, String country, String gender,
-			String phoneNumber, int bankCardNumber, Date expirationDate, String cardType) {
-		super(userName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence, postalCode,
-				country, gender, phoneNumber);
+	public PremiumUser(String userName, String password, String firstName, Date dateOfBirth, String lastName,
+			String emailAddress, String physicalAddress, String cityOfResidence, String postalCode, String country,
+			String gender, String phoneNumber, int bankCardNumber, Date expirationDate, PaymentMethod PaymentMethod) {
+		super(userName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress, cityOfResidence,
+				postalCode, country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
 		this.expirationDate = expirationDate;
-		this.cardType = cardType;
+		this.PaymentMethod = PaymentMethod;
 	}
 
 	/**
@@ -65,6 +65,8 @@ public class PremiumUser extends User {
 	 *            User's first name
 	 * @param lastName
 	 *            User's last name
+	 * @param Date
+	 *            dateOfBirth User's date of birth
 	 * @param emailAddress
 	 *            User's address
 	 * @param physicalAddress
@@ -83,9 +85,8 @@ public class PremiumUser extends User {
 	 *            The card number for the person's payment plan
 	 * @param expirationDate
 	 *            Card's expiration date
-	 * @param cardType
-	 *            The card's type (e.g. master card, visa, visa electron, visa
-	 *            debit etc.)
+	 * @param PaymentMethod
+	 *            Enum {@link: PaymentMethod} The payment's type.
 	 * @param billingCardHolderName
 	 *            The name of the account owner as printed on the card's face
 	 * @param billingAddress
@@ -100,22 +101,22 @@ public class PremiumUser extends User {
 	 *            Account owner's phone number
 	 */
 
-	public PremiumUser(String userName, String password, String firstName, String lastName, String emailAddress,
-			String physicalAddress, String cityOfResidence, String postalCode, String country, String gender,
-			String phoneNumber, int bankCardNumber, Date expirationDate, String cardType, String billingCardHolderName,
-			String billingAddress, String billingCity, String billingPostalCode, String billingCountry,
-			String billingPhoneNumber) {
-		super(userName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence, postalCode,
-				country, gender, phoneNumber);
+	public PremiumUser(String userName, String password, String firstName, String lastName, Date dateOfBirth,
+			String emailAddress, String physicalAddress, String cityOfResidence, String postalCode, String country,
+			String gender, String phoneNumber, int bankCardNumber, Date expirationDate, PaymentMethod PaymentMethod,
+			String billingCardHolderName, String billingAddress, String billingCity, String billingPostalCode,
+			String billingCountry, String billingPhoneNumber) {
+		super(userName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress, cityOfResidence,
+				postalCode, country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
 		this.expirationDate = expirationDate;
-		this.cardType = cardType;
+		this.PaymentMethod = PaymentMethod;
 		this.billingCardHolderName = billingCardHolderName;
 		this.billingAddress = billingAddress;
 		this.billingCity = billingCity;
 		this.billingPostalCode = billingPostalCode;
 		this.billingCountry = billingCountry;
-
+		this.PaymentMethod = PaymentMethod;
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
 
@@ -175,12 +176,12 @@ public class PremiumUser extends User {
 		this.billingCountry = billingCountry;
 	}
 
-	public String getCardType() {
-		return cardType;
+	public PaymentMethod getPaymentMethod() {
+		return PaymentMethod;
 	}
 
-	public void setCardType(String cardType) {
-		this.cardType = cardType;
+	public void setPaymentMethod(PaymentMethod PaymentMethod) {
+		this.PaymentMethod = PaymentMethod;
 	}
 
 	public String getBillingPhoneNumber() {
@@ -200,7 +201,7 @@ public class PremiumUser extends User {
 	}
 
 	private void changePaymentInformation() {
-
+		// TODO
 	}
 
 }
