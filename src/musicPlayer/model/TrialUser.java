@@ -8,35 +8,38 @@ public class TrialUser extends User {
 
 	/**
 	 * @param userName
-	 *            User's login name
+	 *            String User's login name
+	 * @param displayName
+	 *            String The user's display name within the program, which is
+	 *            editable.
 	 * @param password
-	 *            User's login password
+	 *            String User's login password
 	 * @param firstName
-	 *            User's first name
+	 *            String User's first name
 	 * @param lastName
-	 *            User's last name
+	 *            String User's last name
 	 * @param Date
-	 *            dateOfBirth User's date of birth
+	 *            Date dateOfBirth User's date of birth
 	 * @param emailAddress
-	 *            User's address
+	 *            String User's address
 	 * @param physicalAddress
-	 *            User's address
+	 *            String User's address
 	 * @param cityOfResidence
-	 *            User's city of residence
+	 *            String User's city of residence
 	 * @param postalCode
-	 *            User's postal code
+	 *            String User's postal code
 	 * @param country
-	 *            User's country of residence
+	 *            String User's country of residence
 	 * @param gender
-	 *            User's gender
+	 *            Enum {@link: Gender} User's gender
 	 * @param phoneNumber
 	 *            User's phone number
 	 */
-	public TrialUser(String userName, String password, String firstName, String lastName, Date dateOfBirth,
-			String emailAddress, String physicalAddress, String cityOfResidence, String postalCode, String country,
-			String gender, String phoneNumber, Date freeTrialEndDate) {
-		super(userName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress, cityOfResidence,
-				postalCode, country, gender, phoneNumber);
+	public TrialUser(String userName, String displayName, String password, String firstName, String lastName,
+			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
+			String country, Gender gender, String phoneNumber, Date freeTrialEndDate) {
+		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
+				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.freeTrialEndDate = freeTrialEndDate;
 
 	}

@@ -19,9 +19,12 @@ public class Administrator extends User {
 
 	/**
 	 * @param userName
-	 *            String User's login name
+	 *            String Employee's login name
+	 * @param displayName
+	 *            String The employee's display name within the program, which
+	 *            is editable.
 	 * @param password
-	 *            String User's login password
+	 *            String Eser's login password
 	 * @param firstName
 	 *            String Employee's first name
 	 * @param lastName
@@ -39,7 +42,7 @@ public class Administrator extends User {
 	 * @param country
 	 *            String Employee's country of residence
 	 * @param gender
-	 *            String Employee's gender
+	 *            Enum {@link: Gender} User's gender
 	 * @param phoneNumber
 	 *            String Employee's phone number
 	 * @param startDate
@@ -52,11 +55,12 @@ public class Administrator extends User {
 	 *            String Employee's ID code
 	 */
 
-	public Administrator(String userName, String password, String firstName, String lastName, Date dateOfBirth,
-			String emailAddress, String physicalAddress, String cityOfResidence, String postalCode, String country,
-			String gender, String phoneNumber, Date startDate, float wage, float contractHours, String employeeID) {
-		super(userName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress, cityOfResidence,
-				postalCode, country, gender, phoneNumber);
+	public Administrator(String userName, String displayName, String password, String firstName, String lastName,
+			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
+			String country, Gender gender, String phoneNumber, Date startDate, float wage, float contractHours,
+			String employeeID) {
+		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
+				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.startDate = startDate;
 		this.wage = wage;
 		this.contractHours = contractHours;

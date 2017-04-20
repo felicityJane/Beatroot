@@ -47,11 +47,12 @@ public class PremiumUser extends User {
 	 *            Enum {@link: PaymentMethod} The payment method.
 	 */
 
-	public PremiumUser(String userName, String password, String firstName, Date dateOfBirth, String lastName,
-			String emailAddress, String physicalAddress, String cityOfResidence, String postalCode, String country,
-			String gender, String phoneNumber, int bankCardNumber, Date expirationDate, PaymentMethod PaymentMethod) {
-		super(userName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress, cityOfResidence,
-				postalCode, country, gender, phoneNumber);
+	public PremiumUser(String userName, String displayName, String password, String firstName, Date dateOfBirth,
+			String lastName, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
+			String country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
+			PaymentMethod PaymentMethod) {
+		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
+				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
 		this.expirationDate = expirationDate;
 		this.PaymentMethod = PaymentMethod;
@@ -62,6 +63,9 @@ public class PremiumUser extends User {
 	 * 
 	 * @param userName
 	 *            User's login name
+	 * @param displayName
+	 *            String The user's display name within the program, which is
+	 *            editable.
 	 * @param password
 	 *            User's login password
 	 * @param firstName
@@ -81,7 +85,7 @@ public class PremiumUser extends User {
 	 * @param country
 	 *            User's country of residence
 	 * @param gender
-	 *            User's gender
+	 *            Enum {@link: Gender} User's gender
 	 * @param phoneNumber
 	 *            User's phone number
 	 * @param bankCardNumber
@@ -104,13 +108,13 @@ public class PremiumUser extends User {
 	 *            Account owner's phone number
 	 */
 
-	public PremiumUser(String userName, String password, String firstName, String lastName, Date dateOfBirth,
-			String emailAddress, String physicalAddress, String cityOfResidence, String postalCode, String country,
-			String gender, String phoneNumber, int bankCardNumber, Date expirationDate, PaymentMethod PaymentMethod,
-			String billingCardHolderName, String billingAddress, String billingCity, String billingPostalCode,
-			String billingCountry, String billingPhoneNumber) {
-		super(userName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress, cityOfResidence,
-				postalCode, country, gender, phoneNumber);
+	public PremiumUser(String userName, String displayName, String password, String firstName, String lastName,
+			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
+			String country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
+			PaymentMethod PaymentMethod, String billingCardHolderName, String billingAddress, String billingCity,
+			String billingPostalCode, String billingCountry, String billingPhoneNumber) {
+		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
+				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
 		this.expirationDate = expirationDate;
 		this.PaymentMethod = PaymentMethod;

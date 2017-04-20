@@ -4,18 +4,20 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class User {
-	private String userName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence, postalCode,
-			country, gender, phoneNumber;
+	private String userName, displayName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence,
+			postalCode, country, phoneNumber;
 	private Date dateOfBirth;
+	private Gender gender;
 	private static Playlist defaultPlaylist;
 	private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
 	private ArrayList<Comment> userComments = new ArrayList<Comment>();
 	private ArrayList<Rating> userRatings = new ArrayList<Rating>();
 
-	public User(String userName, String password, String firstName, String lastName, Date dateOfBirth,
-			String emailAddress, String physicalAddress, String cityOfResidence, String postalCode, String country,
-			String gender, String phoneNumber) {
+	public User(String userName, String displayName, String password, String firstName, String lastName,
+			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
+			String country, Gender gender, String phoneNumber) {
 		this.userName = userName;
+		this.displayName = displayName;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -35,8 +37,12 @@ public abstract class User {
 		return userName;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
 	}
 
 	public Date getDateOfBirth() {
@@ -111,11 +117,11 @@ public abstract class User {
 		this.country = country;
 	}
 
-	public String getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
