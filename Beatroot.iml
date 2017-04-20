@@ -25,10 +25,19 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/HKR/Database Technique/Seminar 2/mysql-connector-java-5.1.28/mysql-connector-java-5.1.28-bin.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../tika-core-1.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../tika-parsers-1.4.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
