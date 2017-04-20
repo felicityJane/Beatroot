@@ -9,7 +9,8 @@ public abstract class User {
 	private Date dateOfBirth;
 	private static Playlist defaultPlaylist;
 	private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
-	private ArrayList<Feedback> userFeedback = new ArrayList<Feedback>();
+	private ArrayList<Comment> userComments = new ArrayList<Comment>();
+	private ArrayList<Rating> userRatings = new ArrayList<Rating>();
 
 	public User(String userName, String password, String firstName, String lastName, Date dateOfBirth,
 			String emailAddress, String physicalAddress, String cityOfResidence, String postalCode, String country,
@@ -146,23 +147,35 @@ public abstract class User {
 		userPlaylists.remove(pl);
 	}
 
-	public ArrayList<Feedback> getUserFeedback() {
-		return userFeedback;
+	public ArrayList<Comment> getUserComments() {
+		return userComments;
 	}
 
-	public void setUserFeedback(ArrayList<Feedback> userFeedback) {
-		this.userFeedback = userFeedback;
+	public void setUserComments(ArrayList<Comment> userComments) {
+		this.userComments = userComments;
 	}
 
-	public void addUserFeedback(Feedback fb) {
-		if (userFeedback.contains(fb.getFeedbackID()))
+	public void addUserComments(Comment fb) {
+		if (userComments.contains(fb.getCommentID()))
 			return;
-		userFeedback.add(fb);
+		userComments.add(fb);
 	}
 
-	public void removeUserFeedback(Feedback fb) {
-		if (!userFeedback.contains(fb.getFeedbackID()))
+	public void removeUserComments(Comment fb) {
+		if (!userComments.contains(fb.getCommentID()))
 			return;
-		userFeedback.remove(fb);
+		userComments.remove(fb);
+	}
+
+	public void addUserRating(Rating r) {
+		if (userRatings.contains(r))
+			return;
+		userRatings.add(r);
+	}
+
+	public void removeUserRating(Rating r) {
+		if (!userRatings.contains(r))
+			return;
+		userRatings.remove(r);
 	}
 }

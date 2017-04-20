@@ -1,27 +1,27 @@
 package musicPlayer.model;
 
-public class Feedback {
+public class Comment {
 
-	private final String feedbackID;
+	private final String commentID;
 	private String message;
 	private User user;
 	private MusicTrack musicTrack;
 
 	/**
 	 * 
-	 * @param feedbackID
-	 *            String Feedback ID for database handling
+	 * @param commentID
+	 *            String Comment ID
 	 * @param message
 	 *            String User's text message;
 	 */
 
-	public Feedback(String feedbackID, String message) {
-		this.feedbackID = feedbackID;
+	public Comment(String commentID, String message) {
+		this.commentID = commentID;
 		this.message = message;
 	}
 
-	public String getFeedbackID() {
-		return feedbackID;
+	public String getCommentID() {
+		return commentID;
 	}
 
 	public String getMessage() {

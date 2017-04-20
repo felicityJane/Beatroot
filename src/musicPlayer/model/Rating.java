@@ -3,8 +3,7 @@ package musicPlayer.model;
 import java.util.ArrayList;
 
 public class Rating {
-	private int ratingID;
-	private int sumFromAllVoters = 0;
+	private int ratingID, sumFromAllVoters = 0;
 	private double finalRating;
 	private MusicTrack song;
 	private ArrayList<User> votedUsers = new ArrayList<User>();
@@ -17,12 +16,16 @@ public class Rating {
 		return ratingID;
 	}
 
-	public int getsumFromAllVoters() {
+	public int getSumFromAllVoters() {
 		return sumFromAllVoters;
 	}
 
 	public double getFinalRating() {
 		return finalRating;
+	}
+
+	public void calculateRating() {
+		this.finalRating = sumFromAllVoters / (votedUsers.size() + 1);
 	}
 
 	public ArrayList<User> getVotedUsers() {
@@ -33,7 +36,7 @@ public class Rating {
 		this.votedUsers = votedUsers;
 	}
 
-	public void addsumFromAllVoters(User u, float vote) {
+	public void addSumFromAllVoters(User u, float vote) {
 		try {
 			if (vote >= 1 && vote <= 5 && !votedUsers.contains(u)) {
 				sumFromAllVoters += vote;
@@ -45,7 +48,7 @@ public class Rating {
 		}
 	}
 
-	public void removesumFromAllVoters(User u, float vote) {
+	public void removeSumFromAllVoters(User u, float vote) {
 		try {
 			if (vote >= 1 && vote <= 5 && votedUsers.contains(u)) {
 				sumFromAllVoters -= vote;
@@ -54,10 +57,6 @@ public class Rating {
 		} catch (IndexOutOfBoundsException ex) {
 			ex.getStackTrace();
 		}
-	}
-
-	public void calculateRating() {
-		this.finalRating = sumFromAllVoters / (votedUsers.size() + 1);
 	}
 
 	public MusicTrack getSong() {

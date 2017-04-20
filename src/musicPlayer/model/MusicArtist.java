@@ -7,6 +7,8 @@ public class MusicArtist {
 	private String stageName;
 	private ArrayList<MusicTrack> songs = new ArrayList<MusicTrack>();
 	private Rating rating;
+	private Administrator administratior;
+	// private ArrayList<>
 
 	/**
 	 * 
@@ -53,5 +55,13 @@ public class MusicArtist {
 
 	public void setRating(Rating rating) {
 		this.rating = rating;
+	}
+
+	public Administrator getAdministratior() {
+		return administratior;
+	}
+
+	public void setAdministratior(Administrator administratior) {
+		this.administratior = administratior;
 	}
 }

@@ -1,5 +1,6 @@
 package musicPlayer.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Administrator extends User {
@@ -7,6 +8,12 @@ public class Administrator extends User {
 	private Date startDate;
 	private float wage, contractHours;
 	private String employeeID;
+	private ArrayList<MusicTrack> addedSongs = new ArrayList<MusicTrack>();
+	private ArrayList<MusicTrack> removedSongs = new ArrayList<MusicTrack>();
+	private ArrayList<Album> addedAlbums = new ArrayList<Album>();
+	private ArrayList<Album> removedAlbums = new ArrayList<Album>();
+	private ArrayList<MusicArtist> addedArtists = new ArrayList<MusicArtist>();
+	private ArrayList<MusicArtist> removedArtists = new ArrayList<MusicArtist>();
 
 	/**
 	 * @param userName
@@ -39,6 +46,8 @@ public class Administrator extends User {
 	 *            Float Employee's current wage
 	 * @param contractHours
 	 *            Float Employee's hours by contract (for overtime purposes)
+	 * @param employeeID
+	 *            String Employee's ID code
 	 */
 
 	public Administrator(String userName, String password, String firstName, String lastName, Date dateOfBirth,
@@ -76,8 +85,75 @@ public class Administrator extends User {
 		return employeeID;
 	}
 
-	public void setEmployeeID(String employeeID) {
-		this.employeeID = employeeID;
+	public ArrayList<MusicTrack> getAddedSongs() {
+		return addedSongs;
+	}
+
+	public void setAddedSongs(ArrayList<MusicTrack> addedSongs) {
+		this.addedSongs = addedSongs;
+	}
+
+	public ArrayList<MusicTrack> getremovedSongs() {
+		return removedSongs;
+	}
+
+	public void setRemovedSongs(ArrayList<MusicTrack> removedSongs) {
+		this.removedSongs = removedSongs;
+	}
+
+	public void addSong(MusicTrack song) {
+		if (addedSongs.contains(song))
+			return;
+		addedSongs.add(song);
+	}
+
+	public void removeSong(MusicTrack song) {
+		if (!addedSongs.contains(song))
+			return;
+		addedSongs.remove(song);
+		removedSongs.add(song);
+	}
+
+	public ArrayList<Album> getAddedAlbums() {
+		return addedAlbums;
+	}
+
+	public void setAddedAlbums(ArrayList<Album> addedAlbums) {
+		this.addedAlbums = addedAlbums;
+	}
+
+	public ArrayList<Album> getRemovedAlbums() {
+		return removedAlbums;
+	}
+
+	public void setRemovedAlbums(ArrayList<Album> removedAlbums) {
+		this.removedAlbums = removedAlbums;
+	}
+
+	public void addAlbum(Album album) {
+		if (addedAlbums.contains(album))
+			return;
+		addedAlbums.add(album);
+	}
+
+	public void removeAlbum(Album album) {
+		if (!addedAlbums.contains(album))
+			return;
+		addedAlbums.remove(album);
+		removedAlbums.add(album);
+	}
+
+	public void addMusicArtist(MusicArtist artist) {
+		if (addedArtists.contains(artist))
+			return;
+		addedArtists.add(artist);
+	}
+
+	public void removeMusicArtist(MusicArtist artist) {
+		if (!addedArtists.contains(artist))
+			return;
+		addedArtists.remove(artist);
+		removedArtists.add(artist);
 	}
 
 	// TODO Check if I'm missing something

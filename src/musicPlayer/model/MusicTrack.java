@@ -10,6 +10,7 @@ public class MusicTrack {
 	private String url;
 	private Rating rating;
 	private ArrayList<MusicArtist> performers = new ArrayList<MusicArtist>();
+	private ArrayList<Comment> comments = new ArrayList<Comment>();
 
 	/**
 	 * 
@@ -89,5 +90,25 @@ public class MusicTrack {
 
 	public void setRating(Rating rating) {
 		this.rating = rating;
+	}
+
+	public ArrayList<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(ArrayList<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public void addComment(Comment fb) {
+		if (comments.contains(fb.getCommentID()))
+			return;
+		comments.add(fb);
+	}
+
+	public void removeComment(Comment fb) {
+		if (!comments.contains(fb))
+			return;
+		comments.remove(fb);
 	}
 }
