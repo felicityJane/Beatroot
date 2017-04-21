@@ -1,4 +1,4 @@
-package musicPlayer.Controller;
+package musicPlayer;
 
 import javafx.scene.image.Image;
 
