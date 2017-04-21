@@ -14,6 +14,7 @@ import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import musicPlayer.DialogBoxManager;
 import musicPlayer.SceneManager;
+import musicPlayer.TemporaryAlbumClass;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.DefaultHandler;
 import org.apache.tika.metadata.Metadata;
