@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/SignUpMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/DialogBoxManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/SceneManager.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -64,13 +69,23 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicPlayer/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+            <state relative-caret-position="306">
+              <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#614#615#0" expanded="true" />
-                <element signature="e#650#651#0" expanded="true" />
+                <marker date="1492785955334" expanded="true" signature="428:565" ph="{...}" />
+                <marker date="1492785955334" expanded="false" signature="613:628" ph=" { " />
+                <marker date="1492785955334" expanded="false" signature="641:651" ph=" }" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainMenuController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/MainMenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,8 +93,8 @@
       <file leaf-file-name="welcomeMenu.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicPlayer/View/welcomeMenu.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="44" column="41" lean-forward="true" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
+            <state relative-caret-position="748">
+              <caret line="44" column="41" lean-forward="false" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -91,8 +106,91 @@
       <file leaf-file-name="WelcomeMenuController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5206">
-              <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+            <state relative-caret-position="3066">
+              <caret line="243" column="44" lean-forward="false" selection-start-line="243" selection-start-column="44" selection-end-line="243" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1492786255289" expanded="true" signature="89511:89549" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89511:89567" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89511:89580" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89511:89595" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89630:91742" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89643:91727" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89697:89992" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89716:89977" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89779:89957" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89819:89923" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89840:89901" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90042:90369" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90061:90354" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90156:90334" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90196:90300" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90217:90278" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90420:90685" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90439:90670" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90472:90650" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90512:90616" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90533:90594" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90728:91034" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90747:91019" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90821:90999" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90861:90965" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90882:90943" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91085:91396" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91104:91381" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91183:91361" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91223:91327" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91244:91305" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91448:91713" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91467:91698" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91500:91678" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91540:91644" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91561:91622" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogInMenuController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/LogInMenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+              <folding>
+                <element signature="e#744#745#0" expanded="true" />
+                <element signature="e#789#790#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signUpMenu.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicPlayer/View/signUpMenu.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="62" lean-forward="false" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SignUpMenuController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="46" column="29" lean-forward="false" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -101,9 +199,11 @@
       <file leaf-file-name="DB_Connector.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicPlayer/DB_Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-422">
+            <state relative-caret-position="102">
               <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -126,7 +226,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Federica" />
       </map>
     </option>
     <option name="PUSH_TAGS">
@@ -160,10 +260,10 @@
         <option value="$PROJECT_DIR$/src/musicPlayer/View/welcomeMenu.fxml" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/AccountHolder.java" />
         <option value="$PROJECT_DIR$/src/model/MusicTrack.java" />
-        <option value="$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/TrialUser.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/PremiumUser.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/Administrator.java" />
+        <option value="$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java" />
       </list>
     </option>
   </component>
@@ -190,9 +290,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -241,7 +341,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -278,6 +378,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -318,16 +432,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot\src\musicPlayer\model" />
-      <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot\src\Images" />
-      <recent name="C:\Users\felic\Documents\Project Course 2\Beatroot\src\musicPlayer\View" />
-      <recent name="C:\Users\felic\Documents\Project Course 2\Beatroot\src\sample\View" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot" />
       <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot\src\mp3" />
       <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot\src\Images" />
+      <recent name="C:\Users\felic\Documents\Project Course 2\Beatroot\src\sample\View" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot\src\musicPlayer\model" />
+      <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot\src\Images" />
+      <recent name="C:\Users\felic\Documents\Project Course 2\Beatroot\src\musicPlayer\View" />
       <recent name="C:\Users\felic\Documents\Project Course 2\Beatroot\src\sample\View" />
     </key>
   </component>
@@ -678,7 +792,28 @@
       <option name="project" value="LOCAL" />
       <updated>1492783445861</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Merge branch 'master' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;src/model/MusicTrack.java">
+      <created>1492784283469</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1492784283469</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Merge branch 'master' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;src/model/MusicTrack.java">
+      <created>1492785320746</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1492785320746</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Merge branch 'Felicity' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1492785846228</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1492785846228</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -686,7 +821,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -697,13 +831,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.018927446" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12776025" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.052050475" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0851735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26281112" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26061493" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -731,7 +865,6 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39962476" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12460568" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -794,7 +927,8 @@
     <MESSAGE value="push mainMenu.fxml" />
     <MESSAGE value="Merge branches 'Federica' and 'Felicity' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController$1.class&#10;#&#9;out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController.class&#10;#&#9;out/production/Beatroot/musicPlayer/View/welcomeMenu.fxml&#10;#&#9;src/musicPlayer/Controller/WelcomeMenuController.java&#10;#&#9;src/musicPlayer/View/welcomeMenu.fxml" />
     <MESSAGE value="Merge branch 'master' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;src/model/MusicTrack.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;src/model/MusicTrack.java" />
+    <MESSAGE value="Merge branch 'Felicity' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'Felicity' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -805,18 +939,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/MainMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1193#1194#0" expanded="false" />
-            <element signature="e#1255#1256#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -863,9 +985,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#614#615#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
+            <marker date="1492785955334" expanded="true" signature="428:565" ph="{...}" />
+            <marker date="1492785955334" expanded="false" signature="613:628" ph=" { " />
+            <marker date="1492785955334" expanded="false" signature="641:651" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -874,10 +996,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#744#745#0" expanded="true" />
-            <element signature="e#789#790#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -887,8 +1006,6 @@
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#1193#1194#0" expanded="false" />
-            <element signature="e#1255#1256#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -939,9 +1056,9 @@
         <state relative-caret-position="68">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#614#615#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
+            <marker date="1492785955334" expanded="true" signature="428:565" ph="{...}" />
+            <marker date="1492785955334" expanded="false" signature="613:628" ph=" { " />
+            <marker date="1492785955334" expanded="false" signature="641:651" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -952,8 +1069,6 @@
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#1193#1194#0" expanded="false" />
-            <element signature="e#1255#1256#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -973,13 +1088,7 @@
     <entry file="file://$PROJECT_DIR$/src/model/LinkedList.java" />
     <entry file="file://$PROJECT_DIR$/src/model/ListInterface.java" />
     <entry file="file://$PROJECT_DIR$/src/model/Artist.java" />
-    <entry file="file://$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController$1.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController$1.class" />
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/DialogBoxManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1005,10 +1114,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="324" column="5" lean-forward="true" selection-start-line="324" selection-start-column="5" selection-end-line="324" selection-end-column="5" />
-          <folding>
-            <element signature="e#6508#6509#0" expanded="false" />
-            <element signature="e#6587#6588#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1016,18 +1121,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/MainMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="3" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1193#1194#0" expanded="false" />
-            <element signature="e#1255#1256#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1040,24 +1133,6 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="53" column="9" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/LogInMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
-          <folding>
-            <element signature="e#744#745#0" expanded="true" />
-            <element signature="e#789#790#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/SceneManager.java">
@@ -1076,23 +1151,11 @@
     <entry file="file://$PROJECT_DIR$/src/model/Genre.java" />
     <entry file="file://$PROJECT_DIR$/src/model/TrialUser.java" />
     <entry file="file://$PROJECT_DIR$/src/model/User.java" />
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/View/signUpMenu.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-208">
-          <caret line="20" column="62" lean-forward="false" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Administrator.java" />
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1109,7 +1172,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1360">
           <caret line="109" column="35" lean-forward="true" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1125,7 +1187,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1133,7 +1194,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
           <caret line="74" column="25" lean-forward="false" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1141,34 +1201,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="53" column="21" lean-forward="false" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/DB_Connector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-422">
+        <state relative-caret-position="102">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        <state relative-caret-position="306">
+          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#614#615#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
+            <marker date="1492785955334" expanded="true" signature="428:565" ph="{...}" />
+            <marker date="1492785955334" expanded="false" signature="613:628" ph=" { " />
+            <marker date="1492785955334" expanded="false" signature="641:651" ph=" }" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/View/welcomeMenu.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="44" column="41" lean-forward="true" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
+        <state relative-caret-position="748">
+          <caret line="44" column="41" lean-forward="false" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
           <folding />
         </state>
       </provider>
@@ -1176,10 +1237,93 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/View/signUpMenu.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="62" lean-forward="false" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1492786255289" expanded="true" signature="89511:89549" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89511:89567" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89511:89580" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89511:89595" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89630:91742" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89643:91727" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89697:89992" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89716:89977" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89779:89957" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89819:89923" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89840:89901" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90042:90369" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90061:90354" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90156:90334" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90196:90300" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90217:90278" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90420:90685" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90439:90670" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90472:90650" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90512:90616" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90533:90594" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90728:91034" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90747:91019" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90821:90999" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90861:90965" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90882:90943" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91085:91396" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91104:91381" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91183:91361" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91223:91327" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91244:91305" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91448:91713" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91467:91698" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91500:91678" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91540:91644" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91561:91622" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/LogInMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+          <folding>
+            <element signature="e#744#745#0" expanded="true" />
+            <element signature="e#789#790#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/MainMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="46" column="29" lean-forward="false" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5206">
-          <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        <state relative-caret-position="3066">
+          <caret line="243" column="44" lean-forward="false" selection-start-line="243" selection-start-column="44" selection-end-line="243" selection-end-column="44" />
           <folding />
         </state>
       </provider>
