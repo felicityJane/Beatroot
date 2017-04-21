@@ -72,15 +72,15 @@ public class WelcomeMenuController implements Initializable {
         tglLoop.setText("⟳");
 
         TemporaryAlbumClass tempAlbum = new TemporaryAlbumClass();
-        tempAlbum.getTracks().add("mp3/01. Celldweller - Faction 04 .mp3");
-        tempAlbum.getTracks().add("mp3/02. Celldweller - Down to Earth .mp3");
-        tempAlbum.getTracks().add("mp3/03. Celldweller - Heart On .mp3");
-        tempAlbum.getTracks().add("mp3/04. Celldweller - Faction 05 .mp3");
-        tempAlbum.getTracks().add("mp3/05. Celldweller - Faction 06 .mp3");
+        tempAlbum.getTracks().add("01. Celldweller - Faction 04 .mp3");
+        tempAlbum.getTracks().add("02. Celldweller - Down to Earth .mp3");
+        tempAlbum.getTracks().add("03. Celldweller - Heart On .mp3");
+        tempAlbum.getTracks().add("04. Celldweller - Faction 05 .mp3");
+        tempAlbum.getTracks().add("05. Celldweller - Faction 06 .mp3");
         tempAlbum.setAlbumCover(new Image("Images/Celldweller_EoaE_BG_LOVE.jpg"));
-        tempAlbum2.getTracks().add("mp3/05 - I'LL BE GONE.mp3");
-        tempAlbum2.getTracks().add("mp3/06 - CASTLE OF GLASS.mp3");
-        tempAlbum2.getTracks().add("mp3/08 - ROADS UNTRAVELED.mp3");
+        tempAlbum2.getTracks().add("05 - I'LL BE GONE.mp3");
+        tempAlbum2.getTracks().add("06 - CASTLE OF GLASS.mp3");
+        tempAlbum2.getTracks().add("08 - ROADS UNTRAVELED.mp3");
         tempAlbum2.setAlbumCover(new Image("Images/Linkin Park - Living Things.jpg"));
         Path path = Paths.get(tempAlbum.getTracks().get(0));
         lstMainTracks.getItems().addAll(tempAlbum.getTracks());

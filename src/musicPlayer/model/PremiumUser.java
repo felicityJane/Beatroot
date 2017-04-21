@@ -72,7 +72,7 @@ public class PremiumUser extends User {
 	 *            User's first name
 	 * @param lastName
 	 *            User's last name
-	 * @param Date
+	 * @param dateOfBirth
 	 *            dateOfBirth User's date of birth
 	 * @param emailAddress
 	 *            User's address

@@ -51,7 +51,7 @@ public class Administrator extends User {
 	 *            Float Employee's current wage
 	 * @param contractHours
 	 *            Float Employee's hours by contract (for overtime purposes)
-	 * @param employeeID
+	 * @param staffID
 	 *            String Employee's ID code
 	 */
 

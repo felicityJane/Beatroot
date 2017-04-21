@@ -18,7 +18,7 @@ public class TrialUser extends User {
 	 *            String User's first name
 	 * @param lastName
 	 *            String User's last name
-	 * @param Date
+	 * @param dateOfBirth
 	 *            Date dateOfBirth User's date of birth
 	 * @param emailAddress
 	 *            String User's address
