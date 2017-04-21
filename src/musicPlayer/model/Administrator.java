@@ -7,7 +7,7 @@ public class Administrator extends User {
 
 	private Date startDate;
 	private float wage, contractHours;
-	private String employeeID;
+	private String staffID;
 	private ArrayList<MusicTrack> addedSongs = new ArrayList<MusicTrack>();
 	private ArrayList<MusicTrack> removedSongs = new ArrayList<MusicTrack>();
 	private ArrayList<Album> addedAlbums = new ArrayList<Album>();
@@ -58,13 +58,13 @@ public class Administrator extends User {
 	public Administrator(String userName, String displayName, String password, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
 			String country, Gender gender, String phoneNumber, Date startDate, float wage, float contractHours,
-			String employeeID) {
+			String staffID) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.startDate = startDate;
 		this.wage = wage;
 		this.contractHours = contractHours;
-		this.employeeID = employeeID;
+		this.staffID = staffID;
 	}
 
 	public Date getStartDate() {
@@ -87,8 +87,8 @@ public class Administrator extends User {
 		this.contractHours = contractHours;
 	}
 
-	public String getEmployeeID() {
-		return employeeID;
+	public String getStaffID() {
+		return staffID;
 	}
 
 	public ArrayList<MusicTrack> getAddedSongs() {
