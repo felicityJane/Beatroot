@@ -7,7 +7,7 @@ public class PremiumUser extends User {
 
 	private int bankCardNumber;
 	private Date expirationDate;
-	private String billingCardHolderName, billingAddress, billingCity, billingPostalCode, billingCountry;
+	private String billingAccountOwnerName, billingAddress, billingCity, billingPostalCode, billingCountry;
 	private String billingPhoneNumber;
 	private boolean isSameAsResidentAddress;
 	private PaymentMethod PaymentMethod;
@@ -94,7 +94,7 @@ public class PremiumUser extends User {
 	 *            Card's expiration date
 	 * @param PaymentMethod
 	 *            Enum {@link: PaymentMethod} The payment's type.
-	 * @param billingCardHolderName
+	 * @param billingAccountOwnerName
 	 *            The name of the account owner as printed on the card's face
 	 * @param billingAddress
 	 *            Account owner's address
@@ -111,14 +111,14 @@ public class PremiumUser extends User {
 	public PremiumUser(String userName, String displayName, String password, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
 			String country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
-			PaymentMethod PaymentMethod, String billingCardHolderName, String billingAddress, String billingCity,
+			PaymentMethod PaymentMethod, String billingAccountOwnerName, String billingAddress, String billingCity,
 			String billingPostalCode, String billingCountry, String billingPhoneNumber) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
 		this.expirationDate = expirationDate;
 		this.PaymentMethod = PaymentMethod;
-		this.billingCardHolderName = billingCardHolderName;
+		this.billingAccountOwnerName = billingAccountOwnerName;
 		this.billingAddress = billingAddress;
 		this.billingCity = billingCity;
 		this.billingPostalCode = billingPostalCode;
@@ -143,12 +143,12 @@ public class PremiumUser extends User {
 		this.expirationDate = expirationDate;
 	}
 
-	public String getBillingCardHolderName() {
-		return billingCardHolderName;
+	public String getBillingAccountOwnerName() {
+		return billingAccountOwnerName;
 	}
 
-	public void setBillingCardHolderName(String billingCardHolderName) {
-		this.billingCardHolderName = billingCardHolderName;
+	public void setBillingAccountOwnerName(String billingAccountOwnerName) {
+		this.billingAccountOwnerName = billingAccountOwnerName;
 	}
 
 	public String getBillingAddress() {
