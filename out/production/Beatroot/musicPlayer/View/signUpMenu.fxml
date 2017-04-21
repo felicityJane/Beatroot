@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicPlayer.Controller.SignUpMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="711.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicPlayer.Controller.SignUpMenuController">
    <children>
       <GridPane layoutX="43.0" layoutY="120.0" prefHeight="406.0" prefWidth="287.0">
         <columnConstraints>
@@ -53,16 +54,18 @@
             <TextField promptText="Phone Number" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-      <Label layoutX="43.0" layoutY="550.0" prefHeight="19.0" prefWidth="69.0" text="Gender" />
-      <RadioButton layoutX="125.0" layoutY="550.0" mnemonicParsing="false" text="Male" />
-      <RadioButton layoutX="201.0" layoutY="550.0" mnemonicParsing="false" text="Female" />
-      <Button fx:id="signUpButton" layoutX="43.0" layoutY="587.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="249.0" text="Sign Up" />
-      <ImageView fitHeight="113.0" fitWidth="367.0" layoutX="5.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="43.0" layoutY="580.0" prefHeight="19.0" prefWidth="69.0" text="Gender" />
+      <RadioButton layoutX="141.0" layoutY="580.0" mnemonicParsing="false" text="Male" />
+      <RadioButton layoutX="221.0" layoutY="581.0" mnemonicParsing="false" text="Female" />
+      <Button fx:id="signUpButton" layoutX="44.0" layoutY="616.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="249.0" text="Sign Up" />
+      <ImageView fitHeight="112.0" fitWidth="495.0" layoutX="5.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/beatrootlogo.png" />
          </image>
       </ImageView>
-      <Label layoutX="43.0" layoutY="649.0" prefHeight="18.0" prefWidth="164.0" text="Already have an account? " />
-      <Label layoutX="216.0" layoutY="649.0" prefHeight="18.0" prefWidth="54.0" text="Log in" textFill="BLUE" underline="true" />
+      <Label layoutX="40.0" layoutY="676.0" prefHeight="18.0" prefWidth="164.0" text="Already have an account? " />
+      <Label layoutX="229.0" layoutY="676.0" prefHeight="18.0" prefWidth="54.0" text="Log in" textFill="BLUE" underline="true" />
+      <Label layoutX="44.0" layoutY="545.0" text="Date of birth" />
+      <DatePicker layoutX="148.0" layoutY="532.0" prefHeight="27.0" prefWidth="140.0" />
    </children>
 </AnchorPane>
