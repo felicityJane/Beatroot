@@ -51,6 +51,7 @@ public class WelcomeMenuController implements Initializable {
     private String selectedItem = "";
 
     @FXML private MainMenuController mainMenuController;
+    static final String loginMenuPath = "View/logInMenu.fxml";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -90,7 +91,7 @@ public class WelcomeMenuController implements Initializable {
         boolean answer = DialogBoxManager.confirmationDialogBox("Are you sure you want to log out?","click ok to continue");
         if (answer){
             try {
-                SceneManager.sceneManager.changeScene(event,"View/logInMenu.fxml");
+                SceneManager.sceneManager.changeScene(event,loginMenuPath);
             }catch (Exception e){
                 DialogBoxManager.errorDialogBox("Error occurred","Changing from welcome scene to log in scene");
                 e.printStackTrace();
