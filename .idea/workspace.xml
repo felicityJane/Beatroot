@@ -720,7 +720,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492782781838</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Merge branch 'master' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;src/model/MusicTrack.java">
+      <created>1492782806738</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1492782806738</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
