@@ -1,8 +1,13 @@
 package musicPlayer.Controller;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import musicPlayer.DialogBoxManager;
 import musicPlayer.SceneManager;
@@ -15,12 +20,24 @@ public class SignUpMenuController implements Initializable{
 
     @FXML private TextField userName;
     @FXML private TextField userPassword;
+    @FXML private Label lblLogIn;
 
     @FXML private MainMenuController mainMenuController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mainMenuController.init(this);
+        lblLogIn.setOnMouseEntered(event ->  {
+
+                Scene scene = lblLogIn.getScene();
+                scene.setCursor(Cursor.HAND);
+        });
+
+        lblLogIn.setOnMouseExited(event -> {
+
+            Scene scene = lblLogIn.getScene();
+            scene.setCursor(Cursor.DEFAULT);
+        });
     }
     @FXML
     private void handleSignUpButton(ActionEvent event){
@@ -32,5 +49,16 @@ public class SignUpMenuController implements Initializable{
             e.printStackTrace();
         }
 
+    }
+
+    @FXML
+    private void clickOnLogInLabel(MouseEvent me) {
+        try {
+
+            SceneManager.sceneManager.changeScene(me,"View/logInMenu.fxml");
+        }catch (Exception e){
+            DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to log in scene");
+            e.printStackTrace();
+        }
     }
 }
