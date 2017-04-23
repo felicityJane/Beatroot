@@ -2,9 +2,12 @@ package musicPlayer.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -49,12 +52,14 @@ public class WelcomeMenuController implements Initializable {
     @FXML private ImageView imgNews5;
     @FXML private ImageView imgNews6;
     @FXML private ListView<String> lstMainTracks;
+    @FXML private AnchorPane welcomeRootAnchor;
     private TemporaryAlbumClass tempAlbum2 = new TemporaryAlbumClass();
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView;
     private String temp = "";
     private String selectedItem = "";
+    private static String logInMenuPath = "View/logInMenu.fxml";
 
     @FXML private MainMenuController mainMenuController;
 
@@ -95,19 +100,33 @@ public class WelcomeMenuController implements Initializable {
         imgNews6.setImage(new Image("Images/Rage Against the Machine - Rage Against the Machine.jpg"));
         imgMain.setImage(tempAlbum.getAlbumCover());
 
-        imgNews1.setOnMouseEntered(event ->  {
-            imgNews1.setImage(new Image("Images/Linkin Park - Living ThingsHover.jpg"));
-        });
-        imgNews1.setOnMouseExited(event -> {
-            imgNews1.setImage(new Image("Images/Linkin Park - Living Things.jpg"));
-        });
-        imgNews1.setOnMousePressed(event ->  {
-            imgNews1.setImage(new Image("Images/Linkin Park - Living ThingsPressed.jpg"));
-        });
-        imgNews1.setOnMouseReleased(event -> {
-            imgNews1.setImage(new Image("Images/Linkin Park - Living Things.jpg"));
-        });
 
+        for (Node n : welcomeRootAnchor.getChildren()) {
+
+            if (n instanceof ImageView) {
+
+                n.setOnMouseEntered(event ->  {
+                    ColorAdjust brightness = new ColorAdjust();
+                    brightness.setBrightness(0.3);
+                    n.setEffect(brightness);
+                });
+                n.setOnMouseExited(event -> {
+                    ColorAdjust normal = new ColorAdjust();
+                    normal.setBrightness(0.0);
+                    n.setEffect(normal);
+                });
+                n.setOnMousePressed(event ->  {
+                    ColorAdjust blackout = new ColorAdjust();
+                    blackout.setBrightness(-0.3);
+                    n.setEffect(blackout);
+                });
+                n.setOnMouseReleased(event -> {
+                    ColorAdjust normal = new ColorAdjust();
+                    normal.setBrightness(0.0);
+                    n.setEffect(normal);
+                });
+            }
+        }
         media = new Media(path.toUri().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView = new MediaView(mediaPlayer);
@@ -122,7 +141,7 @@ public class WelcomeMenuController implements Initializable {
         if (answer){
             try {
                 mediaPlayer.stop();
-                SceneManager.sceneManager.changeScene(event,"View/logInMenu.fxml");
+                SceneManager.sceneManager.changeScene(event,logInMenuPath);
             }catch (Exception e){
                 DialogBoxManager.errorDialogBox("Error occurred","Changing from welcome scene to log in scene");
                 e.printStackTrace();
@@ -217,21 +236,6 @@ public class WelcomeMenuController implements Initializable {
         Image img = new Image("Images/StopPressed.jpg");
         btnStop.setFill(new ImagePattern(img));
     }
-    /*@FXML
-    private void hoverOnImgNews1() {
-        imgNews1.setImage(new Image("Images/Linkin Park - Living ThingsHover.jpg"));
-    }
-
-    @FXML
-    private void pressOnImgNews1() {
-        imgNews1.setImage(new Image("Images/Linkin Park - Living ThingsPressed.jpg"));
-    }
-
-    @FXML
-    private void leaveImgNews1() {
-        imgNews1.setImage(new Image("Images/Linkin Park - Living Things.jpg"));
-    }*/
-
     private String formatTime(double time) {
 
         int numOfMinutes;
