@@ -1,9 +1,8 @@
 package musicPlayer.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-public class PremiumUser extends User {
+public class PremiumUser extends NonTrialUser {
 
 	private int bankCardNumber;
 	private Date expirationDate;
@@ -11,8 +10,8 @@ public class PremiumUser extends User {
 	private String billingPhoneNumber;
 	private boolean isSameAsResidentAddress;
 	private PaymentMethod PaymentMethod;
-	private ArrayList<User> friends = new ArrayList<User>();
-	private ArrayList<User> blocked = new ArrayList<User>();
+	// private ArrayList<User> friends = new ArrayList<User>();
+	// private ArrayList<User> blocked = new ArrayList<User>();
 
 	/**
 	 * Billing address is the same as the user's address
@@ -207,45 +206,45 @@ public class PremiumUser extends User {
 		this.isSameAsResidentAddress = isSameAsResidentAddress;
 	}
 
-	public ArrayList<User> getFriends() {
-		return friends;
-	}
-
-	public void setFriends(ArrayList<User> friends) {
-		this.friends = friends;
-	}
-
-	public ArrayList<User> getBlocked() {
-		return blocked;
-	}
-
-	public void setBlocked(ArrayList<User> blocked) {
-		this.blocked = blocked;
-	}
-
-	public void addFriend(User user) {
-		if (friends.contains(user))
-			return;
-		friends.add(user);
-	}
-
-	public void removeFriend(User user) {
-		if (!friends.contains(user))
-			return;
-		friends.remove(user);
-	}
-
-	public void blockPerson(User user) {
-		if (blocked.contains(user))
-			return;
-		blocked.add(user);
-	}
-
-	public void unblockPerson(User user) {
-		if (!blocked.contains(user))
-			return;
-		blocked.remove(user);
-	}
+	// public ArrayList<User> getFriends() {
+	// return friends;
+	// }
+	//
+	// public void setFriends(ArrayList<User> friends) {
+	// this.friends = friends;
+	// }
+	//
+	// public ArrayList<User> getBlocked() {
+	// return blocked;
+	// }
+	//
+	// public void setBlocked(ArrayList<User> blocked) {
+	// this.blocked = blocked;
+	// }
+	//
+	// public void addFriend(User user) {
+	// if (friends.contains(user))
+	// return;
+	// friends.add(user);
+	// }
+	//
+	// public void removeFriend(User user) {
+	// if (!friends.contains(user))
+	// return;
+	// friends.remove(user);
+	// }
+	//
+	// public void blockPerson(User user) {
+	// if (blocked.contains(user))
+	// return;
+	// blocked.add(user);
+	// }
+	//
+	// public void unblockPerson(User user) {
+	// if (!blocked.contains(user))
+	// return;
+	// blocked.remove(user);
+	// }
 
 	private void changePaymentInformation() {
 		// TODO
