@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/SignUpMenuController.class" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/SignUpMenuController.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/SignUpMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/DialogBoxManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/SceneManager.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java" afterPath="$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,35 +69,12 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicPlayer/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+            <state relative-caret-position="306">
+              <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="welcomeMenu.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicPlayer/View/welcomeMenu.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="54" column="15" lean-forward="true" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WelcomeMenuController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <marker date="1492785955334" expanded="true" signature="428:565" ph="{...}" />
+                <marker date="1492785955334" expanded="false" signature="613:628" ph=" { " />
+                <marker date="1492785955334" expanded="false" signature="641:651" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -103,8 +83,114 @@
       <file leaf-file-name="MainMenuController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/MainMenuController.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="welcomeMenu.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicPlayer/View/welcomeMenu.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="44" column="41" lean-forward="false" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WelcomeMenuController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3066">
+              <caret line="243" column="44" lean-forward="false" selection-start-line="243" selection-start-column="44" selection-end-line="243" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1492786255289" expanded="true" signature="89511:89549" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89511:89567" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89511:89580" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89511:89595" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89630:91742" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89643:91727" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89697:89992" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89716:89977" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89779:89957" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89819:89923" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="89840:89901" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90042:90369" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90061:90354" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90156:90334" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90196:90300" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90217:90278" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90420:90685" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90439:90670" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90472:90650" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90512:90616" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90533:90594" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90728:91034" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90747:91019" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90821:90999" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90861:90965" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="90882:90943" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91085:91396" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91104:91381" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91183:91361" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91223:91327" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91244:91305" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91448:91713" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91467:91698" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91500:91678" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91540:91644" ph="..." />
+                <marker date="1492786255289" expanded="true" signature="91561:91622" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogInMenuController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/LogInMenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+              <folding>
+                <element signature="e#744#745#0" expanded="true" />
+                <element signature="e#789#790#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signUpMenu.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicPlayer/View/signUpMenu.fxml">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="32" column="4" lean-forward="true" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="65" />
+              <caret line="20" column="62" lean-forward="false" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SignUpMenuController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="46" column="29" lean-forward="false" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -115,37 +201,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
               <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LogInMenuController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/LogInMenuController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SignUpMenuController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="34" column="45" lean-forward="true" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Beatroot.iml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Beatroot - Copy/Beatroot.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -168,7 +226,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Federica" />
       </map>
     </option>
     <option name="PUSH_TAGS">
@@ -197,15 +255,15 @@
         <option value="$PROJECT_DIR$/src/musicPlayer/Controller/MainMenuController.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/TemporaryAlbumClass.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/SceneManager.java" />
+        <option value="$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/Main.java" />
+        <option value="$PROJECT_DIR$/src/musicPlayer/View/welcomeMenu.fxml" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/AccountHolder.java" />
         <option value="$PROJECT_DIR$/src/model/MusicTrack.java" />
-        <option value="$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/TrialUser.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/PremiumUser.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/Administrator.java" />
-        <option value="$PROJECT_DIR$/src/musicPlayer/View/welcomeMenu.fxml" />
-        <option value="$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java" />
+        <option value="$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java" />
       </list>
     </option>
   </component>
@@ -213,7 +271,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1370" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -232,6 +290,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -280,7 +341,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -320,11 +381,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -360,16 +432,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot\src\musicPlayer\model" />
-      <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot\src\Images" />
-      <recent name="C:\Users\felic\Documents\Project Course 2\Beatroot\src\musicPlayer\View" />
-      <recent name="C:\Users\felic\Documents\Project Course 2\Beatroot\src\sample\View" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot" />
       <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot\src\mp3" />
       <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot\src\Images" />
+      <recent name="C:\Users\felic\Documents\Project Course 2\Beatroot\src\sample\View" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot\src\musicPlayer\model" />
+      <recent name="C:\Users\EerAmore\IdeaProjects\Beatroot\src\Images" />
+      <recent name="C:\Users\felic\Documents\Project Course 2\Beatroot\src\musicPlayer\View" />
       <recent name="C:\Users\felic\Documents\Project Course 2\Beatroot\src\sample\View" />
     </key>
   </component>
@@ -720,15 +792,35 @@
       <option name="project" value="LOCAL" />
       <updated>1492783445861</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Merge branch 'master' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;src/model/MusicTrack.java">
+      <created>1492784283469</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1492784283469</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Merge branch 'master' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;src/model/MusicTrack.java">
+      <created>1492785320746</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1492785320746</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Merge branch 'Felicity' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1492785846228</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1492785846228</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="1302000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -739,13 +831,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66561514" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.052050475" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0851735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2621861" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26061493" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -754,17 +846,38 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39962476" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.018927446" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0851735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26281112" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -814,7 +927,8 @@
     <MESSAGE value="push mainMenu.fxml" />
     <MESSAGE value="Merge branches 'Federica' and 'Felicity' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController$1.class&#10;#&#9;out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController.class&#10;#&#9;out/production/Beatroot/musicPlayer/View/welcomeMenu.fxml&#10;#&#9;src/musicPlayer/Controller/WelcomeMenuController.java&#10;#&#9;src/musicPlayer/View/welcomeMenu.fxml" />
     <MESSAGE value="Merge branch 'master' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;src/model/MusicTrack.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;src/model/MusicTrack.java" />
+    <MESSAGE value="Merge branch 'Felicity' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'Felicity' of https://github.com/felicityJane/Beatroot into Federica&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -829,9 +943,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -873,7 +985,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1492785955334" expanded="true" signature="428:565" ph="{...}" />
+            <marker date="1492785955334" expanded="false" signature="613:628" ph=" { " />
+            <marker date="1492785955334" expanded="false" signature="641:651" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -890,7 +1004,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -898,9 +1014,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -942,7 +1056,9 @@
         <state relative-caret-position="68">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1492785955334" expanded="true" signature="428:565" ph="{...}" />
+            <marker date="1492785955334" expanded="false" signature="613:628" ph=" { " />
+            <marker date="1492785955334" expanded="false" signature="641:651" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -951,7 +1067,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -970,13 +1088,7 @@
     <entry file="file://$PROJECT_DIR$/src/model/LinkedList.java" />
     <entry file="file://$PROJECT_DIR$/src/model/ListInterface.java" />
     <entry file="file://$PROJECT_DIR$/src/model/Artist.java" />
-    <entry file="file://$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController$1.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController$1.class" />
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/DialogBoxManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -998,7 +1110,13 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../HKR/Project course 2/Beatroot Copy 20.04/src/musicPlayer/Controller/WelcomeMenuController.java" />
+    <entry file="file://$USER_HOME$/Documents/HKR/Project course 2/Beatroot Copy 20.04/src/musicPlayer/Controller/WelcomeMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="324" column="5" lean-forward="true" selection-start-line="324" selection-start-column="5" selection-end-line="324" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/TemporaryAlbumClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1033,9 +1151,95 @@
     <entry file="file://$PROJECT_DIR$/src/model/Genre.java" />
     <entry file="file://$PROJECT_DIR$/src/model/TrialUser.java" />
     <entry file="file://$PROJECT_DIR$/src/model/User.java" />
+    <entry file="file://$PROJECT_DIR$/src/model/Administrator.java" />
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/AccountHolder.java" />
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/Genre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/MusicTrack.java" />
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/MusicTrack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="109" column="35" lean-forward="true" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/Node.java" />
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/PaymentMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/TrialUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/PremiumUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="74" column="25" lean-forward="false" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/Administrator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="53" column="21" lean-forward="false" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/DB_Connector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding>
+            <marker date="1492785955334" expanded="true" signature="428:565" ph="{...}" />
+            <marker date="1492785955334" expanded="false" signature="613:628" ph=" { " />
+            <marker date="1492785955334" expanded="false" signature="641:651" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/View/welcomeMenu.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="41" lean-forward="false" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/View/signUpMenu.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-208">
+        <state relative-caret-position="340">
           <caret line="20" column="62" lean-forward="false" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
           <folding />
         </state>
@@ -1044,131 +1248,82 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Administrator.java" />
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/AccountHolder.java" />
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Model/Genre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/MusicTrack.java" />
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Model/MusicTrack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="109" column="35" lean-forward="true" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/Node.java" />
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Model/PaymentMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Model/TrialUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Model/PremiumUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="74" column="25" lean-forward="false" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Model/Administrator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="53" column="21" lean-forward="false" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/DB_Connector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Beatroot - Copy/Beatroot.iml">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1492786255289" expanded="true" signature="89511:89549" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89511:89567" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89511:89580" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89511:89595" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89630:91742" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89643:91727" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89697:89992" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89716:89977" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89779:89957" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89819:89923" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="89840:89901" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90042:90369" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90061:90354" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90156:90334" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90196:90300" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90217:90278" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90420:90685" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90439:90670" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90472:90650" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90512:90616" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90533:90594" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90728:91034" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90747:91019" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90821:90999" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90861:90965" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="90882:90943" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91085:91396" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91104:91381" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91183:91361" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91223:91327" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91244:91305" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91448:91713" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91467:91698" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91500:91678" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91540:91644" ph="..." />
+            <marker date="1492786255289" expanded="true" signature="91561:91622" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/LogInMenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        <state relative-caret-position="167">
+          <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#744#745#0" expanded="true" />
+            <element signature="e#789#790#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/View/welcomeMenu.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="54" column="15" lean-forward="true" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/MainMenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="32" column="4" lean-forward="true" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="65" />
+        <state relative-caret-position="102">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="34" column="45" lean-forward="true" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+        <state relative-caret-position="205">
+          <caret line="46" column="29" lean-forward="false" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3066">
+          <caret line="243" column="44" lean-forward="false" selection-start-line="243" selection-start-column="44" selection-end-line="243" selection-end-column="44" />
           <folding />
         </state>
       </provider>
