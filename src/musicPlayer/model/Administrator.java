@@ -3,7 +3,7 @@ package musicPlayer.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Administrator extends User {
+public class Administrator extends NonTrialUser {
 
 	private Date startDate;
 	private float wage, contractHours;
@@ -14,8 +14,8 @@ public class Administrator extends User {
 	private ArrayList<Album> removedAlbums = new ArrayList<Album>();
 	private ArrayList<MusicArtist> addedArtists = new ArrayList<MusicArtist>();
 	private ArrayList<MusicArtist> removedArtists = new ArrayList<MusicArtist>();
-	private ArrayList<User> friends = new ArrayList<User>();
-	private ArrayList<User> blocked = new ArrayList<User>();
+	// private ArrayList<User> friends = new ArrayList<User>();
+	// private ArrayList<User> blocked = new ArrayList<User>();
 
 	/**
 	 * @param userName
@@ -160,46 +160,6 @@ public class Administrator extends User {
 			return;
 		addedArtists.remove(artist);
 		removedArtists.add(artist);
-	}
-
-	public ArrayList<User> getFriends() {
-		return friends;
-	}
-
-	public void setFriends(ArrayList<User> friends) {
-		this.friends = friends;
-	}
-
-	public ArrayList<User> getBlocked() {
-		return blocked;
-	}
-
-	public void setBlocked(ArrayList<User> blocked) {
-		this.blocked = blocked;
-	}
-
-	public void addFriend(User user) {
-		if (friends.contains(user))
-			return;
-		friends.add(user);
-	}
-
-	public void removeFriend(User user) {
-		if (!friends.contains(user))
-			return;
-		friends.remove(user);
-	}
-
-	public void blockPerson(User user) {
-		if (blocked.contains(user))
-			return;
-		blocked.add(user);
-	}
-
-	public void unblockPerson(User user) {
-		if (!blocked.contains(user))
-			return;
-		blocked.remove(user);
 	}
 
 	// TODO Check if I'm missing something
