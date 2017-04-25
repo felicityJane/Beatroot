@@ -64,7 +64,7 @@ public class DB_Connector {
 
         } catch (SQLException sqlEx) {
             DialogBoxManager.errorDialogBox("Cannot run query","Error on executing insert query. Please try again.");
-            sqlEx.printStackTrace();
+
         }
     }
 
