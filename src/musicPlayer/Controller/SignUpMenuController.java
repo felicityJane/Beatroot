@@ -23,6 +23,7 @@ public class SignUpMenuController implements Initializable{
     @FXML private Label lblLogIn;
 
     @FXML private MainMenuController mainMenuController;
+    private static String welcomeMenuPath = "View/welcomeMenu.fxml";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,7 +44,7 @@ public class SignUpMenuController implements Initializable{
     private void handleSignUpButton(ActionEvent event){
         try {
             //change scene location name to pay scene possibly
-            SceneManager.sceneManager.changeScene(event,"View/welcomeMenu.fxml");
+            SceneManager.sceneManager.changeScene(event,welcomeMenuPath);
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to welcome scene");
             e.printStackTrace();
