@@ -1,7 +1,5 @@
 package musicPlayer;
-/**
- * Created by felic on 19/04/2017.
- */
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import java.util.Optional;

@@ -1,8 +1,5 @@
 package musicPlayer;
 
-/**
- * Created by felic on 19/04/2017.
- */
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
