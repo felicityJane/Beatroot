@@ -53,6 +53,8 @@ public class MainMenuController implements Initializable{
        settingsMenu.setDisable(false);
        aboutMenu.setDisable(false);
     }
+
+    @FXML
     private void createNewPlaylistMenuOption(){
         //refer to create playlist method here
     }
