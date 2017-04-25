@@ -59,7 +59,6 @@ public class WelcomeMenuController implements Initializable {
     private MediaView mediaView;
     private String temp = "";
     private String selectedItem = "";
-    private static String logInMenuPath = "View/logInMenu.fxml";
 
     @FXML private MainMenuController mainMenuController;
 
@@ -141,7 +140,7 @@ public class WelcomeMenuController implements Initializable {
         if (answer){
             try {
                 mediaPlayer.stop();
-                SceneManager.sceneManager.changeScene(event,logInMenuPath);
+                SceneManager.sceneManager.changeScene(event,"View/logInMenu.fxml");
             }catch (Exception e){
                 DialogBoxManager.errorDialogBox("Error occurred","Changing from welcome scene to log in scene");
                 e.printStackTrace();
