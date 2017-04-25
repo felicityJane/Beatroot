@@ -92,13 +92,14 @@ public class WelcomeMenuController implements Initializable {
         boolean answer = DialogBoxManager.confirmationDialogBox("Are you sure you want to log out?","click ok to continue");
         if (answer){
             try {
-                SceneManager.sceneManager.changeScene(event,loginMenuPath);
+                SceneManager.sceneManager.changeScene(event,"View/logInMenu.fxml");
             }catch (Exception e){
                 DialogBoxManager.errorDialogBox("Error occurred","Changing from welcome scene to log in scene");
                 e.printStackTrace();
             }
         }
     }
+
 
     @FXML
     private void clickOnPlayButton() {

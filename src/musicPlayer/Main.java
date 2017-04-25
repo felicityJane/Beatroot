@@ -13,10 +13,10 @@ import java.nio.file.Path;
  */
 public class Main extends Application {
 
-    static final String loginMenuPath = "View/logInMenu.fxml";
+
         @Override
         public void start(Stage primaryStage) throws Exception{
-            Parent root = FXMLLoader.load(getClass().getResource(loginMenuPath));
+            Parent root = FXMLLoader.load(getClass().getResource("View/logInMenu.fxml"));
             primaryStage.setTitle("");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();

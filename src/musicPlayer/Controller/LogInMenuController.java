@@ -19,8 +19,6 @@ public class LogInMenuController implements Initializable{
     @FXML private TextField userName;
     @FXML private TextField userPassword;
     @FXML private MainMenuController mainMenuController;
-    static final String welcomePath = "View/welcomeMenu.fxml";
-    static final String signUpPath = "View/signUpMenu.fxml";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -29,7 +27,7 @@ public class LogInMenuController implements Initializable{
     @FXML
     private void handleLoginButton(ActionEvent event) {
         try {
-            SceneManager.sceneManager.changeScene(event,welcomePath);
+            SceneManager.sceneManager.changeScene(event,"View/welcomeMenu.fxml");
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Changing from login scene to welcome scene");
             e.printStackTrace();
@@ -38,7 +36,7 @@ public class LogInMenuController implements Initializable{
     @FXML
     private void handleSignUpButton(ActionEvent event){
         try {
-            SceneManager.sceneManager.changeScene(event,signUpPath);
+            SceneManager.sceneManager.changeScene(event,"View/signUpMenu.fxml");
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Changing from login scene to sign up scene");
             e.printStackTrace();

@@ -30,7 +30,6 @@ public class MainMenuController implements Initializable{
     private LogInMenuController logInMenuController;
     private WelcomeMenuController welcomeMenuController;
     private SignUpMenuController signUpMenuController;
-    static final String loginMenuPath = "../View/logInMenu.fxml";
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
@@ -67,7 +66,7 @@ public class MainMenuController implements Initializable{
         if (answer){
             try {
                 Stage stage = (Stage) menuBar.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource(loginMenuPath));
+                Parent root = FXMLLoader.load(getClass().getResource("../View/logInMenu.fxml"));
                 Scene scene = new Scene(root);
                 stage.setTitle("Beatroot");
                 stage.setScene(scene);
