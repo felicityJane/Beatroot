@@ -2,17 +2,22 @@ package musicPlayer.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import musicPlayer.DialogBoxManager;
 import musicPlayer.SceneManager;
@@ -61,6 +66,7 @@ public class WelcomeMenuController implements Initializable {
     private String selectedItem = "";
     private static String logInMenuPath = "View/logInMenu.fxml";
 
+
     @FXML private MainMenuController mainMenuController;
 
     @Override
@@ -75,8 +81,8 @@ public class WelcomeMenuController implements Initializable {
         Image img2 = new Image("Images/PauseNormal.jpg");
         btnPause.setFill(new ImagePattern(img2));
         tglLoop.setText("⟳");
-        String css = this.getClass().getResource("/musicPlayer/CSS/welcomePage.css").toExternalForm();
-        welcomeRootAnchor.getStylesheets().add(css);
+        /*String css = this.getClass().getResource("/musicPlayer/CSS/welcomePage.css").toExternalForm();
+        welcomeRootAnchor.getStylesheets().add(css);*/
 
         TemporaryAlbumClass tempAlbum = new TemporaryAlbumClass();
         tempAlbum.getTracks().add("01. Celldweller - Faction 04 .mp3");
@@ -102,27 +108,37 @@ public class WelcomeMenuController implements Initializable {
         imgNews6.setImage(new Image("Images/Rage Against the Machine - Rage Against the Machine.jpg"));
         imgMain.setImage(tempAlbum.getAlbumCover());
 
+
         for (Node n : welcomeRootAnchor.getChildren()) {
 
             if (n instanceof ImageView) {
 
+                DropShadow ds = new DropShadow(10, 0, 0, Color.GRAY);
+                n.setEffect(ds);
+
                 n.setOnMouseEntered(event ->  {
                     ColorAdjust brightness = new ColorAdjust();
-                    brightness.setBrightness(0.3);
+                    DropShadow ds1 = new DropShadow(12, 0, 0, Color.GRAY);
+                    brightness.setInput(ds1);
+                    brightness.setBrightness(0.2);
                     n.setEffect(brightness);
                 });
                 n.setOnMouseExited(event -> {
                     ColorAdjust normal = new ColorAdjust();
+                    normal.setInput(ds);
                     normal.setBrightness(0.0);
                     n.setEffect(normal);
                 });
                 n.setOnMousePressed(event ->  {
                     ColorAdjust blackout = new ColorAdjust();
+                    DropShadow ds1 = new DropShadow(12, 0, 0, Color.GRAY);
+                    blackout.setInput(ds1);
                     blackout.setBrightness(-0.3);
                     n.setEffect(blackout);
                 });
                 n.setOnMouseReleased(event -> {
                     ColorAdjust normal = new ColorAdjust();
+                    normal.setInput(ds);
                     normal.setBrightness(0.0);
                     n.setEffect(normal);
                 });

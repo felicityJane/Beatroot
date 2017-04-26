@@ -6,7 +6,7 @@ public class PremiumUser extends NonTrialUser {
 
 	private int bankCardNumber;
 	private Date expirationDate;
-	private String billingAccountOwnerName, billingAddress, billingCity, billingPostalCode, billingCountry;
+	private Address billingAddress;
 	private String billingPhoneNumber;
 	private boolean isSameAsResidentAddress;
 	private PaymentMethod PaymentMethod;
@@ -26,7 +26,7 @@ public class PremiumUser extends NonTrialUser {
 	 *            User's last name
 	 * @param emailAddress
 	 *            User's email address
-	 * @param physicalAddress
+	 * @param streetNameAndNumber
 	 *            User's address of residence
 	 * @param cityOfResidence
 	 *            User's city of residence
@@ -46,15 +46,17 @@ public class PremiumUser extends NonTrialUser {
 	 *            Enum {@link: PaymentMethod} The payment method.
 	 */
 
-	public PremiumUser(String userName, String displayName, String password, String firstName, Date dateOfBirth,
-			String lastName, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			String country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
+	public PremiumUser (String userName, String displayName, String password, String firstName, Date dateOfBirth,
+			String lastName, String emailAddress, String streetNameAndNumber, String cityOfResidence, String postalCode,
+			Country country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
 			PaymentMethod PaymentMethod) {
-		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
+
+		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, streetNameAndNumber,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
 		this.expirationDate = expirationDate;
 		this.PaymentMethod = PaymentMethod;
+		billingAddress = super.getPhysicalAddress();
 	}
 
 	/**
@@ -93,10 +95,10 @@ public class PremiumUser extends NonTrialUser {
 	 *            Card's expiration date
 	 * @param PaymentMethod
 	 *            Enum {@link: PaymentMethod} The payment's type.
-	 * @param billingAccountOwnerName
-	 *            The name of the account owner as printed on the card's face
-	 * @param billingAddress
-	 *            Account owner's address
+	 * @param billingAccountOwnerFirstName
+	 *            The first name of the account owner as printed on the card's face
+	 * @param billingAccountOwnerLastName
+	 * 			  The last name of the account owner as printed on the card's face
 	 * @param billingCity
 	 *            Account owner's city of residence
 	 * @param billingPostalCode
@@ -109,19 +111,20 @@ public class PremiumUser extends NonTrialUser {
 
 	public PremiumUser(String userName, String displayName, String password, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			String country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
-			PaymentMethod PaymentMethod, String billingAccountOwnerName, String billingAddress, String billingCity,
-			String billingPostalCode, String billingCountry, String billingPhoneNumber) {
+			Country country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
+			PaymentMethod PaymentMethod, String billingAccountOwnerFirstName, String billingAccountOwnerLastName, String billingStreet, String billingCity,
+			String billingPostalCode, Country billingCountry, String billingPhoneNumber) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
 		this.expirationDate = expirationDate;
 		this.PaymentMethod = PaymentMethod;
-		this.billingAccountOwnerName = billingAccountOwnerName;
-		this.billingAddress = billingAddress;
-		this.billingCity = billingCity;
-		this.billingPostalCode = billingPostalCode;
-		this.billingCountry = billingCountry;
+		this.billingAddress.setFirstName(billingAccountOwnerFirstName);
+		this.billingAddress.setLastName(billingAccountOwnerLastName);
+		this.billingAddress.setStreetNameAndNumber(billingStreet);
+		this.billingAddress.setCity(billingCity);
+		this.billingAddress.setPostalCode(billingPostalCode);
+		this.billingAddress.setCountry(billingCountry);
 		this.PaymentMethod = PaymentMethod;
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
@@ -142,44 +145,37 @@ public class PremiumUser extends NonTrialUser {
 		this.expirationDate = expirationDate;
 	}
 
-	public String getBillingAccountOwnerName() {
-		return billingAccountOwnerName;
-	}
 
-	public void setBillingAccountOwnerName(String billingAccountOwnerName) {
-		this.billingAccountOwnerName = billingAccountOwnerName;
-	}
-
-	public String getBillingAddress() {
+	public Address getBillingAddress() {
 		return billingAddress;
 	}
 
-	public void setBillingAddress(String billingAddress) {
-		this.billingAddress = billingAddress;
-	}
+	public String getBillingStreet() { return billingAddress.getStreetNameAndNumber();}
+
+	public void setBillingStreet(String billingStreet) { billingAddress.setStreetNameAndNumber(billingStreet);}
 
 	public String getBillingCity() {
-		return billingCity;
+		return billingAddress.getCity();
 	}
 
 	public void setBillingCity(String billingCity) {
-		this.billingCity = billingCity;
+		this.billingAddress.setCity(billingCity);
 	}
 
 	public String getBillingPostalCode() {
-		return billingPostalCode;
+		return billingAddress.getPostalCode();
 	}
 
 	public void setBillingPostalCode(String billingPostalCode) {
-		this.billingPostalCode = billingPostalCode;
+		this.billingAddress.setPostalCode(billingPostalCode);
 	}
 
-	public String getBillingCountry() {
-		return billingCountry;
+	public Country getBillingCountry() {
+		return billingAddress.getCountry();
 	}
 
-	public void setBillingCountry(String billingCountry) {
-		this.billingCountry = billingCountry;
+	public void setBillingCountry(Country billingCountry) {
+		billingAddress.setCountry(billingCountry);
 	}
 
 	public PaymentMethod getPaymentMethod() {

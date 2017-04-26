@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class User {
-	private String userName, displayName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence,
-			postalCode, country, phoneNumber;
+	private String userName, displayName, password, firstName, lastName, emailAddress, phoneNumber;
+	private Address physicalAddress;
 	private Date dateOfBirth;
 	private Gender gender;
-	private static Playlist defaultPlaylist;
-	private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
+	private int ID;
+	private UserPlaylistLink userPlaylistLink;
 	private ArrayList<Comment> userComments = new ArrayList<Comment>();
 	private ArrayList<Rating> userRatings = new ArrayList<Rating>();
 
 	public User(String userName, String displayName, String password, String firstName, String lastName,
-			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			String country, Gender gender, String phoneNumber) {
+			Date dateOfBirth, String emailAddress, String streetNameAndNumber, String cityOfResidence, String postalCode,
+			Country country, Gender gender, String phoneNumber) {
 		this.userName = userName;
 		this.displayName = displayName;
 		this.password = password;
@@ -23,14 +23,14 @@ public abstract class User {
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.emailAddress = emailAddress;
-		this.physicalAddress = physicalAddress;
-		this.cityOfResidence = cityOfResidence;
-		this.postalCode = postalCode;
-		this.country = country;
+		this.physicalAddress.setFirstName(firstName);
+		this.physicalAddress.setLastName(lastName);
+		this.physicalAddress.setStreetNameAndNumber(streetNameAndNumber);
+		this.physicalAddress.setCity(cityOfResidence);
+		this.physicalAddress.setCountry(country);
+		this.physicalAddress.setPostalCode(postalCode);
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
-		// TODO this.defaultPlaylist=new Playlist()
-		userPlaylists.add(defaultPlaylist);
 	}
 
 	public String getUserName() {
@@ -85,36 +85,20 @@ public abstract class User {
 		this.emailAddress = emailAddress;
 	}
 
-	public String getPhysicalAddress() {
-		return physicalAddress;
-	}
-
-	public void setPhysicalAddress(String physicalAddress) {
-		this.physicalAddress = physicalAddress;
+	public String getStreetNameAndNumber() {
+		return physicalAddress.getStreetNameAndNumber();
 	}
 
 	public String getCityOfResidence() {
-		return cityOfResidence;
-	}
-
-	public void setCityOfResidence(String cityOfResidence) {
-		this.cityOfResidence = cityOfResidence;
+		return physicalAddress.getCity();
 	}
 
 	public String getPostalCode() {
-		return postalCode;
+		return physicalAddress.getPostalCode();
 	}
 
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
+	public Country getCountry() {
+		return physicalAddress.getCountry();
 	}
 
 	public Gender getGender() {
@@ -133,24 +117,24 @@ public abstract class User {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public ArrayList<Playlist> getUserPlaylists() {
-		return userPlaylists;
+	public int getID() { return ID;	}
+
+	public void setID(int ID) { this.ID = ID; }
+
+	public Address getPhysicalAddress() {
+		return physicalAddress;
 	}
 
-	public void setUserPlaylists(ArrayList<Playlist> userPlaylists) {
-		this.userPlaylists = userPlaylists;
+	public void setPhysicalAddress(Address physicalAddress) {
+		this.physicalAddress = physicalAddress;
 	}
 
-	public void addPlaylist(Playlist pl) {
-		if (userPlaylists.contains(pl))
-			return;
-		userPlaylists.add(pl);
+	public UserPlaylistLink getUserPlaylistLink() {
+		return userPlaylistLink;
 	}
 
-	public void removePlaylist(Playlist pl) {
-		if (!userPlaylists.contains(pl))
-			return;
-		userPlaylists.remove(pl);
+	public void setUserPlaylistLink(UserPlaylistLink userPlaylistLink) {
+		this.userPlaylistLink = userPlaylistLink;
 	}
 
 	public ArrayList<Comment> getUserComments() {

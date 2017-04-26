@@ -3,8 +3,9 @@ package musicPlayer.model;
 import java.time.Duration;
 import java.util.ArrayList;
 
+
 public class Playlist {
-	private String playlistID;
+	private final String playlistID;
 	private String name;
 	private int numberOfEntries;
 	private Duration duration;

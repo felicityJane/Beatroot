@@ -57,7 +57,7 @@ public class Administrator extends NonTrialUser {
 
 	public Administrator(String userName, String displayName, String password, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			String country, Gender gender, String phoneNumber, Date startDate, float wage, float contractHours,
+			Country country, Gender gender, String phoneNumber, Date startDate, float wage, float contractHours,
 			String staffID) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
