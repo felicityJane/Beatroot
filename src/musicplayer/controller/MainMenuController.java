@@ -1,4 +1,4 @@
-package musicPlayer.Controller;
+package musicplayer.controller;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -10,7 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
-import musicPlayer.DialogBoxManager;
+import musicplayer.DialogBoxManager;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 

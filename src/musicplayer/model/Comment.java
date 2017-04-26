@@ -1,4 +1,4 @@
-package musicPlayer.model;
+package musicplayer.model;
 
 public class Comment {
 

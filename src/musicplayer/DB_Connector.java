@@ -1,4 +1,4 @@
-package musicPlayer;
+package musicplayer;
 import com.mysql.jdbc.Connection;
 import javafx.scene.control.Alert;
 

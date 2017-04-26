@@ -1,4 +1,4 @@
-package musicPlayer;
+package musicplayer;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

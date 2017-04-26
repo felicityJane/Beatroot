@@ -1,4 +1,4 @@
-package musicPlayer.Controller;
+package musicplayer.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,9 +14,10 @@ import javafx.scene.media.MediaView;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
-import musicPlayer.DialogBoxManager;
-import musicPlayer.SceneManager;
-import musicPlayer.TemporaryAlbumClass;
+import musicplayer.DialogBoxManager;
+import musicplayer.SceneManager;
+import musicplayer.TemporaryAlbumClass;
+
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.DefaultHandler;
 import org.apache.tika.metadata.Metadata;

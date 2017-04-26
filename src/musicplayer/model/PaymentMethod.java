@@ -1,4 +1,4 @@
-package musicPlayer.model;
+package musicplayer.model;
 
 public enum PaymentMethod {
 	MASTER_CARD, VISA, VISA_ELECTRON, VISA_DEBIT, PAYPAL, PAYSAFE_CARD, MOBILE_PAYMENT, PREPAID_CARD_AND_CODES, DAO_PAY;

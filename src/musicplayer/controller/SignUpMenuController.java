@@ -1,4 +1,4 @@
-package musicPlayer.Controller;
+package musicplayer.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,8 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import musicPlayer.DialogBoxManager;
-import musicPlayer.SceneManager;
+import musicplayer.DialogBoxManager;
+import musicplayer.SceneManager;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
