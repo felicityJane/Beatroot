@@ -2,25 +2,73 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicPlayer/PlayerManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicPlayer/model/Address.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicPlayer/model/Country.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicPlayer/model/UserPlaylistLink.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/CSS/welcomePage.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController$1.class" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController.class" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java" afterPath="$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/DB_Connector.java" afterPath="$PROJECT_DIR$/src/musicPlayer/DB_Connector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/Main.java" afterPath="$PROJECT_DIR$/src/musicPlayer/Main.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/Celldweller_EoaE_BG_LOVE.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/EyeGirl.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/Hadean.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/Konachan.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/Linkin Park - Living Things.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/Linkin Park - Living ThingsHover.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/Linkin Park - Living ThingsPressed.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/PauseHover.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/PauseNormal.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/PausePressed.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/PlayHover.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/PlayNormal.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/PlayPressed.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/Rage Against the Machine - Rage Against the Machine.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/StopHover.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/StopNormal.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/StopPressed.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/VolumeHigh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/VolumeLow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/VolumeMed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/VolumeOff.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/paymentFree.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/Images/paymentPremium.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/MembershipMenuController.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/PaymentMenuController.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/DB_Connector.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/TemporaryAlbumClass.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Administrator.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Album.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Comment.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Gender.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Genre.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/MusicArtist.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/MusicTrack.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/PaymentMethod.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Playlist.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/PremiumUser.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/PrivacyLevel.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Rating.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/TrialUser.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/User.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Images/Linkin Park - Living ThingsHover.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Images/Linkin Park - Living ThingsPressed.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Images/paymentFree.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Images/paymentPremium.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/membershipMenu.fxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/paymentMenu.fxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicPlayer/Controller/MembershipMenuController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicPlayer/Controller/PaymentMenuController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicPlayer/View/membershipMenu.fxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicPlayer/View/paymentMenu.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/LogInMenuController.class" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/LogInMenuController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/MainMenuController.class" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/MainMenuController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/SignUpMenuController.class" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/SignUpMenuController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Main.class" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/SceneManager.class" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/SceneManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/logInMenu.fxml" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/logInMenu.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/mainMenu.fxml" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/mainMenu.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/signUpMenu.fxml" afterPath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/signUpMenu.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/Controller/LogInMenuController.java" afterPath="$PROJECT_DIR$/src/musicPlayer/Controller/LogInMenuController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/Controller/MainMenuController.java" afterPath="$PROJECT_DIR$/src/musicPlayer/Controller/MainMenuController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java" afterPath="$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/SceneManager.java" afterPath="$PROJECT_DIR$/src/musicPlayer/SceneManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/model/Administrator.java" afterPath="$PROJECT_DIR$/src/musicPlayer/model/Administrator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/model/NonTrialUser.java" afterPath="$PROJECT_DIR$/src/musicPlayer/model/NonTrialUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/model/Playlist.java" afterPath="$PROJECT_DIR$/src/musicPlayer/model/Playlist.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/model/PremiumUser.java" afterPath="$PROJECT_DIR$/src/musicPlayer/model/PremiumUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/model/TrialUser.java" afterPath="$PROJECT_DIR$/src/musicPlayer/model/TrialUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/model/User.java" afterPath="$PROJECT_DIR$/src/musicPlayer/model/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/View/logInMenu.fxml" afterPath="$PROJECT_DIR$/src/musicPlayer/View/logInMenu.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/View/mainMenu.fxml" afterPath="$PROJECT_DIR$/src/musicPlayer/View/mainMenu.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/View/signUpMenu.fxml" afterPath="$PROJECT_DIR$/src/musicPlayer/View/signUpMenu.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/model/Rating.java" afterPath="$PROJECT_DIR$/src/musicPlayer/model/Rating.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,11 +87,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WelcomeMenuController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WelcomeMenuController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+            <state relative-caret-position="-155">
+              <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MembershipMenuController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/MembershipMenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-69">
+              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PaymentMenuController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/PaymentMenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-306">
+              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -62,8 +130,8 @@
       <file leaf-file-name="SceneManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicPlayer/SceneManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="23" column="57" lean-forward="false" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
+            <state relative-caret-position="255">
+              <caret line="23" column="38" lean-forward="false" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -84,55 +152,23 @@
       <file leaf-file-name="UserPlaylistLink.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/UserPlaylistLink.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
+            <state relative-caret-position="359">
               <caret line="53" column="9" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#621#622#0" expanded="true" />
-                <element signature="e#652#653#0" expanded="true" />
-                <element signature="e#700#701#0" expanded="true" />
-                <element signature="e#740#741#0" expanded="true" />
-                <element signature="e#789#790#0" expanded="true" />
-                <element signature="e#821#822#0" expanded="true" />
-                <element signature="e#884#885#0" expanded="true" />
-                <element signature="e#926#927#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Playlist.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/Playlist.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-217">
-              <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="1428">
               <caret line="131" column="51" lean-forward="false" selection-start-line="131" selection-start-column="51" selection-end-line="131" selection-end-column="51" />
               <folding>
-                <element signature="e#2281#2282#0" expanded="true" />
-                <element signature="e#2335#2336#0" expanded="true" />
                 <element signature="e#3168#3169#0" expanded="true" />
-                <element signature="e#3239#3240#0" expanded="true" />
-                <element signature="e#3286#3287#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PremiumUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/PremiumUser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-510">
-              <caret line="54" column="63" lean-forward="false" selection-start-line="54" selection-start-column="63" selection-end-line="54" selection-end-column="63" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -140,7 +176,7 @@
       <file leaf-file-name="TrialUser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/TrialUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
+            <state relative-caret-position="340">
               <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
               <folding />
             </state>
@@ -151,7 +187,7 @@
         <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/Administrator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1003">
-              <caret line="60" column="29" lean-forward="true" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+              <caret line="60" column="29" lean-forward="false" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -225,6 +261,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -296,6 +333,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="musicPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -339,7 +398,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -656,7 +714,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09148265" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08990537" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4249531" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -737,8 +795,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Object Oriented Programming/Seminar4/Seminar4_Task1/Seminar4_Task1.iml" />
-    <entry file="file://$PROJECT_DIR$/src/model/LinkedList.java" />
     <entry file="file://$PROJECT_DIR$/src/model/ListInterface.java" />
     <entry file="file://$PROJECT_DIR$/src/model/Artist.java" />
     <entry file="file://$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController$1.class" />
@@ -952,15 +1008,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-120">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#950#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/PremiumUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-510">
+        <state relative-caret-position="918">
           <caret line="54" column="63" lean-forward="false" selection-start-line="54" selection-start-column="63" selection-end-line="54" selection-end-column="63" />
           <folding />
         </state>
@@ -968,7 +1021,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/Playlist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-217">
+        <state relative-caret-position="102">
           <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
           <folding />
         </state>
@@ -984,7 +1037,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/TrialUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
+        <state relative-caret-position="340">
           <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
           <folding />
         </state>
@@ -993,51 +1046,12 @@
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/Administrator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1003">
-          <caret line="60" column="29" lean-forward="true" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+          <caret line="60" column="29" lean-forward="false" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="131" column="51" lean-forward="false" selection-start-line="131" selection-start-column="51" selection-end-line="131" selection-end-column="51" />
-          <folding>
-            <element signature="e#2281#2282#0" expanded="true" />
-            <element signature="e#2335#2336#0" expanded="true" />
-            <element signature="e#3168#3169#0" expanded="true" />
-            <element signature="e#3239#3240#0" expanded="true" />
-            <element signature="e#3286#3287#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/UserPlaylistLink.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="9" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#652#653#0" expanded="true" />
-            <element signature="e#700#701#0" expanded="true" />
-            <element signature="e#740#741#0" expanded="true" />
-            <element signature="e#789#790#0" expanded="true" />
-            <element signature="e#821#822#0" expanded="true" />
-            <element signature="e#884#885#0" expanded="true" />
-            <element signature="e#926#927#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/CSS/welcomePage.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/CSS/welcomePage.css" />
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/PlayerManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1050,8 +1064,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/SceneManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="23" column="57" lean-forward="false" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
+        <state relative-caret-position="255">
+          <caret line="23" column="38" lean-forward="false" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -1066,9 +1080,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+        <state relative-caret-position="-155">
+          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/MembershipMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-69">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/PaymentMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-306">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/UserPlaylistLink.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="53" column="9" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="131" column="51" lean-forward="false" selection-start-line="131" selection-start-column="51" selection-end-line="131" selection-end-column="51" />
+          <folding>
+            <element signature="e#3168#3169#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

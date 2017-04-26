@@ -3,24 +3,19 @@ package musicPlayer.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import musicPlayer.DialogBoxManager;
 import musicPlayer.SceneManager;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 public class LogInMenuController implements Initializable{
 
     @FXML private TextField userName;
     @FXML private TextField userPassword;
+    @FXML private Button loginButton,signUpButton;
     @FXML private MainMenuController mainMenuController;
-    private static String welcomeMenuPath = "View/welcomeMenu.fxml";
-    private static String sigUpMenuPath = "View/signUpMenu.fxml";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -29,7 +24,7 @@ public class LogInMenuController implements Initializable{
     @FXML
     private void handleLoginButton(ActionEvent event) {
         try {
-            SceneManager.sceneManager.changeScene(event,welcomeMenuPath);
+            SceneManager.sceneManager.changeScene(event,"View/welcomeMenu.fxml");
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Changing from login scene to welcome scene");
             e.printStackTrace();
@@ -38,7 +33,7 @@ public class LogInMenuController implements Initializable{
     @FXML
     private void handleSignUpButton(ActionEvent event){
         try {
-            SceneManager.sceneManager.changeScene(event,sigUpMenuPath);
+            SceneManager.sceneManager.changeScene(event,"View/signUpMenu.fxml");
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Changing from login scene to sign up scene");
             e.printStackTrace();

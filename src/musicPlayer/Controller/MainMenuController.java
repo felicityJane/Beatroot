@@ -30,7 +30,6 @@ public class MainMenuController implements Initializable{
     private LogInMenuController logInMenuController;
     private WelcomeMenuController welcomeMenuController;
     private SignUpMenuController signUpMenuController;
-    private static String sigUpMenuPath = "../View/logInMenu.fxml";
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -53,8 +52,6 @@ public class MainMenuController implements Initializable{
        settingsMenu.setDisable(false);
        aboutMenu.setDisable(false);
     }
-
-    @FXML
     private void createNewPlaylistMenuOption(){
         //refer to create playlist method here
     }
@@ -68,7 +65,7 @@ public class MainMenuController implements Initializable{
         if (answer){
             try {
                 Stage stage = (Stage) menuBar.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource(sigUpMenuPath));
+                Parent root = FXMLLoader.load(getClass().getResource("../View/logInMenu.fxml"));
                 Scene scene = new Scene(root);
                 stage.setTitle("Beatroot");
                 stage.setScene(scene);

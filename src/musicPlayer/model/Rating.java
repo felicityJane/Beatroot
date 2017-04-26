@@ -3,8 +3,7 @@ package musicPlayer.model;
 import java.util.ArrayList;
 
 public class Rating {
-	private int ratingID;
-	private double sumFromAllVoters;
+	private int ratingID, sumFromAllVoters = 0;
 	private double finalRating;
 	private MusicTrack song;
 	private ArrayList<User> votedUsers = new ArrayList<User>();
@@ -17,7 +16,7 @@ public class Rating {
 		return ratingID;
 	}
 
-	public double getSumFromAllVoters() {
+	public int getSumFromAllVoters() {
 		return sumFromAllVoters;
 	}
 

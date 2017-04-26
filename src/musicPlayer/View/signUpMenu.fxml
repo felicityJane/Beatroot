@@ -39,27 +39,27 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField prefHeight="28.0" prefWidth="146.0" promptText="Username" />
-            <TextField promptText="Firstname" GridPane.rowIndex="2" />
-            <TextField promptText="Lastname" GridPane.rowIndex="3" />
-            <PasswordField promptText="Password" GridPane.rowIndex="1" />
-            <TextField promptText="E-mail" GridPane.rowIndex="4" />
-            <TextField promptText="Confirm e-mail" GridPane.rowIndex="5" />
-            <TextField promptText="Physical Address" GridPane.rowIndex="7" />
-            <TextField promptText="Postal Code" GridPane.rowIndex="8" />
-            <TextField promptText="City" GridPane.rowIndex="9" />
-            <MenuButton mnemonicParsing="false" prefHeight="27.0" prefWidth="249.0" text="Country" GridPane.rowIndex="10">
+            <TextField fx:id="userName" prefHeight="28.0" prefWidth="146.0" promptText="Username" />
+            <TextField fx:id="firstName" promptText="Firstname" GridPane.rowIndex="2" />
+            <TextField fx:id="lastName" promptText="Lastname" GridPane.rowIndex="3" />
+            <PasswordField fx:id="userPassword" promptText="Password" GridPane.rowIndex="1" />
+            <TextField fx:id="email" promptText="E-mail" GridPane.rowIndex="4" />
+            <TextField fx:id="confirmEmail" promptText="Confirm e-mail" GridPane.rowIndex="5" />
+            <TextField fx:id="physicalAddress" promptText="Physical Address" GridPane.rowIndex="7" />
+            <TextField fx:id="postalCode" promptText="Postal Code" GridPane.rowIndex="8" />
+            <TextField fx:id="city" promptText="City" GridPane.rowIndex="9" />
+            <MenuButton fx:id="country" mnemonicParsing="false" prefHeight="27.0" prefWidth="249.0" text="Country" GridPane.rowIndex="10">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
               </items>
             </MenuButton>
-            <TextField promptText="Phone Number" GridPane.rowIndex="6" />
+            <TextField fx:id="phoneNumber" promptText="Phone Number" GridPane.rowIndex="6" />
          </children>
       </GridPane>
       <Label layoutX="49.0" layoutY="575.0" prefHeight="19.0" prefWidth="69.0" text="Gender" />
-      <RadioButton layoutX="131.0" layoutY="575.0" mnemonicParsing="false" text="Male" />
-      <RadioButton layoutX="207.0" layoutY="575.0" mnemonicParsing="false" text="Female" />
+      <RadioButton fx:id="male" layoutX="131.0" layoutY="575.0" mnemonicParsing="false" text="Male" />
+      <RadioButton fx:id="female" layoutX="207.0" layoutY="575.0" mnemonicParsing="false" text="Female" />
       <Button fx:id="signUpButton" layoutX="49.0" layoutY="612.0" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="39.0" prefWidth="249.0" text="Sign Up" />
       <ImageView fitHeight="113.0" fitWidth="367.0" layoutX="5.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>

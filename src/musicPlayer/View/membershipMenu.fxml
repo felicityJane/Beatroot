@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicPlayer.Controller.LogInMenuController">
+   <children>
+      <AnchorPane fx:id="logInRootAnchor" layoutX="3.0" layoutY="7.0" prefHeight="34.0" prefWidth="349.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <fx:include fx:id="mainMenu" source="mainMenu.fxml" />
+      <ImageView fitHeight="347.0" fitWidth="224.0" layoutX="79.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/paymentfree.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="329.0" fitWidth="243.0" layoutX="434.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/paymentPremium.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="112.0" layoutY="413.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="159.0" text="Get Free" />
+      <Button layoutX="476.0" layoutY="413.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" text="Get Premium" />
+
+   </children>
+</AnchorPane>
