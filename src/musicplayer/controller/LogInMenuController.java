@@ -23,7 +23,7 @@ public class LogInMenuController implements Initializable{
     @FXML
     private void handleLoginButton(ActionEvent event) {
         try {
-            SceneManager.sceneManager.changeScene(event,"View/welcomeMenu.fxml");
+            SceneManager.sceneManager.changeScene(event,"view/welcomeMenu.fxml");
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Changing from login scene to welcome scene");
             e.printStackTrace();
@@ -32,7 +32,7 @@ public class LogInMenuController implements Initializable{
     @FXML
     private void handleSignUpButton(ActionEvent event){
         try {
-            SceneManager.sceneManager.changeScene(event,"View/signUpMenu.fxml");
+            SceneManager.sceneManager.changeScene(event,"view/signUpMenu.fxml");
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Changing from login scene to sign up scene");
             e.printStackTrace();

@@ -66,7 +66,7 @@ public class MainMenuController implements Initializable{
         if (answer){
             try {
                 Stage stage = (Stage) menuBar.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("../View/logInMenu.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("../view/logInMenu.fxml"));
                 Scene scene = new Scene(root);
                 stage.setTitle("Beatroot");
                 stage.setScene(scene);

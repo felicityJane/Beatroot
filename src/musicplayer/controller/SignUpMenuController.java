@@ -40,7 +40,7 @@ public class SignUpMenuController implements Initializable{
     private void handleSignUpButton(ActionEvent event){
         try {
             //change scene location name to pay scene possibly
-            SceneManager.sceneManager.changeScene(event,"View/welcomeMenu.fxml");
+            SceneManager.sceneManager.changeScene(event,"view/welcomeMenu.fxml");
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to welcome scene");
             e.printStackTrace();
@@ -51,7 +51,7 @@ public class SignUpMenuController implements Initializable{
     private void clickOnLogInLabel(MouseEvent me) {
         try {
 
-            SceneManager.sceneManager.changeScene(me,"View/logInMenu.fxml");
+            SceneManager.sceneManager.changeScene(me,"view/logInMenu.fxml");
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to log in scene");
             e.printStackTrace();
