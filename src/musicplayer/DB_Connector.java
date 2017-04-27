@@ -7,9 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- * Created by Federica on 19/04/2017.
- */
 public class DB_Connector {
 
     private String urlOfDatabase;
