@@ -145,7 +145,7 @@ public class WelcomeMenuController implements Initializable {
             }
         }
 
-        media = new Media(path.toUri().toString());
+        media = new Media("http://www.webshare.hkr.se/FECO0002/alice%20in%20chains%20-%2001%20-%20them%20bones.mp3");
         mediaPlayer = new MediaPlayer(media);
         mediaView = new MediaView(mediaPlayer);
         sliderVolume.setValue(mediaPlayer.getVolume() * 100);
@@ -308,6 +308,7 @@ public class WelcomeMenuController implements Initializable {
 
                             sliderPlay.setValue(newValue.toSeconds());
                             lblElapsedTime.setText(formatTime(mediaPlayer.getCurrentTime().toSeconds()));
+                            mediaPlayer.setCycleCount(1);
                             lblTimeLeft.setText(formatTime(mediaPlayer.getTotalDuration().toSeconds() - mediaPlayer.getCurrentTime().toSeconds()));
 
                             if (!tglLoop.isSelected()) {
@@ -318,7 +319,11 @@ public class WelcomeMenuController implements Initializable {
                                 mediaPlayer.setCycleCount(1);
 
                             } else if (tglLoop.isSelected()) {
-                                mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+                                mediaPlayer.setOnEndOfMedia(new Runnable() {
+                                    public void run() {
+                                       mediaPlayer.seek(Duration.ZERO);
+                                    }
+                                });
                             }
                         }
                 );

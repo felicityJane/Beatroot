@@ -24,6 +24,7 @@ public class SceneManager {
         Scene scene = new Scene(root);
         stage.setTitle("Beatroot");
         stage.setScene(scene);
+        stage.centerOnScreen();
     }
 
     public void changeScene(MouseEvent me, String fxmlFileName) throws IOException {
@@ -33,5 +34,6 @@ public class SceneManager {
         Scene scene = new Scene(root);
         stage.setTitle("Beatroot");
         stage.setScene(scene);
+        stage.centerOnScreen();
     }
 }
