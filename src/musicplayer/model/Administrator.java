@@ -162,6 +162,18 @@ public class Administrator extends NonTrialUser {
 		removedArtists.add(artist);
 	}
 
+	public void updateUserInformation(User u) {
+		u.changeAccountSettings();
+	}
+
+	public void updatePremiumUserInformation(PremiumUser u) {
+		u.changeAccountSettings();
+	}
+
+	public void modifyMusicTrackInformation(MusicTrack mt) {
+		mt.modifyTrackDetails();
+	}
+
 	// TODO Check if I'm missing something
 	// @Override
 	// public String toString() {

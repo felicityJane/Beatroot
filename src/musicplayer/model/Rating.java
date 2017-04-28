@@ -9,8 +9,9 @@ public class Rating {
 	private MusicTrack song;
 	private ArrayList<User> votedUsers = new ArrayList<User>();
 
-	public Rating(int ratingID) {
+	public Rating(int ratingID, MusicTrack song) {
 		this.ratingID = ratingID;
+		this.song = song;
 	}
 
 	public int getRatingID() {
@@ -38,25 +39,16 @@ public class Rating {
 	}
 
 	public void addSumFromAllVoters(User u, float vote) {
-		try {
-			if (vote >= 1 && vote <= 5 && !votedUsers.contains(u)) {
-				sumFromAllVoters += vote;
-				votedUsers.add(u);
-			}
-
-		} catch (IndexOutOfBoundsException ex) {
-			ex.getStackTrace();
+		if (vote >= 1 && vote <= 5 && !votedUsers.contains(u)) {
+			sumFromAllVoters += vote;
+			votedUsers.add(u);
 		}
 	}
 
 	public void removeSumFromAllVoters(User u, float vote) {
-		try {
-			if (vote >= 1 && vote <= 5 && votedUsers.contains(u)) {
-				sumFromAllVoters -= vote;
-				votedUsers.remove(u);
-			}
-		} catch (IndexOutOfBoundsException ex) {
-			ex.getStackTrace();
+		if (vote >= 1 && vote <= 5 && votedUsers.contains(u)) {
+			sumFromAllVoters -= vote;
+			votedUsers.remove(u);
 		}
 	}
 
@@ -64,7 +56,7 @@ public class Rating {
 		return song;
 	}
 
-	public void setSong(MusicTrack song) {
-		this.song = song;
-	}
+	// public void setSong(MusicTrack song) {
+	// this.song = song;
+	// }
 }
