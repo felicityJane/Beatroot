@@ -21,7 +21,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import musicPlayer.DialogBoxManager;
 import musicPlayer.SceneManager;
+import musicPlayer.Server_Connector;
 import musicPlayer.TemporaryAlbumClass;
+import org.apache.commons.io.FilenameUtils;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.DefaultHandler;
 import org.apache.tika.metadata.Metadata;
@@ -65,6 +67,7 @@ public class WelcomeMenuController implements Initializable {
     private String temp = "";
     private String selectedItem = "";
     private static String logInMenuPath = "View/logInMenu.fxml";
+    private URL url;
 
 
     @FXML private MainMenuController mainMenuController;
@@ -73,6 +76,11 @@ public class WelcomeMenuController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         mainMenuController.init(this);
         mainMenuController.menuItemsWelcomeScene();
+
+        //***********************************************************
+        Server_Connector connector = new Server_Connector();
+        connector.connectToServer();
+        //***********************************************************
 
         Image img = new Image("Images/PlayNormal.jpg");
         btnPlay.setFill(new ImagePattern(img));
@@ -145,6 +153,11 @@ public class WelcomeMenuController implements Initializable {
             }
         }
 
+        try {
+            url = new URL("http://www.webshare.hkr.se/FECO0002/alice%20in%20chains%20-%2001%20-%20them%20bones.mp3");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         media = new Media("http://www.webshare.hkr.se/FECO0002/alice%20in%20chains%20-%2001%20-%20them%20bones.mp3");
         mediaPlayer = new MediaPlayer(media);
         mediaView = new MediaView(mediaPlayer);
@@ -355,7 +368,7 @@ public class WelcomeMenuController implements Initializable {
 
         //reads mp3 file's metadata
         try {
-            InputStream input = new FileInputStream(new File(path.getFileName().toString()));
+            InputStream input = new FileInputStream(new File("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " "))));
             ContentHandler handler = new DefaultHandler();
             Parser parser = new Mp3Parser();
             ParseContext parseCtx = new ParseContext();
@@ -387,5 +400,6 @@ public class WelcomeMenuController implements Initializable {
         imgMain.setImage(tempAlbum2.getAlbumCover());
 
     }
+
 }
 
