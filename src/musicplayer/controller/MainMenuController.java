@@ -26,7 +26,6 @@ public class MainMenuController implements Initializable{
     @FXML private MenuItem personalInfoMenu;
     @FXML private MenuItem settingsMenu;
     @FXML private MenuItem aboutMenu;
-    @FXML private MenuItem exitMenu;
     private LogInMenuController logInMenuController;
     private WelcomeMenuController welcomeMenuController;
     private SignUpMenuController signUpMenuController;
@@ -44,7 +43,7 @@ public class MainMenuController implements Initializable{
     public void init(SignUpMenuController signUpMenuController) {
         this.signUpMenuController = signUpMenuController;
     }
-    public void menuItemsWelcomeScene(){
+    public void setDisabledMenuItemsWelcomeScene(){
        createNewPlaylistMenu.setDisable(false);
        searchMenu.setDisable(false);
        logoutMenu.setDisable(false);
@@ -53,10 +52,9 @@ public class MainMenuController implements Initializable{
        settingsMenu.setDisable(false);
        aboutMenu.setDisable(false);
     }
-    public void menuBarFitToParent(AnchorPane parentAnchor){
+    void menuBarFitToParent(AnchorPane parentAnchor){
         menuBar.prefWidthProperty().bind(parentAnchor.widthProperty());
     }
-
     @FXML
     private void createNewPlaylistMenuOption(){
         //refer to create playlist method here
@@ -70,7 +68,7 @@ public class MainMenuController implements Initializable{
         boolean answer = DialogBoxManager.confirmationDialogBox("Are you sure you want to log out?","click ok to continue");
         if (answer){
             try {
-                SceneManager.sceneManager.changeScene(event,"../view/logInMenu.fxml");
+               SceneManager.sceneManager.changeSceneMenuBar(menuBar,"../view/logInMenu.fxml");
             }catch (Exception e){
                 DialogBoxManager.errorDialogBox("Error occurred","logging out");
                 e.printStackTrace();
@@ -79,7 +77,7 @@ public class MainMenuController implements Initializable{
     }
     @FXML
     private void exitMenuOption(){
-        Platform.exit();
+        System.exit(0);
     }
     @FXML
     private void personalInfoMenuOption(){

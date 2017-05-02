@@ -24,6 +24,8 @@ import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
+
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -67,7 +69,7 @@ public class WelcomeMenuController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mainMenuController.init(this);
-        mainMenuController.menuItemsWelcomeScene();
+        mainMenuController.setDisabledMenuItemsWelcomeScene();
         mainMenuController.menuBarFitToParent(welcomeParentAnchorPane);
 
         Image img = new Image("images/PlayNormal.jpg");

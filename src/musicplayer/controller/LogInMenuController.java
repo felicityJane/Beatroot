@@ -21,7 +21,6 @@ public class LogInMenuController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mainMenuController.init(this);
-        mainMenuController.menuItemsWelcomeScene();
         mainMenuController.menuBarFitToParent(logInAnchorPane);
     }
     @FXML
