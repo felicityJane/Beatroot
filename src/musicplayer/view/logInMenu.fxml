@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="logInAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.LogInMenuController">
+<AnchorPane fx:id="logInParentAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.LogInMenuController">
    <children>
       <fx:include fx:id="mainMenu" source="mainMenu.fxml" />
       <TextField fx:id="userName" layoutX="54.0" layoutY="173.0" prefHeight="17.0" prefWidth="246.0" promptText="Beatroot username" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="173.0" />

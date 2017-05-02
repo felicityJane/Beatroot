@@ -16,12 +16,12 @@ public class LogInMenuController implements Initializable{
     @FXML private TextField userName;
     @FXML private TextField userPassword;
     @FXML private MainMenuController mainMenuController;
-    @FXML private AnchorPane logInAnchorPane;
+    @FXML private AnchorPane logInParentAnchorPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mainMenuController.init(this);
-        mainMenuController.menuBarFitToParent(logInAnchorPane);
+        mainMenuController.menuBarFitToParent(logInParentAnchorPane);
     }
     @FXML
     private void handleLoginButton(ActionEvent event) {
