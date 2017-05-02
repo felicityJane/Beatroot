@@ -28,7 +28,7 @@ public class SceneManager {
 
     public void changeSceneMenuBar(MenuBar menuBar, String fxmlFileName) throws IOException {
         Stage stage = (Stage) menuBar.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("../view/logInMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
         Scene scene = new Scene(root);
         stage.setTitle("Beatroot");
         stage.setScene(scene);

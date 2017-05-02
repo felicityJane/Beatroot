@@ -68,7 +68,7 @@ public class MainMenuController implements Initializable{
         boolean answer = DialogBoxManager.confirmationDialogBox("Are you sure you want to log out?","click ok to continue");
         if (answer){
             try {
-               SceneManager.sceneManager.changeSceneMenuBar(menuBar,"../view/logInMenu.fxml");
+               SceneManager.sceneManager.changeSceneMenuBar(menuBar,"view/logInMenu.fxml");
             }catch (Exception e){
                 DialogBoxManager.errorDialogBox("Error occurred","logging out");
                 e.printStackTrace();
