@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class User {
-	private String userName, displayName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence,
+	private final String userName;
+	private String displayName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence,
 			postalCode, country, phoneNumber;
 	private Date dateOfBirth;
 	private Gender gender;
@@ -183,5 +184,21 @@ public abstract class User {
 		if (!userRatings.contains(r))
 			return;
 		userRatings.remove(r);
+	}
+
+	public void changeAccountSettings() {
+		setDisplayName(displayName);
+		setPassword(password);
+		setFirstName(firstName);
+		setLastName(lastName);
+		setDateOfBirth(dateOfBirth);
+		setEmailAddress(emailAddress);
+		setPhysicalAddress(physicalAddress);
+		setCityOfResidence(cityOfResidence);
+		setPostalCode(postalCode);
+		setCountry(country);
+		setPhoneNumber(phoneNumber);
+		// emailAddress, physicalAddress, cityOfResidence,
+		// postalCode, country, phoneNumber;
 	}
 }

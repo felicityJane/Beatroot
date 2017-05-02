@@ -9,9 +9,11 @@ public class Album {
 	private String albumName;
 	private Image albumCover;
 	private ArrayList<MusicTrack> songs = new ArrayList<MusicTrack>();
+	private Administrator administrator;
 
 	/**
-	 * 
+	 * @param albumID
+	 *            Integer Album' ID for database handling
 	 * @param albumName
 	 *            String Album's name
 	 * @param albumCover
@@ -66,5 +68,13 @@ public class Album {
 		if (!songs.contains(s))
 			return;
 		songs.remove(s);
+	}
+
+	public Administrator getAdministrator() {
+		return administrator;
+	}
+
+	public void setAdministrator(Administrator administrator) {
+		this.administrator = administrator;
 	}
 }
