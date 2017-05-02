@@ -30,7 +30,7 @@
          </children>
       </GridPane>
       <AnchorPane fx:id="logInRootAnchor" layoutX="3.0" layoutY="7.0" prefHeight="34.0" prefWidth="349.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ImageView focusTraversable="true" layoutX="27.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="44.0">
+      <ImageView fitHeight="74.0" fitWidth="264.0" focusTraversable="true" layoutX="44.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="56.0">
          <image>
             <Image url="@../../Images/beatrootlogo.png" />
          </image>
