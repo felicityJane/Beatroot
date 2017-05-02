@@ -54,6 +54,7 @@ public class WelcomeMenuController implements Initializable {
     @FXML private ImageView imgNews6;
     @FXML private ListView<String> lstMainTracks;
     @FXML private AnchorPane welcomeRootAnchor;
+    @FXML private AnchorPane welcomeParentAnchorPane;
     private TemporaryAlbumClass tempAlbum2 = new TemporaryAlbumClass();
     private Media media;
     private MediaPlayer mediaPlayer;
@@ -67,6 +68,7 @@ public class WelcomeMenuController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         mainMenuController.init(this);
         mainMenuController.menuItemsWelcomeScene();
+        mainMenuController.menuBarFitToParent(welcomeParentAnchorPane);
 
         Image img = new Image("images/PlayNormal.jpg");
         btnPlay.setFill(new ImagePattern(img));

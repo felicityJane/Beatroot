@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
@@ -51,6 +52,9 @@ public class MainMenuController implements Initializable{
        searchMenu.setDisable(false);
        settingsMenu.setDisable(false);
        aboutMenu.setDisable(false);
+    }
+    public void menuBarFitToParent(AnchorPane parentAnchor){
+        menuBar.prefWidthProperty().bind(parentAnchor.widthProperty());
     }
 
     @FXML
