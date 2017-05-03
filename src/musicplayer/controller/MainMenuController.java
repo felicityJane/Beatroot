@@ -33,6 +33,7 @@ public class MainMenuController implements Initializable{
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.print("Hello Federica, can you see this?");
     }
     public void init(LogInMenuController logInMenuController) {
         this.logInMenuController = logInMenuController;
