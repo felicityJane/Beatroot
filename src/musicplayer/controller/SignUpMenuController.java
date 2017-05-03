@@ -28,7 +28,6 @@ public class SignUpMenuController implements Initializable{
     @FXML private RadioButton male,female,trialUser,premiumUser;
     @FXML private Button signUpButton;
     @FXML private Label lblLogIn, warningText;
-    @FXML private Label lblLogIn;
     @FXML private AnchorPane signUpParentAnchorPane;
     @FXML private MainMenuController mainMenuController;
     @FXML private ComboBox<String> countryBox;
@@ -185,7 +184,6 @@ public class SignUpMenuController implements Initializable{
         try {
             SceneManager.sceneManager.changeScene(me,"view/logInMenu.fxml");
 
-            SceneManager.sceneManager.changeScene(me,"view/logInMenu.fxml");
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to log in scene");
             e.printStackTrace();
