@@ -1,4 +1,4 @@
-package musicPlayer.model;
+package musicplayer.model;
 
 import java.util.Date;
 
@@ -48,8 +48,8 @@ public class TrialUser extends User {
 		return freeTrialEndDate;
 	}
 
-	private void upgradeToPremiumUser() {
-		// TODO Auto-generated method stub
+	public void upgradeToPremiumUser() {
+
 	}
 
 }

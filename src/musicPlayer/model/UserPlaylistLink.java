@@ -1,6 +1,6 @@
-package musicPlayer.model;
+package musicplayer.model;
 
-import musicPlayer.DialogBoxManager;
+import musicplayer.DialogBoxManager;
 
 import java.util.ArrayList;
 

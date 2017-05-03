@@ -1,4 +1,4 @@
-package musicPlayer.model;
+package musicplayer.model;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -160,6 +160,18 @@ public class Administrator extends NonTrialUser {
 			return;
 		addedArtists.remove(artist);
 		removedArtists.add(artist);
+	}
+
+	public void updateUserInformation(User u) {
+		u.changeAccountSettings();
+	}
+
+	public void updatePremiumUserInformation(PremiumUser u) {
+		u.changeAccountSettings();
+	}
+
+	public void modifyMusicTrackInformation(MusicTrack mt) {
+		mt.modifyTrackDetails();
 	}
 
 	// TODO Check if I'm missing something

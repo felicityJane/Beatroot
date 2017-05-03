@@ -1,4 +1,4 @@
-package musicPlayer;
+package musicplayer;
 import com.mysql.jdbc.Connection;
 import javafx.scene.control.Alert;
 
@@ -7,9 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- * Created by Federica on 19/04/2017.
- */
 public class DB_Connector {
 
     private String urlOfDatabase;
@@ -59,7 +56,7 @@ public class DB_Connector {
     public void insert(String tableNameAndParameters, String values) {
 
         try {
-            statement.executeQuery("INSERT INTO " + tableNameAndParameters + " VALUES "
+            statement.executeUpdate("INSERT INTO " + tableNameAndParameters + " VALUES "
             + values);
 
         } catch (SQLException sqlEx) {
@@ -71,7 +68,7 @@ public class DB_Connector {
     public void delete(String tableToDeleteFrom, String whereStatement) {
 
         try {
-            statement.executeQuery("DELETE FROM " + tableToDeleteFrom + " WHERE "
+            statement.executeUpdate("DELETE FROM " + tableToDeleteFrom + " WHERE "
             + whereStatement);
 
         } catch (SQLException sqlEx) {

@@ -1,4 +1,4 @@
-package musicPlayer.model;
+package musicplayer.model;
 
 import java.util.Date;
 
@@ -8,7 +8,6 @@ public class PremiumUser extends NonTrialUser {
 	private Date expirationDate;
 	private Address billingAddress;
 	private String billingPhoneNumber;
-	private boolean isSameAsResidentAddress;
 	private PaymentMethod PaymentMethod;
 	// private ArrayList<User> friends = new ArrayList<User>();
 	// private ArrayList<User> blocked = new ArrayList<User>();
@@ -45,6 +44,7 @@ public class PremiumUser extends NonTrialUser {
 	 * @param PaymentMethod
 	 *            Enum {@link: PaymentMethod} The payment method.
 	 */
+
 
 	public PremiumUser (String userName, String displayName, String password, String firstName, Date dateOfBirth,
 			String lastName, String emailAddress, String streetNameAndNumber, String cityOfResidence, String postalCode,
@@ -126,6 +126,7 @@ public class PremiumUser extends NonTrialUser {
 		this.billingAddress.setPostalCode(billingPostalCode);
 		this.billingAddress.setCountry(billingCountry);
 		this.PaymentMethod = PaymentMethod;
+
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
 
@@ -194,56 +195,16 @@ public class PremiumUser extends NonTrialUser {
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
 
-	public boolean isSameAsResidentAddress() {
-		return isSameAsResidentAddress;
-	}
-
-	public void setSameAsResidentAddress(boolean isSameAsResidentAddress) {
-		this.isSameAsResidentAddress = isSameAsResidentAddress;
-	}
-
-	// public ArrayList<User> getFriends() {
-	// return friends;
-	// }
-	//
-	// public void setFriends(ArrayList<User> friends) {
-	// this.friends = friends;
-	// }
-	//
-	// public ArrayList<User> getBlocked() {
-	// return blocked;
-	// }
-	//
-	// public void setBlocked(ArrayList<User> blocked) {
-	// this.blocked = blocked;
-	// }
-	//
-	// public void addFriend(User user) {
-	// if (friends.contains(user))
-	// return;
-	// friends.add(user);
-	// }
-	//
-	// public void removeFriend(User user) {
-	// if (!friends.contains(user))
-	// return;
-	// friends.remove(user);
-	// }
-	//
-	// public void blockPerson(User user) {
-	// if (blocked.contains(user))
-	// return;
-	// blocked.add(user);
-	// }
-	//
-	// public void unblockPerson(User user) {
-	// if (!blocked.contains(user))
-	// return;
-	// blocked.remove(user);
-	// }
-
-	private void changePaymentInformation() {
-		// TODO
+	public void changePaymentInformation() {
+		setBankCardNumber(bankCardNumber);
+		setExpirationDate(expirationDate);
+		/*
+		setBillingAccountOwnerName(billingAccountOwnerName);
+		setBillingAddress(billingAddress);
+		setBillingCity(billingCity);
+		setBillingCountry(billingCountry);
+		setBillingPhoneNumber(billingPhoneNumber);
+		setBillingPostalCode(billingPostalCode);*/
 	}
 
 }

@@ -1,4 +1,4 @@
-package musicPlayer.model;
+package musicplayer.model;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -82,6 +82,14 @@ public class Playlist {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Duration getDuration() {
+		return duration;
+	}
+
+	public void setDuration(Duration duration) {
+		this.duration = duration;
 	}
 
 }

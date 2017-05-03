@@ -1,4 +1,4 @@
-package musicPlayer.model;
+package musicplayer.model;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ public class MusicArtist {
 	private String stageName;
 	private ArrayList<MusicTrack> songs = new ArrayList<MusicTrack>();
 	private Rating rating;
-	private Administrator administratior;
+	private Administrator administrator;
 	// private ArrayList<>
 
 	/**
@@ -57,11 +57,11 @@ public class MusicArtist {
 		this.rating = rating;
 	}
 
-	public Administrator getAdministratior() {
-		return administratior;
+	public Administrator getAdministrator() {
+		return administrator;
 	}
 
-	public void setAdministratior(Administrator administratior) {
-		this.administratior = administratior;
+	public void setAdministrator(Administrator administrator) {
+		this.administrator = administrator;
 	}
 }

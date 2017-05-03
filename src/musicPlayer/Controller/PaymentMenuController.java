@@ -1,12 +1,12 @@
-package musicPlayer.Controller;
+package musicplayer.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import musicPlayer.DB_Connector;
-import musicPlayer.DialogBoxManager;
+import musicplayer.DB_Connector;
+import musicplayer.DialogBoxManager;
 
 import java.net.URL;
 import java.util.InputMismatchException;

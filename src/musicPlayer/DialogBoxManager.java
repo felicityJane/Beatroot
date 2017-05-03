@@ -1,4 +1,4 @@
-package musicPlayer;
+package musicplayer;
 /**
  * Created by felic on 19/04/2017.
  */

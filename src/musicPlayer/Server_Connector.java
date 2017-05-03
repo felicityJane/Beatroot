@@ -1,4 +1,4 @@
-package musicPlayer;
+package musicplayer;
 
 import java.io.File;
 import java.io.FileOutputStream;
