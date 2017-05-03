@@ -149,8 +149,7 @@ public class SignUpMenuController implements Initializable{
 
             DB_Connector connector=new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
 
-            String s1=tableName+"(user_name)";
-            String s2= userNam;
+            connector.insert(tableName+"(user_name)", "'"+userNam+"'");
 
 
 

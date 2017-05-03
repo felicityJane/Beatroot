@@ -88,7 +88,7 @@
       <RadioButton fx:id="female" layoutX="264.0" layoutY="546.0" mnemonicParsing="false" text="Female" toggleGroup="$gender" />
       <ImageView fitHeight="74.0" fitWidth="312.0" layoutX="26.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/beatrootlogo.png" />
+            <Image url="@../../images/beatrootlogo.png" />
          </image>
       </ImageView>
       <Label layoutX="458.0" layoutY="636.0" prefHeight="18.0" prefWidth="164.0" text="Already have an account? " />
