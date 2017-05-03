@@ -26,7 +26,7 @@
             <Button fx:id="signUpButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="27.0" prefWidth="246.0" text="Sign Up" GridPane.rowIndex="3" />
             <TextField fx:id="userPassword" prefHeight="27.0" prefWidth="246.0" promptText="Password" GridPane.rowIndex="1" />
             <TextField fx:id="userName" prefHeight="17.0" prefWidth="246.0" promptText="Beatroot username" />
-            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="27.0" prefWidth="246.0" text="Login" GridPane.rowIndex="2" />
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButton"  prefHeight="27.0" prefWidth="246.0" text="Login" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <AnchorPane fx:id="logInRootAnchor" layoutX="3.0" layoutY="7.0" prefHeight="34.0" prefWidth="349.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
