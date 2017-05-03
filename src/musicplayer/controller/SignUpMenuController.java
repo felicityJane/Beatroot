@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
 
@@ -19,11 +20,13 @@ public class SignUpMenuController implements Initializable{
     @FXML private TextField userName;
     @FXML private TextField userPassword;
     @FXML private Label lblLogIn;
+    @FXML private AnchorPane signUpParentAnchorPane;
     @FXML private MainMenuController mainMenuController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mainMenuController.init(this);
+        mainMenuController.menuBarFitToParent(signUpParentAnchorPane);
         lblLogIn.setOnMouseEntered(event ->  {
 
                 Scene scene = lblLogIn.getScene();

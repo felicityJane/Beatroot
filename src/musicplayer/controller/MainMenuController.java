@@ -9,8 +9,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import musicplayer.DialogBoxManager;
+import musicplayer.SceneManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,7 +26,6 @@ public class MainMenuController implements Initializable{
     @FXML private MenuItem personalInfoMenu;
     @FXML private MenuItem settingsMenu;
     @FXML private MenuItem aboutMenu;
-    @FXML private MenuItem exitMenu;
     private LogInMenuController logInMenuController;
     private WelcomeMenuController welcomeMenuController;
     private SignUpMenuController signUpMenuController;
@@ -42,7 +43,7 @@ public class MainMenuController implements Initializable{
     public void init(SignUpMenuController signUpMenuController) {
         this.signUpMenuController = signUpMenuController;
     }
-    public void menuItemsWelcomeScene(){
+    public void setDisabledMenuItemsWelcomeScene(){
        createNewPlaylistMenu.setDisable(false);
        searchMenu.setDisable(false);
        logoutMenu.setDisable(false);
@@ -51,7 +52,9 @@ public class MainMenuController implements Initializable{
        settingsMenu.setDisable(false);
        aboutMenu.setDisable(false);
     }
-
+    void menuBarFitToParent(AnchorPane parentAnchor){
+        menuBar.prefWidthProperty().bind(parentAnchor.widthProperty());
+    }
     @FXML
     private void createNewPlaylistMenuOption(){
         //refer to create playlist method here
@@ -65,11 +68,7 @@ public class MainMenuController implements Initializable{
         boolean answer = DialogBoxManager.confirmationDialogBox("Are you sure you want to log out?","click ok to continue");
         if (answer){
             try {
-                Stage stage = (Stage) menuBar.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("../view/logInMenu.fxml"));
-                Scene scene = new Scene(root);
-                stage.setTitle("Beatroot");
-                stage.setScene(scene);
+               SceneManager.sceneManager.changeSceneMenuBar(menuBar,"view/logInMenu.fxml");
             }catch (Exception e){
                 DialogBoxManager.errorDialogBox("Error occurred","logging out");
                 e.printStackTrace();
@@ -78,7 +77,7 @@ public class MainMenuController implements Initializable{
     }
     @FXML
     private void exitMenuOption(){
-        Platform.exit();
+        System.exit(0);
     }
     @FXML
     private void personalInfoMenuOption(){
