@@ -9,7 +9,7 @@ public abstract class User {
 			postalCode, country, phoneNumber;
 	private Date dateOfBirth;
 	private Gender gender;
-	private static Playlist defaultPlaylist;
+	private Playlist defaultPlaylist;
 	private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
 	private ArrayList<Comment> userComments = new ArrayList<Comment>();
 	private ArrayList<Rating> userRatings = new ArrayList<Rating>();
@@ -30,7 +30,7 @@ public abstract class User {
 		this.country = country;
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
-		// TODO this.defaultPlaylist=new Playlist()
+		this.defaultPlaylist = new Playlist("Default", PrivacyLevel.PRIVATE);
 		userPlaylists.add(defaultPlaylist);
 	}
 
@@ -186,7 +186,9 @@ public abstract class User {
 		userRatings.remove(r);
 	}
 
-	public void changeAccountSettings() {
+	public void changeAccountSettings(String displayName, String password, String firstName, String lastName,
+			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
+			String country, String phoneNumber) {
 		setDisplayName(displayName);
 		setPassword(password);
 		setFirstName(firstName);
@@ -198,7 +200,5 @@ public abstract class User {
 		setPostalCode(postalCode);
 		setCountry(country);
 		setPhoneNumber(phoneNumber);
-		// emailAddress, physicalAddress, cityOfResidence,
-		// postalCode, country, phoneNumber;
 	}
 }

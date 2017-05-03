@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class PremiumUser extends NonTrialUser {
 
-	private int bankCardNumber;
+	private String bankCardNumber;
 	private Date expirationDate;
-	private String billingAccountOwnerName, billingAddress, billingCity, billingPostalCode, billingCountry;
-	private String billingPhoneNumber;
+	private String billingAccountOwnerName, billingAddress, billingCity, billingPostalCode, billingCountry,
+			billingPhoneNumber;
 	private PaymentMethod PaymentMethod;
 	// private ArrayList<User> friends = new ArrayList<User>();
 	// private ArrayList<User> blocked = new ArrayList<User>();
@@ -45,9 +45,9 @@ public class PremiumUser extends NonTrialUser {
 	 *            Enum {@link: PaymentMethod} The payment method.
 	 */
 
-	public PremiumUser(String userName, String displayName, String password, String firstName, Date dateOfBirth,
-			String lastName, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			String country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
+	public PremiumUser(String userName, String displayName, String password, String firstName, String lastName,
+			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
+			String country, Gender gender, String phoneNumber, String bankCardNumber, Date expirationDate,
 			PaymentMethod PaymentMethod, String billingAccountOwnerName) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
@@ -113,7 +113,7 @@ public class PremiumUser extends NonTrialUser {
 
 	public PremiumUser(String userName, String displayName, String password, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			String country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
+			String country, Gender gender, String phoneNumber, String bankCardNumber, Date expirationDate,
 			PaymentMethod PaymentMethod, String billingAccountOwnerName, String billingAddress, String billingCity,
 			String billingPostalCode, String billingCountry, String billingPhoneNumber) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
@@ -129,11 +129,11 @@ public class PremiumUser extends NonTrialUser {
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
 
-	public int getBankCardNumber() {
+	public String getBankCardNumber() {
 		return bankCardNumber;
 	}
 
-	public void setBankCardNumber(int bankCardNumber) {
+	public void setBankCardNumber(String bankCardNumber) {
 		this.bankCardNumber = bankCardNumber;
 	}
 
@@ -201,7 +201,9 @@ public class PremiumUser extends NonTrialUser {
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
 
-	public void changePaymentInformation() {
+	public void changePaymentInformation(String bankCardNumber, Date expirationDate, String billingAccountOwnerName,
+			String billingAddress, String billingCity, String billingCountry, String billingPhoneNumber,
+			String billingPostalCode) {
 		setBankCardNumber(bankCardNumber);
 		setExpirationDate(expirationDate);
 		setBillingAccountOwnerName(billingAccountOwnerName);

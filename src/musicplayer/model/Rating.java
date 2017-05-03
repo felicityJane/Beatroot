@@ -56,7 +56,7 @@ public class Rating {
 		return song;
 	}
 
-	// public void setSong(MusicTrack song) {
-	// this.song = song;
-	// }
+	public void setSong(MusicTrack song) {
+		this.song = song;
+	}
 }
