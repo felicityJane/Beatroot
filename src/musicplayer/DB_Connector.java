@@ -3,9 +3,6 @@ import javafx.scene.control.Alert;
 
 import java.sql.*;
 
-/**
- * Created by Federica on 19/04/2017.
- */
 public class DB_Connector {
 
     private String urlOfDatabase;

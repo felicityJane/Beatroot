@@ -3,7 +3,7 @@ package musicplayer.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Administrator extends User {
+public class Administrator extends NonTrialUser {
 
 	private Date startDate;
 	private float wage, contractHours;
@@ -14,8 +14,8 @@ public class Administrator extends User {
 	private ArrayList<Album> removedAlbums = new ArrayList<Album>();
 	private ArrayList<MusicArtist> addedArtists = new ArrayList<MusicArtist>();
 	private ArrayList<MusicArtist> removedArtists = new ArrayList<MusicArtist>();
-	private ArrayList<User> friends = new ArrayList<User>();
-	private ArrayList<User> blocked = new ArrayList<User>();
+	// private ArrayList<User> friends = new ArrayList<User>();
+	// private ArrayList<User> blocked = new ArrayList<User>();
 
 	/**
 	 * @param userName
@@ -162,44 +162,22 @@ public class Administrator extends User {
 		removedArtists.add(artist);
 	}
 
-	public ArrayList<User> getFriends() {
-		return friends;
+	public void updateUserInformation(User u, String displayName, String password, String firstName, String lastName,
+			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
+			String country, String phoneNumber) {
+		u.changeAccountSettings(displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
+				cityOfResidence, postalCode, country, phoneNumber);
 	}
 
-	public void setFriends(ArrayList<User> friends) {
-		this.friends = friends;
+	public void updatePremiumUserInformation(PremiumUser u, String displayName, String password, String firstName,
+			String lastName, Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence,
+			String postalCode, String country, String phoneNumber) {
+		u.changeAccountSettings(displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
+				cityOfResidence, postalCode, country, phoneNumber);
 	}
 
-	public ArrayList<User> getBlocked() {
-		return blocked;
-	}
-
-	public void setBlocked(ArrayList<User> blocked) {
-		this.blocked = blocked;
-	}
-
-	public void addFriend(User user) {
-		if (friends.contains(user))
-			return;
-		friends.add(user);
-	}
-
-	public void removeFriend(User user) {
-		if (!friends.contains(user))
-			return;
-		friends.remove(user);
-	}
-
-	public void blockPerson(User user) {
-		if (blocked.contains(user))
-			return;
-		blocked.add(user);
-	}
-
-	public void unblockPerson(User user) {
-		if (!blocked.contains(user))
-			return;
-		blocked.remove(user);
+	public void modifyMusicTrackInformation(MusicTrack mt) {
+		// mt.modifyTrackDetails();
 	}
 
 	// TODO Check if I'm missing something

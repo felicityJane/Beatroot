@@ -4,9 +4,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 
 public class Playlist {
-	private String playlistID;
 	private String name;
-	private int numberOfEntries;
+	private int numberOfEntries = 0;
 	private Duration duration;
 	private PrivacyLevel visibility;
 	private ArrayList<MusicTrack> musicTracks = new ArrayList<MusicTrack>();
@@ -22,15 +21,9 @@ public class Playlist {
 	 *            Enum {@link: PrivacyLevel} The level of visibility for other
 	 *            users.
 	 */
-	public Playlist(String playlistID, String name, int numberOfEntries, PrivacyLevel visibility) {
-		this.playlistID = playlistID;
+	public Playlist(String name, PrivacyLevel visibility) {
 		this.name = name;
-		this.numberOfEntries = numberOfEntries;
 		this.visibility = visibility;
-	}
-
-	public String getPlaylistID() {
-		return playlistID;
 	}
 
 	public String getName() {
@@ -43,6 +36,10 @@ public class Playlist {
 
 	public int getNumberOfEntries() {
 		return numberOfEntries;
+	}
+
+	public void setNumberOfEntries(int numberOfEntries) {
+		this.numberOfEntries = numberOfEntries;
 	}
 
 	public PrivacyLevel getVisibility() {
@@ -83,4 +80,11 @@ public class Playlist {
 		this.user = user;
 	}
 
+	public Duration getDuration() {
+		return duration;
+	}
+
+	public void setDuration(Duration duration) {
+		this.duration = duration;
+	}
 }

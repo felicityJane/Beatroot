@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import musicplayer.DB_Connector;
+import javafx.scene.layout.AnchorPane;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
 
@@ -27,6 +28,8 @@ public class SignUpMenuController implements Initializable{
     @FXML private RadioButton male,female,trialUser,premiumUser;
     @FXML private Button signUpButton;
     @FXML private Label lblLogIn, warningText;
+    @FXML private Label lblLogIn;
+    @FXML private AnchorPane signUpParentAnchorPane;
     @FXML private MainMenuController mainMenuController;
     @FXML private ComboBox<String> countryBox;
     @FXML private ComboBox<Integer> dayBox,monthBox,yearBox;
@@ -34,6 +37,7 @@ public class SignUpMenuController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mainMenuController.init(this);
+        mainMenuController.menuBarFitToParent(signUpParentAnchorPane);
         lblLogIn.setOnMouseEntered(event ->  {
 
                 Scene scene = lblLogIn.getScene();
@@ -168,6 +172,7 @@ public class SignUpMenuController implements Initializable{
         }catch (InputMismatchException ie){
             System.out.println(ie.toString());
 
+            SceneManager.sceneManager.changeScene(event,"view/welcomeMenu.fxml");
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to welcome scene");
             System.out.println(e.toString());
@@ -178,6 +183,8 @@ public class SignUpMenuController implements Initializable{
     @FXML
     private void clickOnLogInLabel(MouseEvent me) {
         try {
+            SceneManager.sceneManager.changeScene(me,"view/logInMenu.fxml");
+
             SceneManager.sceneManager.changeScene(me,"view/logInMenu.fxml");
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to log in scene");

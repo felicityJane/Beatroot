@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class User {
-	private String userName, displayName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence,
+	private final String userName;
+	private String displayName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence,
 			postalCode, country, phoneNumber;
 	private Date dateOfBirth;
 	private Gender gender;
-	private static Playlist defaultPlaylist;
+	private Playlist defaultPlaylist;
 	private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
 	private ArrayList<Comment> userComments = new ArrayList<Comment>();
 	private ArrayList<Rating> userRatings = new ArrayList<Rating>();
@@ -29,7 +30,7 @@ public abstract class User {
 		this.country = country;
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
-		// TODO this.defaultPlaylist=new Playlist()
+		this.defaultPlaylist = new Playlist("Default", PrivacyLevel.PRIVATE);
 		userPlaylists.add(defaultPlaylist);
 	}
 
@@ -183,5 +184,21 @@ public abstract class User {
 		if (!userRatings.contains(r))
 			return;
 		userRatings.remove(r);
+	}
+
+	public void changeAccountSettings(String displayName, String password, String firstName, String lastName,
+			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
+			String country, String phoneNumber) {
+		setDisplayName(displayName);
+		setPassword(password);
+		setFirstName(firstName);
+		setLastName(lastName);
+		setDateOfBirth(dateOfBirth);
+		setEmailAddress(emailAddress);
+		setPhysicalAddress(physicalAddress);
+		setCityOfResidence(cityOfResidence);
+		setPostalCode(postalCode);
+		setCountry(country);
+		setPhoneNumber(phoneNumber);
 	}
 }

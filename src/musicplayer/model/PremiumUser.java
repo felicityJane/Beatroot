@@ -1,18 +1,16 @@
 package musicplayer.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-public class PremiumUser extends User {
+public class PremiumUser extends NonTrialUser {
 
-	private int bankCardNumber;
+	private String bankCardNumber;
 	private Date expirationDate;
-	private String billingAccountOwnerName, billingAddress, billingCity, billingPostalCode, billingCountry;
-	private String billingPhoneNumber;
-	private boolean isSameAsResidentAddress;
+	private String billingAccountOwnerName, billingAddress, billingCity, billingPostalCode, billingCountry,
+			billingPhoneNumber;
 	private PaymentMethod PaymentMethod;
-	private ArrayList<User> friends = new ArrayList<User>();
-	private ArrayList<User> blocked = new ArrayList<User>();
+	// private ArrayList<User> friends = new ArrayList<User>();
+	// private ArrayList<User> blocked = new ArrayList<User>();
 
 	/**
 	 * Billing address is the same as the user's address
@@ -47,15 +45,20 @@ public class PremiumUser extends User {
 	 *            Enum {@link: PaymentMethod} The payment method.
 	 */
 
-	public PremiumUser(String userName, String displayName, String password, String firstName, Date dateOfBirth,
-			String lastName, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			String country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
-			PaymentMethod PaymentMethod) {
+	public PremiumUser(String userName, String displayName, String password, String firstName, String lastName,
+			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
+			String country, Gender gender, String phoneNumber, String bankCardNumber, Date expirationDate,
+			PaymentMethod PaymentMethod, String billingAccountOwnerName) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
 		this.expirationDate = expirationDate;
 		this.PaymentMethod = PaymentMethod;
+		this.billingAccountOwnerName = billingAccountOwnerName;
+		this.billingAddress = physicalAddress;
+		this.billingCity = cityOfResidence;
+		this.billingCountry = country;
+		this.billingPhoneNumber = phoneNumber;
 	}
 
 	/**
@@ -110,7 +113,7 @@ public class PremiumUser extends User {
 
 	public PremiumUser(String userName, String displayName, String password, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			String country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
+			String country, Gender gender, String phoneNumber, String bankCardNumber, Date expirationDate,
 			PaymentMethod PaymentMethod, String billingAccountOwnerName, String billingAddress, String billingCity,
 			String billingPostalCode, String billingCountry, String billingPhoneNumber) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
@@ -123,15 +126,14 @@ public class PremiumUser extends User {
 		this.billingCity = billingCity;
 		this.billingPostalCode = billingPostalCode;
 		this.billingCountry = billingCountry;
-		this.PaymentMethod = PaymentMethod;
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
 
-	public int getBankCardNumber() {
+	public String getBankCardNumber() {
 		return bankCardNumber;
 	}
 
-	public void setBankCardNumber(int bankCardNumber) {
+	public void setBankCardNumber(String bankCardNumber) {
 		this.bankCardNumber = bankCardNumber;
 	}
 
@@ -199,56 +201,17 @@ public class PremiumUser extends User {
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
 
-	public boolean isSameAsResidentAddress() {
-		return isSameAsResidentAddress;
-	}
-
-	public void setSameAsResidentAddress(boolean isSameAsResidentAddress) {
-		this.isSameAsResidentAddress = isSameAsResidentAddress;
-	}
-
-	public ArrayList<User> getFriends() {
-		return friends;
-	}
-
-	public void setFriends(ArrayList<User> friends) {
-		this.friends = friends;
-	}
-
-	public ArrayList<User> getBlocked() {
-		return blocked;
-	}
-
-	public void setBlocked(ArrayList<User> blocked) {
-		this.blocked = blocked;
-	}
-
-	public void addFriend(User user) {
-		if (friends.contains(user))
-			return;
-		friends.add(user);
-	}
-
-	public void removeFriend(User user) {
-		if (!friends.contains(user))
-			return;
-		friends.remove(user);
-	}
-
-	public void blockPerson(User user) {
-		if (blocked.contains(user))
-			return;
-		blocked.add(user);
-	}
-
-	public void unblockPerson(User user) {
-		if (!blocked.contains(user))
-			return;
-		blocked.remove(user);
-	}
-
-	private void changePaymentInformation() {
-		// TODO
+	public void changePaymentInformation(String bankCardNumber, Date expirationDate, String billingAccountOwnerName,
+			String billingAddress, String billingCity, String billingCountry, String billingPhoneNumber,
+			String billingPostalCode) {
+		setBankCardNumber(bankCardNumber);
+		setExpirationDate(expirationDate);
+		setBillingAccountOwnerName(billingAccountOwnerName);
+		setBillingAddress(billingAddress);
+		setBillingCity(billingCity);
+		setBillingCountry(billingCountry);
+		setBillingPhoneNumber(billingPhoneNumber);
+		setBillingPostalCode(billingPostalCode);
 	}
 
 }

@@ -7,6 +7,7 @@ public class MusicTrack {
 	private String trackName;
 	private Duration trackLength;
 	private Genre[] genre;
+	private Administrator administrator;
 	private String url;
 	private Rating rating;
 	private ArrayList<MusicArtist> performers = new ArrayList<MusicArtist>();
@@ -110,5 +111,20 @@ public class MusicTrack {
 		if (!comments.contains(fb))
 			return;
 		comments.remove(fb);
+	}
+
+	public Administrator getAdministrator() {
+		return administrator;
+	}
+
+	public void setAdminstrator(Administrator administrator) {
+		this.administrator = administrator;
+	}
+
+	public void modifyTrackDetails(String trackName, Duration trackLength, String url, Genre... genre) {
+		setTrackName(trackName);
+		setTrackLength(trackLength);
+		setUrl(url);
+		setGenre(genre);
 	}
 }

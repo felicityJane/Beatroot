@@ -46,7 +46,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/HKR/Database Technique/Seminar 2/mysql-connector-java-5.1.28/mysql-connector-java-5.1.28-bin.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../HKR/Database Technique/Seminar 2/mysql-connector-java-5.1.28/mysql-connector-java-5.1.28-bin.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -73,7 +73,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar!/" />
+          <root url="jar://$MODULE_DIR$/mysql-connector-java-5.1.28-bin.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
