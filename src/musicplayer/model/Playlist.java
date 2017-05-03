@@ -83,4 +83,12 @@ public class Playlist {
 		this.user = user;
 	}
 
+	public Duration getDuration() {
+		return duration;
+	}
+
+	public void setDuration(Duration duration) {
+		this.duration = duration;
+	}
+
 }

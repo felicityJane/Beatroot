@@ -6,9 +6,9 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="mainMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.MainMenuController">
+<AnchorPane fx:id="mainMenu" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.MainMenuController">
    <children>
-      <MenuBar fx:id="menuBar" prefHeight="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar fx:id="menuBar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
             <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
                <items>
@@ -34,7 +34,6 @@
             </Menu>
          </menus>
       </MenuBar>
-      <AnchorPane fx:id="rootAnchor" layoutY="31.0" prefHeight="0.0" prefWidth="349.0" AnchorPane.bottomAnchor="377.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0" />
 
    </children>
 </AnchorPane>

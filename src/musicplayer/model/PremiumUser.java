@@ -8,7 +8,6 @@ public class PremiumUser extends NonTrialUser {
 	private Date expirationDate;
 	private String billingAccountOwnerName, billingAddress, billingCity, billingPostalCode, billingCountry;
 	private String billingPhoneNumber;
-	private boolean isSameAsResidentAddress;
 	private PaymentMethod PaymentMethod;
 	// private ArrayList<User> friends = new ArrayList<User>();
 	// private ArrayList<User> blocked = new ArrayList<User>();
@@ -49,12 +48,17 @@ public class PremiumUser extends NonTrialUser {
 	public PremiumUser(String userName, String displayName, String password, String firstName, Date dateOfBirth,
 			String lastName, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
 			String country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
-			PaymentMethod PaymentMethod) {
+			PaymentMethod PaymentMethod, String billingAccountOwnerName) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
 		this.expirationDate = expirationDate;
 		this.PaymentMethod = PaymentMethod;
+		this.billingAccountOwnerName = billingAccountOwnerName;
+		this.billingAddress = physicalAddress;
+		this.billingCity = cityOfResidence;
+		this.billingCountry = country;
+		this.billingPhoneNumber = phoneNumber;
 	}
 
 	/**
@@ -122,7 +126,6 @@ public class PremiumUser extends NonTrialUser {
 		this.billingCity = billingCity;
 		this.billingPostalCode = billingPostalCode;
 		this.billingCountry = billingCountry;
-		this.PaymentMethod = PaymentMethod;
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
 
@@ -198,56 +201,15 @@ public class PremiumUser extends NonTrialUser {
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
 
-	public boolean isSameAsResidentAddress() {
-		return isSameAsResidentAddress;
-	}
-
-	public void setSameAsResidentAddress(boolean isSameAsResidentAddress) {
-		this.isSameAsResidentAddress = isSameAsResidentAddress;
-	}
-
-	// public ArrayList<User> getFriends() {
-	// return friends;
-	// }
-	//
-	// public void setFriends(ArrayList<User> friends) {
-	// this.friends = friends;
-	// }
-	//
-	// public ArrayList<User> getBlocked() {
-	// return blocked;
-	// }
-	//
-	// public void setBlocked(ArrayList<User> blocked) {
-	// this.blocked = blocked;
-	// }
-	//
-	// public void addFriend(User user) {
-	// if (friends.contains(user))
-	// return;
-	// friends.add(user);
-	// }
-	//
-	// public void removeFriend(User user) {
-	// if (!friends.contains(user))
-	// return;
-	// friends.remove(user);
-	// }
-	//
-	// public void blockPerson(User user) {
-	// if (blocked.contains(user))
-	// return;
-	// blocked.add(user);
-	// }
-	//
-	// public void unblockPerson(User user) {
-	// if (!blocked.contains(user))
-	// return;
-	// blocked.remove(user);
-	// }
-
-	private void changePaymentInformation() {
-		// TODO
+	public void changePaymentInformation() {
+		setBankCardNumber(bankCardNumber);
+		setExpirationDate(expirationDate);
+		setBillingAccountOwnerName(billingAccountOwnerName);
+		setBillingAddress(billingAddress);
+		setBillingCity(billingCity);
+		setBillingCountry(billingCountry);
+		setBillingPhoneNumber(billingPhoneNumber);
+		setBillingPostalCode(billingPostalCode);
 	}
 
 }

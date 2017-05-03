@@ -24,6 +24,8 @@ import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
+
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -54,6 +56,7 @@ public class WelcomeMenuController implements Initializable {
     @FXML private ImageView imgNews6;
     @FXML private ListView<String> lstMainTracks;
     @FXML private AnchorPane welcomeRootAnchor;
+    @FXML private AnchorPane welcomeParentAnchorPane;
     private TemporaryAlbumClass tempAlbum2 = new TemporaryAlbumClass();
     private Media media;
     private MediaPlayer mediaPlayer;
@@ -66,7 +69,8 @@ public class WelcomeMenuController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mainMenuController.init(this);
-        mainMenuController.menuItemsWelcomeScene();
+        mainMenuController.setDisabledMenuItemsWelcomeScene();
+        mainMenuController.menuBarFitToParent(welcomeParentAnchorPane);
 
         Image img = new Image("images/PlayNormal.jpg");
         btnPlay.setFill(new ImagePattern(img));
