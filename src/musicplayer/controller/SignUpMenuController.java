@@ -44,7 +44,6 @@ public class SignUpMenuController implements Initializable{
 
             Scene scene = lblLogIn.getScene();
             scene.setCursor(Cursor.DEFAULT);
-
         });
 
         for (int d=1; d<32; d++){
