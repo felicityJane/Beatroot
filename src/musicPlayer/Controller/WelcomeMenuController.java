@@ -79,7 +79,7 @@ public class WelcomeMenuController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         mainMenuController.init(this);
         mainMenuController.setDisabledMenuItemsWelcomeScene();
-        //mainMenuController.menuBarFitToParent(welcomeParentAnchorPane);
+        mainMenuController.menuBarFitToParent(welcomeParentAnchorPane);
 
         //***********************************************************
         Server_Connector connector = new Server_Connector();
@@ -120,6 +120,7 @@ public class WelcomeMenuController implements Initializable {
         imgNews5.setImage(new Image("images/Celldweller_EoaE_BG_LOVE.jpg"));
         imgNews6.setImage(new Image("images/Rage Against the Machine - Rage Against the Machine.jpg"));
         imgMain.setImage(tempAlbum.getAlbumCover());
+
 
 
         for (Node n : welcomeRootAnchor.getChildren()) {

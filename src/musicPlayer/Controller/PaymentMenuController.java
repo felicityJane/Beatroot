@@ -9,6 +9,8 @@ import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -23,7 +25,6 @@ public class PaymentMenuController implements Initializable{
     @FXML private ComboBox<Integer>monthBox,yearBox;
     @FXML private RadioButton visaButton,masterButton;
     @FXML private Label warningLabel;
-    private String cardType;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -31,8 +32,6 @@ public class PaymentMenuController implements Initializable{
         String []locales= Locale.getISOCountries();
         for (String countryList : locales) {
             Locale obj = new Locale("",countryList);
-
-            //System.out.println(obj.getDisplayCountry());
             ObservableList<String> list= FXCollections.observableArrayList();
             list.add(obj.getDisplayCountry());
             for (int i=0; i<list.size(); i++) {
@@ -54,18 +53,20 @@ public class PaymentMenuController implements Initializable{
     private void handlePaymentButton(ActionEvent event)throws Exception{
         try {
             String cardHolder=cardHolderName.getText();
-            long bankCardNum=Long.valueOf(bankCardNumber.getText());
-            Integer phoneNum=Integer.valueOf(phoneNumber.getText());
+            long bankCardNum=Long.parseLong(bankCardNumber.getText());
+            String phoneNum=phoneNumber.getText();
             String billingAdd=billingAddress.getText();
             String billingCit=billingCity.getText();
-            Integer billingPostalCod=Integer.valueOf(billingPostalCode.getText());
-
+            String billingPostalCod=billingPostalCode.getText();
+            String country=countryBox.getValue();
+            String cardType;
             String nameRegex="[A-Za-z]+";
-            if (!cardHolder.matches(nameRegex)) {
-                warningLabel.setText("ddddd");
-                cardHolderName.clear();
-                throw new Exception();
+            String numberRegex="[0-9]+";
 
+            if (!cardHolder.matches(nameRegex)) {
+                warningLabel.setText("Invalid Name");
+                cardHolderName.clear();
+                throw new InputMismatchException();
             }if (bankCardNumber.getText().length()!=16 ) {
                 warningLabel.setText("Invalid Card Number!!");
                 bankCardNumber.clear();
@@ -77,7 +78,24 @@ public class PaymentMenuController implements Initializable{
             }if (!visaButton.isSelected() && !masterButton.isSelected()){
                 warningLabel.setText("Card type is not selected!!");
                 throw new InputMismatchException();
+            }if (!billingCit.matches(nameRegex)){
+                warningLabel.setText("Invalid Value");
+                billingCity.clear();
+                throw new InputMismatchException();
+            }if (phoneNum.matches(numberRegex)){
+                warningLabel.setText("Invalid phone number");
+                phoneNumber.clear();
+                throw new InputMismatchException();
+            }if (billingPostalCod.matches(numberRegex)) {
+                warningLabel.setText("Invalid postal code");
+                billingPostalCode.clear();
+                throw new InputMismatchException();
             }
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+            Date convertedCurrentDate = sdf.parse(yearBox.getValue().toString()+"-"+monthBox.getValue().toString());
+            String expritationDate=sdf.format(convertedCurrentDate );
+
 
           DB_Connector connector=new DB_Connector("jdbc:mysql://127.0.0.1:3306/mydb?user=root&password=root&useSSL=false");
 
@@ -86,7 +104,7 @@ public class PaymentMenuController implements Initializable{
             System.out.println(ie.toString());
 
         } catch (Exception e){
-            DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to welcome scene");
+            DialogBoxManager.errorDialogBox("Error occurred","Invalid Value");
             e.printStackTrace();
         }
 

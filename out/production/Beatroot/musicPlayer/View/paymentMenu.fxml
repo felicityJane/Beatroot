@@ -12,22 +12,29 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicPlayer.Controller.PaymentMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.PaymentMenuController">
    <children>
       <AnchorPane fx:id="logInRootAnchor" layoutX="3.0" layoutY="-10.0" prefHeight="44.0" prefWidth="426.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-75.0" AnchorPane.topAnchor="-10.0" />
       <fx:include fx:id="mainMenu" source="mainMenu.fxml" />
-      <GridPane layoutX="352.0" layoutY="142.0" prefHeight="63.0" prefWidth="260.0">
+      <GridPane layoutX="352.0" layoutY="108.0" prefHeight="97.0" prefWidth="260.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="bankCardNumber" prefHeight="23.0" prefWidth="272.0" GridPane.rowIndex="1" />
-            <TextField fx:id="cardHolderName" prefHeight="28.0" prefWidth="272.0" />
+            <TextField fx:id="bankCardNumber" prefHeight="23.0" prefWidth="272.0" GridPane.rowIndex="2" />
+            <TextField fx:id="cardHolderName" prefHeight="28.0" prefWidth="272.0" GridPane.rowIndex="1" />
+            <Label fx:id="warningLabel" textFill="#e40606">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
       <GridPane layoutX="352.0" layoutY="350.0" prefHeight="144.0" prefWidth="260.0">
@@ -81,7 +88,7 @@
       </GridPane>
       <ImageView fitHeight="82.0" fitWidth="308.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/beatrootlogo.png" />
+            <Image url="@../../images/beatrootlogo.png" />
          </image>
       </ImageView>
       <RadioButton fx:id="visaButton" layoutX="352.0" layoutY="225.0" mnemonicParsing="false" text="Visa">
@@ -90,7 +97,6 @@
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="masterButton" layoutX="508.0" layoutY="225.0" mnemonicParsing="false" text="Mastercard" toggleGroup="$cardType" />
-      <Label fx:id="warnigLabel" layoutX="353.0" layoutY="108.0" prefHeight="33.0" prefWidth="285.0" textFill="#e80505" />
       <ComboBox fx:id="monthBox" layoutX="353.0" layoutY="264.0" prefHeight="27.0" prefWidth="71.0" />
       <ComboBox fx:id="yearBox" layoutX="442.0" layoutY="264.0" prefHeight="27.0" prefWidth="94.0" />
 
