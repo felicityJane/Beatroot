@@ -121,10 +121,10 @@ public class MusicTrack {
 		this.administrator = administrator;
 	}
 
-	public void modifyTrackDetails() {
+	public void modifyTrackDetails(String trackName, Duration trackLength, String url, Genre... genre) {
 		setTrackName(trackName);
 		setTrackLength(trackLength);
-		setGenre(genre);
 		setUrl(url);
+		setGenre(genre);
 	}
 }

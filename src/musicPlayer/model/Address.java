@@ -12,11 +12,19 @@ public class Address {
     private String postalCode;
     private Country country;
 
-    public Address(String firstName, String lastName, String streetNameAndNumber, String city, Country country) {
+    public Address(String streetNameAndNumber, String city, String postalCode, Country country) {
+        this.streetNameAndNumber = streetNameAndNumber;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.country = country;
+    }
+
+    public Address(String firstName, String lastName, String streetNameAndNumber, String city, String postalCode, Country country) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.streetNameAndNumber = streetNameAndNumber;
         this.city = city;
+        this.postalCode = postalCode;
         this.country = country;
     }
 

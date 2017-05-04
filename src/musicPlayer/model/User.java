@@ -7,11 +7,12 @@ public abstract class User {
 	private String displayName, password, firstName, lastName, emailAddress, phoneNumber;
 	private Address physicalAddress;
 	private final String userName;
-
+    private UserPlaylistLink userPlaylistLink;
 	private Date dateOfBirth;
 	private Gender gender;
-	private int ID;
-	private UserPlaylistLink userPlaylistLink;
+	private Playlist defaultPlaylist;
+	private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
+
 	private ArrayList<Comment> userComments = new ArrayList<Comment>();
 	private ArrayList<Rating> userRatings = new ArrayList<Rating>();
 
@@ -33,6 +34,8 @@ public abstract class User {
 		this.physicalAddress.setPostalCode(postalCode);
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
+        this.defaultPlaylist = new Playlist("Default", PrivacyLevel.PRIVATE);
+		userPlaylistLink.getPlaylists().add(defaultPlaylist);
 	}
 
 	public String getUserName() {
@@ -119,10 +122,6 @@ public abstract class User {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public int getID() { return ID;	}
-
-	public void setID(int ID) { this.ID = ID; }
-
 	public Address getPhysicalAddress() {
 		return physicalAddress;
 	}
@@ -137,6 +136,18 @@ public abstract class User {
 
 	public void setUserPlaylistLink(UserPlaylistLink userPlaylistLink) {
 		this.userPlaylistLink = userPlaylistLink;
+	}
+
+	public void addUserPlaylist(Playlist pl) {
+		if (userPlaylistLink.getPlaylists().contains(pl))
+			return;
+		userPlaylistLink.getPlaylists().add(pl);
+	}
+
+	public void removeUserPlaylist(Playlist pl) {
+		if (!userPlaylistLink.getPlaylists().contains(pl))
+			return;
+		userPlaylistLink.getPlaylists().remove(pl);
 	}
 
 	public ArrayList<Comment> getUserComments() {
@@ -171,19 +182,19 @@ public abstract class User {
 		userRatings.remove(r);
 	}
 
-	public void changeAccountSettings() {
+	public void changeAccountSettings(String displayName, String password, String firstName, String lastName,
+			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
+			Country country, String phoneNumber) {
 		setDisplayName(displayName);
 		setPassword(password);
 		setFirstName(firstName);
 		setLastName(lastName);
 		setDateOfBirth(dateOfBirth);
 		setEmailAddress(emailAddress);
-		setPhysicalAddress(physicalAddress);
-		/*setCityOfResidence(cityOfResidence);
-		setPostalCode(postalCode);
-		setCountry(country);*/
+		getPhysicalAddress().setStreetNameAndNumber(physicalAddress);
+		getPhysicalAddress().setPostalCode(postalCode);
+		getPhysicalAddress().setCountry(country);
+		getPhysicalAddress().setCity(cityOfResidence);
 		setPhoneNumber(phoneNumber);
-		// emailAddress, physicalAddress, cityOfResidence,
-		// postalCode, country, phoneNumber;
 	}
 }

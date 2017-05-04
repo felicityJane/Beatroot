@@ -3,7 +3,8 @@ package musicplayer.model;
 import java.util.ArrayList;
 
 public class MusicArtist {
-	private final String artistID;
+
+	private int artistID;
 	private String stageName;
 	private ArrayList<MusicTrack> songs = new ArrayList<MusicTrack>();
 	private Rating rating;
@@ -11,21 +12,20 @@ public class MusicArtist {
 	// private ArrayList<>
 
 	/**
-	 * 
-	 * @param artistID
-	 *            Integer For database handling
+	 *
 	 * @param stageName
 	 *            String Music Artist's name
 	 */
 
-	public MusicArtist(String artistID, String stageName) {
-		this.artistID = artistID;
+	public MusicArtist(String stageName) {
 		this.stageName = stageName;
 	}
 
-	public String getArtistID() {
+	public int getArtistID() {
 		return artistID;
 	}
+
+	public void setArtistID(int artistID ) {this.artistID = artistID;}
 
 	public String getStageName() {
 		return stageName;

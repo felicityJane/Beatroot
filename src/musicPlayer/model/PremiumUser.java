@@ -4,10 +4,11 @@ import java.util.Date;
 
 public class PremiumUser extends NonTrialUser {
 
-	private int bankCardNumber;
+	private String bankCardNumber;
 	private Date expirationDate;
 	private Address billingAddress;
 	private String billingPhoneNumber;
+	private String cardHolderName;
 	private PaymentMethod PaymentMethod;
 	// private ArrayList<User> friends = new ArrayList<User>();
 	// private ArrayList<User> blocked = new ArrayList<User>();
@@ -46,16 +47,17 @@ public class PremiumUser extends NonTrialUser {
 	 */
 
 
-	public PremiumUser (String userName, String displayName, String password, String firstName, Date dateOfBirth,
-			String lastName, String emailAddress, String streetNameAndNumber, String cityOfResidence, String postalCode,
-			Country country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
-			PaymentMethod PaymentMethod) {
-
+	public PremiumUser(String userName, String displayName, String password, String firstName, String lastName,
+			Date dateOfBirth, String emailAddress, String streetNameAndNumber, String cityOfResidence, String postalCode,
+			Country country, Gender gender, String phoneNumber, String bankCardNumber, Date expirationDate,
+			PaymentMethod PaymentMethod, String billingAccountOwnerName) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, streetNameAndNumber,
+
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
 		this.expirationDate = expirationDate;
 		this.PaymentMethod = PaymentMethod;
+		this.cardHolderName = billingAccountOwnerName;
 		billingAddress = super.getPhysicalAddress();
 	}
 
@@ -95,10 +97,8 @@ public class PremiumUser extends NonTrialUser {
 	 *            Card's expiration date
 	 * @param PaymentMethod
 	 *            Enum {@link: PaymentMethod} The payment's type.
-	 * @param billingAccountOwnerFirstName
-	 *            The first name of the account owner as printed on the card's face
-	 * @param billingAccountOwnerLastName
-	 * 			  The last name of the account owner as printed on the card's face
+	 * @param cardHolderName
+	 *            The name of the account owner as printed on the card's face
 	 * @param billingCity
 	 *            Account owner's city of residence
 	 * @param billingPostalCode
@@ -111,16 +111,17 @@ public class PremiumUser extends NonTrialUser {
 
 	public PremiumUser(String userName, String displayName, String password, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			Country country, Gender gender, String phoneNumber, int bankCardNumber, Date expirationDate,
-			PaymentMethod PaymentMethod, String billingAccountOwnerFirstName, String billingAccountOwnerLastName, String billingStreet, String billingCity,
+
+			Country country, Gender gender, String phoneNumber, String bankCardNumber, Date expirationDate,
+			PaymentMethod PaymentMethod, String cardHolderName, String billingStreet, String billingCity,
 			String billingPostalCode, Country billingCountry, String billingPhoneNumber) {
+
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
 		this.expirationDate = expirationDate;
 		this.PaymentMethod = PaymentMethod;
-		this.billingAddress.setFirstName(billingAccountOwnerFirstName);
-		this.billingAddress.setLastName(billingAccountOwnerLastName);
+		this.cardHolderName = cardHolderName;
 		this.billingAddress.setStreetNameAndNumber(billingStreet);
 		this.billingAddress.setCity(billingCity);
 		this.billingAddress.setPostalCode(billingPostalCode);
@@ -130,11 +131,11 @@ public class PremiumUser extends NonTrialUser {
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
 
-	public int getBankCardNumber() {
+	public String getBankCardNumber() {
 		return bankCardNumber;
 	}
 
-	public void setBankCardNumber(int bankCardNumber) {
+	public void setBankCardNumber(String bankCardNumber) {
 		this.bankCardNumber = bankCardNumber;
 	}
 
@@ -157,6 +158,14 @@ public class PremiumUser extends NonTrialUser {
 
 	public String getBillingCity() {
 		return billingAddress.getCity();
+	}
+
+	public String getCardHolderName() {
+		return cardHolderName;
+	}
+
+	public void setCardHolderName(String cardHolderName) {
+		this.cardHolderName = cardHolderName;
 	}
 
 	public void setBillingCity(String billingCity) {
@@ -195,16 +204,17 @@ public class PremiumUser extends NonTrialUser {
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
 
-	public void changePaymentInformation() {
+	public void changePaymentInformation(String bankCardNumber, Date expirationDate, String billingAccountOwnerName,
+			String billingAddress, String billingCity, Country billingCountry, String billingPhoneNumber,
+			String billingPostalCode) {
 		setBankCardNumber(bankCardNumber);
 		setExpirationDate(expirationDate);
-		/*
-		setBillingAccountOwnerName(billingAccountOwnerName);
-		setBillingAddress(billingAddress);
-		setBillingCity(billingCity);
-		setBillingCountry(billingCountry);
 		setBillingPhoneNumber(billingPhoneNumber);
-		setBillingPostalCode(billingPostalCode);*/
+		setCardHolderName(billingAccountOwnerName);
+		getBillingAddress().setStreetNameAndNumber(billingAddress);
+		getBillingAddress().setCity(billingCity);
+		getBillingAddress().setCountry(billingCountry);
+		getBillingAddress().setPostalCode(billingPostalCode);
 	}
 
 }

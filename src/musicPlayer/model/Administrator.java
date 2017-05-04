@@ -162,16 +162,22 @@ public class Administrator extends NonTrialUser {
 		removedArtists.add(artist);
 	}
 
-	public void updateUserInformation(User u) {
-		u.changeAccountSettings();
+	public void updateUserInformation(User u, String displayName, String password, String firstName, String lastName,
+			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
+			Country country, String phoneNumber) {
+		u.changeAccountSettings(displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
+				cityOfResidence, postalCode, country, phoneNumber);
 	}
 
-	public void updatePremiumUserInformation(PremiumUser u) {
-		u.changeAccountSettings();
+	public void updatePremiumUserInformation(PremiumUser u, String displayName, String password, String firstName,
+			String lastName, Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence,
+			String postalCode, Country country, String phoneNumber) {
+		u.changeAccountSettings(displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
+				cityOfResidence, postalCode, country, phoneNumber);
 	}
 
 	public void modifyMusicTrackInformation(MusicTrack mt) {
-		mt.modifyTrackDetails();
+		// mt.modifyTrackDetails();
 	}
 
 	// TODO Check if I'm missing something
