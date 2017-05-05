@@ -15,10 +15,11 @@ public class Server_Connector {
     public void connectToServer() {
 
         OutputStream outstream = null;
+        InputStream is = null;
 
         try {
             URLConnection conn = new URL("http://www.webshare.hkr.se/FECO0002/alice%20in%20chains%20-%2001%20-%20them%20bones.mp3").openConnection();
-            InputStream is = conn.getInputStream();
+            is = conn.getInputStream();
 
             outstream = new FileOutputStream(new File("tmp/alice in chains - 01 - them bones.mp3"));
             byte[] buffer = new byte[4096];
@@ -32,6 +33,8 @@ public class Server_Connector {
         } finally {
             try {
                 outstream.close();
+                is.close();
+
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
