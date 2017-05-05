@@ -1,5 +1,7 @@
 package musicplayer.controller;
-
+/**
+ * Created by felic on 10/04/2017.
+ */
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,7 +10,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,7 +25,6 @@ public class MainMenuController implements Initializable{
     private LogInMenuController logInMenuController;
     private WelcomeMenuController welcomeMenuController;
     private SignUpMenuController signUpMenuController;
-
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,6 +47,7 @@ public class MainMenuController implements Initializable{
        settingsMenu.setDisable(false);
        aboutMenu.setDisable(false);
     }
+
     void menuBarFitToParent(AnchorPane parentAnchor){
         menuBar.prefWidthProperty().bind(parentAnchor.widthProperty());
     }

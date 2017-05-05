@@ -8,13 +8,16 @@ public class Rating {
 	private MusicTrack song;
 	private ArrayList<User> votedUsers = new ArrayList<User>();
 
-	public Rating(int ratingID, MusicTrack song) {
-		this.ratingID = ratingID;
+	public Rating(MusicTrack song) {
 		this.song = song;
 	}
 
 	public int getRatingID() {
 		return ratingID;
+	}
+
+	public void setRatingID(int ratingID) {
+		this.ratingID = ratingID;
 	}
 
 	public int getSumFromAllVoters() {

@@ -82,11 +82,11 @@ public class PaymentMenuController implements Initializable{
                 warningLabel.setText("Invalid Value");
                 billingCity.clear();
                 throw new InputMismatchException();
-            }if (!phoneNum.matches(numberRegex)){
+            }if (phoneNum.matches(numberRegex)){
                 warningLabel.setText("Invalid phone number");
                 phoneNumber.clear();
                 throw new InputMismatchException();
-            }if (!billingPostalCod.matches(numberRegex)) {
+            }if (billingPostalCod.matches(numberRegex)) {
                 warningLabel.setText("Invalid postal code");
                 billingPostalCode.clear();
                 throw new InputMismatchException();
@@ -97,7 +97,7 @@ public class PaymentMenuController implements Initializable{
             String expritationDate=sdf.format(convertedCurrentDate );
 
 
-          DB_Connector connector=new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
+          DB_Connector connector=new DB_Connector("jdbc:mysql://127.0.0.1:3306/mydb?user=root&password=root&useSSL=false");
 
 
         }catch (InputMismatchException ie){
