@@ -165,11 +165,11 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
 
 
         if (premiumUser.isSelected()){
-        SceneManager.sceneManager.changeScene(event,"View/paymentMenu.fxml");
+        SceneManager.sceneManager.changeScene(event,"view/paymentMenu.fxml");
         }
 
         //change scene location name to pay scene possibly
-        //SceneManager.sceneManager.changeScene(event,"View/welcomeMenu.fxml");
+        //SceneManager.sceneManager.changeScene(event,"view/welcomeMenu.fxml");
 
         }catch (InputMismatchException ie){
         System.out.println(ie.toString());
