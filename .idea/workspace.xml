@@ -3,39 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="lower case package names test">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nuovo Documento di Microsoft Word.docx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/PauseHover.jpg~HEAD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/PauseHover.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/PauseNormal.jpg~HEAD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/PauseNormal.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/PausePressed.jpg~HEAD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/PausePressed.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/PlayHover.jpg~HEAD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/PlayHover.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/PlayNormal.jpg~HEAD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/PlayNormal.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/PlayPressed.jpg~HEAD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/PlayPressed.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/StopHover.jpg~HEAD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/StopHover.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/StopNormal.jpg~HEAD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/StopNormal.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/StopPressed.jpg~HEAD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/StopPressed.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/VolumeHigh.png~HEAD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/VolumeHigh.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/VolumeLow.png~HEAD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/VolumeLow.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/VolumeMed.png~HEAD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/VolumeMed.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/VolumeOff.png~HEAD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/VolumeOff.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/~$ovo Documento di Microsoft Word.docx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java" afterPath="$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/Server_Connector.java" afterPath="$PROJECT_DIR$/src/musicPlayer/Server_Connector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/View/logInMenu.fxml" afterPath="$PROJECT_DIR$/src/musicPlayer/View/logInMenu.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicPlayer/View/signUpMenu.fxml" afterPath="$PROJECT_DIR$/src/musicPlayer/View/signUpMenu.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -86,8 +55,8 @@
       <file leaf-file-name="Server_Connector.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/musicplayer/Server_Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+            <state relative-caret-position="425">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -274,6 +243,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/tika-parsers-1.4.jar!/" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -1149,8 +1119,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicplayer/Server_Connector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        <state relative-caret-position="425">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
