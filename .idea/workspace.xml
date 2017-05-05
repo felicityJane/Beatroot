@@ -1,9 +1,192 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/musicplayerzzz/controllerz/LogInMenuController.java" line="34" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="lower case package names test">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nuovo Documento di Microsoft Word.docx" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/~$ovo Documento di Microsoft Word.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/DB_Connector.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/DialogBoxManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/Main.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/PlayerManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/SceneManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/Server_Connector.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/TemporaryAlbumClass.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/controllerz/LogInMenuController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/controllerz/MainMenuController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/controllerz/PaymentMenuController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/controllerz/SignUpMenuController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/controllerz/WelcomeMenuController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/Address.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/Administrator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/Album.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/Comment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/Country.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/Gender.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/Genre.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/MusicArtist.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/MusicTrack.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/NonTrialUser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/PaymentMethod.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/Playlist.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/PremiumUser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/PrivacyLevel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/Rating.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/Test.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/TrialUser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/User.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/modeler/UserPlaylistLink.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/viewz/logInMenu.fxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/viewz/mainMenu.fxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/viewz/paymentMenu.fxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/viewz/signUpMenu.fxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/musicplayerzzz/viewz/welcomeMenu.fxml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/Celldweller_EoaE_BG_LOVE.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/EyeGirl.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/Hadean.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/Konachan.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/Linkin Park - Living Things.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/Linkin Park - Living ThingsHover.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/Linkin Park - Living ThingsPressed.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/PauseHover.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/PauseNormal.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/PausePressed.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/PlayHover.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/PlayNormal.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/PlayPressed.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/Rage Against the Machine - Rage Against the Machine.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/StopHover.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/StopNormal.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/StopPressed.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/VolumeHigh.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/VolumeLow.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/VolumeMed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/VolumeOff.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/beatrootlogo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/paymentFree.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/paymentPremium.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/LogInMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/MainMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/PaymentMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/SignUpMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/DB_Connector.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/DialogBoxManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Main.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/SceneManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/TemporaryAlbumClass.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/logInMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/mainMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/paymentMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/signUpMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/welcomeMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Administrator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Album.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Comment.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Gender.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Genre.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/MusicArtist.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/MusicTrack.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/PaymentMethod.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Playlist.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/PremiumUser.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/PrivacyLevel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Rating.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/TrialUser.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/User.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/Celldweller_EoaE_BG_LOVE.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/EyeGirl.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/Hadean.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/Konachan.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/Linkin Park - Living Things.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/Linkin Park - Living ThingsHover.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/Linkin Park - Living ThingsPressed.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/PauseHover.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/PauseNormal.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/PausePressed.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/PlayHover.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/PlayNormal.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/PlayPressed.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/Rage Against the Machine - Rage Against the Machine.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/StopHover.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/StopNormal.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/StopPressed.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/VolumeHigh.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/VolumeLow.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/VolumeMed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/VolumeOff.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/beatrootlogo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/paymentFree.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Images/paymentPremium.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/.classpath" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/.project" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/Controller/LogInMenuController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/Controller/MainMenuController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/Controller/PaymentMenuController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/Controller/SignUpMenuController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/Controller/WelcomeMenuController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/DB_Connector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/DialogBoxManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/Main.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/PlayerManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/SceneManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/Server_Connector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/TemporaryAlbumClass.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/View/logInMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/View/mainMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/View/paymentMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/View/signUpMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/View/welcomeMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/Address.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/Administrator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/Album.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/Comment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/Country.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/Gender.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/Genre.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/MusicArtist.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/MusicTrack.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/NonTrialUser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/PaymentMethod.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/Playlist.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/PremiumUser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/PrivacyLevel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/Rating.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/TrialUser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/User.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicPlayer/model/UserPlaylistLink.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/musicplayer/model/Test.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/PauseHover.jpg~HEAD" afterPath="$PROJECT_DIR$/src/imagezzzz/PauseHover.jpg~HEAD" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/PauseHover.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="$PROJECT_DIR$/src/imagezzzz/PauseHover.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/PauseNormal.jpg~HEAD" afterPath="$PROJECT_DIR$/src/imagezzzz/PauseNormal.jpg~HEAD" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/PauseNormal.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="$PROJECT_DIR$/src/imagezzzz/PauseNormal.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/PausePressed.jpg~HEAD" afterPath="$PROJECT_DIR$/src/imagezzzz/PausePressed.jpg~HEAD" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/PausePressed.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="$PROJECT_DIR$/src/imagezzzz/PausePressed.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/PlayHover.jpg~HEAD" afterPath="$PROJECT_DIR$/src/imagezzzz/PlayHover.jpg~HEAD" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/PlayHover.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="$PROJECT_DIR$/src/imagezzzz/PlayHover.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/PlayNormal.jpg~HEAD" afterPath="$PROJECT_DIR$/src/imagezzzz/PlayNormal.jpg~HEAD" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/PlayNormal.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="$PROJECT_DIR$/src/imagezzzz/PlayNormal.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/PlayPressed.jpg~HEAD" afterPath="$PROJECT_DIR$/src/imagezzzz/PlayPressed.jpg~HEAD" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/PlayPressed.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="$PROJECT_DIR$/src/imagezzzz/PlayPressed.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/StopHover.jpg~HEAD" afterPath="$PROJECT_DIR$/src/imagezzzz/StopHover.jpg~HEAD" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/StopHover.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="$PROJECT_DIR$/src/imagezzzz/StopHover.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/StopNormal.jpg~HEAD" afterPath="$PROJECT_DIR$/src/imagezzzz/StopNormal.jpg~HEAD" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/StopNormal.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="$PROJECT_DIR$/src/imagezzzz/StopNormal.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/StopPressed.jpg~HEAD" afterPath="$PROJECT_DIR$/src/imagezzzz/StopPressed.jpg~HEAD" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/StopPressed.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="$PROJECT_DIR$/src/imagezzzz/StopPressed.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/VolumeHigh.png~HEAD" afterPath="$PROJECT_DIR$/src/imagezzzz/VolumeHigh.png~HEAD" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/VolumeHigh.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="$PROJECT_DIR$/src/imagezzzz/VolumeHigh.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/VolumeLow.png~HEAD" afterPath="$PROJECT_DIR$/src/imagezzzz/VolumeLow.png~HEAD" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/VolumeLow.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="$PROJECT_DIR$/src/imagezzzz/VolumeLow.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/VolumeMed.png~HEAD" afterPath="$PROJECT_DIR$/src/imagezzzz/VolumeMed.png~HEAD" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/VolumeMed.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="$PROJECT_DIR$/src/imagezzzz/VolumeMed.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/VolumeOff.png~HEAD" afterPath="$PROJECT_DIR$/src/imagezzzz/VolumeOff.png~HEAD" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/images/VolumeOff.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="$PROJECT_DIR$/src/imagezzzz/VolumeOff.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,7 +204,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="MusicArtist.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicplayer/model/MusicArtist.java">
+        <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/MusicArtist.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
               <caret line="27" column="69" lean-forward="false" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="69" />
@@ -31,41 +214,51 @@
         </entry>
       </file>
       <file leaf-file-name="MusicTrack.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicplayer/model/MusicTrack.java">
+        <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/MusicTrack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="612">
               <caret line="37" column="24" lean-forward="false" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
               <folding>
-                <element signature="e#1060#1061#0" expanded="true" />
+                <element signature="e#1065#1066#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="DB_Connector.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicplayer/DB_Connector.java">
+        <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/DB_Connector.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1088">
-              <caret line="70" column="36" lean-forward="false" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
+              <caret line="69" column="36" lean-forward="false" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server_Connector.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/musicplayer/Server_Connector.java">
+      <file leaf-file-name="Server_Connector.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/Server_Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="59">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogInMenuController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/controllerz/LogInMenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Address.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicplayer/model/Address.java">
+        <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/Address.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
+            <state relative-caret-position="442">
               <caret line="26" column="37" lean-forward="false" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
               <folding />
             </state>
@@ -73,7 +266,7 @@
         </entry>
       </file>
       <file leaf-file-name="Administrator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/musicplayer/model/Administrator.java">
+        <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/Administrator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2448">
               <caret line="173" column="38" lean-forward="false" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
@@ -96,7 +289,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Felicity" />
+        <entry key="$PROJECT_DIR$" value="Federica" />
       </map>
     </option>
     <push-targets>
@@ -111,8 +304,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/musicPlayer/DB_Connector.java" />
-        <option value="$PROJECT_DIR$/src/musicPlayer/model/Playlist.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/Country.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/NonTrialUser.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/Address.java" />
@@ -162,13 +353,15 @@
         <option value="$PROJECT_DIR$/src/musicplayer/model/MusicTrack.java" />
         <option value="$PROJECT_DIR$/src/musicplayer/SceneManager.java" />
         <option value="$PROJECT_DIR$/src/musicplayer/Server_Connector.java" />
+        <option value="$PROJECT_DIR$/src/musicplayerzzz/Server_Connector.java" />
+        <option value="$PROJECT_DIR$/src/musicplayerzzz/controller/LogInMenuController.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1370" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -213,7 +406,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="musicplayer" />
+              <option name="myItemId" value="musicplayerzzz" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -228,6 +421,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="musicplayerzzz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllerz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imagezzzz" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -252,12 +471,132 @@
               <option name="myItemId" value="Beatroot" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="musicplayerzzz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="production" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="musicplayerzzz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viewz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="production" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="musicplayerzzz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modeler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="production" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="musicplayerzzz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllerz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="production" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imagezzzz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -266,6 +605,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/tika-parsers-1.4.jar!/" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -313,7 +653,7 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="musicplayer.Main" />
+      <option name="MAIN_CLASS_NAME" value="musicplayerzzz.Main" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -667,11 +1007,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493983764782</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="lower case package names test">
+      <created>1493984120702</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1493984120702</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -682,20 +1029,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.009463723" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12302839" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26070902" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12776025" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25841874" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39962476" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -708,6 +1054,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46056783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -773,7 +1120,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/AccountHolder.java" />
     <entry file="file://$PROJECT_DIR$/src/model/MusicTrack.java" />
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/model/Node.java" />
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
@@ -784,13 +1130,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/out/production/Beatroot/musicplayer/View/logInMenu.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/production/Beatroot/musicPlayer/Main.java" />
@@ -833,14 +1179,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/MembershipMenuController.java" />
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/Country.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/Country.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/DialogBoxManager.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/DialogBoxManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
@@ -848,7 +1194,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
@@ -856,17 +1202,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/PlayerManager.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/PlayerManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/TemporaryAlbumClass.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/TemporaryAlbumClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -877,188 +1225,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/view/mainMenu.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/viewz/mainMenu.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/controller/PaymentMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <marker date="1493844692766" expanded="true" signature="4312:4366" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/view/logInMenu.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/controller/PaymentMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/viewz/logInMenu.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/view/welcomeMenu.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/viewz/welcomeMenu.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1105">
           <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/controller/MainMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1227#1228#0" expanded="false" />
-            <element signature="e#1289#1290#0" expanded="false" />
-            <element signature="e#1489#1490#0" expanded="false" />
-            <element signature="e#1553#1554#0" expanded="false" />
-            <element signature="e#1943#1944#0" expanded="false" />
-            <element signature="e#2021#2022#0" expanded="false" />
-            <element signature="e#2770#2771#0" expanded="false" />
-            <element signature="e#2800#2801#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/controller/LogInMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/controller/WelcomeMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="81" column="8" lean-forward="false" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/controller/SignUpMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="52" column="11" lean-forward="false" selection-start-line="52" selection-start-column="11" selection-end-line="53" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/Genre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/Gender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/view/signUpMenu.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/controller/MainMenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="50" column="65" lean-forward="false" selection-start-line="50" selection-start-column="65" selection-end-line="51" selection-end-column="64" />
-          <folding />
+        <state relative-caret-position="612">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/PrivacyLevel.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/controller/WelcomeMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="81" column="8" lean-forward="false" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/controller/SignUpMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="52" column="11" lean-forward="false" selection-start-line="52" selection-start-column="11" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/Genre.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/UserPlaylistLink.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/Gender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/viewz/signUpMenu.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="50" column="65" lean-forward="false" selection-start-line="50" selection-start-column="65" selection-end-line="51" selection-end-column="64" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/PrivacyLevel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/UserPlaylistLink.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/TrialUser.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/TrialUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/Album.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/Album.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="20" column="54" lean-forward="false" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/NonTrialUser.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/NonTrialUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/PaymentMethod.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/PaymentMethod.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/Playlist.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/Playlist.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="49" column="4" lean-forward="false" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
-          <folding>
-            <element signature="e#1008#1009#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/view/paymentMenu.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/viewz/paymentMenu.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1496">
           <caret line="88" column="44" lean-forward="false" selection-start-line="88" selection-start-column="44" selection-end-line="88" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/SceneManager.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/SceneManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="726">
           <caret line="70" column="8" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
@@ -1066,15 +1375,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/Address.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/Address.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
+        <state relative-caret-position="442">
           <caret line="26" column="37" lean-forward="false" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/Administrator.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/Administrator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2448">
           <caret line="173" column="38" lean-forward="false" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
@@ -1082,63 +1391,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/MusicTrack.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/MusicTrack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
+        <state relative-caret-position="612">
           <caret line="37" column="24" lean-forward="false" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
           <folding>
-            <element signature="e#1060#1061#0" expanded="true" />
+            <element signature="e#1065#1066#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/DB_Connector.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/DB_Connector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1088">
-          <caret line="70" column="36" lean-forward="false" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
+          <caret line="69" column="36" lean-forward="false" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/Rating.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/Rating.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding>
-            <element signature="e#230#236#0" expanded="false" />
-            <element signature="e#325#326#0" expanded="false" />
-            <element signature="e#347#348#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/User.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1989">
           <caret line="193" column="8" lean-forward="false" selection-start-line="193" selection-start-column="8" selection-end-line="193" selection-end-column="8" />
-          <folding>
-            <marker date="1493925135918" expanded="true" signature="5074:5108" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/Comment.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/Comment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="23" column="32" lean-forward="false" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/PremiumUser.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/PremiumUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-107">
           <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/model/MusicArtist.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/modeler/MusicArtist.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="27" column="69" lean-forward="false" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="69" />
@@ -1146,10 +1445,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/Server_Connector.java">
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/Server_Connector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="59">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/controller/LogInMenuController.java" />
+    <entry file="file://$PROJECT_DIR$/src/musicplayerzzz/controllerz/LogInMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
           <folding />
         </state>
       </provider>
