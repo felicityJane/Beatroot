@@ -1,6 +1,5 @@
 package musicplayer;
 import com.mysql.jdbc.Connection;
-import javafx.scene.control.Alert;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;

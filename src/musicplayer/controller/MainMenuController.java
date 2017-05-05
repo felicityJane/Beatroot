@@ -2,17 +2,12 @@ package musicplayer.controller;
 /**
  * Created by felic on 10/04/2017.
  */
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
 import java.net.URL;
