@@ -69,7 +69,7 @@ public class WelcomeMenuController implements Initializable {
     private MediaView mediaView;
     private String temp = "";
     private String selectedItem = "";
-    private static String logInMenuPath = "View/logInMenu.fxml";
+    private static String logInMenuPath = "view/logInMenu.fxml";
     private URL url;
 
 
