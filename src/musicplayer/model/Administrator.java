@@ -57,7 +57,7 @@ public class Administrator extends NonTrialUser {
 
 	public Administrator(String userName, String displayName, String password, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			String country, Gender gender, String phoneNumber, Date startDate, float wage, float contractHours,
+			Country country, Gender gender, String phoneNumber, Date startDate, float wage, float contractHours,
 			String staffID) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
@@ -164,14 +164,14 @@ public class Administrator extends NonTrialUser {
 
 	public void updateUserInformation(User u, String displayName, String password, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			String country, String phoneNumber) {
+			Country country, String phoneNumber) {
 		u.changeAccountSettings(displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, phoneNumber);
 	}
 
 	public void updatePremiumUserInformation(PremiumUser u, String displayName, String password, String firstName,
 			String lastName, Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence,
-			String postalCode, String country, String phoneNumber) {
+			String postalCode, Country country, String phoneNumber) {
 		u.changeAccountSettings(displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, phoneNumber);
 	}

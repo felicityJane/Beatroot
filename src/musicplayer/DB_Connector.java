@@ -1,6 +1,5 @@
 package musicplayer;
 import com.mysql.jdbc.Connection;
-import javafx.scene.control.Alert;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,12 +19,8 @@ public class DB_Connector {
             statement = c.createStatement();
 
         } catch (SQLException sqlEx) {
-
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setContentText("Error while accessing the database. Please try again.");
-            dialog.setHeaderText("Unable to access specified database");
-            dialog.setTitle("Error");
-            dialog.showAndWait();
+            DialogBoxManager.errorDialogBox("Unable to access specified database","Error while accessing the database. Please try again.");
+            sqlEx.printStackTrace();
         }
     }
 
@@ -40,11 +35,8 @@ public class DB_Connector {
         }
         catch (SQLException ex) {
 
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setContentText("Error on executing the query!");
-            dialog.setHeaderText("Unable to run query");
-            dialog.setTitle("Error");
-            dialog.showAndWait();
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing search query. Please try again.");
+            ex.printStackTrace();
         }
     }
 
@@ -55,44 +47,32 @@ public class DB_Connector {
                     + " WHERE " + whereStatement);
             System.out.println("Updated rows: " + rows);
         } catch (SQLException sqlEx) {
-
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setContentText("Error on executing the query!");
-            dialog.setHeaderText("Unable to run query");
-            dialog.setTitle("Error");
-            dialog.showAndWait();
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing update query. Please try again.");
+            sqlEx.printStackTrace();
         }
     }
 
     public void insert(String tableNameAndParameters, String values) {
 
         try {
-            statement.executeQuery("INSERT INTO " + tableNameAndParameters + " VALUES "
+            statement.executeUpdate("INSERT INTO " + tableNameAndParameters + " VALUES "
             + values);
 
         } catch (SQLException sqlEx) {
-
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setContentText("Error on executing the query!");
-            dialog.setHeaderText("Unable to run query");
-            dialog.setTitle("Error");
-            dialog.showAndWait();
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing insert query. Please try again.");
+            sqlEx.printStackTrace();
         }
     }
 
     public void delete(String tableToDeleteFrom, String whereStatement) {
 
         try {
-            statement.executeQuery("DELETE FROM " + tableToDeleteFrom + " WHERE "
+            statement.executeUpdate("DELETE FROM " + tableToDeleteFrom + " WHERE "
             + whereStatement);
 
         } catch (SQLException sqlEx) {
-
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setContentText("Error on executing the query!");
-            dialog.setHeaderText("Unable to run query");
-            dialog.setTitle("Error");
-            dialog.showAndWait();
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing delete query. Please try again.");
+            sqlEx.printStackTrace();
         }
     }
 }

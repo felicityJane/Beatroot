@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 
 public class MusicTrack {
+
+	private int ID;
 	private String trackName;
 	private Duration trackLength;
 	private Genre[] genre;
@@ -31,6 +33,14 @@ public class MusicTrack {
 		this.trackLength = trackLength;
 		this.genre = genres;
 		this.url = url;
+	}
+
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int ID) {
+		this.ID = ID;
 	}
 
 	public String getTrackName() {

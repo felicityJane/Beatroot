@@ -2,27 +2,26 @@ package musicplayer.model;
 
 public class Comment {
 
-	private final String commentID;
+	private int commentID;
 	private String message;
 	private User user;
 	private MusicTrack musicTrack;
 
 	/**
-	 * 
-	 * @param commentID
-	 *            String Comment ID
+	 *
 	 * @param message
 	 *            String User's text message;
 	 */
 
-	public Comment(String commentID, String message) {
-		this.commentID = commentID;
+	public Comment(String message) {
 		this.message = message;
 	}
 
-	public String getCommentID() {
+	public int getCommentID() {
 		return commentID;
 	}
+
+	public void setCommentID(int commentID) { this.commentID = commentID;}
 
 	public String getMessage() {
 		return message;

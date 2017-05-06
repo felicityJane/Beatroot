@@ -3,18 +3,18 @@ package musicplayer.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
 public class LogInMenuController implements Initializable{
 
     @FXML private TextField userName;
     @FXML private TextField userPassword;
+    @FXML private Button loginButton,signUpButton;
     @FXML private MainMenuController mainMenuController;
     @FXML private AnchorPane logInParentAnchorPane;
 

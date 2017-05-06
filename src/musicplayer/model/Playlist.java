@@ -3,9 +3,11 @@ package musicplayer.model;
 import java.time.Duration;
 import java.util.ArrayList;
 
+
 public class Playlist {
+
 	private String name;
-	private int numberOfEntries = 0;
+	private int numberOfEntries = 0, id;
 	private Duration duration;
 	private PrivacyLevel visibility;
 	private ArrayList<MusicTrack> musicTracks = new ArrayList<MusicTrack>();
@@ -15,8 +17,6 @@ public class Playlist {
 	 * 
 	 * @param name
 	 *            String Custom playlist's name
-	 * @param numberOfEntries
-	 *            Integer The amount of songs in the playlist
 	 * @param visibility
 	 *            Enum {@link: PrivacyLevel} The level of visibility for other
 	 *            users.
@@ -33,6 +33,14 @@ public class Playlist {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public int getId() {
+	    return id;
+    }
+
+    public void setId(int id) {
+	    this.id = id;
+    }
 
 	public int getNumberOfEntries() {
 		return numberOfEntries;

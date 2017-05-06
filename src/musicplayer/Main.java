@@ -6,7 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.nio.file.Path;
+/**
+ * Created by fatih on 2017-04-15.
+ */
 
 public class Main extends Application {
 
