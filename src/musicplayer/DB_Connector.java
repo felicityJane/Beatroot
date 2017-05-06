@@ -1,6 +1,9 @@
 package musicplayer;
 import com.mysql.jdbc.Connection;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
 
+import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,7 +32,7 @@ public class DB_Connector {
             ResultSet rs = statement.executeQuery("SELECT " + parameterToSearch +
                     " FROM " + tableName + " WHERE " + whereStatement);
             while (rs.next()) {
-                System.out.println("The " + rs.getString(2) + " has " + parameterToSearch + " = " + rs.getString(1) +
+                System.out.println("The " + rs.getString(1) + " has " + parameterToSearch + " = " + rs.getString(2) +
                         " for " + whereStatement + ".");
             }
         }
@@ -70,9 +73,54 @@ public class DB_Connector {
             statement.executeUpdate("DELETE FROM " + tableToDeleteFrom + " WHERE "
             + whereStatement);
 
-        } catch (SQLException sqlEx) {
+        }catch (SQLException sqlEx) {
             DialogBoxManager.errorDialogBox("Cannot run query","Error on executing delete query. Please try again.");
             sqlEx.printStackTrace();
         }
     }
+    public void logInTrial(String userName, String password, ActionEvent event, Label warningLabel) {
+
+        try {
+            ResultSet rs = statement.executeQuery("SELECT user_name,password FROM trial_user WHERE user_name='"+userName+"'");
+
+           if (rs.next()) {
+                if (password.equals(rs.getString(2)) ){
+                    SceneManager.sceneManager.changeScene(event,"view/signUpMenu.fxml");
+                }else {
+                   warningLabel.setText("Invalid username or password!!");
+                }
+            }if (!rs.next()){
+                warningLabel.setText("Invalid Username or password!!");
+            }
+        }catch (SQLException ex) {
+
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing login query. Please try again.");
+            ex.printStackTrace();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void logInPremium(String userName, String password, ActionEvent event, Label warningLabel) {
+
+        try {
+            ResultSet rs = statement.executeQuery("SELECT user_name,password FROM premium_user WHERE user_name='"+userName+"'");
+
+            if (rs.next()) {
+                if (password.equals(rs.getString(2)) ){
+                    SceneManager.sceneManager.changeScene(event,"view/signUpMenu.fxml");
+                }else {
+                    warningLabel.setText("Invalid username or password!!");
+                }
+            }if (!rs.next()){
+                warningLabel.setText("Invalid Username or password!!");
+            }
+        }catch (SQLException ex) {
+
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing login query. Please try again.");
+            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
