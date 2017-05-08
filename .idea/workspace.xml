@@ -2,10 +2,98 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Merge branch 'master' of https://github.com/felicityJane/Beatroot + added sql dump&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/images/Linkin Park - Living ThingsHover.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/images/Linkin Park - Living ThingsPressed.jpg" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/Celldweller_EoaE_BG_LOVE.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/EyeGirl.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/Hadean.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/Konachan.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/Linkin Park - Living Things.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/PauseHover.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/PauseNormal.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/PausePressed.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/PlayHover.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/PlayNormal.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/PlayPressed.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/Rage Against the Machine - Rage Against the Machine.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/StopHover.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/StopNormal.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/StopPressed.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/VolumeHigh.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/VolumeLow.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/VolumeMed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/VolumeOff.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/beatrootlogo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/paymentFree.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/Images/paymentPremium.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/EyeGirl.jpg~9d90beb7a72df253dc4496fc51ad94a0cd4d5175" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/Hadean.jpg~9d90beb7a72df253dc4496fc51ad94a0cd4d5175" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/Konachan.jpg~9d90beb7a72df253dc4496fc51ad94a0cd4d5175" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/PauseHover.jpg~HEAD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/PauseHover.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/PauseNormal.jpg~HEAD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/PauseNormal.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/PausePressed.jpg~HEAD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/PausePressed.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/PlayHover.jpg~HEAD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/PlayHover.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/PlayNormal.jpg~HEAD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/PlayNormal.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/PlayPressed.jpg~HEAD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/PlayPressed.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/StopHover.jpg~HEAD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/StopHover.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/StopNormal.jpg~HEAD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/StopNormal.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/StopPressed.jpg~HEAD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/StopPressed.jpg~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/VolumeHigh.png~HEAD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/VolumeHigh.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/VolumeLow.png~HEAD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/VolumeLow.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/VolumeMed.png~HEAD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/VolumeMed.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/VolumeOff.png~HEAD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/images/VolumeOff.png~a1d50d156be8ed912934dba259825b0a9ec4b9bd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/.classpath" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/.project" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/LogInMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/MainMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/PaymentMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/SignUpMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Controller/WelcomeMenuController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/DB_Connector.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/DialogBoxManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/PlayerManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/SceneManager$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/SceneManager$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/SceneManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/Server_Connector.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/TemporaryAlbumClass.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/logInMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/mainMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/paymentMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/View/welcomeMenu.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/controller/WelcomeMenuController$1$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Address.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Administrator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Album.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Comment.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Country.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Gender.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Genre.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/MusicArtist.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/MusicTrack.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/NonTrialUser.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/PaymentMethod.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Playlist.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/PremiumUser.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/PrivacyLevel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/Rating.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/TrialUser.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/User.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Beatroot/musicPlayer/model/UserPlaylistLink.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/musicplayer/DB_Connector.java" afterPath="$PROJECT_DIR$/src/musicplayer/DB_Connector.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,6 +102,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -25,7 +116,7 @@
         <entry file="file://$PROJECT_DIR$/src/musicplayer/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -64,7 +155,7 @@
       <file leaf-file-name="signUpMenu.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicplayer/view/signUpMenu.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
+            <state relative-caret-position="755">
               <caret line="102" column="60" lean-forward="false" selection-start-line="102" selection-start-column="60" selection-end-line="102" selection-end-column="60" />
               <folding />
             </state>
@@ -74,10 +165,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DB_Connector.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DB_Connector.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicplayer/DB_Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
+            <state relative-caret-position="220">
               <caret line="87" column="77" lean-forward="false" selection-start-line="87" selection-start-column="77" selection-end-line="87" selection-end-column="77" />
               <folding />
             </state>
@@ -97,8 +198,8 @@
       <file leaf-file-name="Server_Connector.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicplayer/Server_Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state relative-caret-position="629">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -107,7 +208,7 @@
       <file leaf-file-name="paymentMenu.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/musicplayer/view/paymentMenu.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-973">
+            <state relative-caret-position="357">
               <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
               <folding />
             </state>
@@ -140,7 +241,7 @@
       </map>
     </option>
     <push-targets>
-      <push-target-info target-remote="origin" target-branch="Federica" repo="$PROJECT_DIR$" source="Federica" />
+      <push-target-info repo="$PROJECT_DIR$" source="Federica" target-remote="origin" target-branch="Federica" />
     </push-targets>
   </component>
   <component name="GradleLocalSettings">
@@ -151,7 +252,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/musicPlayer/model/Country.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/NonTrialUser.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/Address.java" />
         <option value="$PROJECT_DIR$/src/musicPlayer/model/TrialUser.java" />
@@ -202,14 +302,15 @@
         <option value="$PROJECT_DIR$/src/musicplayer/view/signUpMenu.fxml" />
         <option value="$PROJECT_DIR$/src/musicplayer/Main.java" />
         <option value="$PROJECT_DIR$/src/musicplayer/DB_Connector.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1176" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -228,6 +329,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -333,6 +435,14 @@
               <option name="myItemId" value="production" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="musicPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -348,9 +458,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beatroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -796,26 +923,24 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0047318614" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.73974764" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0047318614" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0047318614" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26061493" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12776025" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26041666" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -831,9 +956,11 @@
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0047318614" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12776025" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -903,35 +1030,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Documents/HKR/Project course 2/HKRFitnessGym/HKRFitnessGym/src/com/Project/Application/HKRFitnessGym.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/CSS/welcomePage.css" />
-    <entry file="file://$USER_HOME$/Documents/HKR/Project course 2/FTPClientExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8330">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/HKR/Project course 2/ftp4j-1.7.2/src/it/sauronsoftware/ftp4j/FTPConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4245">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/HKR/Project course 2/ftp4j-1.7.2/src/it/sauronsoftware/ftp4j/FTPClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2261">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../HKR/Project course 2/FTPClientExample.java" />
+    <entry file="file://$PROJECT_DIR$/../../../HKR/Project course 2/ftp4j-1.7.2/src/it/sauronsoftware/ftp4j/FTPConnector.java" />
+    <entry file="file://$PROJECT_DIR$/../../../HKR/Project course 2/ftp4j-1.7.2/src/it/sauronsoftware/ftp4j/FTPClient.java" />
     <entry file="file://$PROJECT_DIR$/src/musicPlayer/Controller/MembershipMenuController.java" />
     <entry file="file://$PROJECT_DIR$/src/musicplayer/DialogBoxManager.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1110,7 +1212,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1126,7 +1227,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3213">
           <caret line="189" column="28" lean-forward="false" selection-start-line="189" selection-start-column="4" selection-end-line="189" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1156,19 +1256,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicplayer/view/paymentMenu.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-973">
+        <state relative-caret-position="357">
           <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/musicplayer/view/signUpMenu.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="102" column="60" lean-forward="false" selection-start-line="102" selection-start-column="60" selection-end-line="102" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -1195,23 +1284,42 @@
     <entry file="file://$PROJECT_DIR$/src/musicplayer/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicplayer/Server_Connector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state relative-caret-position="629">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/musicplayer/DB_Connector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
+        <state relative-caret-position="220">
           <caret line="87" column="77" lean-forward="false" selection-start-line="87" selection-start-column="77" selection-end-line="87" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/musicplayer/view/signUpMenu.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="755">
+          <caret line="102" column="60" lean-forward="false" selection-start-line="102" selection-start-column="60" selection-end-line="102" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
           <folding />
         </state>
       </provider>
