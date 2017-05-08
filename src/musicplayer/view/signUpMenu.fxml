@@ -100,7 +100,7 @@
       <Label fx:id="warningText" layoutX="156.0" layoutY="136.0" prefHeight="25.0" prefWidth="260.0" textFill="#e80d0d" />
       <ImageView fitHeight="349.0" fitWidth="317.0" layoutX="458.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/offers.png" />
+            <!--<Image url="@../../images/offers.png" /> -->
          </image>
       </ImageView>
    </children>

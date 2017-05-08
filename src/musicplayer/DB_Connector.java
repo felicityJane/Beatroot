@@ -85,7 +85,7 @@ public class DB_Connector {
 
            if (rs.next()) {
                 if (password.equals(rs.getString(2)) ){
-                    SceneManager.sceneManager.changeScene(event,"view/signUpMenu.fxml");
+                    SceneManager.sceneManager.changeScene(event,"view/welcomeMenu.fxml");
                 }else {
                    warningLabel.setText("Invalid username or password!!");
                 }
@@ -107,7 +107,7 @@ public class DB_Connector {
 
             if (rs.next()) {
                 if (password.equals(rs.getString(2)) ){
-                    SceneManager.sceneManager.changeScene(event,"view/signUpMenu.fxml");
+                    SceneManager.sceneManager.changeScene(event,"view/welcomeMenu.fxml");
                 }else {
                     warningLabel.setText("Invalid username or password!!");
                 }
