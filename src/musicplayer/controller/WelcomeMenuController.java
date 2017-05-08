@@ -5,19 +5,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
+import musicplayer.Server_Connector;
 import musicplayer.TemporaryAlbumClass;
-
+import org.apache.commons.io.FilenameUtils;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.DefaultHandler;
 import org.apache.tika.metadata.Metadata;
@@ -25,7 +28,6 @@ import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
 
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -63,6 +65,9 @@ public class WelcomeMenuController implements Initializable {
     private MediaView mediaView;
     private String temp = "";
     private String selectedItem = "";
+    private static String logInMenuPath = "view/logInMenu.fxml";
+    private URL url;
+
 
     @FXML private MainMenuController mainMenuController;
 
@@ -72,13 +77,21 @@ public class WelcomeMenuController implements Initializable {
         mainMenuController.setDisabledMenuItemsWelcomeScene();
         mainMenuController.menuBarFitToParent(welcomeParentAnchorPane);
 
+        //***********************************************************
+        Server_Connector connector = new Server_Connector();
+        connector.connectToServer();
+        //***********************************************************
+
+
         Image img = new Image("images/PlayNormal.jpg");
-        btnPlay.setFill(new ImagePattern(img));
+       btnPlay.setFill(new ImagePattern(img));
         Image img1 = new Image("images/StopNormal.jpg");
         btnStop.setFill(new ImagePattern(img1));
         Image img2 = new Image("images/PauseNormal.jpg");
         btnPause.setFill(new ImagePattern(img2));
         tglLoop.setText("⟳");
+        /*String css = this.getClass().getResource("/musicPlayer/CSS/welcomePage.css").toExternalForm();
+        welcomeRootAnchor.getStylesheets().add(css);*/
 
         TemporaryAlbumClass tempAlbum = new TemporaryAlbumClass();
         tempAlbum.getTracks().add("01. Celldweller - Faction 04 .mp3");
@@ -105,33 +118,49 @@ public class WelcomeMenuController implements Initializable {
         imgMain.setImage(tempAlbum.getAlbumCover());
 
 
+
         for (Node n : welcomeRootAnchor.getChildren()) {
 
             if (n instanceof ImageView) {
 
+                DropShadow ds = new DropShadow(10, 0, 0, Color.GRAY);
+                n.setEffect(ds);
+
                 n.setOnMouseEntered(event ->  {
                     ColorAdjust brightness = new ColorAdjust();
-                    brightness.setBrightness(0.3);
+                    DropShadow ds1 = new DropShadow(12, 0, 0, Color.GRAY);
+                    brightness.setInput(ds1);
+                    brightness.setBrightness(0.2);
                     n.setEffect(brightness);
                 });
                 n.setOnMouseExited(event -> {
                     ColorAdjust normal = new ColorAdjust();
+                    normal.setInput(ds);
                     normal.setBrightness(0.0);
                     n.setEffect(normal);
                 });
                 n.setOnMousePressed(event ->  {
                     ColorAdjust blackout = new ColorAdjust();
+                    DropShadow ds1 = new DropShadow(12, 0, 0, Color.GRAY);
+                    blackout.setInput(ds1);
                     blackout.setBrightness(-0.3);
                     n.setEffect(blackout);
                 });
                 n.setOnMouseReleased(event -> {
                     ColorAdjust normal = new ColorAdjust();
+                    normal.setInput(ds);
                     normal.setBrightness(0.0);
                     n.setEffect(normal);
                 });
             }
         }
-        media = new Media(path.toUri().toString());
+
+        try {
+            url = new URL("http://www.webshare.hkr.se/FECO0002/alice%20in%20chains%20-%2001%20-%20them%20bones.mp3");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        media = new Media("http://www.webshare.hkr.se/FECO0002/alice%20in%20chains%20-%2001%20-%20them%20bones.mp3");
         mediaPlayer = new MediaPlayer(media);
         mediaView = new MediaView(mediaPlayer);
         sliderVolume.setValue(mediaPlayer.getVolume() * 100);
@@ -145,7 +174,9 @@ public class WelcomeMenuController implements Initializable {
         if (answer){
             try {
                 mediaPlayer.stop();
+
                 SceneManager.sceneManager.changeScene(event,"view/logInMenu.fxml");
+
             }catch (Exception e){
                 DialogBoxManager.errorDialogBox("Error occurred","Changing from welcome scene to log in scene");
                 e.printStackTrace();
@@ -240,6 +271,7 @@ public class WelcomeMenuController implements Initializable {
         Image img = new Image("images/StopPressed.jpg");
         btnStop.setFill(new ImagePattern(img));
     }
+
     private String formatTime(double time) {
 
         int numOfMinutes;
@@ -293,6 +325,7 @@ public class WelcomeMenuController implements Initializable {
 
                             sliderPlay.setValue(newValue.toSeconds());
                             lblElapsedTime.setText(formatTime(mediaPlayer.getCurrentTime().toSeconds()));
+                            mediaPlayer.setCycleCount(1);
                             lblTimeLeft.setText(formatTime(mediaPlayer.getTotalDuration().toSeconds() - mediaPlayer.getCurrentTime().toSeconds()));
 
                             if (!tglLoop.isSelected()) {
@@ -303,7 +336,11 @@ public class WelcomeMenuController implements Initializable {
                                 mediaPlayer.setCycleCount(1);
 
                             } else if (tglLoop.isSelected()) {
-                                mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+                                mediaPlayer.setOnEndOfMedia(new Runnable() {
+                                    public void run() {
+                                       mediaPlayer.seek(Duration.ZERO);
+                                    }
+                                });
                             }
                         }
                 );
@@ -335,7 +372,7 @@ public class WelcomeMenuController implements Initializable {
 
         //reads mp3 file's metadata
         try {
-            InputStream input = new FileInputStream(new File(path.getFileName().toString()));
+            InputStream input = new FileInputStream(new File("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " "))));
             ContentHandler handler = new DefaultHandler();
             Parser parser = new Mp3Parser();
             ParseContext parseCtx = new ParseContext();
@@ -367,5 +404,6 @@ public class WelcomeMenuController implements Initializable {
         imgMain.setImage(tempAlbum2.getAlbumCover());
 
     }
+
 }
 

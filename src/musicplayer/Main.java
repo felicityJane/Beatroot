@@ -6,14 +6,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.nio.file.Path;
+/**
+ * Created by fatih on 2017-04-15.
+ */
 
 public class Main extends Application {
 
         @Override
         public void start(Stage primaryStage) throws Exception{
             //always begin in the logInMenu scene
-            Parent root = FXMLLoader.load(getClass().getResource("view/logInMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("view/signUpMenu.fxml"));
             primaryStage.setTitle("Beatroot");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();

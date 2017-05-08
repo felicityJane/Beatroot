@@ -10,7 +10,7 @@ public class NonTrialUser extends User {
 
 	public NonTrialUser(String userName, String displayName, String password, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			String country, Gender gender, String phoneNumber) {
+			Country country, Gender gender, String phoneNumber) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 	}

@@ -12,16 +12,13 @@ public class Album {
 	private Administrator administrator;
 
 	/**
-	 * @param albumID
-	 *            Integer Album' ID for database handling
 	 * @param albumName
 	 *            String Album's name
 	 * @param albumCover
 	 *            Image Album's cover
 	 */
 
-	public Album(int albumID, String albumName, Image albumCover) {
-		this.albumID = albumID;
+	public Album(String albumName, Image albumCover) {
 		this.albumName = albumName;
 		this.albumCover = albumCover;
 	}

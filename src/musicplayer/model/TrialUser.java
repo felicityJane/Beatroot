@@ -37,7 +37,7 @@ public class TrialUser extends User {
 	 */
 	public TrialUser(String userName, String displayName, String password, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			String country, Gender gender, String phoneNumber, Date freeTrialEndDate) {
+			Country country, Gender gender, String phoneNumber, Date freeTrialEndDate) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.freeTrialEndDate = freeTrialEndDate;
@@ -48,8 +48,23 @@ public class TrialUser extends User {
 		return freeTrialEndDate;
 	}
 
-	public void upgradeToPremiumUser() {
-
+	public void upgradeToPremiumUserWithIdenticalBillingAddress(String bankCardNumber, Date expirationDate,
+			PaymentMethod paymentMethod, String billingAccountOwnerName) {
+		PremiumUser upgradedUser = new PremiumUser(this.getUserName(), this.getDisplayName(), this.getPassword(),
+				this.getFirstName(), this.getLastName(), this.getDateOfBirth(), this.getEmailAddress(),
+				this.getStreetNameAndNumber(), this.getCityOfResidence(), this.getPostalCode(), this.getCountry(),
+				this.getGender(), this.getPhoneNumber(), bankCardNumber, expirationDate, paymentMethod,
+				billingAccountOwnerName);
 	}
 
+	public void upgradeToPremiumUserWithDifferentBillingAddress(String bankCardNumber, Date expirationDate,
+			PaymentMethod paymentMethod, String billingAccountOwnerName, String billingAddress, String billingCity,
+			String billingPostalCode, Country billingCountry, String billingPhoneNumber) {
+		PremiumUser upgradedUser = new PremiumUser(this.getUserName(), this.getDisplayName(), this.getPassword(),
+				this.getFirstName(), this.getLastName(), this.getDateOfBirth(), this.getEmailAddress(),
+				this.getStreetNameAndNumber(), this.getCityOfResidence(), this.getPostalCode(), this.getCountry(),
+				this.getGender(), this.getPhoneNumber(), bankCardNumber, expirationDate, paymentMethod,
+				billingAccountOwnerName, billingAddress, billingCity, billingPostalCode, billingCountry,
+				billingPhoneNumber);
+	}
 }

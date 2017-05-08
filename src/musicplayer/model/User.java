@@ -4,19 +4,21 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class User {
+	private String displayName, password, firstName, lastName, emailAddress, phoneNumber;
+	private Address physicalAddress;
 	private final String userName;
-	private String displayName, password, firstName, lastName, emailAddress, physicalAddress, cityOfResidence,
-			postalCode, country, phoneNumber;
+    private UserPlaylistLink userPlaylistLink;
 	private Date dateOfBirth;
 	private Gender gender;
-	private static Playlist defaultPlaylist;
+	private Playlist defaultPlaylist;
 	private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
+
 	private ArrayList<Comment> userComments = new ArrayList<Comment>();
 	private ArrayList<Rating> userRatings = new ArrayList<Rating>();
 
 	public User(String userName, String displayName, String password, String firstName, String lastName,
-			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			String country, Gender gender, String phoneNumber) {
+			Date dateOfBirth, String emailAddress, String streetNameAndNumber, String cityOfResidence, String postalCode,
+			Country country, Gender gender, String phoneNumber) {
 		this.userName = userName;
 		this.displayName = displayName;
 		this.password = password;
@@ -24,14 +26,16 @@ public abstract class User {
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.emailAddress = emailAddress;
-		this.physicalAddress = physicalAddress;
-		this.cityOfResidence = cityOfResidence;
-		this.postalCode = postalCode;
-		this.country = country;
+		this.physicalAddress.setFirstName(firstName);
+		this.physicalAddress.setLastName(lastName);
+		this.physicalAddress.setStreetNameAndNumber(streetNameAndNumber);
+		this.physicalAddress.setCity(cityOfResidence);
+		this.physicalAddress.setCountry(country);
+		this.physicalAddress.setPostalCode(postalCode);
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
-		// TODO this.defaultPlaylist=new Playlist()
-		userPlaylists.add(defaultPlaylist);
+        this.defaultPlaylist = new Playlist("Default", PrivacyLevel.PRIVATE);
+		userPlaylistLink.getPlaylists().add(defaultPlaylist);
 	}
 
 	public String getUserName() {
@@ -86,36 +90,20 @@ public abstract class User {
 		this.emailAddress = emailAddress;
 	}
 
-	public String getPhysicalAddress() {
-		return physicalAddress;
-	}
-
-	public void setPhysicalAddress(String physicalAddress) {
-		this.physicalAddress = physicalAddress;
+	public String getStreetNameAndNumber() {
+		return physicalAddress.getStreetNameAndNumber();
 	}
 
 	public String getCityOfResidence() {
-		return cityOfResidence;
-	}
-
-	public void setCityOfResidence(String cityOfResidence) {
-		this.cityOfResidence = cityOfResidence;
+		return physicalAddress.getCity();
 	}
 
 	public String getPostalCode() {
-		return postalCode;
+		return physicalAddress.getPostalCode();
 	}
 
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
+	public Country getCountry() {
+		return physicalAddress.getCountry();
 	}
 
 	public Gender getGender() {
@@ -134,24 +122,32 @@ public abstract class User {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public ArrayList<Playlist> getUserPlaylists() {
-		return userPlaylists;
+	public Address getPhysicalAddress() {
+		return physicalAddress;
 	}
 
-	public void setUserPlaylists(ArrayList<Playlist> userPlaylists) {
-		this.userPlaylists = userPlaylists;
+	public void setPhysicalAddress(Address physicalAddress) {
+		this.physicalAddress = physicalAddress;
 	}
 
-	public void addPlaylist(Playlist pl) {
-		if (userPlaylists.contains(pl))
+	public UserPlaylistLink getUserPlaylistLink() {
+		return userPlaylistLink;
+	}
+
+	public void setUserPlaylistLink(UserPlaylistLink userPlaylistLink) {
+		this.userPlaylistLink = userPlaylistLink;
+	}
+
+	public void addUserPlaylist(Playlist pl) {
+		if (userPlaylistLink.getPlaylists().contains(pl))
 			return;
-		userPlaylists.add(pl);
+		userPlaylistLink.getPlaylists().add(pl);
 	}
 
-	public void removePlaylist(Playlist pl) {
-		if (!userPlaylists.contains(pl))
+	public void removeUserPlaylist(Playlist pl) {
+		if (!userPlaylistLink.getPlaylists().contains(pl))
 			return;
-		userPlaylists.remove(pl);
+		userPlaylistLink.getPlaylists().remove(pl);
 	}
 
 	public ArrayList<Comment> getUserComments() {
@@ -186,19 +182,19 @@ public abstract class User {
 		userRatings.remove(r);
 	}
 
-	public void changeAccountSettings() {
+	public void changeAccountSettings(String displayName, String password, String firstName, String lastName,
+			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
+			Country country, String phoneNumber) {
 		setDisplayName(displayName);
 		setPassword(password);
 		setFirstName(firstName);
 		setLastName(lastName);
 		setDateOfBirth(dateOfBirth);
 		setEmailAddress(emailAddress);
-		setPhysicalAddress(physicalAddress);
-		setCityOfResidence(cityOfResidence);
-		setPostalCode(postalCode);
-		setCountry(country);
+		getPhysicalAddress().setStreetNameAndNumber(physicalAddress);
+		getPhysicalAddress().setPostalCode(postalCode);
+		getPhysicalAddress().setCountry(country);
+		getPhysicalAddress().setCity(cityOfResidence);
 		setPhoneNumber(phoneNumber);
-		// emailAddress, physicalAddress, cityOfResidence,
-		// postalCode, country, phoneNumber;
 	}
 }
