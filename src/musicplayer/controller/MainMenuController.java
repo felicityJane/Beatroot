@@ -25,10 +25,10 @@ public class MainMenuController implements Initializable{
     private LogInMenuController logInMenuController;
     private WelcomeMenuController welcomeMenuController;
     private SignUpMenuController signUpMenuController;
+    private PaymentMenuController paymentMenuController;
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.print("Hello Federica, can you see this?");
     }
     public void init(LogInMenuController logInMenuController) {
         this.logInMenuController = logInMenuController;
@@ -38,6 +38,9 @@ public class MainMenuController implements Initializable{
     }
     public void init(SignUpMenuController signUpMenuController) {
         this.signUpMenuController = signUpMenuController;
+    }
+    public void init(PaymentMenuController paymentMenuController) {
+        this.paymentMenuController = paymentMenuController;
     }
     public void setDisabledMenuItemsWelcomeScene(){
        createNewPlaylistMenu.setDisable(false);
