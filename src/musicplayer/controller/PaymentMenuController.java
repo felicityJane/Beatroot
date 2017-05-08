@@ -59,7 +59,7 @@ public class PaymentMenuController implements Initializable{
             String billingCit=billingCity.getText();
             String billingPostalCod=billingPostalCode.getText();
             String country=countryBox.getValue();
-            String cardType;
+            String cardType="";
             String nameRegex="[A-Za-z]+";
             String numberRegex="[0-9]+";
 
@@ -82,11 +82,11 @@ public class PaymentMenuController implements Initializable{
                 warningLabel.setText("Invalid Value");
                 billingCity.clear();
                 throw new InputMismatchException();
-            }if (phoneNum.matches(numberRegex)){
+            }if (!phoneNum.matches(numberRegex)){
                 warningLabel.setText("Invalid phone number");
                 phoneNumber.clear();
                 throw new InputMismatchException();
-            }if (billingPostalCod.matches(numberRegex)) {
+            }if (!billingPostalCod.matches(numberRegex)) {
                 warningLabel.setText("Invalid postal code");
                 billingPostalCode.clear();
                 throw new InputMismatchException();
@@ -95,10 +95,10 @@ public class PaymentMenuController implements Initializable{
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
             Date convertedCurrentDate = sdf.parse(yearBox.getValue().toString()+"-"+monthBox.getValue().toString());
             String expritationDate=sdf.format(convertedCurrentDate );
+            System.out.println(expritationDate);
 
-
-          DB_Connector connector=new DB_Connector("jdbc:mysql://127.0.0.1:3306/mydb?user=root&password=root&useSSL=false");
-
+          DB_Connector connector=new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
+            connector.insert("premium(bank_card_number, expiration_date,card_type,billing_account_owner_name, billing_city, billing_postal_code,billing_country,billing_phone_number)", "'"+bankCardNum+"','"+expritationDate+"','"+cardType+"','"+cardHolder+"','"+billingCit+"','"+billingPostalCod+"','"+country+"','"+phoneNum+"')");
 
         }catch (InputMismatchException ie){
             System.out.println(ie.toString());

@@ -94,11 +94,12 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
         String emal=email.getText();
         String gender=null;
         String userType=null;
-        String tableName = null;
         String country=countryBox.getValue();
         String numberRegex="[0-9]+";
         String emailRegex ="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(.+[a-zA-Z0-9-.]+)+$";
         String nameRegex="[A-Za-z]+";
+        String tableName="trial_user";
+
 
 
 
@@ -135,11 +136,9 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
         throw new InputMismatchException();
         }if (trialUser.isSelected()){
         userType=trialUser.getText();
-        tableName="trial_user";
         }if (premiumUser.isSelected()){
         userType=premiumUser.getText();
         tableName="premium_user";
-
         }if (!phoneNum.matches(numberRegex)){
         warningText.setText("Invalid phone number");
         phoneNumber.clear();
@@ -155,26 +154,13 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
 
         DB_Connector connector =new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
 
-        connector.insert(tableName+"(user_name)", "'"+userNam+"'");
+        connector.insert(tableName+"(user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, tree_trial_end_date, gender_gender_id, playlist_link)", "'"+userNam+"','"+userPass+"','"+userNam+"','"+firstNam+"','"+lastNam+"','"+dateOfBirht+"','"+emal+"','"+physicalAdd+"','"+cit+"','"+postalCo+"','"+country+"')");
 
-
-
-
-                    /* You would write insert("album(album_id, album_name, album_cover_path, administrator_staff_id)", "(1, 'Blackhole sun', 'C:/Pictures/Soundgarden', '122')");
-            Basically as a first parameter you pass the name of the table and its keys in parentheses*/
-
-
-        if (premiumUser.isSelected()){
-        SceneManager.sceneManager.changeScene(event,"view/paymentMenu.fxml");
-        }
-
-        //change scene location name to pay scene possibly
         //SceneManager.sceneManager.changeScene(event,"view/welcomeMenu.fxml");
 
         }catch (InputMismatchException ie){
         System.out.println(ie.toString());
 
-        SceneManager.sceneManager.changeScene(event,"view/welcomeMenu.fxml");
         }catch (Exception e){
         DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to welcome scene");
         System.out.println(e.toString());

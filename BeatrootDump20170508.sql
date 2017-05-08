@@ -54,6 +54,7 @@ CREATE TABLE `administrator` (
 
 LOCK TABLES `administrator` WRITE;
 /*!40000 ALTER TABLE `administrator` DISABLE KEYS */;
+INSERT INTO `administrator` VALUES ('beatroot','beatroot','1234','rCoolBeatz','Hercule','Poirot','1873-06-21','rCoolBeatz@beatroot.com','56B Whitehaven Mansions','London','EC1A 9PS','United_Kingdom','2017-04-01',500000,40,1,'1');
 /*!40000 ALTER TABLE `administrator` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +160,7 @@ CREATE TABLE `gender` (
 
 LOCK TABLES `gender` WRITE;
 /*!40000 ALTER TABLE `gender` DISABLE KEYS */;
-INSERT INTO `gender` VALUES (1,'male');
+INSERT INTO `gender` VALUES (1,'MALE'),(2,'FEMALE'),(3,'NOT_SPECIFIED');
 /*!40000 ALTER TABLE `gender` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,6 +187,7 @@ CREATE TABLE `genre` (
 
 LOCK TABLES `genre` WRITE;
 /*!40000 ALTER TABLE `genre` DISABLE KEYS */;
+INSERT INTO `genre` VALUES (1,'POP',19),(2,'INDUSTRIAL_METAL',1),(3,'HEAVY_METAL',22),(4,'DEATH_METAL',2),(5,'ALTERNATIVE_METAL',3),(6,'JAZZ',0),(7,'REGGAE',0),(8,'HIP_HOP',31),(9,'TECHNO',24),(10,'DISCO',20),(11,'HOUSE',0),(12,'BLUES',0),(13,'RAP',0),(14,'PUNK_ROCK',0),(15,'RYTHM_AND_BLUES',0),(16,'FOLK',0),(17,'DUBSTEP',0),(18,'ELECTRO',0),(19,'FUNK',0),(20,'COUNTRY',0),(21,'MELODY',0),(22,'ORCHESTRA',0),(23,'CLASSICAL',0),(24,'INSTRUMENTAL',0),(25,'DRUM_AND_BASS',0),(26,'TRANCE',0),(27,'GOSPEL',0),(28,'OPERA',0),(29,'POP_ROCK',0),(30,'BLUEGRASS',0),(31,'PROGRESSIVE_ROCK',0),(32,'FOLK_ROCK',0),(33,'SOUL',0),(34,'HARDCORE_PUNK',0),(35,'SKA',0),(36,'INDIE_POP',0),(37,'TRAP',0),(38,'WORLD',0),(39,'REGGAETON',0),(40,'BLUES_ROCK',0);
 /*!40000 ALTER TABLE `genre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,6 +302,7 @@ CREATE TABLE `premium_user` (
   `last_name` varchar(45) NOT NULL,
   `date_of_birth` date NOT NULL,
   `email_address` varchar(45) NOT NULL,
+  `physical_address` varchar(45) DEFAULT NULL,
   `city_of_residence` varchar(45) NOT NULL,
   `postal_code` varchar(45) NOT NULL,
   `country` varchar(45) NOT NULL,
@@ -307,6 +310,7 @@ CREATE TABLE `premium_user` (
   `expiration_date` date NOT NULL,
   `card_type` varchar(45) NOT NULL,
   `billing_account_owner_name` varchar(45) NOT NULL,
+  `billing_address` varchar(45) DEFAULT NULL,
   `billing_city` varchar(45) NOT NULL,
   `billing_postal_code` varchar(45) NOT NULL,
   `billing_country` varchar(45) NOT NULL,
@@ -327,6 +331,7 @@ CREATE TABLE `premium_user` (
 
 LOCK TABLES `premium_user` WRITE;
 /*!40000 ALTER TABLE `premium_user` DISABLE KEYS */;
+INSERT INTO `premium_user` VALUES ('Misstery','12345','MissTery','Jane','Marple','1880-05-08','misstery@gmail.com','382 Mount Dandenong Road','London','EC1A 9DB','United_Kingdom','5555777733331111','2019-05-08','Visa','Jane Marple','382 Mount Dandenong Road','London','EC1A 9DB','United_Kingdom','070 333 1111',2,'2');
 /*!40000 ALTER TABLE `premium_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -350,6 +355,7 @@ CREATE TABLE `privacy_level` (
 
 LOCK TABLES `privacy_level` WRITE;
 /*!40000 ALTER TABLE `privacy_level` DISABLE KEYS */;
+INSERT INTO `privacy_level` VALUES (1,'PRIVATE'),(2,'PUBLIC'),(3,'CONTACT');
 /*!40000 ALTER TABLE `privacy_level` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -413,6 +419,7 @@ CREATE TABLE `trial_user` (
 
 LOCK TABLES `trial_user` WRITE;
 /*!40000 ALTER TABLE `trial_user` DISABLE KEYS */;
+INSERT INTO `trial_user` VALUES ('nero','123456','DeadNero','Nero','Wolfe','1934-05-30','nerowolfe@gmail.com','454 W. 35th Street','New York','10001','United_States_of_America','2017-06-08',1,'3');
 /*!40000 ALTER TABLE `trial_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -447,4 +454,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-07 22:34:25
+-- Dump completed on 2017-05-08 13:07:19
