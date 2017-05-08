@@ -84,7 +84,7 @@ public class WelcomeMenuController implements Initializable {
 
 
         Image img = new Image("images/PlayNormal.jpg");
-       btnPlay.setFill(new ImagePattern(img));
+        btnPlay.setFill(new ImagePattern(img));
         Image img1 = new Image("images/StopNormal.jpg");
         btnStop.setFill(new ImagePattern(img1));
         Image img2 = new Image("images/PauseNormal.jpg");
