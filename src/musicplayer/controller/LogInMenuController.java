@@ -37,6 +37,7 @@ public class LogInMenuController implements Initializable{
             DB_Connector connector=new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
             connector.logInTrial(userNam,password,event,warningLabel);
             connector.logInPremium(userNam,password,event,warningLabel);
+
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Changing from login scene to welcome scene");
             e.printStackTrace();

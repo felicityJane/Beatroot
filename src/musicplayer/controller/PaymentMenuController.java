@@ -1,18 +1,17 @@
 package musicplayer.controller;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
+import musicplayer.model.Country;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.InputMismatchException;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class PaymentMenuController implements Initializable{
@@ -29,26 +28,22 @@ public class PaymentMenuController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        String []locales= Locale.getISOCountries();
-        for (String countryList : locales) {
-            Locale obj = new Locale("",countryList);
-            ObservableList<String> list= FXCollections.observableArrayList();
-            list.add(obj.getDisplayCountry());
-            for (int i=0; i<list.size(); i++) {
-                countryBox.getItems().add(list.get(i));
-                countryBox.setValue("Sverige");
-            }
+        for (Country country: Country.values()) {
+            countryBox.getItems().addAll(country.name());
+            countryBox.setValue("Sverige");
         }
         for (int m=1; m<13; m++){
             monthBox.getItems().addAll(m);
             monthBox.setValue(1);
         }
-        for (int y=2017; y<2030; y++){
+        int year= Calendar.getInstance().get(Calendar.YEAR);
+        for (int y=year; y<year+20; y++){
             yearBox.getItems().addAll(y);
             yearBox.setValue(2017);
         }
 
     }
+
     @FXML
     private void handlePaymentButton(ActionEvent event)throws Exception{
         try {
@@ -98,7 +93,7 @@ public class PaymentMenuController implements Initializable{
             System.out.println(expritationDate);
 
           DB_Connector connector=new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
-            connector.insert("premium(bank_card_number, expiration_date,card_type,billing_account_owner_name, billing_city, billing_postal_code,billing_country,billing_phone_number)", "'"+bankCardNum+"','"+expritationDate+"','"+cardType+"','"+cardHolder+"','"+billingCit+"','"+billingPostalCod+"','"+country+"','"+phoneNum+"')");
+            connector.insert("premium_user(bank_card_number, expiration_date,card_type,billing_account_owner_name, billing_city, billing_postal_code,billing_country,billing_phone_number)", "'"+bankCardNum+"','"+expritationDate+"','"+cardType+"','"+cardHolder+"','"+billingCit+"','"+billingPostalCod+"','"+country+"','"+phoneNum+"')");
 
         }catch (InputMismatchException ie){
             System.out.println(ie.toString());

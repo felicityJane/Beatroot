@@ -1,6 +1,5 @@
 package musicplayer.controller;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,15 +11,14 @@ import javafx.scene.layout.AnchorPane;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
-
-import javafx.collections.ObservableList;
+import musicplayer.model.Country;
 
 import java.net.URL;
-import java.util.ResourceBundle;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.InputMismatchException;
-import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class SignUpMenuController implements Initializable{
 
@@ -60,25 +58,17 @@ public void initialize(URL location, ResourceBundle resources) {
         monthBox.getItems().addAll(m);
         monthBox.setValue(1);
         }
-        for (int y=2017; y>1930; y--){
+        int year= Calendar.getInstance().get(Calendar.YEAR);
+        for (int y=year; y>year-100; y--){
         yearBox.getItems().addAll(y);
         yearBox.setValue(2017);
         }
 
-        String []locales= Locale.getISOCountries();
-        for (String countryList : locales) {
-        Locale obj = new Locale("",countryList);
-
-
-        ObservableList<String>list= FXCollections.observableArrayList();
-        list.add(obj.getDisplayCountry());
-        for (int i=0; i<list.size(); i++) {
-        countryBox.getItems().add(list.get(i));
+    for (Country country: Country.values()) {
+        countryBox.getItems().addAll(country.name());
         countryBox.setValue("Sverige");
         }
-        }
-
-        }
+    }
 @FXML
 private void handleSignUpButton(ActionEvent event) throws Exception{
         try {
@@ -92,16 +82,13 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
         String postalCo=postalCode.getText();
         String cit=city.getText();
         String emal=email.getText();
-        String gender=null;
         String userType=null;
         String country=countryBox.getValue();
         String numberRegex="[0-9]+";
         String emailRegex ="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(.+[a-zA-Z0-9-.]+)+$";
         String nameRegex="[A-Za-z]+";
         String tableName="trial_user";
-
-
-
+        String genderId = null;
 
         if (userName.getText().length()<4 || userName.getText().length()>8){
         warningText.setText("Invalid Username Value");
@@ -128,17 +115,12 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
         confirmEmail.clear();
         throw new InputMismatchException();
         }if (male.isSelected()) {
-        gender = male.getText();
+        genderId ="0";
         }if (female.isSelected()){
-        gender=female.getText();
+        genderId="1";
         }if (!female.isSelected() && !male.isSelected()){
         warningText.setText("Gender is not selected!!");
         throw new InputMismatchException();
-        }if (trialUser.isSelected()){
-        userType=trialUser.getText();
-        }if (premiumUser.isSelected()){
-        userType=premiumUser.getText();
-        tableName="premium_user";
         }if (!phoneNum.matches(numberRegex)){
         warningText.setText("Invalid phone number");
         phoneNumber.clear();
@@ -151,12 +133,19 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date convertedCurrentDate = sdf.parse(yearBox.getValue().toString()+"-"+monthBox.getValue().toString()+"-"+dayBox.getValue().toString());
         String dateOfBirht=sdf.format(convertedCurrentDate );
+        String freeTrialEndDate=String.valueOf(Calendar.DATE);
 
-        DB_Connector connector =new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
+            if (trialUser.isSelected()){
+                userType=trialUser.getText();
+                DB_Connector connector =new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
 
-        connector.insert(tableName+"(user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, tree_trial_end_date, gender_gender_id, playlist_link)", "'"+userNam+"','"+userPass+"','"+userNam+"','"+firstNam+"','"+lastNam+"','"+dateOfBirht+"','"+emal+"','"+physicalAdd+"','"+cit+"','"+postalCo+"','"+country+"')");
-
-        //SceneManager.sceneManager.changeScene(event,"view/welcomeMenu.fxml");
+                connector.checkUserName(userNam,warningText,event);
+                connector.insert("user_link(user)","('"+userNam+"')");
+                connector.insert(tableName+"(user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link)", "('"+userNam+"','"+userPass+"','"+userNam+"','"+firstNam+"','"+lastNam+"','"+dateOfBirht+"','"+emal+"','"+physicalAdd+"','"+cit+"','"+postalCo+"','"+country+"','"+dateOfBirht+"','"+genderId+"','"+userNam+"')");
+                //create user
+            }if (premiumUser.isSelected()){
+                userType=premiumUser.getText();
+            }
 
         }catch (InputMismatchException ie){
         System.out.println(ie.toString());
@@ -166,7 +155,7 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
         System.out.println(e.toString());
         }
 
-        }
+    }
 
 @FXML
 private void clickOnLogInLabel(MouseEvent me) {
@@ -177,5 +166,5 @@ private void clickOnLogInLabel(MouseEvent me) {
         DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to log in scene");
         e.printStackTrace();
         }
-        }
+    }
 }
