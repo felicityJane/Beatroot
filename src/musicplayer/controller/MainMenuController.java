@@ -25,6 +25,7 @@ public class MainMenuController implements Initializable{
     private LogInMenuController logInMenuController;
     private WelcomeMenuController welcomeMenuController;
     private SignUpMenuController signUpMenuController;
+    private PaymentMenuController paymentMenuController;
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -37,6 +38,9 @@ public class MainMenuController implements Initializable{
     }
     public void init(SignUpMenuController signUpMenuController) {
         this.signUpMenuController = signUpMenuController;
+    }
+    public void init(PaymentMenuController paymentMenuController) {
+        this.paymentMenuController = paymentMenuController;
     }
     public void setDisabledMenuItemsWelcomeScene(){
        createNewPlaylistMenu.setDisable(false);
