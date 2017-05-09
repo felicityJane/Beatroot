@@ -10,6 +10,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,7 +21,6 @@ public class MainMenuController implements Initializable{
     @FXML private MenuItem createNewPlaylistMenu;
     @FXML private MenuItem searchMenu;
     @FXML private MenuItem logoutMenu;
-    @FXML private MenuItem personalInfoMenu;
     @FXML private MenuItem settingsMenu;
     @FXML private MenuItem aboutMenu;
     private LogInMenuController logInMenuController;
@@ -46,7 +47,6 @@ public class MainMenuController implements Initializable{
        createNewPlaylistMenu.setDisable(false);
        searchMenu.setDisable(false);
        logoutMenu.setDisable(false);
-       personalInfoMenu.setDisable(false);
        searchMenu.setDisable(false);
        settingsMenu.setDisable(false);
        aboutMenu.setDisable(false);
@@ -80,19 +80,30 @@ public class MainMenuController implements Initializable{
         System.exit(0);
     }
     @FXML
-    private void personalInfoMenuOption(){
-        //some kind of options to change personal info here
+    private void settingsMenuOption(ActionEvent event){
+        try {
+            SceneManager.sceneManager.changeScene(event,"view/settingsPage.fxml");
+        } catch (IOException e) {
+            DialogBoxManager.errorDialogBox("Error occured","Switching to settings page from menu bar selection");
+            e.printStackTrace();
+        }
     }
     @FXML
-    private void settingsMenuOption(){
-        //some kind of settings menu here
+    private void aboutMenuOption(ActionEvent event){
+        try {
+            SceneManager.sceneManager.changeScene(event,"view/aboutPage.fxml");
+        } catch (IOException e) {
+            DialogBoxManager.errorDialogBox("Error occured","Switching to about page from menu bar selection");
+            e.printStackTrace();
+        }
     }
     @FXML
-    private void aboutMenuOption(){
-        //some information about Beatroot here
-    }
-    @FXML
-    private void faqsMenuOption(){
-        // Link to FAQ's here
+    private void faqsMenuOption(ActionEvent event){
+        try {
+            SceneManager.sceneManager.changeScene(event,"view/faqsPage.fxml");
+        } catch (IOException e) {
+            DialogBoxManager.errorDialogBox("Error occured","Switching to faqs page from menu bar selection");
+            e.printStackTrace();
+        }
     }
 }

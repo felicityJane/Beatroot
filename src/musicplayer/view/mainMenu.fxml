@@ -22,7 +22,6 @@
             </Menu>
             <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
                <items>
-                  <MenuItem fx:id="personalInfoMenu" disable="true" mnemonicParsing="false" onAction="#personalInfoMenuOption" text="Personal Information" />
                   <MenuItem fx:id="settingsMenu" disable="true" mnemonicParsing="false" onAction="#settingsMenuOption" text="Settings" />
                </items>
             </Menu>
