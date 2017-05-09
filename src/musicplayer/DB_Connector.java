@@ -24,6 +24,7 @@ public class DB_Connector {
         } catch (SQLException sqlEx) {
             DialogBoxManager.errorDialogBox("Unable to access specified database","Error while accessing the database. Please try again.");
             sqlEx.printStackTrace();
+
         }
     }
 

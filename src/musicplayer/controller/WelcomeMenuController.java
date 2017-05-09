@@ -6,7 +6,6 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -30,8 +29,10 @@ import org.apache.tika.parser.mp3.Mp3Parser;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -52,20 +53,6 @@ public class WelcomeMenuController implements Initializable {
     @FXML private ToggleButton tglLoop;
     @FXML private ImageView imgVolume;
     @FXML private ImageView imgMain;
-    @FXML private ImageView imgNews1;
-    @FXML private ImageView imgNews2;
-    @FXML private ImageView imgNews3;
-    @FXML private ImageView imgNews4;
-    @FXML private ImageView imgNews5;
-    @FXML private ImageView imgNews6;
-    @FXML private ImageView imgNews7;
-    @FXML private ImageView imgSugg1;
-    @FXML private ImageView imgSugg2;
-    @FXML private ImageView imgSugg3;
-    @FXML private ImageView imgSugg4;
-    @FXML private ImageView imgSugg5;
-    @FXML private ImageView imgSugg6;
-    @FXML private ImageView imgSugg7;
     @FXML private ListView<String> lstMainTracks;
     @FXML private AnchorPane welcomeRootAnchor;
     @FXML private AnchorPane welcomeParentAnchorPane;
@@ -96,7 +83,7 @@ public class WelcomeMenuController implements Initializable {
         Image img2 = new Image("images/PauseNormal.jpg");
         btnPause.setFill(new ImagePattern(img2));
         tglLoop.setText("⟳");
-        /*String css = this.getClass().getResource("/musicPlayer/CSS/welcomePage.css").toExternalForm();
+        /*String css = this.getClass().getResource("/musicplayer/css/welcomePage.css").toExternalForm();
         welcomeRootAnchor.getStylesheets().add(css);*/
         Path path;
 
@@ -146,6 +133,7 @@ public class WelcomeMenuController implements Initializable {
                     normal.setBrightness(0.0);
                     n.setEffect(normal);
                 });
+
             }
 
 
@@ -206,11 +194,14 @@ public class WelcomeMenuController implements Initializable {
         connector.connectToServer();
         sliderVolume.setValue(mediaPlayer.getVolume() * 100);*/
 
-        setImageNews();
 
-        setImageSuggestions();
+            setImageNews();
 
-        setFirstSong();
+            setImageSuggestions();
+
+            setFirstSong();
+
+
     }
 
     @FXML
