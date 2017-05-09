@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="welcomeParentAnchorPane" prefHeight="700.0" prefWidth="1398.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.WelcomeMenuController">
+    <children>
+        <fx:include fx:id="mainMenu" source="mainMenu.fxml" />
+        <AnchorPane fx:id="welcomeRootAnchor" layoutX="14.0" layoutY="23.0" prefHeight="677.0" prefWidth="1398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-14.0" AnchorPane.topAnchor="23.0">
+            <children>
+                <ImageView fx:id="imgSugg1" fitHeight="94.0" fitWidth="94.0" layoutX="203.0" layoutY="406.0" pickOnBounds="true" />
+                <ImageView fx:id="imgSugg2" fitHeight="94.0" fitWidth="94.0" layoutX="342.0" layoutY="406.0" pickOnBounds="true" />
+                <ImageView fx:id="imgSugg3" fitHeight="94.0" fitWidth="94.0" layoutX="478.0" layoutY="406.0" pickOnBounds="true" />
+                <ImageView fx:id="imgSugg4" fitHeight="94.0" fitWidth="94.0" layoutX="612.0" layoutY="406.0" pickOnBounds="true" />
+                <ImageView fx:id="imgSugg5" fitHeight="94.0" fitWidth="94.0" layoutX="745.0" layoutY="406.0" pickOnBounds="true" />
+                <ImageView fx:id="imgSugg6" fitHeight="94.0" fitWidth="94.0" layoutX="878.0" layoutY="406.0" pickOnBounds="true" />
+            <ImageView fx:id="imgSugg7" fitHeight="94.0" fitWidth="94.0" layoutX="1011.0" layoutY="406.0" pickOnBounds="true" />
+            <AnchorPane fx:id="anchorNews" layoutX="206.0" layoutY="532.0" prefHeight="130.0" prefWidth="952.0">
+               <children>
+                  <ImageView fx:id="imgNews2" fitHeight="94.0" fitWidth="94.0" pickOnBounds="true" />
+                  <ImageView fx:id="imgNews3" fitHeight="94.0" fitWidth="94.0" layoutX="140.0" pickOnBounds="true" />
+                  <ImageView fx:id="imgNews4" fitHeight="94.0" fitWidth="94.0" layoutX="273.0" pickOnBounds="true" />
+                  <ImageView fx:id="imgNews5" fitHeight="94.0" fitWidth="94.0" layoutX="408.0" pickOnBounds="true" />
+                  <ImageView fx:id="imgNews6" fitHeight="94.0" fitWidth="94.0" layoutX="539.0" pickOnBounds="true" />
+                  <ImageView fx:id="imgNews7" fitHeight="94.0" fitWidth="94.0" layoutX="671.0" pickOnBounds="true" />
+                  <ImageView fx:id="imgNews1" fitHeight="94.0" fitWidth="94.0" layoutX="808.0" pickOnBounds="true" />
+               </children>
+            </AnchorPane>
+                <Button fx:id="btnLogOut" layoutX="1232.0" layoutY="21.0" mnemonicParsing="false" onAction="#onLogOutButtonPressed" prefHeight="36.0" prefWidth="94.0" text="Log out" />
+
+                <Button fx:id="btnUpload" layoutX="1128.0" layoutY="21.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="94.0" text="Upload music" />
+              <ImageView fx:id="imgMain" fitHeight="247.0" fitWidth="247.0" layoutX="206.0" layoutY="116.0" pickOnBounds="true" />
+              <Label fx:id="lblTrackArtist" layoutX="459.0" layoutY="103.0" prefHeight="48.0" prefWidth="355.0">
+                  <font>
+                      <Font size="14.0" />
+                  </font>
+              </Label>
+              <Label fx:id="lblTrackName" layoutX="459.0" layoutY="125.0" prefHeight="48.0" prefWidth="367.0">
+                  <font>
+                      <Font size="26.0" />
+                  </font>
+              </Label>
+              <Circle fx:id="btnStop" fill="#ffffff00" layoutX="475.0" layoutY="193.0" onMouseClicked="#clickOnStopButton" onMouseEntered="#hoverOnStopButton" onMouseExited="#leaveStopButton" onMousePressed="#pressOnStopButton" onMouseReleased="#leaveStopButton" radius="16.0" stroke="WHITE" strokeType="INSIDE" />
+              <Circle fx:id="btnPlay" fill="#ffffff00" layoutX="512.0" layoutY="193.0" onMouseClicked="#clickOnPlayButton" onMouseEntered="#hoverOnPlayButton" onMouseExited="#leavePlayButton" onMousePressed="#pressOnPlayButton" onMouseReleased="#leavePlayButton" radius="24.0" stroke="WHITE" strokeType="INSIDE" />
+              <Circle fx:id="btnPause" fill="#ffffff00" layoutX="552.0" layoutY="193.0" onMouseClicked="#clickOnPauseButton" onMouseEntered="#hoverOnPauseButton" onMouseExited="#leavePauseButton" onMousePressed="#pressOnPauseButton" onMouseReleased="#leavePauseButton" radius="16.0" stroke="WHITE" strokeType="INSIDE" />
+              <Label fx:id="lblElapsedTime" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="569.0" layoutY="185.0" prefHeight="17.0" prefWidth="56.0" />
+              <Slider fx:id="sliderPlay" layoutX="631.0" layoutY="175.0" prefHeight="36.0" prefWidth="336.0" />
+              <ImageView fx:id="imgVolume" fitHeight="30.0" fitWidth="32.0" layoutX="960.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true" />
+              <Slider fx:id="sliderVolume" layoutX="1000.0" layoutY="157.0" prefHeight="14.0" prefWidth="107.0" />
+              <Label fx:id="lblTimeLeft" layoutX="976.0" layoutY="185.0" prefHeight="17.0" prefWidth="66.0" />
+              <ToggleButton fx:id="tglLoop" layoutX="1069.0" layoutY="178.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="32.0">
+                  <font>
+                      <Font name="System Bold" size="14.0" />
+                  </font>
+              </ToggleButton>
+              <ListView fx:id="lstMainTracks" layoutX="464.0" layoutY="223.0" onMouseClicked="#clickOnListViewMainTracks" prefHeight="142.0" prefWidth="635.0" />
+              <Label layoutX="202.0" layoutY="378.0" text="Suggestions">
+                  <font>
+                      <Font size="16.0" />
+                  </font>
+              </Label>
+              <Label layoutX="206.0" layoutY="507.0" text="News">
+                  <font>
+                      <Font size="16.0" />
+                  </font>
+              </Label>
+            <ImageView fx:id="imgProfilePicture" fitHeight="82.0" fitWidth="80.0" layoutX="1029.0" layoutY="16.0" pickOnBounds="true" />
+            <Label fx:id="lblDisplayName" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="792.0" prefHeight="48.0" prefWidth="227.0" textAlignment="RIGHT">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ListView fx:id="lstPlaylists" layoutX="14.0" layoutY="110.0" prefHeight="556.0" prefWidth="171.0" />
+            <Button fx:id="btnAddPlaylist" layoutX="14.0" layoutY="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" text="+" />
+            <Button fx:id="btnRemovePlaylist" layoutX="48.0" layoutY="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" text="-" />
+            <ListView fx:id="lstContacts" layoutX="1132.0" layoutY="148.0" prefHeight="517.0" prefWidth="200.0" />
+            <TextField fx:id="txtSearchContact" layoutX="1175.0" layoutY="103.0" prefHeight="25.0" prefWidth="155.0" />
+            <Button fx:id="btnSearchContact" layoutX="1132.0" layoutY="103.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" />
+            <TextField fx:id="txtSearchMusic" layoutX="480.0" layoutY="14.0" prefHeight="36.0" prefWidth="291.0" />
+            <Button fx:id="btnSearchMusic" layoutX="434.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="39.0" />
+            <Rectangle id="imgNoConnection" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="707.0" layoutX="-15.0" layoutY="-27.0" opacity="0.4" stroke="WHITE" strokeType="INSIDE" visible="false" width="1398.0" />
+            <Label fx:id="lblNoConnection1" layoutX="365.0" layoutY="260.0" prefHeight="118.0" prefWidth="667.0" text="Looks like you're not connected to the internet!" textFill="RED" visible="false">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblNoConnection2" layoutX="409.0" layoutY="351.0" prefHeight="74.0" prefWidth="567.0" text="Go online to savor all of Beatroot's deliciousness." visible="false">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            </children></AnchorPane>
+
+    </children>
+</AnchorPane>

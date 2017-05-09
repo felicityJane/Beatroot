@@ -15,8 +15,14 @@ public class MusicTrack {
 	private ArrayList<MusicArtist> performers = new ArrayList<MusicArtist>();
 	private ArrayList<Comment> comments = new ArrayList<Comment>();
 
+
+
+	public MusicTrack(String trackName, String url) {
+		this.trackName = trackName;
+		this.url = url;
+	}
 	/**
-	 * 
+	 *
 	 * @param trackName
 	 *            String The song's name
 	 * @param trackLength

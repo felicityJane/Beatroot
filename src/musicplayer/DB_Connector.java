@@ -27,13 +27,14 @@ public class DB_Connector {
         }
     }
 
-    public void search(String parameterToSearch, String tableName, String whereStatement) {
+    public String search(String parameterToSearch, String tableName, String whereStatement) {
+
+        String sqlString = "";
         try {
             ResultSet rs = statement.executeQuery("SELECT " + parameterToSearch +
                     " FROM " + tableName + " WHERE " + whereStatement);
             while (rs.next()) {
-                System.out.println("The " + rs.getString(1) + " has " + parameterToSearch + " = " + rs.getString(2) +
-                        " for " + whereStatement + ".");
+               sqlString = rs.getString(1);
             }
         }
         catch (SQLException ex) {
@@ -41,6 +42,8 @@ public class DB_Connector {
             DialogBoxManager.errorDialogBox("Cannot run query","Error on executing search query. Please try again.");
             ex.printStackTrace();
         }
+
+        return sqlString;
     }
 
     public void update(String tableToUpdate, String parameterToUpdate, String newParameter, String whereStatement) {

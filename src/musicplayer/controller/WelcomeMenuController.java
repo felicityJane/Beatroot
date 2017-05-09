@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -16,10 +17,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
-import musicplayer.DialogBoxManager;
-import musicplayer.SceneManager;
-import musicplayer.Server_Connector;
-import musicplayer.TemporaryAlbumClass;
+import musicplayer.*;
+import musicplayer.model.Album;
+import musicplayer.model.MusicTrack;
 import org.apache.commons.io.FilenameUtils;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.DefaultHandler;
@@ -34,6 +34,8 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class WelcomeMenuController implements Initializable {
@@ -56,10 +58,20 @@ public class WelcomeMenuController implements Initializable {
     @FXML private ImageView imgNews4;
     @FXML private ImageView imgNews5;
     @FXML private ImageView imgNews6;
+    @FXML private ImageView imgNews7;
+    @FXML private ImageView imgSugg1;
+    @FXML private ImageView imgSugg2;
+    @FXML private ImageView imgSugg3;
+    @FXML private ImageView imgSugg4;
+    @FXML private ImageView imgSugg5;
+    @FXML private ImageView imgSugg6;
+    @FXML private ImageView imgSugg7;
     @FXML private ListView<String> lstMainTracks;
     @FXML private AnchorPane welcomeRootAnchor;
     @FXML private AnchorPane welcomeParentAnchorPane;
-    private TemporaryAlbumClass tempAlbum2 = new TemporaryAlbumClass();
+    @FXML private Label lblDisplayName;
+    @FXML private ImageView imgProfilePicture;
+    @FXML private AnchorPane anchorNews;
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView;
@@ -67,7 +79,8 @@ public class WelcomeMenuController implements Initializable {
     private String selectedItem = "";
     private static String logInMenuPath = "view/logInMenu.fxml";
     private URL url;
-
+    private DB_Connector db_connector = new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
+    private Server_Connector connector;
 
     @FXML private MainMenuController mainMenuController;
 
@@ -76,13 +89,6 @@ public class WelcomeMenuController implements Initializable {
         mainMenuController.init(this);
         mainMenuController.setDisabledMenuItemsWelcomeScene();
         mainMenuController.menuBarFitToParent(welcomeParentAnchorPane);
-
-        //***********************************************************
-        Server_Connector connector = new Server_Connector();
-        connector.connectToServer();
-        //***********************************************************
-
-
         Image img = new Image("images/PlayNormal.jpg");
         btnPlay.setFill(new ImagePattern(img));
         Image img1 = new Image("images/StopNormal.jpg");
@@ -92,39 +98,69 @@ public class WelcomeMenuController implements Initializable {
         tglLoop.setText("⟳");
         /*String css = this.getClass().getResource("/musicPlayer/CSS/welcomePage.css").toExternalForm();
         welcomeRootAnchor.getStylesheets().add(css);*/
+        Path path;
 
-        TemporaryAlbumClass tempAlbum = new TemporaryAlbumClass();
-        tempAlbum.getTracks().add("01. Celldweller - Faction 04 .mp3");
-        tempAlbum.getTracks().add("02. Celldweller - Down to Earth .mp3");
-        tempAlbum.getTracks().add("03. Celldweller - Heart On .mp3");
-        tempAlbum.getTracks().add("04. Celldweller - Faction 05 .mp3");
-        tempAlbum.getTracks().add("05. Celldweller - Faction 06 .mp3");
-        tempAlbum.setAlbumCover(new Image("images/Celldweller_EoaE_BG_LOVE.jpg"));
-        tempAlbum2.getTracks().add("05 - I'LL BE GONE.mp3");
-        tempAlbum2.getTracks().add("06 - CASTLE OF GLASS.mp3");
-        tempAlbum2.getTracks().add("08 - ROADS UNTRAVELED.mp3");
-        tempAlbum2.setAlbumCover(new Image("images/Linkin Park - Living Things.jpg"));
-        Path path = Paths.get(tempAlbum.getTracks().get(0));
-        lstMainTracks.getItems().addAll(tempAlbum.getTracks());
+
         imgVolume.setImage(new Image("images/VolumeHigh.png"));
-
-        imgMain.setImage(tempAlbum.getAlbumCover());
-        imgNews1.setImage(new Image("images/Linkin Park - Living Things.jpg"));
-        imgNews2.setImage(new Image("images/Konachan.jpg"));
-        imgNews3.setImage(new Image("images/EyeGirl.jpg"));
-        imgNews4.setImage(new Image("images/Hadean.jpg"));
-        imgNews5.setImage(new Image("images/Celldweller_EoaE_BG_LOVE.jpg"));
-        imgNews6.setImage(new Image("images/Rage Against the Machine - Rage Against the Machine.jpg"));
-        imgMain.setImage(tempAlbum.getAlbumCover());
+        imgProfilePicture.setImage(new Image("images/Konachan.jpg"));
+        DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
+        imgMain.setEffect(dropShadow);
+        lblDisplayName.setText("Hello, " + db_connector.search("display_name", "premium_user", "user_name = 'Misstery'") + "!");
 
 
 
         for (Node n : welcomeRootAnchor.getChildren()) {
 
+            if (n instanceof ImageView && n != imgMain && n != imgVolume && n != imgProfilePicture) {
+
+                DropShadow ds = new DropShadow(10, 0, 0, Color.GRAY);
+                n.setEffect(ds);
+
+                n.setOnMouseClicked(event -> {
+                    clickOnImageView(n);
+                });
+
+                n.setOnMouseEntered(event ->  {
+                    ColorAdjust brightness = new ColorAdjust();
+                    DropShadow ds1 = new DropShadow(12, 0, 0, Color.GRAY);
+                    brightness.setInput(ds1);
+                    brightness.setBrightness(0.2);
+                    n.setEffect(brightness);
+                });
+                n.setOnMouseExited(event -> {
+                    ColorAdjust normal = new ColorAdjust();
+                    normal.setInput(ds);
+                    normal.setBrightness(0.0);
+                    n.setEffect(normal);
+                });
+                n.setOnMousePressed(event ->  {
+                    ColorAdjust blackout = new ColorAdjust();
+                    DropShadow ds1 = new DropShadow(12, 0, 0, Color.GRAY);
+                    blackout.setInput(ds1);
+                    blackout.setBrightness(-0.3);
+                    n.setEffect(blackout);
+                });
+                n.setOnMouseReleased(event -> {
+                    ColorAdjust normal = new ColorAdjust();
+                    normal.setInput(ds);
+                    normal.setBrightness(0.0);
+                    n.setEffect(normal);
+                });
+            }
+
+
+        }
+
+        for (Node n : anchorNews.getChildren()) {
+
             if (n instanceof ImageView) {
 
                 DropShadow ds = new DropShadow(10, 0, 0, Color.GRAY);
                 n.setEffect(ds);
+
+                n.setOnMouseClicked(event -> {
+                    clickOnImageView(n);
+                });
 
                 n.setOnMouseEntered(event ->  {
                     ColorAdjust brightness = new ColorAdjust();
@@ -155,17 +191,26 @@ public class WelcomeMenuController implements Initializable {
             }
         }
 
-        try {
-            url = new URL("http://www.webshare.hkr.se/FECO0002/alice%20in%20chains%20-%2001%20-%20them%20bones.mp3");
+        /*try {
+            url = new URL("http://www.webshare.hkr.se/FECO0002/Ellie%20Goulding%20-%20Burn.mp3");
+            path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
+            imgMain.setImage(new Image("http://www.webshare.hkr.se/FECO0002/Ellie%20Goulding%20-%20Halcyon%20Days.png"));
+            runMediaPlayer(path);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        media = new Media("http://www.webshare.hkr.se/FECO0002/alice%20in%20chains%20-%2001%20-%20them%20bones.mp3");
+        media = new Media("http://www.webshare.hkr.se/FECO0002/Ellie%20Goulding%20-%20Burn.mp3");
         mediaPlayer = new MediaPlayer(media);
         mediaView = new MediaView(mediaPlayer);
-        sliderVolume.setValue(mediaPlayer.getVolume() * 100);
+        connector = new Server_Connector(url.toString(), url);
+        connector.connectToServer();
+        sliderVolume.setValue(mediaPlayer.getVolume() * 100);*/
 
-        runMediaPlayer(path);
+        setImageNews();
+
+        setImageSuggestions();
+
+        setFirstSong();
     }
 
     @FXML
@@ -295,16 +340,25 @@ public class WelcomeMenuController implements Initializable {
     private void clickOnListViewMainTracks() {
 
         selectedItem = lstMainTracks.getSelectionModel().getSelectedItem();
-
         //plays song only on double click
         if (selectedItem.equals(temp)) {
-            Path path = Paths.get(lstMainTracks.getSelectionModel().getSelectedItem());
-            mediaPlayer.stop();
-            media = new Media(path.toUri().toString());
-            mediaPlayer = new MediaPlayer(media);
-            sliderVolume.setValue(mediaPlayer.getVolume() * 100);
-            runMediaPlayer(path);
-            mediaPlayer.play();
+            String songUrl = db_connector.search("track_url", "music_track",
+                    "track_name = " + "'" + selectedItem + "'");
+            try {
+                url = new URL(songUrl);
+                mediaPlayer.stop();
+                media = new Media(songUrl);
+                mediaPlayer = new MediaPlayer(media);
+                sliderVolume.setValue(mediaPlayer.getVolume() * 100);
+                connector = new Server_Connector(songUrl, url);
+                connector.connectToServer();
+                Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
+                runMediaPlayer(path);
+                mediaPlayer.play();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
         } else {
             temp = lstMainTracks.getSelectionModel().getSelectedItem();
         }
@@ -397,12 +451,165 @@ public class WelcomeMenuController implements Initializable {
     }
 
     @FXML
-    private void clickOnImageView() {
+    private void clickOnImageView(Node n) {
+
+        mediaPlayer.stop();
+        String imgUrl = ((ImageView)n).getImage().impl_getUrl();
+        int albumId = Integer.parseInt(db_connector.search("album_id", "album", "album_cover_path = " + "'" + imgUrl + "'"));
+        String albumName = db_connector.search("album_name", "album", "album_id = " + Integer.toString(albumId));
+        Album album = new Album(albumName, new Image(imgUrl));
+        String artistName = "";
+
+        int musicId;
+        ArrayList<MusicTrack> tempArray = new ArrayList<>();
+        musicId = Integer.parseInt(db_connector.search("music_track_track_id", "album_has_music_track",
+                "album_album_id = " + Integer.toString(albumId)));
+        artistName = db_connector.search("music_artist_artist_id", "music_track", "track_id = " + Integer.toString(musicId));
+        artistName = db_connector.search("stage_name", "music_artist", "artist_id = " + artistName);
+
+        MusicTrack mt = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+        tempArray.add(mt);
+
+        for (int i = 0; i < 15; i++) {
+            musicId--;
+
+            try {
+                musicId = Integer.parseInt(db_connector.search("music_track_track_id", "album_has_music_track",
+                        "album_album_id = " + Integer.toString(albumId) + " AND music_track_track_id = "
+                                + Integer.toString(musicId)));
+                if (musicId != 0) {
+                    MusicTrack mt1 = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+                    tempArray.add(mt1);
+                }
+            } catch (NumberFormatException ne) {
+                break;
+            }
+        }
+
+        for (int i = tempArray.size() - 1; i >= 0; i--) {
+            album.addSongs(tempArray.get(i));
+        }
 
         lstMainTracks.getItems().clear();
-        lstMainTracks.getItems().addAll(tempAlbum2.getTracks());
-        imgMain.setImage(tempAlbum2.getAlbumCover());
+        for (MusicTrack m : album.getSongs()) {
+            lstMainTracks.getItems().add(m.getTrackName());
+        }
 
+        imgMain.setImage(album.getAlbumCover());
+        lblTrackName.setText(album.getSongs().get(0).getTrackName());
+        lblTrackArtist.setText(artistName);
+
+        try {
+            url = new URL(album.getSongs().get(0).getUrl());
+            mediaPlayer.stop();
+            media = new Media(url.toString());
+            mediaPlayer = new MediaPlayer(media);
+            sliderVolume.setValue(mediaPlayer.getVolume() * 100);
+            connector = new Server_Connector(url.toString(), url);
+            connector.connectToServer();
+            Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
+            runMediaPlayer(path);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void setImageNews() {
+
+        int counter = Integer.parseInt(db_connector.search("album_id", "album", "album_id = (SELECT MAX(album_id) FROM album)"));
+
+        for (Node n : anchorNews.getChildren()) {
+
+            if (n instanceof ImageView) {
+
+               String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + Integer.toString(counter));
+               ((ImageView) n).setImage(new Image(imgUrl));
+               counter--;
+            }
+        }
+    }
+
+    private void setImageSuggestions() {
+
+        Random rnd = new Random();
+
+        int counter = rnd.nextInt(16) + 1;
+
+        for (Node n : welcomeRootAnchor.getChildren()) {
+
+            if (n instanceof ImageView && n != imgMain && n != imgVolume && n != imgProfilePicture) {
+
+                String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + Integer.toString(counter));
+                ((ImageView) n).setImage(new Image(imgUrl));
+                counter++;
+                if (counter > 16) {
+                    counter = 1;
+                }
+            }
+        }
+
+    }
+
+    private void setFirstSong() {
+
+        String imgUrl = "http://www.webshare.hkr.se/FECO0002/Ellie%20Goulding%20-%20Halcyon%20Days.png";
+        int albumId = Integer.parseInt(db_connector.search("album_id", "album", "album_cover_path = " + "'" + imgUrl + "'"));
+        String albumName = db_connector.search("album_name", "album", "album_id = " + Integer.toString(albumId));
+        Album album = new Album(albumName, new Image(imgUrl));
+        String artistName = "";
+
+        int musicId;
+        ArrayList<MusicTrack> tempArray = new ArrayList<>();
+        musicId = Integer.parseInt(db_connector.search("music_track_track_id", "album_has_music_track",
+                "album_album_id = " + Integer.toString(albumId)));
+        artistName = db_connector.search("music_artist_artist_id", "music_track", "track_id = " + Integer.toString(musicId));
+        artistName = db_connector.search("stage_name", "music_artist", "artist_id = " + artistName);
+
+        MusicTrack mt = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+        tempArray.add(mt);
+
+        for (int i = 0; i < 15; i++) {
+            musicId--;
+
+            try {
+                musicId = Integer.parseInt(db_connector.search("music_track_track_id", "album_has_music_track",
+                        "album_album_id = " + Integer.toString(albumId) + " AND music_track_track_id = "
+                                + Integer.toString(musicId)));
+                if (musicId != 0) {
+                    MusicTrack mt1 = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+                    tempArray.add(mt1);
+                }
+            } catch (NumberFormatException ne) {
+                break;
+            }
+        }
+
+        for (int i = tempArray.size() - 1; i >= 0; i--) {
+            album.addSongs(tempArray.get(i));
+        }
+
+        lstMainTracks.getItems().clear();
+        for (MusicTrack m : album.getSongs()) {
+            lstMainTracks.getItems().add(m.getTrackName());
+        }
+
+        imgMain.setImage(album.getAlbumCover());
+        lblTrackName.setText(album.getSongs().get(0).getTrackName());
+        lblTrackArtist.setText(artistName);
+
+        try {
+            url = new URL(album.getSongs().get(0).getUrl());
+            //mediaPlayer.stop();
+            media = new Media(url.toString());
+            mediaPlayer = new MediaPlayer(media);
+            sliderVolume.setValue(mediaPlayer.getVolume() * 100);
+            connector = new Server_Connector(url.toString(), url);
+            connector.connectToServer();
+            Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
+            runMediaPlayer(path);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 }
