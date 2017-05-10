@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DB_Connector {
 
@@ -45,6 +46,26 @@ public class DB_Connector {
         }
 
         return sqlString;
+    }
+
+    public ArrayList<String> searchMultipleResults(String parameterToSearch, String tableName, String whereStatement) {
+
+
+        ArrayList<String> sqlArrayList = new ArrayList<>();
+        try {
+            ResultSet rs = statement.executeQuery("SELECT " + parameterToSearch +
+                    " FROM " + tableName + " WHERE " + whereStatement);
+            while (rs.next()) {
+                sqlArrayList.add(rs.getString(1));
+            }
+        }
+        catch (SQLException ex) {
+
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing multiple search query. Please try again.");
+            ex.printStackTrace();
+        }
+
+        return sqlArrayList;
     }
 
     public void update(String tableToUpdate, String parameterToUpdate, String newParameter, String whereStatement) {
