@@ -8,11 +8,11 @@ import musicplayer.DialogBoxManager;
 import musicplayer.model.Country;
 
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class PaymentMenuController implements Initializable{
 
@@ -43,19 +43,48 @@ public class PaymentMenuController implements Initializable{
         }
 
     }
+    @FXML
+    private void handleGetAddressButton(ActionEvent event) throws Exception{
+        try {
+            Path path = Paths.get("PremiumUserInfo.bin");
+            ArrayList<String> premiumUserInfo = (ArrayList<String>) Files.readAllLines(path);
+            phoneNumber.setText(premiumUserInfo.get(13));
+            billingAddress.setText(premiumUserInfo.get(7));
+            billingCity.setText(premiumUserInfo.get(8));
+            billingPostalCode.setText(premiumUserInfo.get(9));
+            countryBox.setValue(premiumUserInfo.get(10));
+        }catch (Exception e){
+            DialogBoxManager.errorDialogBox("Error occurred","GetAddress");
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void handlePaymentButton(ActionEvent event)throws Exception{
         try {
-            String cardHolder=cardHolderName.getText();
+            Path path = Paths.get("PremiumUserInfo.bin");
+            ArrayList<String> premiumUserInfo = (ArrayList<String>) Files.readAllLines(path);
+
+            String userName=premiumUserInfo.get(0);
+            String password=premiumUserInfo.get(1);
+            String displayName=premiumUserInfo.get(2);
+            String firstName=premiumUserInfo.get(3);
+            String lastName=premiumUserInfo.get(4);
+            String birthDay=premiumUserInfo.get(5);
+            String email=premiumUserInfo.get(6);
+            String cityOfResidence=premiumUserInfo.get(8);
+            String postalCode=premiumUserInfo.get(9);
+            String country=countryBox.getValue();
+            String genderId=premiumUserInfo.get(11);
+            String playListLink=premiumUserInfo.get(12);
+            String cardHolder=cardHolderName.getText().toLowerCase();
             long bankCardNum=Long.parseLong(bankCardNumber.getText());
             String phoneNum=phoneNumber.getText();
-            String billingAdd=billingAddress.getText();
-            String billingCit=billingCity.getText();
+            String billingAdd=billingAddress.getText().toLowerCase();
+            String billingCit=billingCity.getText().toLowerCase();
             String billingPostalCod=billingPostalCode.getText();
-            String country=countryBox.getValue();
             String cardType="";
-            String nameRegex="[A-Za-z]+";
+            String nameRegex="[A-Za-zöäå]+$";
             String numberRegex="[0-9]+";
 
             if (!cardHolder.matches(nameRegex)) {
@@ -73,8 +102,8 @@ public class PaymentMenuController implements Initializable{
             }if (!visaButton.isSelected() && !masterButton.isSelected()){
                 warningLabel.setText("Card type is not selected!!");
                 throw new InputMismatchException();
-            }if (!billingCit.matches(nameRegex)){
-                warningLabel.setText("Invalid Value");
+            }if (!billingCity.getText().matches(nameRegex)){
+                warningLabel.setText("Invalid City Name");
                 billingCity.clear();
                 throw new InputMismatchException();
             }if (!phoneNum.matches(numberRegex)){
@@ -87,18 +116,21 @@ public class PaymentMenuController implements Initializable{
                 throw new InputMismatchException();
             }
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-            Date convertedCurrentDate = sdf.parse(yearBox.getValue().toString()+"-"+monthBox.getValue().toString());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date convertedCurrentDate = sdf.parse(yearBox.getValue()+"-"+monthBox.getValue()+1+"-01");
             String expritationDate=sdf.format(convertedCurrentDate );
-            System.out.println(expritationDate);
+
+
 
           DB_Connector connector=new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
-            connector.insert("premium_user(bank_card_number, expiration_date,card_type,billing_account_owner_name, billing_city, billing_postal_code,billing_country,billing_phone_number)", "'"+bankCardNum+"','"+expritationDate+"','"+cardType+"','"+cardHolder+"','"+billingCit+"','"+billingPostalCod+"','"+country+"','"+phoneNum+"')");
+            connector.insert("user_link(user)","('"+userName+"')");
+            connector.insert("premium_user(user_name, password,display_name, first_name, last_name, date_of_birth, email_address, city_of_residence, postal_code, country, bank_card_number, expiration_date, card_type, billing_account_owner_name, billing_city, billing_postal_code,billing_country,billing_phone_number, gender_gender_id, playlist_link)", "('"+userName+"','"+password+"','"+displayName+"','"+firstName+"','"+lastName+"','"+birthDay+"','"+email+"','"+cityOfResidence+"','"+postalCode+"','"+country+"','"+bankCardNum+"','"+expritationDate+"','"+cardType+"','"+cardHolder+"','"+billingCit+"','"+billingPostalCod+"','"+country+"','"+phoneNum+"','"+genderId+"','"+playListLink+"')");
+            connector.logInPremium(userName,password,event,warningLabel);
 
         }catch (InputMismatchException ie){
             System.out.println(ie.toString());
 
-        } catch (Exception e){
+        }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","Invalid Value");
             e.printStackTrace();
         }

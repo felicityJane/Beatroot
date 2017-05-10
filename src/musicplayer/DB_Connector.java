@@ -3,7 +3,6 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
-
 import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -61,11 +60,9 @@ public class DB_Connector {
             statement.executeUpdate("INSERT INTO " + tableNameAndParameters + " VALUES "
                     + values);
 
-        } catch (MySQLIntegrityConstraintViolationException ve){
+        }catch (MySQLIntegrityConstraintViolationException ignored){
 
-        }
-
-        catch (SQLException sqlEx) {
+        }catch (SQLException sqlEx) {
             DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing insert query. Please try again.");
             sqlEx.printStackTrace();
         }
@@ -84,7 +81,6 @@ public class DB_Connector {
     }
 
     public void logInTrial(String userName, String password, ActionEvent event, Label warningLabel) {
-
         try {
             ResultSet rs = statement.executeQuery("SELECT user_name,password FROM trial_user WHERE user_name='" + userName + "'");
 
@@ -102,7 +98,6 @@ public class DB_Connector {
                 warningLabel.setText("Invalid Username or password!!");
             }
         } catch (SQLException ex) {
-
             DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing login query. Please try again.");
             ex.printStackTrace();
         } catch (IOException e) {
@@ -129,25 +124,39 @@ public class DB_Connector {
 
             DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing login query. Please try again.");
             ex.printStackTrace();
-        } catch (IOException e) {
+        }catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void checkUserName(String userName, Label warningLabel, ActionEvent event) {
+    public void checkTrialUserName(String userName, Label warningLabel, ActionEvent event) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT user_name FROM trial_user WHERE user_name='" + userName + "'");
+            ResultSet rs = statement.executeQuery("SELECT user FROM user_link WHERE user='" + userName + "'");
             if (rs.next()) {
                     warningLabel.setText("Username is already taken");
-                }
-                else {
+                    warningLabel.setVisible(false);
+                }else {
                 SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
             }
-        } catch (SQLException ex) {
-
+        }catch (SQLException ex) {
             DialogBoxManager.errorDialogBox("Cannot run query", "Error on User Name. Please try again.");
             ex.printStackTrace();
-        } catch (IOException e) {
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void checkPremiumlUserName(String userName, Label warningLabel,ActionEvent event) {
+        try {
+            ResultSet rs = statement.executeQuery("SELECT user FROM user_link WHERE user='" + userName + "'");
+            if (rs.next()) {
+                warningLabel.setText("Username is already taken");
+            }else {
+                SceneManager.sceneManager.changeScene(event, "view/paymentMenu.fxml");
+            }
+        }catch (SQLException ex) {
+            DialogBoxManager.errorDialogBox("Cannot run query", "Error on User Name. Please try again.");
+            ex.printStackTrace();
+        }catch (IOException e) {
             e.printStackTrace();
         }
     }

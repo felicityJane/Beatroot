@@ -12,13 +12,13 @@ import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
 import musicplayer.model.Country;
-
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.*;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.ResourceBundle;
 
 public class SignUpMenuController implements Initializable{
 
@@ -75,19 +75,18 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
 
         String userNam=userName.getText();
         String userPass=userPassword.getText();
-        String firstNam=firstName.getText();
-        String lastNam=lastName.getText();
+        String firstNam=firstName.getText().toLowerCase();
+        String lastNam=lastName.getText().toLowerCase();
         String phoneNum=phoneNumber.getText();
-        String physicalAdd=physicalAddress.getText();
+        String physicalAdd=physicalAddress.getText().toLowerCase();
         String postalCo=postalCode.getText();
-        String cit=city.getText();
+        String cit=city.getText().toLowerCase();
         String emal=email.getText();
         String userType=null;
         String country=countryBox.getValue();
         String numberRegex="[0-9]+";
         String emailRegex ="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(.+[a-zA-Z0-9-.]+)+$";
         String nameRegex="[A-Za-z]+";
-        String tableName="trial_user";
         String genderId = null;
 
         if (userName.getText().length()<4 || userName.getText().length()>8){
@@ -133,19 +132,52 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date convertedCurrentDate = sdf.parse(yearBox.getValue().toString()+"-"+monthBox.getValue().toString()+"-"+dayBox.getValue().toString());
         String dateOfBirht=sdf.format(convertedCurrentDate );
-        String freeTrialEndDate=String.valueOf(Calendar.DATE);
 
-            if (trialUser.isSelected()){
-                userType=trialUser.getText();
-                DB_Connector connector =new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
+        String trialMounth=String.valueOf(Calendar.getInstance().get(Calendar.MONTH)+2);
+        Date convertedTrialEndDate=sdf.parse(Calendar.getInstance().get(Calendar.YEAR)+"-"+trialMounth+"-"+Calendar.getInstance().get(Calendar.DATE));
+        String freeTrialEndDate=sdf.format(convertedTrialEndDate);
 
-                connector.checkUserName(userNam,warningText,event);
-                connector.insert("user_link(user)","('"+userNam+"')");
-                connector.insert(tableName+"(user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link)", "('"+userNam+"','"+userPass+"','"+userNam+"','"+firstNam+"','"+lastNam+"','"+dateOfBirht+"','"+emal+"','"+physicalAdd+"','"+cit+"','"+postalCo+"','"+country+"','"+dateOfBirht+"','"+genderId+"','"+userNam+"')");
-                //create user
-            }if (premiumUser.isSelected()){
-                userType=premiumUser.getText();
-            }
+        DB_Connector connector =new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
+                if (trialUser.isSelected()){
+                        userType=trialUser.getText();
+
+                        connector.checkTrialUserName(userNam,warningText,event);
+                        if (warningText.getText().isEmpty()){
+                            connector.insert("user_link(user)","('"+userNam+"')");
+                            connector.insert("trial_user(user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link)", "('"+userNam+"','"+userPass+"','"+userNam+"','"+firstNam+"','"+lastNam+"','"+dateOfBirht+"','"+emal+"','"+physicalAdd+"','"+cit+"','"+postalCo+"','"+country+"','"+freeTrialEndDate+"','"+genderId+"','"+userNam+"')");
+                        }if (!warningText.getText().isEmpty()){
+                            DialogBoxManager.errorDialogBox("Error occurred","Username is already taken!!");
+                            warningText.setText("");
+                        }
+                        //create user
+                }if (premiumUser.isSelected()){
+                        userType=premiumUser.getText();
+                        connector.checkPremiumlUserName(userNam,warningText,event);
+                        Path path = Paths.get("PremiumUserInfo.bin");
+                        ArrayList<String> premiumUserInfo=new ArrayList<>();
+                        try {
+                                premiumUserInfo.add(0,userNam);
+                                premiumUserInfo.add(1,userPass);
+                                premiumUserInfo.add(2,userNam);
+                                premiumUserInfo.add(3,firstNam);
+                                premiumUserInfo.add(4,lastNam);
+                                premiumUserInfo.add(5,dateOfBirht);
+                                premiumUserInfo.add(6,emal);
+                                premiumUserInfo.add(7,physicalAdd);
+                                premiumUserInfo.add(8,cit);
+                                premiumUserInfo.add(9,postalCo);
+                                premiumUserInfo.add(10,country);
+                                premiumUserInfo.add(11,genderId);
+                                premiumUserInfo.add(12,userNam);
+                                premiumUserInfo.add(13,phoneNum);
+
+                                Files.write(path,premiumUserInfo, StandardOpenOption.CREATE);
+
+                        }catch (Exception e){
+                                DialogBoxManager.errorDialogBox("Error occurred","Premium User Info");
+                                System.out.println(e.toString());
+                        }
+                }
 
         }catch (InputMismatchException ie){
         System.out.println(ie.toString());
@@ -154,11 +186,9 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
         DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to welcome scene");
         System.out.println(e.toString());
         }
-
     }
-
 @FXML
-private void clickOnLogInLabel(MouseEvent me) {
+private void clickOnLogInLabel(MouseEvent me){
         try {
         SceneManager.sceneManager.changeScene(me,"view/logInMenu.fxml");
 
