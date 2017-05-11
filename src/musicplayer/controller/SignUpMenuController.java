@@ -145,6 +145,7 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
                         if (warningText.getText().isEmpty()){
                             connector.insert("user_link(user)","('"+userNam+"')");
                             connector.insert("trial_user(user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link)", "('"+userNam+"','"+userPass+"','"+userNam+"','"+firstNam+"','"+lastNam+"','"+dateOfBirht+"','"+emal+"','"+physicalAdd+"','"+cit+"','"+postalCo+"','"+country+"','"+freeTrialEndDate+"','"+genderId+"','"+userNam+"')");
+                            connector.logInTrial(userNam,userPass,event,warningText);
                         }if (!warningText.getText().isEmpty()){
                             DialogBoxManager.errorDialogBox("Error occurred","Username is already taken!!");
                             warningText.setText("");
