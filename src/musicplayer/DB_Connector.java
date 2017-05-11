@@ -119,9 +119,7 @@ public class DB_Connector {
                     warningLabel.setText("Invalid username or password!!");
                 }
             }
-            if (!rs.next()) {
-                warningLabel.setText("Invalid Username or password!!");
-            }
+
         } catch (SQLException ex) {
             DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing login query. Please try again.");
             ex.printStackTrace();
@@ -140,9 +138,6 @@ public class DB_Connector {
                 } else {
                     warningLabel.setText("Invalid username or password!!");
                 }
-            }
-            if (!rs.next()) {
-                warningLabel.setText("Invalid Username or password!!");
             }
         }catch (SQLException ex) {
 
