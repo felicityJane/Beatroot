@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ToggleButton?>
@@ -101,6 +102,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
+            <ImageView fx:id="imgRating" fitHeight="32.0" fitWidth="116.0" layoutX="724.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true" />
             <Rectangle id="imgNoConnection" fx:id="imgNoConnection" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="707.0" layoutX="-15.0" layoutY="-27.0" opacity="0.7" stroke="WHITE" strokeType="INSIDE" visible="false" width="1398.0" />
             <Label fx:id="lblNoConnection1" layoutX="365.0" layoutY="260.0" prefHeight="118.0" prefWidth="667.0" text="Looks like you're not connected to the internet!" textFill="RED" visible="false">
                <font>
@@ -112,6 +114,7 @@
                   <Font size="26.0" />
                </font>
             </Label>
+            <ProgressIndicator fx:id="progressDownload" layoutX="840.0" layoutY="137.0" prefHeight="40.0" prefWidth="39.0" progress="0.0" visible="false" />
             </children></AnchorPane>
 
     </children>
