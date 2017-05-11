@@ -114,7 +114,7 @@
                   <Font size="26.0" />
                </font>
             </Label>
-            <ProgressIndicator fx:id="progressDownload" layoutX="840.0" layoutY="137.0" prefHeight="40.0" prefWidth="39.0" progress="0.0" visible="false" />
+            <ProgressIndicator fx:id="progressDownload" layoutX="840.0" layoutY="136.0" prefHeight="40.0" prefWidth="39.0" progress="0.0" visible="false" />
             </children></AnchorPane>
 
     </children>

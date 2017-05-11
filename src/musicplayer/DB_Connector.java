@@ -110,7 +110,7 @@ public class DB_Connector {
     }
     public void logInTrial(String userName, String password, ActionEvent event, Label warningLabel) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link, FROM trial_user WHERE user_name='" + userName + "'");
+            ResultSet rs = statement.executeQuery("SELECT user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link FROM trial_user WHERE user_name = '" + userName + "'");
 
             if (rs.next()) {
                 if (password.equals(rs.getString(2))) {
@@ -118,14 +118,14 @@ public class DB_Connector {
                     String displayName=rs.getString(3);
                     String firstName=rs.getString(4);
                     String lastName=rs.getString(5);
-                    Date birthDay=rs.getDate(6) ;
+                    Date birthDay=rs.getDate(6);
                     String emailAddress=rs.getString(7);
                     String physicalAddress=rs.getString(8);
                     String city=rs.getString(9);
                     String postalCode=rs.getString(10);
                     Country country=Country.valueOf(rs.getString(11));
                     Date freeTrialEndDate=rs.getDate(12);
-                    Gender gender=Gender.valueOf(rs.getString(13));
+                    Gender gender=Gender.values()[Integer.parseInt(rs.getString(13))];
                     String playListLink=rs.getString(14);
 
                     TrialUser user = new TrialUser(userName,displayName,password,firstName,lastName,birthDay,emailAddress,physicalAddress,city,postalCode,country,gender,phoneNumber,freeTrialEndDate);

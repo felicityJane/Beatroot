@@ -19,6 +19,7 @@ public abstract class User {
 	public User(String userName, String displayName, String password, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String streetNameAndNumber, String cityOfResidence, String postalCode,
 			Country country, Gender gender, String phoneNumber) {
+
 		this.userName = userName;
 		this.displayName = displayName;
 		this.password = password;
@@ -26,16 +27,13 @@ public abstract class User {
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.emailAddress = emailAddress;
+		physicalAddress = new Address(streetNameAndNumber, cityOfResidence, postalCode, country);
 		this.physicalAddress.setFirstName(firstName);
 		this.physicalAddress.setLastName(lastName);
-		this.physicalAddress.setStreetNameAndNumber(streetNameAndNumber);
-		this.physicalAddress.setCity(cityOfResidence);
-		this.physicalAddress.setCountry(country);
-		this.physicalAddress.setPostalCode(postalCode);
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
         this.defaultPlaylist = new Playlist("Default", PrivacyLevel.PRIVATE);
-		userPlaylistLink.getPlaylists().add(defaultPlaylist);
+        userPlaylistLink = new UserPlaylistLink(userName, defaultPlaylist);
 	}
 
 	public String getUserName() {

@@ -21,7 +21,6 @@ public class Server_Connector {
     public Server_Connector(String strUrl, URL url) {
         this.strUrl = strUrl;
         this.url = url;
-
     }
 
     public void connectToServer() {
@@ -40,8 +39,6 @@ public class Server_Connector {
             while ((len = is.read(buffer)) > 0) {
                 outstream.write(buffer, 0, len);
             }
-
-
         }
 
         catch (Exception ex) {

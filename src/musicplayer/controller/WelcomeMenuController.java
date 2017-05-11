@@ -10,6 +10,7 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -184,6 +185,7 @@ public class WelcomeMenuController implements Initializable {
 
                 n.setOnMouseClicked(event -> {
                     clickOnImageView(n);
+
                 });
 
                 n.setOnMouseEntered(event ->  {
@@ -584,7 +586,6 @@ public class WelcomeMenuController implements Initializable {
 
     }
 
-    @FXML
     private void clickOnImageView(Node n) {
 
         mediaPlayer.stop();

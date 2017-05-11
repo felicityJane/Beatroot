@@ -144,4 +144,5 @@ public class MusicTrack {
 		setUrl(url);
 		setGenre(genre);
 	}
+
 }
