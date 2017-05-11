@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.PaymentMenuController">
+<AnchorPane fx:id="paymentParentAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.PaymentMenuController">
    <children>
       <AnchorPane fx:id="logInRootAnchor" layoutX="3.0" layoutY="-10.0" prefHeight="44.0" prefWidth="426.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-75.0" AnchorPane.topAnchor="-10.0" />
       <fx:include fx:id="mainMenu" source="mainMenu.fxml" />

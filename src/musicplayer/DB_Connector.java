@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DB_Connector {
 
@@ -22,24 +23,49 @@ public class DB_Connector {
             statement = c.createStatement();
 
         } catch (SQLException sqlEx) {
-            DialogBoxManager.errorDialogBox("Unable to access specified database", "Error while accessing the database. Please try again.");
+            DialogBoxManager.errorDialogBox("Unable to access specified database","Error while accessing the database. Please try again.");
             sqlEx.printStackTrace();
+
         }
     }
 
-    public void search(String parameterToSearch, String tableName, String whereStatement) {
+    public String search(String parameterToSearch, String tableName, String whereStatement) {
+
+        String sqlString = "";
         try {
             ResultSet rs = statement.executeQuery("SELECT " + parameterToSearch +
                     " FROM " + tableName + " WHERE " + whereStatement);
             while (rs.next()) {
-                System.out.println("The " + rs.getString(1) + " has " + parameterToSearch + " = " + rs.getString(2) +
-                        " for " + whereStatement + ".");
+               sqlString = rs.getString(1);
             }
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
 
-            DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing search query. Please try again.");
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing search query. Please try again.");
             ex.printStackTrace();
         }
+
+        return sqlString;
+    }
+
+    public ArrayList<String> searchMultipleResults(String parameterToSearch, String tableName, String whereStatement) {
+
+
+        ArrayList<String> sqlArrayList = new ArrayList<>();
+        try {
+            ResultSet rs = statement.executeQuery("SELECT " + parameterToSearch +
+                    " FROM " + tableName + " WHERE " + whereStatement);
+            while (rs.next()) {
+                sqlArrayList.add(rs.getString(1));
+            }
+        }
+        catch (SQLException ex) {
+
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing multiple search query. Please try again.");
+            ex.printStackTrace();
+        }
+
+        return sqlArrayList;
     }
 
     public void update(String tableToUpdate, String parameterToUpdate, String newParameter, String whereStatement) {
@@ -49,7 +75,7 @@ public class DB_Connector {
                     + " WHERE " + whereStatement);
             System.out.println("Updated rows: " + rows);
         } catch (SQLException sqlEx) {
-            DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing update query. Please try again.");
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing update query. Please try again.");
             sqlEx.printStackTrace();
         }
     }
@@ -72,14 +98,13 @@ public class DB_Connector {
 
         try {
             statement.executeUpdate("DELETE FROM " + tableToDeleteFrom + " WHERE "
-                    + whereStatement);
+            + whereStatement);
 
-        } catch (SQLException sqlEx) {
-            DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing delete query. Please try again.");
+        }catch (SQLException sqlEx) {
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing delete query. Please try again.");
             sqlEx.printStackTrace();
         }
     }
-
     public void logInTrial(String userName, String password, ActionEvent event, Label warningLabel) {
         try {
             ResultSet rs = statement.executeQuery("SELECT user_name,password FROM trial_user WHERE user_name='" + userName + "'");
@@ -104,7 +129,6 @@ public class DB_Connector {
             e.printStackTrace();
         }
     }
-
     public void logInPremium(String userName, String password, ActionEvent event, Label warningLabel) {
 
         try {
@@ -133,9 +157,9 @@ public class DB_Connector {
         try {
             ResultSet rs = statement.executeQuery("SELECT user FROM user_link WHERE user='" + userName + "'");
             if (rs.next()) {
-                    warningLabel.setText("Username is already taken");
-                    warningLabel.setVisible(false);
-                }else {
+                warningLabel.setText("Username is already taken");
+                warningLabel.setVisible(false);
+            }else {
                 SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
             }
         }catch (SQLException ex) {
@@ -158,6 +182,21 @@ public class DB_Connector {
             ex.printStackTrace();
         }catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void searchUser(String parameterToSearch, String tableName, String whereStatement) {
+        try {
+            ResultSet rs = statement.executeQuery("SELECT " + parameterToSearch +
+                    " FROM " + tableName + " WHERE " + whereStatement);
+            while (rs.next()) {
+                System.out.println("The " + rs.getString(1) + " has " + parameterToSearch + " = " + rs.getString(2) +
+                        " for " + whereStatement + ".");
+            }
+        } catch (SQLException ex) {
+
+            DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing search query. Please try again.");
+            ex.printStackTrace();
         }
     }
 
