@@ -33,9 +33,11 @@ import org.apache.tika.parser.mp3.Mp3Parser;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
+import java.net.InetAddress;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -332,9 +334,9 @@ public class WelcomeMenuController implements Initializable {
             }
         });
 
-        //imgNoConnection.setVisible(false);
-        //lblNoConnection1.setVisible(false);
-        //lblNoConnection2.setVisible(false);
+        imgNoConnection.setVisible(false);
+        lblNoConnection1.setVisible(false);
+        lblNoConnection2.setVisible(false);
         setImageNews();
         setImageSuggestions();
         setFirstSong();
@@ -475,12 +477,12 @@ public class WelcomeMenuController implements Initializable {
             trackPlaying = mt;
             try {
                 url = new URL(songUrl);
-                mediaPlayer.stop();media = new Media(songUrl);
+                mediaPlayer.stop();
+                media = new Media(songUrl);
                 mediaPlayer = new MediaPlayer(media);
                 sliderVolume.setValue(mediaPlayer.getVolume() * 100);
                 connector = new Server_Connector(songUrl, url);
                 connector.connectToServer();
-                System.out.println(connector.getFileSize(url));
                 Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
                 runMediaPlayer(path);
                 mediaPlayer.play();
@@ -563,9 +565,9 @@ public class WelcomeMenuController implements Initializable {
             input.close();
         } catch (Exception fe) {
             fe.printStackTrace();
-            //imgNoConnection.setVisible(true);
-            //lblNoConnection2.setVisible(true);
-            //lblNoConnection1.setVisible(true);
+            imgNoConnection.setVisible(true);
+            lblNoConnection2.setVisible(true);
+            lblNoConnection1.setVisible(true);
         }
 
 
@@ -621,7 +623,7 @@ public class WelcomeMenuController implements Initializable {
 
         for (int i = tempArray.size() - 1; i >= 0; i--) {
             album.addSongs(tempArray.get(i));
-           albumSelected.addSongs(tempArray.get(i));
+            albumSelected.addSongs(tempArray.get(i));
         }
 
         lstMainTracks.getItems().clear();
@@ -932,7 +934,7 @@ public class WelcomeMenuController implements Initializable {
 
         for (int i = tempArray.size() - 1; i >= 0; i--) {
             album.addSongs(tempArray.get(i));
-           albumSelected.addSongs(tempArray.get(i));
+            albumSelected.addSongs(tempArray.get(i));
         }
 
         lstMainTracks.getItems().clear();
@@ -952,7 +954,6 @@ public class WelcomeMenuController implements Initializable {
     private void loadMediaPlayer(int index, Album album) {
         try {
             url = new URL(album.getSongs().get(index).getUrl());
-            trackPlaying = album.getSongs().get(0);
             mediaPlayer.stop();
             media = new Media(url.toString());
             mediaPlayer = new MediaPlayer(media);
@@ -964,6 +965,11 @@ public class WelcomeMenuController implements Initializable {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    private void clickOnUserName(MouseEvent mouseEvent, String userName){
+
+
     }
 }
 
