@@ -32,10 +32,7 @@ import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.net.InetAddress;
 import java.net.URL;
@@ -118,7 +115,7 @@ public class WelcomeMenuController implements Initializable {
         imgSearchUser.setImage(new Image("images/SearchIcon.png"));
         lblNoMatchesFound.setText("");
         imgRating.setImage(new Image("images/0Starz.png"));
-        progressDownload.setVisible(false);
+        progressDownload.setVisible(true);
 
         imgSearchIcon.setOnMouseEntered(event -> {
             Scene scene = imgSearchIcon.getScene();
@@ -483,8 +480,18 @@ public class WelcomeMenuController implements Initializable {
                 media = new Media(songUrl);
                 mediaPlayer = new MediaPlayer(media);
                 sliderVolume.setValue(mediaPlayer.getVolume() * 100);
-                connector = new Server_Connector(songUrl, url);
-                connector.connectToServer();
+                File dir = new File("tmp");
+                File[] matches = dir.listFiles(new FilenameFilter()
+                {
+                    public boolean accept(File dir, String name)
+                    {
+                        return name.startsWith(url.toString().substring(36).replaceAll("%20", " ")) && name.endsWith(".mp3");
+                    }
+                });
+                if (matches.length == 0) {
+                    connector = new Server_Connector(url.toString(), url);
+                    connector.connectToServer();
+                }
                 Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
                 runMediaPlayer(path);
                 mediaPlayer.play();
@@ -631,7 +638,8 @@ public class WelcomeMenuController implements Initializable {
         for (MusicTrack m : album.getSongs()) {
             String trackLength = db_connector.search("track_length",
                     "music_track", "track_name = '" + m.getTrackName().replaceAll("'", "''") + "'");
-            String lstTrackInfo = String.format("%-20s %-5s", m.getTrackName(), trackLength.substring(3));
+            String indent = "                                                                ";
+            String lstTrackInfo = String.format("%-150s%s", m.getTrackName(),trackLength.substring(3));
             lstMainTracks.getItems().add(lstTrackInfo);
         }
 
@@ -646,8 +654,18 @@ public class WelcomeMenuController implements Initializable {
             media = new Media(url.toString());
             mediaPlayer = new MediaPlayer(media);
             sliderVolume.setValue(mediaPlayer.getVolume() * 100);
-            connector = new Server_Connector(url.toString(), url);
-            connector.connectToServer();
+            File dir = new File("tmp");
+            File[] matches = dir.listFiles(new FilenameFilter()
+            {
+                public boolean accept(File dir, String name)
+                {
+                    return name.startsWith(url.toString().substring(36).replaceAll("%20", " ")) && name.endsWith(".mp3");
+                }
+            });
+            if (matches.length == 0)  {
+                connector = new Server_Connector(url.toString(), url);
+                connector.connectToServer();
+            }
             Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
             runMediaPlayer(path);
         } catch (Exception ex) {
@@ -734,7 +752,11 @@ public class WelcomeMenuController implements Initializable {
 
         lstMainTracks.getItems().clear();
         for (MusicTrack m : album.getSongs()) {
-            lstMainTracks.getItems().add(m.getTrackName());
+            String trackLength = db_connector.search("track_length",
+                    "music_track", "track_name = '" + m.getTrackName().replaceAll("'", "''") + "'");
+            String indent = "                                                                ";
+            String lstTrackInfo = String.format("%-150s%s", m.getTrackName(),trackLength.substring(3));
+            lstMainTracks.getItems().add(lstTrackInfo);
         }
 
         imgMain.setImage(album.getAlbumCover());
@@ -748,9 +770,18 @@ public class WelcomeMenuController implements Initializable {
             media = new Media(url.toString());
             mediaPlayer = new MediaPlayer(media);
             sliderVolume.setValue(mediaPlayer.getVolume() * 100);
-            connector = new Server_Connector(url.toString(), url);
-
-            connector.connectToServer();
+            File dir = new File("tmp");
+            File[] matches = dir.listFiles(new FilenameFilter()
+            {
+                public boolean accept(File dir, String name)
+                {
+                    return name.startsWith(url.toString().substring(36).replaceAll("%20", " ")) && name.endsWith(".mp3");
+                }
+            });
+            if (matches.length == 0) {
+                connector = new Server_Connector(url.toString(), url);
+                connector.connectToServer();
+            }
             Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
             runMediaPlayer(path);
         } catch (Exception ex) {

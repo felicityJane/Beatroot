@@ -163,13 +163,13 @@ public class DB_Connector {
                     Country country=Country.valueOf(rs.getString(10));
                     String bankCardNumber=rs.getString(11);
                     Date expiratinDate=rs.getDate(12);
-                    PaymentMethod paymentMethod=PaymentMethod.valueOf(rs.getString(13));
+                    PaymentMethod paymentMethod=PaymentMethod.valueOf(rs.getString(13).toUpperCase());
                     String accountOwnerName=rs.getString(14);
                     String billingCity=rs.getString(15);
                     String billingPostalCode=rs.getString(16);
                     Country billingCountry=Country.valueOf(rs.getString(17));
                     String billingPhoneNumber=rs.getString(18);
-                    Gender gender=Gender.valueOf(rs.getString(19));
+                    Gender gender=Gender.values()[Integer.parseInt(rs.getString(19))];
                     String playListLink=rs.getString(20);
 
                     //New Premium User
