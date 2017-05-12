@@ -1,7 +1,5 @@
 package musicplayer.controller;
-/**
- * Created by felic on 10/04/2017.
- */
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,15 +16,18 @@ import java.util.ResourceBundle;
 public class MainMenuController implements Initializable{
 
     @FXML private MenuBar menuBar;
-    @FXML private MenuItem createNewPlaylistMenu;
-    @FXML private MenuItem searchMenu;
-    @FXML private MenuItem logoutMenu;
-    @FXML private MenuItem settingsMenu;
-    @FXML private MenuItem aboutMenu;
+    @FXML private MenuItem createNewPlaylistMenu, searchMenu, logoutMenu, settingsMenu, aboutMenu,faqsMenu;
     private LogInMenuController logInMenuController;
     private WelcomeMenuController welcomeMenuController;
     private SignUpMenuController signUpMenuController;
     private PaymentMenuController paymentMenuController;
+    private SettingsPageController settingsPageController;
+    private AboutPageController aboutPageController;
+    private AlbumPageController albumPageController;
+    private ArtistPageController artistPageController;
+    private FAQsPageController faQsPageController;
+    private SongPageController songPageController;
+    @FXML AnchorPane mainMenu;
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,28 +44,68 @@ public class MainMenuController implements Initializable{
     public void init(PaymentMenuController paymentMenuController) {
         this.paymentMenuController = paymentMenuController;
     }
+    public void init(SettingsPageController settingsPageController) {
+        this.settingsPageController = settingsPageController;
+    }
+    public void init(AboutPageController aboutPageController) {
+        this.aboutPageController = aboutPageController;
+    }
+    public void init(AlbumPageController albumPageController) {
+        this.albumPageController = albumPageController;
+    }
+    public void init(ArtistPageController artistPageController) {
+        this.artistPageController = artistPageController;
+    }
+    public void init(FAQsPageController faQsPageController) {
+        this.faQsPageController = faQsPageController;
+    }
+    public void init(SongPageController songPageController){
+        this.songPageController = songPageController;
+    }
     public void setDisabledMenuItemsWelcomeScene(){
        createNewPlaylistMenu.setDisable(false);
        searchMenu.setDisable(false);
        logoutMenu.setDisable(false);
-       searchMenu.setDisable(false);
        settingsMenu.setDisable(false);
-       aboutMenu.setDisable(false);
     }
-
+    public void enableMenuItemsAboutPage(){
+        createNewPlaylistMenu.setDisable(false);
+        searchMenu.setDisable(false);
+        logoutMenu.setDisable(false);
+        settingsMenu.setDisable(false);
+        aboutMenu.setDisable(true);
+    }
+    public void enableMenuItems(){
+        createNewPlaylistMenu.setDisable(false);
+        searchMenu.setDisable(false);
+        logoutMenu.setDisable(false);
+        settingsMenu.setDisable(false);
+    }
+    public void enableMenuItemsFaqsPage(){
+        createNewPlaylistMenu.setDisable(false);
+        searchMenu.setDisable(false);
+        logoutMenu.setDisable(false);
+        settingsMenu.setDisable(false);
+        faqsMenu.setDisable(true);
+    }
+    public void enableMenuItemsSettingsPage(){
+        createNewPlaylistMenu.setDisable(false);
+        searchMenu.setDisable(false);
+        logoutMenu.setDisable(false);
+    }
     void menuBarFitToParent(AnchorPane parentAnchor){
         menuBar.prefWidthProperty().bind(parentAnchor.widthProperty());
     }
     @FXML
     private void createNewPlaylistMenuOption(){
-        //refer to create playlist method here
+        //refer to createNewPlaylist method here
     }
     @FXML
     private void searchMenuOption(){
         //refer to search method here
     }
     @FXML
-    private void logOutMenuOption(ActionEvent event){
+    private void logOutMenuOption(){
         boolean answer = DialogBoxManager.confirmationDialogBox("Are you sure you want to log out?","click ok to continue");
         if (answer){
             try {
@@ -80,27 +121,27 @@ public class MainMenuController implements Initializable{
         System.exit(0);
     }
     @FXML
-    private void settingsMenuOption(ActionEvent event){
+    private void settingsMenuOption(){
         try {
-            SceneManager.sceneManager.changeScene(event,"view/settingsPage.fxml");
+            SceneManager.sceneManager.changeSceneMenuBar(menuBar,"view/settingsPage.fxml");
         } catch (IOException e) {
             DialogBoxManager.errorDialogBox("Error occured","Switching to settings page from menu bar selection");
             e.printStackTrace();
         }
     }
     @FXML
-    private void aboutMenuOption(ActionEvent event){
+    private void aboutMenuOption(){
         try {
-            SceneManager.sceneManager.changeScene(event,"view/aboutPage.fxml");
+            SceneManager.sceneManager.changeSceneMenuBar(menuBar,"view/aboutPage.fxml");
         } catch (IOException e) {
             DialogBoxManager.errorDialogBox("Error occured","Switching to about page from menu bar selection");
             e.printStackTrace();
         }
     }
     @FXML
-    private void faqsMenuOption(ActionEvent event){
+    private void faqsMenuOption(){
         try {
-            SceneManager.sceneManager.changeScene(event,"view/faqsPage.fxml");
+            SceneManager.sceneManager.changeSceneMenuBar(menuBar,"view/faqsPage.fxml");
         } catch (IOException e) {
             DialogBoxManager.errorDialogBox("Error occured","Switching to faqs page from menu bar selection");
             e.printStackTrace();

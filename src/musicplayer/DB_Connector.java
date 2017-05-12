@@ -125,5 +125,36 @@ public class DB_Connector {
             e.printStackTrace();
         }
     }
+    public String searchUser(String parameterToSearch, String tableName, String whereStatement, String input) {
 
+        String sqlString = "";
+        try {
+            ResultSet rs = statement.executeQuery("SELECT " + parameterToSearch + " FROM " + tableName + " WHERE " + whereStatement + input);
+            while (rs.next()) {
+                sqlString = rs.getString(1);
+            }
+        }
+        catch (SQLException ex) {
+
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing search query. Please try again.");
+            ex.printStackTrace();
+        }
+
+        return sqlString;
+    }
+    public String changeDisplayName(String displayName, String userName) {
+
+        String sqlString = "";
+        try {
+            int rows = statement.executeUpdate("UPDATE premium_user SET display_name = " + displayName + " WHERE user_name  = " + userName);
+            System.out.println("Updated rows: " + rows);
+        }
+        catch (SQLException ex) {
+
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing search query. Please try again.");
+            ex.printStackTrace();
+        }
+
+        return sqlString;
+    }
 }
