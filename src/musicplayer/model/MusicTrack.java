@@ -12,6 +12,7 @@ public class MusicTrack {
 	private Administrator administrator;
 	private String url;
 	private Rating rating;
+	private ArrayList<Album> albums = new ArrayList<Album>();
 	private ArrayList<MusicArtist> performers = new ArrayList<MusicArtist>();
 	private ArrayList<Comment> comments = new ArrayList<Comment>();
 
@@ -136,5 +137,25 @@ public class MusicTrack {
 		setTrackLength(trackLength);
 		setUrl(url);
 		setGenre(genre);
+	}
+
+	public ArrayList<Album> getAlbums() {
+		return albums;
+	}
+
+	public void setAlbums(ArrayList<Album> albums) {
+		this.albums = albums;
+	}
+
+	public void addToAlbum(Album al) {
+		if (albums.contains(al))
+			return;
+		albums.add(al);
+	}
+
+	public void removeFromAlbum(Album al) {
+		if (!albums.contains(al))
+			return;
+		albums.remove(al);
 	}
 }

@@ -7,18 +7,17 @@ public abstract class User {
 	private String displayName, password, firstName, lastName, emailAddress, phoneNumber;
 	private Address physicalAddress;
 	private final String userName;
-    private UserPlaylistLink userPlaylistLink;
+	private UserPlaylistLink userPlaylistLink;
 	private Date dateOfBirth;
 	private Gender gender;
 	private Playlist defaultPlaylist;
-	private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
-
+	// private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
 	private ArrayList<Comment> userComments = new ArrayList<Comment>();
 	private ArrayList<Rating> userRatings = new ArrayList<Rating>();
 
 	public User(String userName, String displayName, String password, String firstName, String lastName,
-			Date dateOfBirth, String emailAddress, String streetNameAndNumber, String cityOfResidence, String postalCode,
-			Country country, Gender gender, String phoneNumber) {
+			Date dateOfBirth, String emailAddress, String streetNameAndNumber, String cityOfResidence,
+			String postalCode, Country country, Gender gender, String phoneNumber) {
 		this.userName = userName;
 		this.displayName = displayName;
 		this.password = password;
@@ -26,15 +25,16 @@ public abstract class User {
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.emailAddress = emailAddress;
-		this.physicalAddress.setFirstName(firstName);
-		this.physicalAddress.setLastName(lastName);
-		this.physicalAddress.setStreetNameAndNumber(streetNameAndNumber);
-		this.physicalAddress.setCity(cityOfResidence);
-		this.physicalAddress.setCountry(country);
-		this.physicalAddress.setPostalCode(postalCode);
+		this.physicalAddress = new Address(streetNameAndNumber, cityOfResidence, postalCode, country);
+		// this.physicalAddress.setFirstName(firstName);
+		// this.physicalAddress.setLastName(lastName);
+		// this.physicalAddress.setStreetNameAndNumber(streetNameAndNumber);
+		// this.physicalAddress.setCity(cityOfResidence);
+		// this.physicalAddress.setCountry(country);
+		// this.physicalAddress.setPostalCode(postalCode);
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
-        this.defaultPlaylist = new Playlist("Default", PrivacyLevel.PRIVATE);
+		this.defaultPlaylist = new Playlist("Default", PrivacyLevel.PRIVATE);
 		userPlaylistLink.getPlaylists().add(defaultPlaylist);
 	}
 
