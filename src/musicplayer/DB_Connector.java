@@ -3,11 +3,16 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
-import musicplayer.model.Country;
-import musicplayer.model.Gender;
-import musicplayer.model.TrialUser;
+import musicplayer.model.*;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -111,41 +116,20 @@ public class DB_Connector {
         }
     }
     public void logInTrial(String userName, String password, ActionEvent event, Label warningLabel) {
+
         try {
             ResultSet rs = statement.executeQuery("SELECT user_name, password, display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link FROM trial_user WHERE user_name='" + userName + "'");
 
             if (rs.next()) {
                 if (password.equals(rs.getString(2))) {
+                    Path path=Paths.get("UserName.bin");
+                    ArrayList<String>userNameAndType=new ArrayList<>();
+                    userNameAndType.add(0,userName);
+                    userNameAndType.add(1,"TrialUser");
 
-                    String trialUserName=rs.getString(1);
-                    String userPassword=rs.getString(2);
-                    String phoneNumber="00000000";
-                    String displayName=rs.getString(3);
-                    String firstName=rs.getString(4);
-                    String lastName=rs.getString(5);
-                    Date birthDay=rs.getDate(6) ;
-                    String emailAddress=rs.getString(7);
-                    String physicalAddress=rs.getString(8);
-                    String city=rs.getString(9);
-                    String postalCode=rs.getString(10);
-                    Country country=Country.valueOf(rs.getString(11));
-                    Date freeTrialEndDate=rs.getDate(12);
-                    Gender gender;
-                    if (rs.getString(13).equals("1")){
-                        gender=Gender.MALE;
-                    }if (rs.getString(13).equals("2")){
-                        gender=Gender.FEMALE;
-                    }else {
-                        gender=Gender.NOT_SPECIFIED;
-                    }
-                    String playListLink=rs.getString(14);
-
-
-                    TrialUser user = new TrialUser(userName,displayName,password,firstName,lastName,birthDay,emailAddress,physicalAddress,city,postalCode,country,gender,phoneNumber,freeTrialEndDate);
+                    Files.write(path,userNameAndType, StandardOpenOption.CREATE);
 
                     SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
-                    //call well come menucontroller setuser(User user);
-                    //this.user=user;
 
                 } else {
                     warningLabel.setText("Invalid username or password!!");
@@ -169,48 +153,15 @@ public class DB_Connector {
             if (rs.next()) {
                 if (password.equals(rs.getString(2))) {
 
-                    /* doesnt work constructor error
+                    Path path=Paths.get("UserName.bin");
+                    ArrayList<String>userNameAndType=new ArrayList<>();
+                    userNameAndType.add(0,userName);
+                    userNameAndType.add(1,"PremiumUser");
 
-                    String premiumUserName=userName;
-                    String PremiumUserPassword=password;
-                    String phoneNumber=rs.getString(18);
-                    String displayName=rs.getString(3);
-                    String firstName=rs.getString(4);
-                    String lastName=rs.getString(5);
-                    Date birthDay=rs.getDate(6) ;
-                    String emailAddress=rs.getString(7);
-                    String physicalAddress=rs.getString(8);
-                    String city=rs.getString(9);
-                    String postalCode=rs.getString(10);
-                    Country country=Country.valueOf(rs.getString(11));
-                    String bankCardNumber=rs.getString(12);
-                    Date expiratinDate=rs.getDate(13);
-                    PaymentMethod paymentMethod;
-                    if (rs.getString(14).equals("Visa")){
-                        paymentMethod=PaymentMethod.VISA;
-                    }else {
-                        paymentMethod=PaymentMethod.MASTER_CARD;
-                    }
-                    String accountOwnerName=rs.getString(15);
-                    String billingAddress=rs.getString(16);
-                    String billingCity=rs.getString(17);
-                    String billingPostalCode=rs.getString(18);
-                    Country billingCountry=Country.valueOf(rs.getString(19));
-                    String billingPhoneNumber=rs.getString(20);
-                    Gender gender;
-                    if (rs.getString(21).equals("1")){
-                        gender=Gender.MALE;
-                    }if (rs.getString(21).equals("2")){
-                        gender=Gender.FEMALE;
-                    }else {
-                        gender=Gender.NOT_SPECIFIED;
-                    }
-                    String playListLink=rs.getString(22);
+                    Files.write(path,userNameAndType, StandardOpenOption.CREATE);
 
-                    //New Premium User
-                    PremiumUser premiumUser=new PremiumUser(userName,displayName,password,firstName,lastName,birthDay,emailAddress,physicalAddress,city,postalCode,country,gender,phoneNumber,bankCardNumber,expiratinDate,paymentMethod,accountOwnerName,physicalAddress,billingCity,billingPostalCode,billingCountry,billingPhoneNumber);
-                    */
                     SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
+
                 }else {
                     warningLabel.setText("Invalid username or password!!");
                 }
