@@ -12,13 +12,14 @@ import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
 import musicplayer.model.Country;
+
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.*;
 import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class SignUpMenuController implements Initializable{
 
@@ -155,30 +156,31 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
                 }if (premiumUser.isSelected()){
                         userType=premiumUser.getText();
                         connector.checkPremiumUserName(userNam,warningText,event);
-                        Path path = Paths.get("PremiumUserInfo.bin");
-                        ArrayList<String> premiumUserInfo=new ArrayList<>();
-                        try {
-                                premiumUserInfo.add(0,userNam);
-                                premiumUserInfo.add(1,userPass);
-                                premiumUserInfo.add(2,userNam);
-                                premiumUserInfo.add(3,firstNam);
-                                premiumUserInfo.add(4,lastNam);
-                                premiumUserInfo.add(5,dateOfBirht);
-                                premiumUserInfo.add(6,emal);
-                                premiumUserInfo.add(7,physicalAdd);
-                                premiumUserInfo.add(8,cit);
-                                premiumUserInfo.add(9,postalCo);
-                                premiumUserInfo.add(10,country);
-                                premiumUserInfo.add(11,genderId);
-                                premiumUserInfo.add(12,userNam);
-                                premiumUserInfo.add(13,phoneNum);
 
-                                Files.write(path,premiumUserInfo, StandardOpenOption.CREATE);
+                }
+                Path path = Paths.get("PremiumUserInfo.bin");
+                ArrayList<String> premiumUserInfo=new ArrayList<>();
+                try {
+                        premiumUserInfo.add(0,userNam);
+                        premiumUserInfo.add(1,userPass);
+                        premiumUserInfo.add(2,userNam);
+                        premiumUserInfo.add(3,firstNam);
+                        premiumUserInfo.add(4,lastNam);
+                        premiumUserInfo.add(5,dateOfBirht);
+                        premiumUserInfo.add(6,emal);
+                        premiumUserInfo.add(7,physicalAdd);
+                        premiumUserInfo.add(8,cit);
+                        premiumUserInfo.add(9,postalCo);
+                        premiumUserInfo.add(10,country);
+                        premiumUserInfo.add(11,genderId);
+                        premiumUserInfo.add(12,userNam);
+                        premiumUserInfo.add(13,phoneNum);
 
-                        }catch (Exception e){
-                                DialogBoxManager.errorDialogBox("Error occurred","Premium User Info");
-                                System.out.println(e.toString());
-                        }
+                        Files.write(path,premiumUserInfo, StandardOpenOption.CREATE);
+
+                }catch (Exception e){
+                        DialogBoxManager.errorDialogBox("Error occurred","Premium User Info");
+                        System.out.println(e.toString());
                 }
 
         }catch (InputMismatchException ie){

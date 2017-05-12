@@ -3,7 +3,6 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
-import musicplayer.model.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -18,7 +17,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class DB_Connector {
 

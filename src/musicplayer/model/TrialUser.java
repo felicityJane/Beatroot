@@ -1,8 +1,9 @@
 package musicplayer.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TrialUser extends User {
+public class TrialUser extends User implements Serializable{
 
 	private Date freeTrialEndDate;
 

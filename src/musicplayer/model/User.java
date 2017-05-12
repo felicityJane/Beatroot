@@ -3,7 +3,7 @@ package musicplayer.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public abstract class User {
+public abstract class User{
 	private String displayName, password, firstName, lastName, emailAddress, phoneNumber;
 	private Address physicalAddress;
 	private final String userName;
