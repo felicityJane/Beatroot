@@ -59,7 +59,6 @@ public class PremiumUser extends NonTrialUser {
 		this.cardHolderName = billingAccountOwnerName;
 		billingAddress = super.getPhysicalAddress();
 	}
-
 	/**
 	 * Billing address is different from the user's address
 	 * 

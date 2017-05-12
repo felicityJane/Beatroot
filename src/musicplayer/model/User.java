@@ -16,8 +16,16 @@ public abstract class User {
 	private ArrayList<Rating> userRatings = new ArrayList<Rating>();
 
 	public User(String userName, String displayName, String password, String firstName, String lastName,
+			// <<<<<<< HEAD
+			// Date dateOfBirth, String emailAddress, String
+			// streetNameAndNumber, String cityOfResidence,
+			// String postalCode, Country country, Gender gender, String
+			// phoneNumber) {
+			// =======
 			Date dateOfBirth, String emailAddress, String streetNameAndNumber, String cityOfResidence,
 			String postalCode, Country country, Gender gender, String phoneNumber) {
+
+		// >>>>>>> refs/heads/master
 		this.userName = userName;
 		this.displayName = displayName;
 		this.password = password;
@@ -25,6 +33,7 @@ public abstract class User {
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.emailAddress = emailAddress;
+		// <<<<<<< HEAD
 		this.physicalAddress = new Address(streetNameAndNumber, cityOfResidence, postalCode, country);
 		// this.physicalAddress.setFirstName(firstName);
 		// this.physicalAddress.setLastName(lastName);
@@ -32,10 +41,17 @@ public abstract class User {
 		// this.physicalAddress.setCity(cityOfResidence);
 		// this.physicalAddress.setCountry(country);
 		// this.physicalAddress.setPostalCode(postalCode);
+		// =======
+		// physicalAddress = new Address(streetNameAndNumber, cityOfResidence,
+		// postalCode, country);
+		// this.physicalAddress.setFirstName(firstName);
+		// this.physicalAddress.setLastName(lastName);
+		// >>>>>>> refs/heads/master
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
+
 		this.defaultPlaylist = new Playlist("Default", PrivacyLevel.PRIVATE);
-		userPlaylistLink.getPlaylists().add(defaultPlaylist);
+		userPlaylistLink = new UserPlaylistLink(userName, defaultPlaylist);
 	}
 
 	public String getUserName() {

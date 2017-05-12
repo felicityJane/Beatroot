@@ -18,10 +18,10 @@ public class Main extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("view/logInMenu.fxml"));
             primaryStage.setTitle("Beatroot");
             primaryStage.setScene(new Scene(root));
-            primaryStage.show();
+           primaryStage.show();
         }
 
-        public static void main(String[] args) {
-            launch(args);
+public static void main(String[] args) {
+        launch(args);
         }
-}
+        }

@@ -39,17 +39,19 @@ public class MainMenuController implements Initializable {
 			modifySongButton;
 	@FXML
 	private VBox adminMenu;
+	// private LogInMenuController logInMenuController;
+	// private WelcomeMenuController welcomeMenuController;
+	// private SignUpMenuController signUpMenuController;
+	private User user;
+
 	private LogInMenuController logInMenuController;
 	private WelcomeMenuController welcomeMenuController;
 	private SignUpMenuController signUpMenuController;
-	private User user;
+	private PaymentMenuController paymentMenuController;
 
-	// TODO <fx:include fx:id="adminMenu" source="AdminMenu.fxml" />
+	@FXML
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// if (!(user instanceof Administrator)) {
-		// adminMenu.setVisible(false);
-		// }
 	}
 
 	public void init(LogInMenuController logInMenuController) {
@@ -64,6 +66,10 @@ public class MainMenuController implements Initializable {
 		this.signUpMenuController = signUpMenuController;
 	}
 
+	public void init(PaymentMenuController paymentMenuController) {
+		this.paymentMenuController = paymentMenuController;
+	}
+
 	public void setDisabledMenuItemsWelcomeScene() {
 		createNewPlaylistMenu.setDisable(false);
 		searchMenu.setDisable(false);
@@ -73,6 +79,8 @@ public class MainMenuController implements Initializable {
 		settingsMenu.setDisable(false);
 		aboutMenu.setDisable(false);
 	}
+
+	// TODO <fx:include fx:id="adminMenu" source="AdminMenu.fxml" />
 
 	void menuBarFitToParent(AnchorPane parentAnchor) {
 		menuBar.prefWidthProperty().bind(parentAnchor.widthProperty());

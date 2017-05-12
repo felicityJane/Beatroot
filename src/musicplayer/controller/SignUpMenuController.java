@@ -1,6 +1,5 @@
 package musicplayer.controller;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,15 +11,14 @@ import javafx.scene.layout.AnchorPane;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
-
-import javafx.collections.ObservableList;
-
+import musicplayer.model.Country;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.*;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.Locale;
 
 public class SignUpMenuController implements Initializable{
 
@@ -60,47 +58,36 @@ public void initialize(URL location, ResourceBundle resources) {
         monthBox.getItems().addAll(m);
         monthBox.setValue(1);
         }
-        for (int y=2017; y>1930; y--){
+        int year= Calendar.getInstance().get(Calendar.YEAR);
+        for (int y=year; y>year-100; y--){
         yearBox.getItems().addAll(y);
         yearBox.setValue(2017);
         }
 
-        String []locales= Locale.getISOCountries();
-        for (String countryList : locales) {
-        Locale obj = new Locale("",countryList);
-
-
-        ObservableList<String>list= FXCollections.observableArrayList();
-        list.add(obj.getDisplayCountry());
-        for (int i=0; i<list.size(); i++) {
-        countryBox.getItems().add(list.get(i));
+    for (Country country: Country.values()) {
+        countryBox.getItems().addAll(country.name());
         countryBox.setValue("Sverige");
         }
-        }
-
-        }
+    }
 @FXML
 private void handleSignUpButton(ActionEvent event) throws Exception{
         try {
 
         String userNam=userName.getText();
         String userPass=userPassword.getText();
-        String firstNam=firstName.getText();
-        String lastNam=lastName.getText();
+        String firstNam=firstName.getText().toLowerCase();
+        String lastNam=lastName.getText().toLowerCase();
         String phoneNum=phoneNumber.getText();
-        String physicalAdd=physicalAddress.getText();
+        String physicalAdd=physicalAddress.getText().toLowerCase();
         String postalCo=postalCode.getText();
-        String cit=city.getText();
+        String cit=city.getText().toLowerCase();
         String emal=email.getText();
-        String gender=null;
         String userType=null;
-        String tableName = null;
         String country=countryBox.getValue();
         String numberRegex="[0-9]+";
         String emailRegex ="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(.+[a-zA-Z0-9-.]+)+$";
         String nameRegex="[A-Za-z]+";
-
-
+        String genderId = null;
 
         if (userName.getText().length()<4 || userName.getText().length()>8){
         warningText.setText("Invalid Username Value");
@@ -127,19 +114,12 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
         confirmEmail.clear();
         throw new InputMismatchException();
         }if (male.isSelected()) {
-        gender = male.getText();
+        genderId ="0";
         }if (female.isSelected()){
-        gender=female.getText();
+        genderId="1";
         }if (!female.isSelected() && !male.isSelected()){
         warningText.setText("Gender is not selected!!");
         throw new InputMismatchException();
-        }if (trialUser.isSelected()){
-        userType=trialUser.getText();
-        tableName="trial_user";
-        }if (premiumUser.isSelected()){
-        userType=premiumUser.getText();
-        tableName="premium_user";
-
         }if (!phoneNum.matches(numberRegex)){
         warningText.setText("Invalid phone number");
         phoneNumber.clear();
@@ -153,37 +133,63 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
         Date convertedCurrentDate = sdf.parse(yearBox.getValue().toString()+"-"+monthBox.getValue().toString()+"-"+dayBox.getValue().toString());
         String dateOfBirht=sdf.format(convertedCurrentDate );
 
+        String trialMounth=String.valueOf(Calendar.getInstance().get(Calendar.MONTH)+2);
+        Date convertedTrialEndDate=sdf.parse(Calendar.getInstance().get(Calendar.YEAR)+"-"+trialMounth+"-"+Calendar.getInstance().get(Calendar.DATE));
+        String freeTrialEndDate=sdf.format(convertedTrialEndDate);
+
         DB_Connector connector =new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
+                if (trialUser.isSelected()){
+                        userType=trialUser.getText();
 
-        connector.insert(tableName+"(user_name)", "'"+userNam+"'");
+                        connector.checkTrialUserName(userNam,warningText,event);
+                        if (warningText.getText().isEmpty()){
+                            connector.insert("user_link(user)","('"+userNam+"')");
+                            connector.insert("trial_user(user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link)", "('"+userNam+"','"+userPass+"','"+userNam+"','"+firstNam+"','"+lastNam+"','"+dateOfBirht+"','"+emal+"','"+physicalAdd+"','"+cit+"','"+postalCo+"','"+country+"','"+freeTrialEndDate+"','"+genderId+"','"+userNam+"')");
+                            connector.logInTrial(userNam,userPass,event,warningText);
+                        }if (!warningText.getText().isEmpty()){
+                            DialogBoxManager.errorDialogBox("Error occurred","Username is already taken!!");
+                            warningText.setText("");
+                        }
+                        //create user
+                }if (premiumUser.isSelected()){
+                        userType=premiumUser.getText();
+                        connector.checkPremiumlUserName(userNam,warningText,event);
+                        Path path = Paths.get("PremiumUserInfo.bin");
+                        ArrayList<String> premiumUserInfo=new ArrayList<>();
+                        try {
+                                premiumUserInfo.add(0,userNam);
+                                premiumUserInfo.add(1,userPass);
+                                premiumUserInfo.add(2,userNam);
+                                premiumUserInfo.add(3,firstNam);
+                                premiumUserInfo.add(4,lastNam);
+                                premiumUserInfo.add(5,dateOfBirht);
+                                premiumUserInfo.add(6,emal);
+                                premiumUserInfo.add(7,physicalAdd);
+                                premiumUserInfo.add(8,cit);
+                                premiumUserInfo.add(9,postalCo);
+                                premiumUserInfo.add(10,country);
+                                premiumUserInfo.add(11,genderId);
+                                premiumUserInfo.add(12,userNam);
+                                premiumUserInfo.add(13,phoneNum);
 
+                                Files.write(path,premiumUserInfo, StandardOpenOption.CREATE);
 
-
-
-                    /* You would write insert("album(album_id, album_name, album_cover_path, administrator_staff_id)", "(1, 'Blackhole sun', 'C:/Pictures/Soundgarden', '122')");
-            Basically as a first parameter you pass the name of the table and its keys in parentheses*/
-
-
-        if (premiumUser.isSelected()){
-        SceneManager.sceneManager.changeScene(event,"view/paymentMenu.fxml");
-        }
-
-        //change scene location name to pay scene possibly
-        //SceneManager.sceneManager.changeScene(event,"view/welcomeMenu.fxml");
+                        }catch (Exception e){
+                                DialogBoxManager.errorDialogBox("Error occurred","Premium User Info");
+                                System.out.println(e.toString());
+                        }
+                }
 
         }catch (InputMismatchException ie){
         System.out.println(ie.toString());
 
-        SceneManager.sceneManager.changeScene(event,"view/welcomeMenu.fxml");
         }catch (Exception e){
         DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to welcome scene");
         System.out.println(e.toString());
         }
-
-        }
-
+    }
 @FXML
-private void clickOnLogInLabel(MouseEvent me) {
+private void clickOnLogInLabel(MouseEvent me){
         try {
         SceneManager.sceneManager.changeScene(me,"view/logInMenu.fxml");
 
@@ -191,5 +197,5 @@ private void clickOnLogInLabel(MouseEvent me) {
         DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to log in scene");
         e.printStackTrace();
         }
-        }
+    }
 }
