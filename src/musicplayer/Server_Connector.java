@@ -8,9 +8,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.UnknownHostException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 /**
  * Created by Federica on 29/04/2017.
@@ -26,6 +23,7 @@ public class Server_Connector {
 
     }
 
+
     public void connectToServer() {
 
         OutputStream outstream = null;
@@ -35,8 +33,7 @@ public class Server_Connector {
             URLConnection conn = new URL(strUrl).openConnection();
             is = conn.getInputStream();
 
-
-            outstream = new FileOutputStream(new File("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " "))));
+            outstream=new FileOutputStream(new File("tmp/"+ FilenameUtils.getName(url.getPath().replaceAll("%20"," "))));
             byte[] buffer = new byte[4096];
             int len;
             while ((len = is.read(buffer)) > 0) {

@@ -10,7 +10,6 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -326,7 +325,7 @@ public class WelcomeMenuController implements Initializable {
         MediaPlayer.Status currentStatus = mediaPlayer.getStatus();
 
         if (currentStatus == MediaPlayer.Status.PAUSED || currentStatus == MediaPlayer.Status.STOPPED || currentStatus == MediaPlayer.Status.READY) {
-           mediaPlayer.play();
+            mediaPlayer.play();
         }
 
     }
@@ -483,7 +482,7 @@ public class WelcomeMenuController implements Initializable {
                             } else if (tglLoop.isSelected()) {
                                 mediaPlayer.setOnEndOfMedia(new Runnable() {
                                     public void run() {
-                                       mediaPlayer.seek(Duration.ZERO);
+                                        mediaPlayer.seek(Duration.ZERO);
                                     }
                                 });
                             }
@@ -616,9 +615,9 @@ public class WelcomeMenuController implements Initializable {
 
             if (n instanceof ImageView) {
 
-               String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + Integer.toString(counter));
-               ((ImageView) n).setImage(new Image(imgUrl));
-               counter--;
+                String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + Integer.toString(counter));
+                ((ImageView) n).setImage(new Image(imgUrl));
+                counter--;
             }
         }
     }
@@ -724,7 +723,7 @@ public class WelcomeMenuController implements Initializable {
                 int albumId = Integer.parseInt(db_connector.search("album_album_id",
                         "album_has_music_track", "music_track_track_id = " + Integer.toString(trackId)));
                 String albumName = db_connector.search("album_name", "album", "album_id = " +
-                Integer.toString(albumId));
+                        Integer.toString(albumId));
                 String albumCoverPath = db_connector.search("album_cover_path", "album",
                         "album_id = " + Integer.toString(albumId));
 
@@ -810,32 +809,32 @@ public class WelcomeMenuController implements Initializable {
                 lblNoMatchesFound.setText("");
                 int artistId = Integer.parseInt(db_connector.search("artist_id", "music_artist",
                         "stage_name = '" + artistSearched + "'"));
-               ArrayList<Integer> musicIds = new ArrayList<>();
-               for (String s : db_connector.searchMultipleResults("track_id", "music_track",
+                ArrayList<Integer> musicIds = new ArrayList<>();
+                for (String s : db_connector.searchMultipleResults("track_id", "music_track",
                         "music_artist_artist_id = " + Integer.toString(artistId))) {
-                   musicIds.add(Integer.parseInt(s));
+                    musicIds.add(Integer.parseInt(s));
                 }
 
                 ArrayList<Integer> albumIds = new ArrayList<>();
-               for (Integer i : musicIds) {
-                   if (!albumIds.contains(Integer.parseInt(db_connector.search("album_album_id",
-                           "album_has_music_track", "music_track_track_id = " +
-                   Integer.toString(i))))) {
-                       albumIds.add(Integer.parseInt(db_connector.search("album_album_id",
-                               "album_has_music_track", "music_track_track_id = " +
-                                       Integer.toString(i))));
-                   }
-               }
-               cmbSearchMusic.show();
-               cmbSearchMusic.getItems().clear();
-               ArrayList<String> albumNames = new ArrayList<>();
-               for (Integer i : albumIds) {
-                   albumNames.add(db_connector.search("album_name", "album",
-                           "album_id = " + Integer.toString(i)));
-               }
+                for (Integer i : musicIds) {
+                    if (!albumIds.contains(Integer.parseInt(db_connector.search("album_album_id",
+                            "album_has_music_track", "music_track_track_id = " +
+                                    Integer.toString(i))))) {
+                        albumIds.add(Integer.parseInt(db_connector.search("album_album_id",
+                                "album_has_music_track", "music_track_track_id = " +
+                                        Integer.toString(i))));
+                    }
+                }
+                cmbSearchMusic.show();
+                cmbSearchMusic.getItems().clear();
+                ArrayList<String> albumNames = new ArrayList<>();
+                for (Integer i : albumIds) {
+                    albumNames.add(db_connector.search("album_name", "album",
+                            "album_id = " + Integer.toString(i)));
+                }
                 cmbSearchMusic.getItems().addAll(albumNames);
 
-               rdAlbum.setSelected(true);
+                rdAlbum.setSelected(true);
             } else {
                 lblNoMatchesFound.setText("No matches found.");
             }
@@ -912,12 +911,4 @@ public class WelcomeMenuController implements Initializable {
             ex.printStackTrace();
         }
     }
-    private void clickOnUserName(MouseEvent mouseEvent, String userName){
-
-
-    }
-
 }
-
-
-
