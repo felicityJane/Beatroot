@@ -121,10 +121,7 @@ public class PremiumUser extends NonTrialUser {
 		this.expirationDate = expirationDate;
 		this.PaymentMethod = PaymentMethod;
 		this.cardHolderName = cardHolderName;
-		this.billingAddress.setStreetNameAndNumber(billingStreet);
-		this.billingAddress.setCity(billingCity);
-		this.billingAddress.setPostalCode(billingPostalCode);
-		this.billingAddress.setCountry(billingCountry);
+		billingAddress = new Address(billingStreet, billingCity, billingPostalCode, billingCountry);
 		this.PaymentMethod = PaymentMethod;
 
 		this.billingPhoneNumber = billingPhoneNumber;

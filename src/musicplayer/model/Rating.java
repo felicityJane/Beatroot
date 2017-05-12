@@ -7,13 +7,28 @@ public class Rating {
 	private double finalRating;
 	private MusicTrack song;
 	private ArrayList<User> votedUsers = new ArrayList<User>();
+	//temporary
+	private int numberOfVoters;
 
 	public Rating(MusicTrack song) {
 		this.song = song;
 	}
 
+	public Rating(MusicTrack song, double finalRating) {
+		this.song = song;
+		this.finalRating = finalRating;
+	}
+
 	public int getRatingID() {
 		return ratingID;
+	}
+
+	public int getNumberOfVoters() {
+		return numberOfVoters;
+	}
+
+	public void setNumberOfVoters(int numberOfVoters) {
+		this.numberOfVoters = numberOfVoters;
 	}
 
 	public void setRatingID(int ratingID) {
@@ -24,12 +39,16 @@ public class Rating {
 		return sumFromAllVoters;
 	}
 
+	public void setSumFromAllVoters(int sumFromAllVoters) {
+		this.sumFromAllVoters = sumFromAllVoters;
+	}
+
 	public double getFinalRating() {
 		return finalRating;
 	}
 
 	public void calculateRating() {
-		this.finalRating = sumFromAllVoters / (votedUsers.size() + 1);
+		this.finalRating = sumFromAllVoters / numberOfVoters /*(votedUsers.size() + 1)*/;
 	}
 
 	public ArrayList<User> getVotedUsers() {
