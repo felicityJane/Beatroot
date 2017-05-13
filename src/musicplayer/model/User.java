@@ -7,19 +7,25 @@ public abstract class User {
 	private String displayName, password, firstName, lastName, emailAddress, phoneNumber;
 	private Address physicalAddress;
 	private final String userName;
-    private UserPlaylistLink userPlaylistLink;
+	private UserPlaylistLink userPlaylistLink;
 	private Date dateOfBirth;
 	private Gender gender;
 	private Playlist defaultPlaylist;
-	private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
-
+	// private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
 	private ArrayList<Comment> userComments = new ArrayList<Comment>();
 	private ArrayList<Rating> userRatings = new ArrayList<Rating>();
 
 	public User(String userName, String displayName, String password, String firstName, String lastName,
-			Date dateOfBirth, String emailAddress, String streetNameAndNumber, String cityOfResidence, String postalCode,
-			Country country, Gender gender, String phoneNumber) {
+			// <<<<<<< HEAD
+			// Date dateOfBirth, String emailAddress, String
+			// streetNameAndNumber, String cityOfResidence,
+			// String postalCode, Country country, Gender gender, String
+			// phoneNumber) {
+			// =======
+			Date dateOfBirth, String emailAddress, String streetNameAndNumber, String cityOfResidence,
+			String postalCode, Country country, Gender gender, String phoneNumber) {
 
+		// >>>>>>> refs/heads/master
 		this.userName = userName;
 		this.displayName = displayName;
 		this.password = password;
@@ -27,13 +33,25 @@ public abstract class User {
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.emailAddress = emailAddress;
-		physicalAddress = new Address(streetNameAndNumber, cityOfResidence, postalCode, country);
-		this.physicalAddress.setFirstName(firstName);
-		this.physicalAddress.setLastName(lastName);
+		// <<<<<<< HEAD
+		this.physicalAddress = new Address(streetNameAndNumber, cityOfResidence, postalCode, country);
+		// this.physicalAddress.setFirstName(firstName);
+		// this.physicalAddress.setLastName(lastName);
+		// this.physicalAddress.setStreetNameAndNumber(streetNameAndNumber);
+		// this.physicalAddress.setCity(cityOfResidence);
+		// this.physicalAddress.setCountry(country);
+		// this.physicalAddress.setPostalCode(postalCode);
+		// =======
+		// physicalAddress = new Address(streetNameAndNumber, cityOfResidence,
+		// postalCode, country);
+		// this.physicalAddress.setFirstName(firstName);
+		// this.physicalAddress.setLastName(lastName);
+		// >>>>>>> refs/heads/master
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
-        this.defaultPlaylist = new Playlist("Default", PrivacyLevel.PRIVATE);
-        userPlaylistLink = new UserPlaylistLink(userName, defaultPlaylist);
+
+		this.defaultPlaylist = new Playlist("Default", PrivacyLevel.PRIVATE);
+		userPlaylistLink = new UserPlaylistLink(userName, defaultPlaylist);
 	}
 
 	public String getUserName() {

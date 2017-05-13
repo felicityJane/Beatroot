@@ -12,16 +12,16 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-        @Override
-        public void start(Stage primaryStage) throws Exception{
-            //always begin in the logInMenu scene
-            Parent root = FXMLLoader.load(getClass().getResource("view/logInMenu.fxml"));
-            primaryStage.setTitle("Beatroot");
-            primaryStage.setScene(new Scene(root));
-           primaryStage.show();
-        }
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// always begin in the logInMenu scene
+		Parent root = FXMLLoader.load(getClass().getResource("view/logInMenu.fxml"));
+		primaryStage.setTitle("Beatroot");
+		primaryStage.setScene(new Scene(root));
+		primaryStage.show();
+	}
 
-public static void main(String[] args) {
-        launch(args);
-        }
-        }
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
