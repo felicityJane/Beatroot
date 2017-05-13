@@ -98,7 +98,7 @@
       <RadioButton fx:id="premiumUser" layoutX="663.0" layoutY="546.0" mnemonicParsing="false" text="Premium user" toggleGroup="$membership" />
       <Button fx:id="signUpButton" layoutX="462.0" layoutY="582.0" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="39.0" prefWidth="320.0" text="Sign Up" />
       <Label fx:id="warningText" layoutX="156.0" layoutY="136.0" prefHeight="25.0" prefWidth="260.0" textFill="#e80d0d" />
-      <ImageView fitHeight="354.0" fitWidth="332.0" layoutX="453.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgOffers" fitHeight="349.0" fitWidth="317.0" layoutX="458.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/offers.png" />
          </image>
