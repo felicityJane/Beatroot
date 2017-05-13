@@ -2,6 +2,7 @@ package musicplayer.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FilenameFilter;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Path;
@@ -115,7 +116,7 @@ public class WelcomeMenuController implements Initializable {
 	@FXML
 	private ImageView imgRating;
 	@FXML
-	private ProgressIndicator progressDownload;
+	private ProgressIndicator progressDownload = new ProgressBar(ProgressIndicator.INDETERMINATE_PROGRESS);;
 	private Media media;
 	private MediaPlayer mediaPlayer;
 	private MediaView mediaView;
@@ -128,6 +129,8 @@ public class WelcomeMenuController implements Initializable {
 	private Server_Connector connector;
 	private Album albumSelected;
 	private MusicTrack trackPlaying;
+	private int starsOn;
+	private Rating currentSongRating;
 
 	@FXML
 	private MainMenuController mainMenuController;
@@ -137,7 +140,6 @@ public class WelcomeMenuController implements Initializable {
 		mainMenuController.init(this);
 		mainMenuController.setDisabledMenuItemsWelcomeScene();
 		mainMenuController.menuBarFitToParent(welcomeParentAnchorPane);
-		progressDownload = new ProgressBar(0);
 		Image img = new Image("images/PlayNormal.jpg");
 		btnPlay.setFill(new ImagePattern(img));
 		Image img1 = new Image("images/StopNormal.jpg");
@@ -160,8 +162,14 @@ public class WelcomeMenuController implements Initializable {
 		imgSearchIcon.setImage(new Image("images/SearchIcon.png"));
 		imgSearchUser.setImage(new Image("images/SearchIcon.png"));
 		lblNoMatchesFound.setText("");
-		imgRating.setImage(new Image("images/0Starz.png"));
+
 		progressDownload.setVisible(false);
+
+		setImageNews();
+		setImageSuggestions();
+		setFirstSong();
+		getRatingFromDatabase();
+		setRatingStars();
 
 		imgSearchIcon.setOnMouseEntered(event -> {
 			Scene scene = imgSearchIcon.getScene();
@@ -193,29 +201,42 @@ public class WelcomeMenuController implements Initializable {
 			double x = event.getX();
 			if (x >= 0.0 && x <= 3.0) {
 				imgRating.setImage(new Image("images/0Starz.png"));
+				starsOn = 0;
 			} else if (x > 3.0 && x <= 25.0) {
 				imgRating.setImage(new Image("images/1Starz.png"));
+				starsOn = 1;
 			} else if (x > 25.0 && x <= 45.0) {
 				imgRating.setImage(new Image("images/2Starz.png"));
+				starsOn = 2;
 			} else if (x > 45.0 && x <= 65.0) {
 				imgRating.setImage(new Image("images/3Starz.png"));
+				starsOn = 3;
 			} else if (x > 65.0 && x <= 90.0) {
 				imgRating.setImage(new Image("images/4Starz.png"));
+				starsOn = 4;
 			} else if (x > 90.0 && x <= 100.0) {
 				imgRating.setImage(new Image("images/5Starz.png"));
+				starsOn = 5;
 			}
 		});
 
 		imgRating.setOnMouseExited(event -> {
-			imgRating.setImage(new Image("images/0Starz.png"));
+			Scene scene = imgSearchIcon.getScene();
+			scene.setCursor(Cursor.DEFAULT);
+			setRatingStars();
 		});
 
 		imgRating.setOnMouseClicked(event -> {
-			Rating rating = new Rating(trackPlaying);
-			double x = event.getX();
-			rating.addSumFromAllVoters((float) x / 20);
-			rating.calculateRating();
-			System.out.println(rating.getFinalRating());
+			currentSongRating.addSumFromAllVoters(starsOn);
+			currentSongRating.setNumberOfVoters(Integer.parseInt(db_connector.search("sum_from_all_voters", "rating",
+					"rating_id = " + Integer.toString(currentSongRating.getRatingID()))) + 1);
+			currentSongRating.calculateRating();
+			db_connector.update("rating", "final_rating", Double.toString(currentSongRating.getFinalRating()),
+					"rating_id = " + Integer.toString(currentSongRating.getRatingID()));
+			db_connector.update("rating", "sum_from_all_voters",
+					Integer.toString(currentSongRating.getNumberOfVoters()),
+					"rating_id = " + Integer.toString(currentSongRating.getRatingID()));
+			System.out.println(currentSongRating.getFinalRating());
 		});
 
 		for (Node n : welcomeRootAnchor.getChildren()) {
@@ -379,9 +400,7 @@ public class WelcomeMenuController implements Initializable {
 		imgNoConnection.setVisible(false);
 		lblNoConnection1.setVisible(false);
 		lblNoConnection2.setVisible(false);
-		setImageNews();
-		setImageSuggestions();
-		setFirstSong();
+
 	}
 
 	@FXML
@@ -520,17 +539,41 @@ public class WelcomeMenuController implements Initializable {
 					"track_name = " + "'" + selectedItem.replaceAll("'", "''") + "'");
 			MusicTrack mt = new MusicTrack(selectedItem, songUrl);
 			trackPlaying = mt;
+			currentSongRating = new Rating(mt);
+			int ratingId = Integer.parseInt(db_connector.search("rating_id", "music_track",
+					"track_name = '" + mt.getTrackName().replaceAll("'", "''") + "'"));
+			currentSongRating = new Rating(mt, Double.parseDouble(
+					db_connector.search("final_rating", "rating", "rating_id = " + Integer.toString(ratingId))));
+			currentSongRating.setRatingID(ratingId);
+			int product = (Integer.parseInt(
+					db_connector.search("sum_from_all_voters", "rating", "rating_id = " + Integer.toString(ratingId))))
+					* (int) (Double.parseDouble(
+							db_connector.search("final_rating", "rating", "rating_id = " + Integer.toString(ratingId)))
+							+ 0.5);
+			currentSongRating.setSumFromAllVoters(product);
+			setRatingStars();
 			try {
 				url = new URL(songUrl);
 				mediaPlayer.stop();
 				media = new Media(songUrl);
 				mediaPlayer = new MediaPlayer(media);
 				sliderVolume.setValue(mediaPlayer.getVolume() * 100);
-				connector = new Server_Connector(songUrl, url);
-				connector.connectToServer();
+				File dir = new File("tmp");
+				File[] matches = dir.listFiles(new FilenameFilter() {
+					public boolean accept(File dir, String name) {
+						return name.startsWith(url.toString().substring(36).replaceAll("%20", " "))
+								&& name.endsWith(".mp3");
+					}
+				});
+				if (matches.length == 0) {
+					connector = new Server_Connector(url.toString(), url);
+					progressDownload.visibleProperty().bind(connector.runningProperty());
+					connector.restart();
+				}
 				Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
 				runMediaPlayer(path);
 				mediaPlayer.play();
+				lblTrackName.setText(mt.getTrackName());
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -610,31 +653,17 @@ public class WelcomeMenuController implements Initializable {
 			input.close();
 		} catch (Exception fe) {
 			fe.printStackTrace();
-			imgNoConnection.setVisible(true);
-			lblNoConnection2.setVisible(true);
-			lblNoConnection1.setVisible(true);
 		}
 
-		if (metadata.get("title") != null && metadata.get("xmpDM:artist") != null) { // if
-																						// the
-																						// mp3
-																						// file
-																						// is
-																						// tagged
-																						// with
-																						// metadata
-			lblTrackName.setText(metadata.get("title")); // displays metadata
-			lblTrackArtist.setText(metadata.get("xmpDM:artist"));
-		} else {
-			String fileName = path.getFileName().toString();
-			fileName = fileName.substring(0, fileName.length() - 4); // removes
-																		// ".mp3"
-																		// from
-																		// file
-																		// name
-			lblTrackName.setText(fileName);
-		}
-
+		/*
+		 * if (metadata.get("title") != null && metadata.get("xmpDM:artist") !=
+		 * null) { //if the mp3 file is tagged with metadata
+		 * lblTrackName.setText(metadata.get("title")); //displays metadata
+		 * lblTrackArtist.setText(metadata.get("xmpDM:artist")); } else { String
+		 * fileName = path.getFileName().toString(); fileName =
+		 * fileName.substring(0, fileName.length() - 4); //removes ".mp3" from
+		 * file name lblTrackName.setText(fileName); }
+		 */
 	}
 
 	private void clickOnImageView(Node n) {
@@ -683,12 +712,26 @@ public class WelcomeMenuController implements Initializable {
 			albumSelected.addSongs(tempArray.get(i));
 		}
 
+		int ratingId = Integer.parseInt(db_connector.search("rating_id", "music_track",
+				"track_name = '" + album.getSongs().get(0).getTrackName().replaceAll("'", "''") + "'"));
+		currentSongRating = new Rating(album.getSongs().get(0), Double.parseDouble(
+				db_connector.search("final_rating", "rating", "rating_id = " + Integer.toString(ratingId))));
+		currentSongRating.setRatingID(ratingId);
+		int product = (Integer.parseInt(
+				db_connector.search("sum_from_all_voters", "rating", "rating_id = " + Integer.toString(ratingId))))
+				* (int) (Double.parseDouble(
+						db_connector.search("final_rating", "rating", "rating_id = " + Integer.toString(ratingId)))
+						+ 0.5);
+		currentSongRating.setSumFromAllVoters(product);
+		setRatingStars();
+
 		lstMainTracks.getItems().clear();
 		for (MusicTrack m : album.getSongs()) {
 			String trackLength = db_connector.search("track_length", "music_track",
 					"track_name = '" + m.getTrackName().replaceAll("'", "''") + "'");
-			String lstTrackInfo = String.format("%-20s %-5s", m.getTrackName(), trackLength.substring(3));
-			lstMainTracks.getItems().add(lstTrackInfo);
+			String indent = "                                                                ";
+			String lstTrackInfo = String.format("%-150s%s", m.getTrackName(), trackLength.substring(3));
+			lstMainTracks.getItems().add(m.getTrackName());
 		}
 
 		imgMain.setImage(album.getAlbumCover());
@@ -702,8 +745,18 @@ public class WelcomeMenuController implements Initializable {
 			media = new Media(url.toString());
 			mediaPlayer = new MediaPlayer(media);
 			sliderVolume.setValue(mediaPlayer.getVolume() * 100);
-			connector = new Server_Connector(url.toString(), url);
-			connector.connectToServer();
+			File dir = new File("tmp");
+			File[] matches = dir.listFiles(new FilenameFilter() {
+				public boolean accept(File dir, String name) {
+					return name.startsWith(url.toString().substring(36).replaceAll("%20", " "))
+							&& name.endsWith(".mp3");
+				}
+			});
+			if (matches.length == 0) {
+				connector = new Server_Connector(url.toString(), url);
+				progressDownload.visibleProperty().bind(connector.runningProperty());
+				connector.restart();
+			}
 			Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
 			runMediaPlayer(path);
 		} catch (Exception ex) {
@@ -796,8 +849,25 @@ public class WelcomeMenuController implements Initializable {
 			albumSelected.addSongs(tempArray.get(i));
 		}
 
+		int ratingId = Integer.parseInt(db_connector.search("rating_id", "music_track",
+				"track_name = '" + album.getSongs().get(0).getTrackName() + "'"));
+		currentSongRating = new Rating(album.getSongs().get(0), Double.parseDouble(
+				db_connector.search("final_rating", "rating", "rating_id = " + Integer.toString(ratingId))));
+		int product = (Integer.parseInt(
+				db_connector.search("sum_from_all_voters", "rating", "rating_id = " + Integer.toString(ratingId))))
+				* (int) (Double.parseDouble(
+						db_connector.search("final_rating", "rating", "rating_id = " + Integer.toString(ratingId)))
+						+ 0.5);
+		currentSongRating.setSumFromAllVoters(product);
+		currentSongRating.setRatingID(ratingId);
+
+		getRatingFromDatabase();
 		lstMainTracks.getItems().clear();
 		for (MusicTrack m : album.getSongs()) {
+			String trackLength = db_connector.search("track_length", "music_track",
+					"track_name = '" + m.getTrackName().replaceAll("'", "''") + "'");
+			String indent = "                                                                ";
+			String lstTrackInfo = String.format("%-150s%s", m.getTrackName(), trackLength.substring(3));
 			lstMainTracks.getItems().add(m.getTrackName());
 		}
 
@@ -812,9 +882,18 @@ public class WelcomeMenuController implements Initializable {
 			media = new Media(url.toString());
 			mediaPlayer = new MediaPlayer(media);
 			sliderVolume.setValue(mediaPlayer.getVolume() * 100);
-			connector = new Server_Connector(url.toString(), url);
-
-			connector.connectToServer();
+			File dir = new File("tmp");
+			File[] matches = dir.listFiles(new FilenameFilter() {
+				public boolean accept(File dir, String name) {
+					return name.startsWith(url.toString().substring(36).replaceAll("%20", " "))
+							&& name.endsWith(".mp3");
+				}
+			});
+			if (matches.length == 0) {
+				connector = new Server_Connector(url.toString(), url);
+				progressDownload.visibleProperty().bind(connector.runningProperty());
+				connector.restart();
+			}
 			Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
 			runMediaPlayer(path);
 		} catch (Exception ex) {
@@ -877,7 +956,6 @@ public class WelcomeMenuController implements Initializable {
 
 				for (int i = tempArray.size() - 1; i >= 0; i--) {
 					album.addSongs(tempArray.get(i));
-					albumSelected.getSongs().clear();
 					albumSelected.addSongs(tempArray.get(i));
 				}
 
@@ -885,6 +963,17 @@ public class WelcomeMenuController implements Initializable {
 				for (MusicTrack m : album.getSongs()) {
 					lstMainTracks.getItems().add(m.getTrackName());
 				}
+				int ratingId = Integer.parseInt(db_connector.search("rating_id", "music_track",
+						"track_name = '" + trackSearched.replaceAll("'", "''") + "'"));
+				currentSongRating = new Rating(album.getSongs().get(0), Double.parseDouble(
+						db_connector.search("final_rating", "rating", "rating_id = " + Integer.toString(ratingId))));
+				currentSongRating.setRatingID(ratingId);
+				int product = (Integer.parseInt(db_connector.search("sum_from_all_voters", "rating",
+						"rating_id = " + Integer.toString(ratingId))))
+						* (int) (Double.parseDouble(db_connector.search("final_rating", "rating",
+								"rating_id = " + Integer.toString(ratingId))) + 0.5);
+				currentSongRating.setSumFromAllVoters(product);
+				setRatingStars();
 
 				imgMain.setImage(album.getAlbumCover());
 				lblTrackName.setText(trackSearched);
@@ -906,7 +995,8 @@ public class WelcomeMenuController implements Initializable {
 					mediaPlayer = new MediaPlayer(media);
 					sliderVolume.setValue(mediaPlayer.getVolume() * 100);
 					connector = new Server_Connector(url.toString(), url);
-					connector.connectToServer();
+					progressDownload.visibleProperty().bind(connector.runningProperty());
+					connector.restart();
 					Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
 					runMediaPlayer(path);
 				} catch (Exception ex) {
@@ -1002,14 +1092,25 @@ public class WelcomeMenuController implements Initializable {
 			album.addSongs(tempArray.get(i));
 			albumSelected.addSongs(tempArray.get(i));
 		}
-
+		int ratingId = Integer.parseInt(db_connector.search("rating_id", "music_track",
+				"track_name = '" + album.getSongs().get(0).getTrackName().replaceAll("'", "''") + "'"));
+		currentSongRating = new Rating(album.getSongs().get(0), Double.parseDouble(
+				db_connector.search("final_rating", "rating", "rating_id = " + Integer.toString(ratingId))));
+		currentSongRating.setRatingID(ratingId);
+		int product = (Integer.parseInt(
+				db_connector.search("sum_from_all_voters", "rating", "rating_id = " + Integer.toString(ratingId))))
+				* (int) (Double.parseDouble(
+						db_connector.search("final_rating", "rating", "rating_id = " + Integer.toString(ratingId)))
+						+ 0.5);
+		currentSongRating.setSumFromAllVoters(product);
+		setRatingStars();
 		lstMainTracks.getItems().clear();
 		for (MusicTrack m : album.getSongs()) {
 			lstMainTracks.getItems().add(m.getTrackName());
 		}
 
 		imgMain.setImage(album.getAlbumCover());
-		lblTrackName.setText(searchedItem);
+		lblTrackName.setText(album.getSongs().get(0).getTrackName());
 		lblTrackArtist.setText(artistName);
 
 		loadMediaPlayer(0, album);
@@ -1023,7 +1124,8 @@ public class WelcomeMenuController implements Initializable {
 			mediaPlayer = new MediaPlayer(media);
 			sliderVolume.setValue(mediaPlayer.getVolume() * 100);
 			connector = new Server_Connector(url.toString(), url);
-			connector.connectToServer();
+			progressDownload.visibleProperty().bind(connector.runningProperty());
+			connector.restart();
 			Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
 			runMediaPlayer(path);
 		} catch (Exception ex) {
@@ -1032,6 +1134,35 @@ public class WelcomeMenuController implements Initializable {
 	}
 
 	private void clickOnUserName(MouseEvent mouseEvent, String userName) {
+
+	}
+
+	private void setRatingStars() {
+
+		switch ((int) currentSongRating.getFinalRating()) {
+		case 0:
+			imgRating.setImage(new Image("images/0Starz.png"));
+			break;
+		case 1:
+			imgRating.setImage(new Image("images/1Starz.png"));
+			break;
+		case 2:
+			imgRating.setImage(new Image("images/2Starz.png"));
+			break;
+		case 3:
+			imgRating.setImage(new Image("images/3Starz.png"));
+			break;
+		case 4:
+			imgRating.setImage(new Image("images/4Starz.png"));
+			break;
+		case 5:
+			imgRating.setImage(new Image("images/5Starz.png"));
+			break;
+		}
+
+	}
+
+	private void getRatingFromDatabase() {
 
 	}
 }
