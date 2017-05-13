@@ -32,7 +32,7 @@ import org.apache.tika.parser.mp3.Mp3Parser;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.DefaultHandler;
 
-import java.io.File;
+import java.io.*;
 import java.io.FileInputStream;
 import java.io.FilenameFilter;
 import java.io.InputStream;
