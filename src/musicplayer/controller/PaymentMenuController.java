@@ -3,6 +3,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 import musicplayer.model.Country;
@@ -25,9 +26,15 @@ public class PaymentMenuController implements Initializable{
     @FXML private ComboBox<Integer>monthBox,yearBox;
     @FXML private RadioButton visaButton,masterButton;
     @FXML private Label warningLabel;
+    @FXML private MainMenuController mainMenuController;
+    @FXML private AnchorPane paymentParentAnchorPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        mainMenuController.init(this);
+        mainMenuController.menuBarFitToParent(paymentParentAnchorPane);
+
 
         for (Country country: Country.values()) {
             countryBox.getItems().addAll(country.name());

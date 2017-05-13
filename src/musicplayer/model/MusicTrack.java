@@ -21,7 +21,6 @@ public class MusicTrack {
 		this.trackName = trackName;
 		this.url = url;
 
-
 	}
 	/**
 	 *

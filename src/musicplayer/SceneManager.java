@@ -78,5 +78,4 @@ public class SceneManager {
         stage.centerOnScreen();
 
     }
-
 }
