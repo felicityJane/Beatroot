@@ -7,6 +7,8 @@ import javafx.scene.layout.AnchorPane;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 import musicplayer.model.Country;
+import musicplayer.model.GlobalVariables;
+
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,15 +26,13 @@ public class PaymentMenuController implements Initializable{
     @FXML private ComboBox<Integer>monthBox,yearBox;
     @FXML private RadioButton visaButton,masterButton;
     @FXML private Label warningLabel;
-    @FXML private MainMenuController mainMenuController;
     @FXML private AnchorPane paymentParentAnchorPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        mainMenuController.init(this);
-        mainMenuController.menuBarFitToParent(paymentParentAnchorPane);
-
+        GlobalVariables globalVariables = GlobalVariables.getInstance();
+        globalVariables.setPaymentMenuController(this);
+        globalVariables.getMainMenuController().menuBarFitToParent(paymentParentAnchorPane);
 
         for (Country country: Country.values()) {
             countryBox.getItems().addAll(country.name());

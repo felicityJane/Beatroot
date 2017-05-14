@@ -8,6 +8,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
+import musicplayer.model.GlobalVariables;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,56 +18,11 @@ public class MainMenuController implements Initializable{
 
     @FXML private MenuBar menuBar;
     @FXML private MenuItem createNewPlaylistMenu, searchMenu, logoutMenu, settingsMenu, aboutMenu,faqsMenu;
-    private LogInMenuController logInMenuController;
-    private WelcomeMenuController welcomeMenuController;
-    private SignUpMenuController signUpMenuController;
-    private PaymentMenuController paymentMenuController;
-    private SettingsPageController settingsPageController;
-    private AboutPageController aboutPageController;
-    private AlbumPageController albumPageController;
-    private ArtistPageController artistPageController;
-    private FAQsPageController faQsPageController;
-    private SongPageController songPageController;
     @FXML AnchorPane mainMenu;
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    }
-    public void init(LogInMenuController logInMenuController) {
-        this.logInMenuController = logInMenuController;
-    }
-    public void init(WelcomeMenuController welcomeMenuController) {
-        this.welcomeMenuController = welcomeMenuController;
-    }
-    public void init(SignUpMenuController signUpMenuController) {
-        this.signUpMenuController = signUpMenuController;
-    }
-    public void init(PaymentMenuController paymentMenuController) {
-        this.paymentMenuController = paymentMenuController;
-    }
-    public void init(SettingsPageController settingsPageController) {
-        this.settingsPageController = settingsPageController;
-    }
-    public void init(AboutPageController aboutPageController) {
-        this.aboutPageController = aboutPageController;
-    }
-    public void init(AlbumPageController albumPageController) {
-        this.albumPageController = albumPageController;
-    }
-    public void init(ArtistPageController artistPageController) {
-        this.artistPageController = artistPageController;
-    }
-    public void init(FAQsPageController faQsPageController) {
-        this.faQsPageController = faQsPageController;
-    }
-    public void init(SongPageController songPageController){
-        this.songPageController = songPageController;
-    }
-    public void setDisabledMenuItemsWelcomeScene(){
-       createNewPlaylistMenu.setDisable(false);
-       searchMenu.setDisable(false);
-       logoutMenu.setDisable(false);
-       settingsMenu.setDisable(false);
+        GlobalVariables.getInstance().setMainMenuController(this);
     }
     public void enableMenuItemsAboutPage(){
         createNewPlaylistMenu.setDisable(false);

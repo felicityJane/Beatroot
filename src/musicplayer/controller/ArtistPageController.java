@@ -11,12 +11,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import musicplayer.DB_Connector;
 import musicplayer.Server_Connector;
+import musicplayer.model.GlobalVariables;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ArtistPageController implements Initializable {
-    @FXML
-    private MainMenuController mainMenuController;
     @FXML private AnchorPane artistPageAnchorPane;
     @FXML private ImageView imageView;
     @FXML private Label albumLabel;
@@ -25,11 +25,14 @@ public class ArtistPageController implements Initializable {
     private DB_Connector db_connector = new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
     private Server_Connector connector;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        mainMenuController.init(this);
-        mainMenuController.menuBarFitToParent(artistPageAnchorPane);
-        mainMenuController.enableMenuItems();
+        GlobalVariables globalVariables = GlobalVariables.getInstance();
+        globalVariables.setArtistPageController(this);
+        globalVariables.getMainMenuController().menuBarFitToParent(artistPageAnchorPane);
+        globalVariables.getMainMenuController().enableMenuItems();
+
 
         String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + Integer.toString(1));
         imageView.setImage(new Image(imgUrl));

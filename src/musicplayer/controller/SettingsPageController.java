@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
+import musicplayer.model.GlobalVariables;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -31,16 +32,18 @@ public class SettingsPageController implements Initializable {
     private String userName = "Misstery";
     private DB_Connector db_connector = new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
     private Statement statement;
-    @FXML MainMenuController mainMenuController;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        GlobalVariables globalVariables = GlobalVariables.getInstance();
+        globalVariables.setSettingsPageController(this);
+        globalVariables.getMainMenuController().menuBarFitToParent(settingsAnchorPage);
+        globalVariables.getMainMenuController().enableMenuItemsSettingsPage();
+
         editDisplayNameLabel.setText( db_connector.searchUser("display_name", "premium_user", "user_name = ","'"+userName+"'" ));
         editPasswordLabel.setText( db_connector.searchUser("password","premium_user","user_name = ", "'"+userName+"'"));
-        mainMenuController.init(this);
-        mainMenuController.menuBarFitToParent(settingsAnchorPage);
-        mainMenuController.enableMenuItemsSettingsPage();
     }
     @FXML private void onButton(ActionEvent event){
         settingsAnchorPage.getStyleClass().add("greyBackground");

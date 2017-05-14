@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
+import musicplayer.model.GlobalVariables;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,14 +20,14 @@ public class LogInMenuController implements Initializable{
     @FXML private TextField userName;
     @FXML private PasswordField userPassword;
     @FXML private Button loginButton,signUpButton;
-    @FXML private MainMenuController mainMenuController;
     @FXML private AnchorPane logInParentAnchorPane;
     @FXML private Label warningLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        mainMenuController.init(this);
-        mainMenuController.menuBarFitToParent(logInParentAnchorPane);
+        GlobalVariables globalVariables = GlobalVariables.getInstance();
+        globalVariables.setLogInMenuController(this);
+        globalVariables.getMainMenuController().menuBarFitToParent(logInParentAnchorPane);
     }
     @FXML
     private void handleLoginButton(ActionEvent event) {

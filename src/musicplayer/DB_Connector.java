@@ -3,13 +3,12 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import musicplayer.model.*;
 
 import java.io.IOException;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -187,7 +186,6 @@ public class DB_Connector {
             e.printStackTrace();
         }
     }
-
     public void checkTrialUserName(String userName, Label warningLabel, ActionEvent event) {
         try {
             ResultSet rs = statement.executeQuery("SELECT user FROM user_link WHERE user='" + userName + "'");
@@ -251,4 +249,50 @@ public class DB_Connector {
 
         return sqlString;
     }
+    public Album getAlbumDetails(Integer albumId) {
+        Album album = null;
+        try {
+            ResultSet rs = statement.executeQuery("SELECT album_id, album_name, album_cover_path FROM album WHERE album_id = '" + albumId + "'");
+
+            if (rs.next()) {
+                if (albumId.equals(rs.getInt(1))) {
+                    String albumName = rs.getString(2);
+                    String albumCover = rs.getString(3);
+                    album = new Album(albumName, new Image(albumCover));
+                }
+            }
+
+        } catch (SQLException ex) {
+            DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing album details query. Please try again.");
+            ex.printStackTrace();
+        }
+        return album;
+    }
+    public ArrayList<MusicTrack> getTrackDetails(Integer albumId) {
+        ArrayList<MusicTrack> musicTrackArrayList = new ArrayList<MusicTrack>();
+        try {
+            ResultSet rs = statement.executeQuery("SELECT album.album_id, music_track.track_id, music_track.track_name, music_track.track_length, music_track.track_url from album_has_music_track\n" +
+                    "JOIN album ON album_has_music_track.album_album_id = album.album_id\n" +
+                    "JOIN music_track ON album_has_music_track.music_track_track_id = music_track.track_id WHERE album_has_music_track.album_album_id =  '" + albumId + "'");
+
+            while (rs.next()) {
+                if (albumId.equals(rs.getInt(1))) {
+                    Integer trackId = rs.getInt(2);
+                    String trackName = rs.getString(3);
+                    Time trackDuration = rs.getTime(4);
+                    String trackUrl = rs.getString(5);
+                    MusicTrack musicTrack = new MusicTrack(trackName,trackUrl);
+                    musicTrack.setID(trackId);
+                    //musicTrack.setTrackLength(trackDuration);
+                    musicTrackArrayList.add(musicTrack);
+                }
+            }
+
+        } catch (SQLException ex) {
+            DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing album details query. Please try again.");
+            ex.printStackTrace();
+        }
+        return musicTrackArrayList;
+    }
+
 }

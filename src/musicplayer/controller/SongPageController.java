@@ -11,11 +11,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import musicplayer.DB_Connector;
 import musicplayer.Server_Connector;
+import musicplayer.model.GlobalVariables;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SongPageController implements Initializable {
-    @FXML private MainMenuController mainMenuController;
     @FXML private AnchorPane songPageAnchorPane;
     @FXML private ImageView imageView;
     @FXML private Label albumLabel;
@@ -26,9 +27,11 @@ public class SongPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        mainMenuController.init(this);
-        mainMenuController.menuBarFitToParent(songPageAnchorPane);
-        mainMenuController.enableMenuItems();
+
+        GlobalVariables globalVariables = GlobalVariables.getInstance();
+        globalVariables.setSongPageController(this);
+        globalVariables.getMainMenuController().menuBarFitToParent(songPageAnchorPane);
+        globalVariables.getMainMenuController().enableMenuItems();
 
         String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + Integer.toString(1));
         imageView.setImage(new Image(imgUrl));

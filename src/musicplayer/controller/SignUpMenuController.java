@@ -12,6 +12,8 @@ import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
 import musicplayer.model.Country;
+import musicplayer.model.GlobalVariables;
+
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,14 +32,15 @@ public class SignUpMenuController implements Initializable{
 @FXML private Label warningText;
 @FXML private Label lblLogIn;
 @FXML private AnchorPane signUpParentAnchorPane;
-@FXML private MainMenuController mainMenuController;
+
 @FXML private ComboBox<String> countryBox;
 @FXML private ComboBox<Integer> dayBox,monthBox,yearBox;
 
 @Override
 public void initialize(URL location, ResourceBundle resources) {
-        mainMenuController.init(this);
-        mainMenuController.menuBarFitToParent(signUpParentAnchorPane);
+        GlobalVariables globalVariables = GlobalVariables.getInstance();
+        globalVariables.setSignUpMenuController(this);
+        globalVariables.getMainMenuController().menuBarFitToParent(signUpParentAnchorPane);
         lblLogIn.setOnMouseEntered(event ->  {
 
         Scene scene = lblLogIn.getScene();

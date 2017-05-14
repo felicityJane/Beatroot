@@ -15,8 +15,9 @@
         </ImageView>
         <fx:include fx:id="mainMenu" source="mainMenu.fxml" />
       <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="albumLabel" layoutX="226.0" layoutY="80.0" prefHeight="17.0" prefWidth="182.0" text="Label" />
+      <Label fx:id="albumLabel" layoutX="195.0" layoutY="80.0" prefHeight="17.0" prefWidth="213.0" text="Label" />
       <Label layoutX="16.0" layoutY="305.0" text="album page " />
-      <ListView fx:id="listView" layoutX="217.0" layoutY="108.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="listView" layoutX="196.0" layoutY="138.0" prefHeight="170.0" prefWidth="240.0" />
+      <Label fx:id="artistLabel" layoutX="194.0" layoutY="108.0" prefHeight="17.0" prefWidth="240.0" text="Label" />
     </children>
 </AnchorPane>
