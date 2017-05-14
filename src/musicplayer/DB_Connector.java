@@ -3,185 +3,169 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
-import musicplayer.model.*;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class DB_Connector {
 
-    private String urlOfDatabase;
-    private Statement statement;
+	private String urlOfDatabase;
+	private Statement statement;
+	private Connection connection;
+	private ResultSet resultSet;
 
-    public DB_Connector(String urlOfDatabase) {
+	public DB_Connector(String urlOfDatabase) {
 
-        try {
-            this.urlOfDatabase = urlOfDatabase;
-            Connection c = (Connection) DriverManager.getConnection(urlOfDatabase);
-            statement = c.createStatement();
+		try {
+			this.urlOfDatabase = urlOfDatabase;
+			connection = (Connection) DriverManager.getConnection(urlOfDatabase);
+			statement = connection.createStatement();
+		} catch (SQLException sqlEx) {
+			DialogBoxManager.errorDialogBox("Unable to access specified database",
+					"Error while accessing the database. Please try again.");
+			sqlEx.printStackTrace();
 
-        } catch (SQLException sqlEx) {
-            DialogBoxManager.errorDialogBox("Unable to access specified database","Error while accessing the database. Please try again.");
-            sqlEx.printStackTrace();
+		}
+	}
 
-        }
-    }
+	public String search(String parameterToSearch, String tableName, String whereStatement) {
 
-    public String search(String parameterToSearch, String tableName, String whereStatement) {
+		String sqlString = "";
+		try {
+			ResultSet rs = statement
+					.executeQuery("SELECT " + parameterToSearch + " FROM " + tableName + " WHERE " + whereStatement);
+			while (rs.next()) {
+				sqlString = rs.getString(1);
+			}
+		} catch (SQLException ex) {
 
-        String sqlString = "";
-        try {
-            ResultSet rs = statement.executeQuery("SELECT " + parameterToSearch +
-                    " FROM " + tableName + " WHERE " + whereStatement);
-            while (rs.next()) {
-               sqlString = rs.getString(1);
-            }
-        }
-        catch (SQLException ex) {
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing search query. Please try again.");
+			ex.printStackTrace();
+		}
 
-            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing search query. Please try again.");
-            ex.printStackTrace();
-        }
+		return sqlString;
+	}
 
-        return sqlString;
-    }
+	public ArrayList<String> searchMultipleResults(String parameterToSearch, String tableName, String whereStatement) {
 
-    public ArrayList<String> searchMultipleResults(String parameterToSearch, String tableName, String whereStatement) {
+		ArrayList<String> sqlArrayList = new ArrayList<>();
+		try {
+			ResultSet rs = statement
+					.executeQuery("SELECT " + parameterToSearch + " FROM " + tableName + " WHERE " + whereStatement);
+			while (rs.next()) {
+				sqlArrayList.add(rs.getString(1));
+			}
+		} catch (SQLException ex) {
 
+			DialogBoxManager.errorDialogBox("Cannot run query",
+					"Error on executing multiple search query. Please try again.");
+			ex.printStackTrace();
+		}
 
-        ArrayList<String> sqlArrayList = new ArrayList<>();
-        try {
-            ResultSet rs = statement.executeQuery("SELECT " + parameterToSearch +
-                    " FROM " + tableName + " WHERE " + whereStatement);
-            while (rs.next()) {
-                sqlArrayList.add(rs.getString(1));
-            }
-        }
-        catch (SQLException ex) {
+		return sqlArrayList;
+	}
 
-            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing multiple search query. Please try again.");
-            ex.printStackTrace();
-        }
+	public void update(String tableToUpdate, String parameterToUpdate, String newParameter, String whereStatement) {
 
-        return sqlArrayList;
-    }
+		try {
+			int rows = statement.executeUpdate("UPDATE " + tableToUpdate + " SET " + parameterToUpdate + " = "
+					+ newParameter + " WHERE " + whereStatement);
+			System.out.println("Updated rows: " + rows);
+		} catch (SQLException sqlEx) {
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing update query. Please try again.");
+			sqlEx.printStackTrace();
+		}
+	}
 
-    public void update(String tableToUpdate, String parameterToUpdate, String newParameter, String whereStatement) {
+	public void insert(String tableNameAndParameters, String values) {
 
-        try {
-            int rows = statement.executeUpdate("UPDATE " + tableToUpdate + " SET " + parameterToUpdate + " = " + newParameter
-                    + " WHERE " + whereStatement);
-            System.out.println("Updated rows: " + rows);
-        } catch (SQLException sqlEx) {
-            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing update query. Please try again.");
-            sqlEx.printStackTrace();
-        }
-    }
+		try {
+			statement.executeUpdate("INSERT INTO " + tableNameAndParameters + " VALUES " + values);
 
-    public void insert(String tableNameAndParameters, String values) {
+		} catch (MySQLIntegrityConstraintViolationException ignored) {
+			// TODO
+		} catch (SQLException sqlEx) {
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing insert query. Please try again.");
+			sqlEx.printStackTrace();
+		}
+	}
 
-        try {
-            statement.executeUpdate("INSERT INTO " + tableNameAndParameters + " VALUES "
-                    + values);
+	public void delete(String tableToDeleteFrom, String whereStatement) {
 
-        }catch (MySQLIntegrityConstraintViolationException ignored){
+		try {
+			statement.executeUpdate("DELETE FROM " + tableToDeleteFrom + " WHERE " + whereStatement);
 
-        }catch (SQLException sqlEx) {
-            DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing insert query. Please try again.");
-            sqlEx.printStackTrace();
-        }
-    }
+		} catch (SQLException sqlEx) {
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing delete query. Please try again.");
+			sqlEx.printStackTrace();
+		}
+	}
 
-    public void delete(String tableToDeleteFrom, String whereStatement) {
-
-        try {
-            statement.executeUpdate("DELETE FROM " + tableToDeleteFrom + " WHERE "
-            + whereStatement);
-
-        }catch (SQLException sqlEx) {
-            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing delete query. Please try again.");
-            sqlEx.printStackTrace();
-        }
-    }
-    public void logInTrial(String userName, String password, ActionEvent event, Label warningLabel) {
-        try {
-            ResultSet rs = statement.executeQuery("SELECT user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link FROM trial_user WHERE user_name = '" + userName + "'");
+	public void logInTrial(String userName, String password, ActionEvent event, Label warningLabel) {
+		try {
+			ResultSet rs = statement.executeQuery(
+					"SELECT user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link FROM trial_user WHERE user_name = '"
+							+ userName + "'");
 
             if (rs.next()) {
                 if (password.equals(rs.getString(2))) {
-                    String phoneNumber="";
-                    String displayName=rs.getString(3);
-                    String firstName=rs.getString(4);
-                    String lastName=rs.getString(5);
-                    Date birthDay=rs.getDate(6);
-                    String emailAddress=rs.getString(7);
-                    String physicalAddress=rs.getString(8);
-                    String city=rs.getString(9);
-                    String postalCode=rs.getString(10);
-                    Country country=Country.valueOf(rs.getString(11));
-                    Date freeTrialEndDate=rs.getDate(12);
-                    Gender gender=Gender.values()[Integer.parseInt(rs.getString(13))];
-                    String playListLink=rs.getString(14);
+                    Path path=Paths.get("UserName.bin");
+                    ArrayList<String>userNameAndType=new ArrayList<>();
+                    userNameAndType.add(0,userName);
+                    userNameAndType.add(1,"TrialUser");
 
-                    TrialUser user = new TrialUser(userName,displayName,password,firstName,lastName,birthDay,emailAddress,physicalAddress,city,postalCode,country,gender,phoneNumber,freeTrialEndDate);
+                    Files.write(path,userNameAndType, StandardOpenOption.CREATE);
+
                     SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
-                    //call well come menucontroller setuser(User user);
-                    //this.user=user;
+
                 } else {
                     warningLabel.setText("Invalid username or password!!");
                 }
             }
-
+            if (!rs.next()) {
+                warningLabel.setText("Invalid Username or password!!");
+            }
         } catch (SQLException ex) {
-            DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing login query. Please try again.");
+            DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing trial login query. Please try again.");
             ex.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void logInPremium(String userName, String password, ActionEvent event, Label warningLabel) {
+    public void logInPremium(String userName, String password, ActionEvent event, Label warningLabel){
 
         try {
-            ResultSet rs = statement.executeQuery("SELECT user_name, password,display_name, first_name, last_name, date_of_birth, email_address, city_of_residence, postal_code, country, bank_card_number, expiration_date, card_type, billing_account_owner_name, billing_city, billing_postal_code,billing_country,billing_phone_number, gender_gender_id, playlist_link FROM premium_user WHERE user_name='" + userName + "'");
+            ResultSet rs = statement.executeQuery("SELECT user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, bank_card_number, expiration_date, card_type, billing_account_owner_name, billing_address, billing_city, billing_postal_code,billing_country,billing_phone_number, gender_gender_id, playlist_link FROM premium_user WHERE user_name='" + userName + "'");
 
             if (rs.next()) {
                 if (password.equals(rs.getString(2))) {
-                    String phoneNumber=rs.getString(18);
-                    String displayName=rs.getString(3);
-                    String firstName=rs.getString(4);
-                    String lastName=rs.getString(5);
-                    Date birthDay=rs.getDate(6) ;
-                    String emailAddress=rs.getString(7);
-                    String physicalAddress="";
-                    String city=rs.getString(8);
-                    String postalCode=rs.getString(9);
-                    Country country=Country.valueOf(rs.getString(10));
-                    String bankCardNumber=rs.getString(11);
-                    Date expiratinDate=rs.getDate(12);
-                    PaymentMethod paymentMethod=PaymentMethod.valueOf(rs.getString(13).toUpperCase());
-                    String accountOwnerName=rs.getString(14);
-                    String billingCity=rs.getString(15);
-                    String billingPostalCode=rs.getString(16);
-                    Country billingCountry=Country.valueOf(rs.getString(17));
-                    String billingPhoneNumber=rs.getString(18);
-                    Gender gender=Gender.values()[Integer.parseInt(rs.getString(19))];
-                    String playListLink=rs.getString(20);
 
-                    //New Premium User
-                    PremiumUser premiumUser=new PremiumUser(userName,displayName,password,firstName,lastName,birthDay,emailAddress,physicalAddress,city,postalCode,country,gender,phoneNumber,bankCardNumber,expiratinDate,paymentMethod,accountOwnerName,physicalAddress,billingCity,billingPostalCode,billingCountry,billingPhoneNumber);
+                    Path path= Paths.get("UserName.bin");
+                    ArrayList<String>userNameAndType=new ArrayList<>();
+                    userNameAndType.add(0,userName);
+                    userNameAndType.add(1,"PremiumUser");
+
+                    Files.write(path,userNameAndType, StandardOpenOption.CREATE);
+
                     SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
-                } else {
+
+                }else {
                     warningLabel.setText("Invalid username or password!!");
                 }
             }
+            if (!rs.next()) {
+                warningLabel.setText("Invalid Username or password!!");
+            }
         }catch (SQLException ex) {
-
-            DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing login query. Please try again.");
+            DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing premium login query. Please try again.");
             ex.printStackTrace();
         }catch (IOException e) {
             e.printStackTrace();
@@ -194,17 +178,13 @@ public class DB_Connector {
             if (rs.next()) {
                 warningLabel.setText("Username is already taken");
                 warningLabel.setVisible(false);
-            }else {
-                SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
             }
         }catch (SQLException ex) {
             DialogBoxManager.errorDialogBox("Cannot run query", "Error on User Name. Please try again.");
             ex.printStackTrace();
-        }catch (IOException e) {
-            e.printStackTrace();
         }
     }
-    public void checkPremiumlUserName(String userName, Label warningLabel,ActionEvent event) {
+    public void checkPremiumUserName(String userName, Label warningLabel, ActionEvent event) {
         try {
             ResultSet rs = statement.executeQuery("SELECT user FROM user_link WHERE user='" + userName + "'");
             if (rs.next()) {
@@ -219,5 +199,21 @@ public class DB_Connector {
             e.printStackTrace();
         }
     }
+	public void checkUserName(String userName, Label warningLabel, ActionEvent event) {
+		try {
+			ResultSet rs = statement.executeQuery("SELECT user FROM user_link WHERE user='" + userName + "'");
+			if (rs.next()) {
+				warningLabel.setText("Username is already taken");
+				warningLabel.setVisible(false);
+			} else {
+				SceneManager.sceneManager.changeScene(event, "view/paymentMenu.fxml");
+			}
+		} catch (SQLException ex) {
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on User Name. Please try again.");
+			ex.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

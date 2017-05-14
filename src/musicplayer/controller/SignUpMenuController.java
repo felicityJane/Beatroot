@@ -89,7 +89,7 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
         String nameRegex="[A-Za-z]+";
         String genderId = null;
 
-        if (userName.getText().length()<4 || userName.getText().length()>8){
+        if (userName.getText().length()<4 || userName.getText().length()>10){
         warningText.setText("Invalid Username Value");
         userName.clear();
         throw new InputMismatchException();
@@ -114,12 +114,11 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
         confirmEmail.clear();
         throw new InputMismatchException();
         }if (male.isSelected()) {
-        genderId ="0";
+        genderId ="1";
         }if (female.isSelected()){
-        genderId="1";
+        genderId="2";
         }if (!female.isSelected() && !male.isSelected()){
-        warningText.setText("Gender is not selected!!");
-        throw new InputMismatchException();
+        genderId="3";
         }if (!phoneNum.matches(numberRegex)){
         warningText.setText("Invalid phone number");
         phoneNumber.clear();
@@ -146,6 +145,8 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
                             connector.insert("user_link(user)","('"+userNam+"')");
                             connector.insert("trial_user(user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link)", "('"+userNam+"','"+userPass+"','"+userNam+"','"+firstNam+"','"+lastNam+"','"+dateOfBirht+"','"+emal+"','"+physicalAdd+"','"+cit+"','"+postalCo+"','"+country+"','"+freeTrialEndDate+"','"+genderId+"','"+userNam+"')");
                             connector.logInTrial(userNam,userPass,event,warningText);
+                            warningText.setText("");
+
                         }if (!warningText.getText().isEmpty()){
                             DialogBoxManager.errorDialogBox("Error occurred","Username is already taken!!");
                             warningText.setText("");
@@ -153,39 +154,40 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
                         //create user
                 }if (premiumUser.isSelected()){
                         userType=premiumUser.getText();
-                        connector.checkPremiumlUserName(userNam,warningText,event);
-                        Path path = Paths.get("PremiumUserInfo.bin");
-                        ArrayList<String> premiumUserInfo=new ArrayList<>();
-                        try {
-                                premiumUserInfo.add(0,userNam);
-                                premiumUserInfo.add(1,userPass);
-                                premiumUserInfo.add(2,userNam);
-                                premiumUserInfo.add(3,firstNam);
-                                premiumUserInfo.add(4,lastNam);
-                                premiumUserInfo.add(5,dateOfBirht);
-                                premiumUserInfo.add(6,emal);
-                                premiumUserInfo.add(7,physicalAdd);
-                                premiumUserInfo.add(8,cit);
-                                premiumUserInfo.add(9,postalCo);
-                                premiumUserInfo.add(10,country);
-                                premiumUserInfo.add(11,genderId);
-                                premiumUserInfo.add(12,userNam);
-                                premiumUserInfo.add(13,phoneNum);
+                        connector.checkPremiumUserName(userNam,warningText,event);
 
-                                Files.write(path,premiumUserInfo, StandardOpenOption.CREATE);
+                }
+                Path path = Paths.get("PremiumUserInfo.bin");
+                ArrayList<String> premiumUserInfo=new ArrayList<>();
+                try {
+                        premiumUserInfo.add(0,userNam);
+                        premiumUserInfo.add(1,userPass);
+                        premiumUserInfo.add(2,userNam);
+                        premiumUserInfo.add(3,firstNam);
+                        premiumUserInfo.add(4,lastNam);
+                        premiumUserInfo.add(5,dateOfBirht);
+                        premiumUserInfo.add(6,emal);
+                        premiumUserInfo.add(7,physicalAdd);
+                        premiumUserInfo.add(8,cit);
+                        premiumUserInfo.add(9,postalCo);
+                        premiumUserInfo.add(10,country);
+                        premiumUserInfo.add(11,genderId);
+                        premiumUserInfo.add(12,userNam);
+                        premiumUserInfo.add(13,phoneNum);
 
-                        }catch (Exception e){
-                                DialogBoxManager.errorDialogBox("Error occurred","Premium User Info");
-                                System.out.println(e.toString());
-                        }
+                        Files.write(path,premiumUserInfo, StandardOpenOption.CREATE);
+
+                }catch (Exception e){
+                        DialogBoxManager.errorDialogBox("Error occurred","Premium User Info");
+                        System.out.println(e.toString());
                 }
 
         }catch (InputMismatchException ie){
-        System.out.println(ie.toString());
+        ie.printStackTrace();
 
         }catch (Exception e){
         DialogBoxManager.errorDialogBox("Error occurred","Changing from sign up scene to welcome scene");
-        System.out.println(e.toString());
+        e.printStackTrace();
         }
     }
 @FXML
