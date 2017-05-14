@@ -11,36 +11,51 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import musicplayer.DB_Connector;
 import musicplayer.Server_Connector;
+import musicplayer.model.Album;
 import musicplayer.model.GlobalVariables;
+import musicplayer.model.MusicArtist;
+import musicplayer.model.MusicTrack;
+
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ArtistPageController implements Initializable {
     @FXML private AnchorPane artistPageAnchorPane;
     @FXML private ImageView imageView;
-    @FXML private Label albumLabel;
-    @FXML private ListView listView;
+    @FXML private Label albumLabel, artistLabel;
+    @FXML private ListView<String> listView;
     private URL url;
     private DB_Connector db_connector = new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
     private Server_Connector connector;
-
+    private Album album;
+    private MusicArtist musicArtist;
+    private ArrayList<MusicTrack> musicTracks;
+    GlobalVariables globalVariables = GlobalVariables.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        GlobalVariables globalVariables = GlobalVariables.getInstance();
         globalVariables.setArtistPageController(this);
-        globalVariables.getMainMenuController().menuBarFitToParent(artistPageAnchorPane);
-        globalVariables.getMainMenuController().enableMenuItems();
-
-
-        String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + Integer.toString(1));
-        imageView.setImage(new Image(imgUrl));
+        getAlbumInfo();
+    }
+    public void getAlbumInfo() {
+        int counter = 0;
+        album = globalVariables.getAlbum();
+        musicTracks = globalVariables.getMusicTracks();
+        imageView.setImage(album.getAlbumCover());
+        albumLabel.setText("Album: " + album.getAlbumName());
+        listView.getItems().clear();
+        for (MusicTrack m : musicTracks) {
+            counter++;
+            String string = String.format("Track" + counter + " : " + "%-20s", m.getTrackName());
+            int trackId = m.getID();
+            musicArtist = db_connector.getArtistDetails(trackId);
+            globalVariables.setMusicArtist(musicArtist);
+            listView.getItems().add(string);
+            artistLabel.setText("Artist: " + musicArtist.getStageName());
+        }
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
         imageView.setEffect(dropShadow);
-
-        int albumId = Integer.parseInt(db_connector.search("album_id", "album", "album_cover_path = " + "'" + imgUrl + "'"));
-        String albumName = db_connector.search("album_name", "album", "album_id = " + Integer.toString(albumId));
-        albumLabel.setText("Album Name: " + albumName);
     }
 
 }

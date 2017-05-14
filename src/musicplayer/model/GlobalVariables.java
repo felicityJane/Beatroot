@@ -14,6 +14,7 @@ public class GlobalVariables {
     private Album album;
     private String albumCover;
     private ArrayList<MusicTrack> musicTracks;
+    private MusicArtist musicArtist;
     @FXML private AboutPageController aboutPageController;
     @FXML private AlbumPageController albumPageController;
     @FXML private ArtistPageController artistPageController;
@@ -49,6 +50,14 @@ public class GlobalVariables {
 
     public void setMusicTracks(ArrayList<MusicTrack> musicTracks) {
         this.musicTracks = musicTracks;
+    }
+
+    public MusicArtist getMusicArtist() {
+        return musicArtist;
+    }
+
+    public void setMusicArtist(MusicArtist musicArtist) {
+        this.musicArtist = musicArtist;
     }
 
     public MainMenuController getMainMenuController() {

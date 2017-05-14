@@ -418,9 +418,9 @@ public class WelcomeMenuController implements Initializable {
             }
         });
 
-        imgNoConnection.setVisible(false);
-        lblNoConnection1.setVisible(false);
-        lblNoConnection2.setVisible(false);
+//        imgNoConnection.setVisible(false);
+//        lblNoConnection1.setVisible(false);
+//        lblNoConnection2.setVisible(false);
 
     }
 
@@ -592,9 +592,9 @@ public class WelcomeMenuController implements Initializable {
                 lblTrackName.setText(mt.getTrackName());
             } catch (Exception ex) {
                 ex.printStackTrace();
-                imgNoConnection.setVisible(true);
-                lblNoConnection2.setVisible(true);
-                lblNoConnection1.setVisible(true);
+//                imgNoConnection.setVisible(true);
+//                lblNoConnection2.setVisible(true);
+//                lblNoConnection1.setVisible(true);
             }
 
         } else {
@@ -778,9 +778,9 @@ public class WelcomeMenuController implements Initializable {
             runMediaPlayer(path);
         } catch (Exception ex) {
             ex.printStackTrace();
-            imgNoConnection.setVisible(true);
-            lblNoConnection2.setVisible(true);
-            lblNoConnection1.setVisible(true);
+//            imgNoConnection.setVisible(true);
+//            lblNoConnection2.setVisible(true);
+//            lblNoConnection1.setVisible(true);
         }
     }
 
@@ -911,9 +911,9 @@ public class WelcomeMenuController implements Initializable {
                     connector.restart();
                 } catch (Exception ex) {
                     System.out.println("Exception caught at line 872");
-                    imgNoConnection.setVisible(true);
-                    lblNoConnection2.setVisible(true);
-                    lblNoConnection1.setVisible(true);
+//                    imgNoConnection.setVisible(true);
+//                    lblNoConnection2.setVisible(true);
+//                    lblNoConnection1.setVisible(true);
                 }
             }
             Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
@@ -924,12 +924,13 @@ public class WelcomeMenuController implements Initializable {
 //            lblNoConnection2.setVisible(true);
 //            lblNoConnection1.setVisible(true);
             System.out.println("Exception caught at line 881");
-            imgNoConnection.setVisible(true);
-            lblNoConnection2.setVisible(true);
-            lblNoConnection1.setVisible(true);
+//            imgNoConnection.setVisible(true);
+//            lblNoConnection2.setVisible(true);
+//            lblNoConnection1.setVisible(true);
             ex.printStackTrace();
         }
     }
+
     private void popUpMenu(ImageView imageView){
         final ContextMenu contextMenu = new ContextMenu();
         final MenuItem songPage = new MenuItem("See song info");
@@ -938,6 +939,7 @@ public class WelcomeMenuController implements Initializable {
         contextMenu.getItems().addAll(songPage,artistPage,albumPage);
 
 
+        SceneManager sceneManager = new SceneManager();
         GlobalVariables globalVariables = GlobalVariables.getInstance();
         for (Node n : welcomeRootAnchor.getChildren()) {
 
@@ -955,9 +957,9 @@ public class WelcomeMenuController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + imageView.getId());
-                    globalVariables.setAlbumCover(imgUrl);
-                    SceneManager.sceneManager.changeSceneMenuItem(welcomeParentAnchorPane,"view/songPage.fxml");
+                    globalVariables.setAlbum(db_connector.getAlbumDetails(Integer.parseInt(imageView.getId())));
+                    globalVariables.setMusicTracks(db_connector.getTrackDetails(Integer.parseInt(imageView.getId())));
+                    sceneManager.popUpWindow(event, "view/songPage.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -967,9 +969,9 @@ public class WelcomeMenuController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + imageView.getId());
-                    globalVariables.setAlbumCover(imgUrl);
-                    SceneManager.sceneManager.changeSceneMenuItem(welcomeParentAnchorPane,"view/artistPage.fxml");
+                    globalVariables.setAlbum(db_connector.getAlbumDetails(Integer.parseInt(imageView.getId())));
+                    globalVariables.setMusicTracks(db_connector.getTrackDetails(Integer.parseInt(imageView.getId())));
+                    sceneManager.popUpWindow(event, "view/artistPage.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -979,12 +981,9 @@ public class WelcomeMenuController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    Album albumInfo = db_connector.getAlbumDetails(Integer.parseInt(imageView.getId()));
-                    globalVariables.setAlbum(albumInfo);
-                    ArrayList musicTrackInfo = db_connector.getTrackDetails(Integer.parseInt(imageView.getId()));
-                    globalVariables.setMusicTracks(musicTrackInfo);
-                    SceneManager.sceneManager.changeSceneMenuItem(welcomeParentAnchorPane,"view/albumPage.fxml");
-
+                    globalVariables.setAlbum(db_connector.getAlbumDetails(Integer.parseInt(imageView.getId())));
+                    globalVariables.setMusicTracks(db_connector.getTrackDetails(Integer.parseInt(imageView.getId())));
+                    sceneManager.popUpWindow(event, "view/albumPage.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

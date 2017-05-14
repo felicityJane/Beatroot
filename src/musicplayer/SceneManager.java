@@ -73,9 +73,16 @@ public class SceneManager {
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initModality(Modality.APPLICATION_MODAL);
         stage.centerOnScreen();
 
+    }
+    public void popUpWindow(Event e, String fxmlFileName) throws IOException{
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Beatroot");
+        stage.show();
+        stage.centerOnScreen();
     }
     public void changeSceneMenuItem(AnchorPane anchorPane, String fxmlFileName) throws IOException {
         Stage stage = (Stage) anchorPane.getScene().getWindow();
@@ -84,6 +91,18 @@ public class SceneManager {
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.centerOnScreen();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+
+                File file = new File("tmp");
+                for (File f : file.listFiles()) {
+                    if (!f.isDirectory()) {
+                        f.delete();
+                    }
+                }
+            }
+        });
 
     }
 
