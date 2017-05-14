@@ -262,6 +262,9 @@ public class WelcomeMenuController implements Initializable {
                 n.setOnMouseClicked(event -> {
                     if (event.getButton() == MouseButton.PRIMARY){
                         clickOnImageView(n);
+                    }if (event.getButton() == MouseButton.SECONDARY){
+                        ImageView im = (ImageView) event.getSource();
+                        popUpMenu(im);
                     }
                 });
 
