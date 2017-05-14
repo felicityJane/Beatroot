@@ -12,7 +12,6 @@ import javafx.scene.paint.Color;
 import musicplayer.DB_Connector;
 import musicplayer.Server_Connector;
 import musicplayer.model.GlobalVariables;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 

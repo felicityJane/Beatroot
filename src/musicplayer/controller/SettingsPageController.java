@@ -8,12 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import musicplayer.DB_Connector;
-import musicplayer.DialogBoxManager;
 import musicplayer.model.GlobalVariables;
-
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 

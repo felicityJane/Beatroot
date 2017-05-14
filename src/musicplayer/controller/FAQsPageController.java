@@ -7,7 +7,6 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import musicplayer.model.GlobalVariables;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 

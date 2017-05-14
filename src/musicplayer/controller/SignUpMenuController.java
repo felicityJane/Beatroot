@@ -38,17 +38,7 @@ import java.text.SimpleDateFormat;
 
 public class SignUpMenuController implements Initializable {
 
-@FXML private TextField userName;
-@FXML private TextField userPassword;
-@FXML private TextField firstName,lastName,email,confirmEmail,phoneNumber,physicalAddress,postalCode,city;
-@FXML private RadioButton male,female,trialUser,premiumUser;
-@FXML private Button signUpButton;
-@FXML private Label warningText;
-@FXML private Label lblLogIn;
-@FXML private AnchorPane signUpParentAnchorPane;
 
-@FXML private ComboBox<String> countryBox;
-@FXML private ComboBox<Integer> dayBox,monthBox,yearBox;
 	@FXML
 	private TextField userName;
 	@FXML

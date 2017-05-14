@@ -2,12 +2,8 @@ package musicplayer.model;
 
 import javafx.fxml.FXML;
 import musicplayer.controller.*;
-
 import java.util.ArrayList;
 
-/**
- * Created by felic on 11/05/2017.
- */
 public class GlobalVariables {
 
     private final static GlobalVariables instance = new GlobalVariables();
