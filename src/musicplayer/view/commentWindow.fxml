@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="290.0" prefWidth="418.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.CommentWindowController">
+<AnchorPane prefHeight="290.0" prefWidth="418.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.view.CommentWindowController">
    <children>
       <TextArea fx:id="txtAreaComment" layoutX="12.0" layoutY="70.0" prefHeight="175.0" prefWidth="395.0" />
       <Label fx:id="lblTitle" layoutX="14.0" layoutY="23.0" text="Label">

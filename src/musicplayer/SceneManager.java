@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -54,17 +55,21 @@ public class SceneManager {
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.centerOnScreen();
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
+        stage.setOnCloseRequest(event ->  {
 
-                File file = new File("tmp");
-                for (File f : file.listFiles()) {
-                    if (!f.isDirectory()) {
-                        f.delete();
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+
+                    File file = new File("tmp");
+                    for (File f : file.listFiles()) {
+                        if (!f.isDirectory()) {
+                            f.delete();
+                        }
                     }
                 }
-            }
+
+            });
         });
     }
     public void openPopupScene(Event e, String fxmlFileName ) throws IOException {
@@ -76,6 +81,46 @@ public class SceneManager {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.centerOnScreen();
+        stage.setOnCloseRequest(event ->  {
 
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+
+                    File file = new File("tmp");
+                    for (File f : file.listFiles()) {
+                        if (!f.isDirectory()) {
+                            f.delete();
+                        }
+                    }
+                }
+
+            });
+        });
+
+    }
+    public void changeSceneMenuItem(AnchorPane anchorPane, String fxmlFileName) throws IOException {
+        Stage stage = (Stage) anchorPane.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
+        Scene scene = new Scene(root);
+        stage.setTitle("Beatroot");
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setOnCloseRequest(event ->  {
+
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+
+                    File file = new File("tmp");
+                    for (File f : file.listFiles()) {
+                        if (!f.isDirectory()) {
+                            f.delete();
+                        }
+                    }
+                }
+
+            });
+        });
     }
 }

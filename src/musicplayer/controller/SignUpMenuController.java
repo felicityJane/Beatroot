@@ -1,4 +1,18 @@
 package musicplayer.controller;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import musicplayer.DB_Connector;
+import musicplayer.DialogBoxManager;
+import musicplayer.SceneManager;
+import musicplayer.controller.MainMenuController;
+import musicplayer.model.Country;
+import musicplayer.model.GlobalVariables;
 
 import java.net.URL;
 import java.nio.file.Files;
@@ -6,30 +20,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.ResourceBundle;
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import musicplayer.DB_Connector;
-import musicplayer.DialogBoxManager;
-import musicplayer.SceneManager;
-import musicplayer.model.Country;
+import java.util.*;
 
 public class SignUpMenuController implements Initializable {
+
 
 	@FXML
 	private TextField userName;
@@ -56,9 +50,10 @@ public class SignUpMenuController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		mainMenuController.init(this);
-		mainMenuController.menuBarFitToParent(signUpParentAnchorPane);
-		lblLogIn.setOnMouseEntered(event -> {
+		GlobalVariables globalVariables = GlobalVariables.getInstance();
+		globalVariables.setSignUpMenuController(this);
+		globalVariables.getMainMenuController().menuBarFitToParent(signUpParentAnchorPane);
+		lblLogIn.setOnMouseEntered(event ->  {
 
 			Scene scene = lblLogIn.getScene();
 			scene.setCursor(Cursor.HAND);

@@ -5,10 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -17,10 +14,8 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExceptio
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
-import musicplayer.model.Administrator;
-import musicplayer.model.Country;
-import musicplayer.model.Gender;
-import musicplayer.model.User;
+import javafx.scene.image.Image;
+import musicplayer.model.*;
 
 public class DB_Connector {
 
@@ -250,18 +245,18 @@ public class DB_Connector {
 	 */
 	// Patch method only for admins
 	/*
-	 * 
+	 *
 	 * Staff ID column 1; user name col 2; display name col 4; password col 3;
 	 * first name col 5; last name col 6; date of birth col 7; email address col
 	 * 8; physical address col 9;city of residence col 10; postal code col 11;
 	 * country col 12; gender 17; phone num col 13; start date col 14; wage col
 	 * 15; contract hours col 16; playlist link col 18;
-	 * 
+	 *
 	 * @param warningLabel
 	 */
 
 	public void logInAdministrator(String staffId, String userName, String password, ActionEvent event,
-			Label warningLabel) {
+								   Label warningLabel) {
 		try {
 			resultSet = statement.executeQuery(
 					"select * from administrator left join gender on administrator.gender_gender_id=gender.gender_id where user_name='"
@@ -332,5 +327,82 @@ public class DB_Connector {
 	// public void setPremiumUser(PremiumUser premiumUser) {
 	// this.premiumUser = premiumUser;
 	// }
+	public String searchUser(String parameterToSearch, String tableName, String whereStatement, String input) {
+
+		String sqlString = "";
+		try {
+			ResultSet rs = statement.executeQuery("SELECT " + parameterToSearch + " FROM " + tableName + " WHERE " + whereStatement + input);
+			while (rs.next()) {
+				sqlString = rs.getString(1);
+			}
+		}
+		catch (SQLException ex) {
+
+			DialogBoxManager.errorDialogBox("Cannot run query","Error on executing search query. Please try again.");
+			ex.printStackTrace();
+		}
+
+		return sqlString;
+	}
+	public String changeDisplayName(String displayName, String userName) {
+
+		String sqlString = "";
+		try {
+			int rows = statement.executeUpdate("UPDATE premium_user SET display_name = " + displayName + " WHERE user_name  = " + userName);
+			System.out.println("Updated rows: " + rows);
+		}
+		catch (SQLException ex) {
+
+			DialogBoxManager.errorDialogBox("Cannot run query","Error on executing search query. Please try again.");
+			ex.printStackTrace();
+		}
+
+		return sqlString;
+	}
+	public Album getAlbumDetails(Integer albumId) {
+		Album album = null;
+		try {
+			ResultSet rs = statement.executeQuery("SELECT album_id, album_name, album_cover_path FROM album WHERE album_id = '" + albumId + "'");
+
+			if (rs.next()) {
+				if (albumId.equals(rs.getInt(1))) {
+					String albumName = rs.getString(2);
+					String albumCover = rs.getString(3);
+					album = new Album(albumName, new Image(albumCover));
+				}
+			}
+
+		} catch (SQLException ex) {
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing album details query. Please try again.");
+			ex.printStackTrace();
+		}
+		return album;
+	}
+	public ArrayList<MusicTrack> getTrackDetails(Integer albumId) {
+		ArrayList<MusicTrack> musicTrackArrayList = new ArrayList<MusicTrack>();
+		try {
+			ResultSet rs = statement.executeQuery("SELECT album.album_id, music_track.track_id, music_track.track_name, music_track.track_length, music_track.track_url from album_has_music_track\n" +
+					"JOIN album ON album_has_music_track.album_album_id = album.album_id\n" +
+					"JOIN music_track ON album_has_music_track.music_track_track_id = music_track.track_id WHERE album_has_music_track.album_album_id =  '" + albumId + "'");
+
+			while (rs.next()) {
+				if (albumId.equals(rs.getInt(1))) {
+					Integer trackId = rs.getInt(2);
+					String trackName = rs.getString(3);
+					Time trackDuration = rs.getTime(4);
+					String trackUrl = rs.getString(5);
+					MusicTrack musicTrack = new MusicTrack(trackName,trackUrl);
+					musicTrack.setID(trackId);
+					//musicTrack.setTrackLength(trackDuration);
+					musicTrackArrayList.add(musicTrack);
+				}
+			}
+
+		} catch (SQLException ex) {
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing album details query. Please try again.");
+			ex.printStackTrace();
+		}
+		return musicTrackArrayList;
+	}
 
 }
