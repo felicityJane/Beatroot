@@ -46,11 +46,10 @@ public class PremiumUser extends NonTrialUser {
 	 *            Enum {@link: PaymentMethod} The payment method.
 	 */
 
-
 	public PremiumUser(String userName, String displayName, String password, String firstName, String lastName,
-			Date dateOfBirth, String emailAddress, String streetNameAndNumber, String cityOfResidence, String postalCode,
-			Country country, Gender gender, String phoneNumber, String bankCardNumber, Date expirationDate,
-			PaymentMethod PaymentMethod, String billingAccountOwnerName) {
+			Date dateOfBirth, String emailAddress, String streetNameAndNumber, String cityOfResidence,
+			String postalCode, Country country, Gender gender, String phoneNumber, String bankCardNumber,
+			Date expirationDate, PaymentMethod PaymentMethod, String billingAccountOwnerName) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, streetNameAndNumber,
 
 				cityOfResidence, postalCode, country, gender, phoneNumber);
@@ -121,12 +120,8 @@ public class PremiumUser extends NonTrialUser {
 		this.expirationDate = expirationDate;
 		this.PaymentMethod = PaymentMethod;
 		this.cardHolderName = cardHolderName;
-		this.billingAddress.setStreetNameAndNumber(billingStreet);
-		this.billingAddress.setCity(billingCity);
-		this.billingAddress.setPostalCode(billingPostalCode);
-		this.billingAddress.setCountry(billingCountry);
+		billingAddress = new Address(billingStreet, billingCity, billingPostalCode, billingCountry);
 		this.PaymentMethod = PaymentMethod;
-
 		this.billingPhoneNumber = billingPhoneNumber;
 	}
 
@@ -146,14 +141,17 @@ public class PremiumUser extends NonTrialUser {
 		this.expirationDate = expirationDate;
 	}
 
-
 	public Address getBillingAddress() {
 		return billingAddress;
 	}
 
-	public String getBillingStreet() { return billingAddress.getStreetNameAndNumber();}
+	public String getBillingStreet() {
+		return billingAddress.getStreetNameAndNumber();
+	}
 
-	public void setBillingStreet(String billingStreet) { billingAddress.setStreetNameAndNumber(billingStreet);}
+	public void setBillingStreet(String billingStreet) {
+		billingAddress.setStreetNameAndNumber(billingStreet);
+	}
 
 	public String getBillingCity() {
 		return billingAddress.getCity();

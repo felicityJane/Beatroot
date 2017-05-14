@@ -1,18 +1,22 @@
 package musicplayer.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
 import musicplayer.model.GlobalVariables;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import musicplayer.model.User;
 
 public class MainMenuController implements Initializable{
 
@@ -49,6 +53,7 @@ public class MainMenuController implements Initializable{
         searchMenu.setDisable(false);
         logoutMenu.setDisable(false);
     }
+    //TODO <fx:include fx:id="adminMenu" source="AdminMenu.fxml"/>
     void menuBarFitToParent(AnchorPane parentAnchor){
         menuBar.prefWidthProperty().bind(parentAnchor.widthProperty());
     }
