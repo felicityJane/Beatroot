@@ -67,7 +67,7 @@ public void initialize(URL location, ResourceBundle resources) {
 
     for (Country country: Country.values()) {
         countryBox.getItems().addAll(country.name());
-        countryBox.setValue("Sverige");
+        countryBox.setValue("SVERIGE");
         }
     }
 @FXML

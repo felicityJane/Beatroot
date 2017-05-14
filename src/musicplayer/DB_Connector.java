@@ -5,9 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -20,24 +17,26 @@ import java.util.ArrayList;
 
 public class DB_Connector {
 
-    private String urlOfDatabase;
-    private Statement statement;
+	private String urlOfDatabase;
+	private Statement statement;
+	private Connection connection;
+	private ResultSet resultSet;
 
     public DB_Connector(String urlOfDatabase) {
 
-        try {
-            this.urlOfDatabase = urlOfDatabase;
-            Connection c = (Connection) DriverManager.getConnection(urlOfDatabase);
-            statement = c.createStatement();
+		try {
+			this.urlOfDatabase = urlOfDatabase;
+			connection = (Connection) DriverManager.getConnection(urlOfDatabase);
+			statement = connection.createStatement();
+		} catch (SQLException sqlEx) {
+			DialogBoxManager.errorDialogBox("Unable to access specified database",
+					"Error while accessing the database. Please try again.");
+			sqlEx.printStackTrace();
 
-        } catch (SQLException sqlEx) {
-            DialogBoxManager.errorDialogBox("Unable to access specified database","Error while accessing the database. Please try again.");
-            sqlEx.printStackTrace();
+		}
+	}
 
-        }
-    }
-
-    public String search(String parameterToSearch, String tableName, String whereStatement) {
+	public String search(String parameterToSearch, String tableName, String whereStatement) {
 
         String sqlString = "";
         try {
@@ -154,7 +153,7 @@ public class DB_Connector {
                     Path path=Paths.get("UserName.bin");
                     ArrayList<String>userNameAndType=new ArrayList<>();
                     userNameAndType.add(0,userName);
-                    userNameAndType.add(1,"PremiumUser");
+                    userNameAndType.add(1,"Premium");
 
                     Files.write(path,userNameAndType, StandardOpenOption.CREATE);
 
@@ -202,5 +201,21 @@ public class DB_Connector {
             e.printStackTrace();
         }
     }
+	public void checkUserName(String userName, Label warningLabel, ActionEvent event) {
+		try {
+			ResultSet rs = statement.executeQuery("SELECT user FROM user_link WHERE user='" + userName + "'");
+			if (rs.next()) {
+				warningLabel.setText("Username is already taken");
+				warningLabel.setVisible(false);
+			} else {
+				SceneManager.sceneManager.changeScene(event, "view/paymentMenu.fxml");
+			}
+		} catch (SQLException ex) {
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on User Name. Please try again.");
+			ex.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
