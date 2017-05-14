@@ -55,16 +55,16 @@ public class Administrator extends NonTrialUser {
 	 *            String Employee's ID code
 	 */
 
-	public Administrator(String userName, String displayName, String password, String firstName, String lastName,
-			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			Country country, Gender gender, String phoneNumber, Date startDate, float wage, float contractHours,
-			String staffID) {
+	public Administrator(String staffId, String userName, String displayName, String password, String firstName,
+			String lastName, Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence,
+			String postalCode, Country country, Gender gender, String phoneNumber, Date startDate, float wage,
+			float contractHours) {
 		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.startDate = startDate;
 		this.wage = wage;
 		this.contractHours = contractHours;
-		this.staffID = staffID;
+		this.staffID = staffId;
 	}
 
 	public Date getStartDate() {
