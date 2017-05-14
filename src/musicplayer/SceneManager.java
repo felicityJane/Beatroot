@@ -45,7 +45,6 @@ public class SceneManager {
             });
         });
     }
-
     public void changeSceneMenuBar(MenuBar menuBar, String fxmlFileName) throws IOException {
         Stage stage = (Stage) menuBar.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
@@ -74,6 +73,7 @@ public class SceneManager {
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.centerOnScreen();
 
     }
@@ -84,5 +84,7 @@ public class SceneManager {
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.centerOnScreen();
+
     }
+
 }

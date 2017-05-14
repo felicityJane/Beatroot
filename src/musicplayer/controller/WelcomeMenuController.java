@@ -42,7 +42,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.awt.*;
+import java.io.*;
+import java.lang.reflect.Array;
+import java.net.InetAddress;
 import java.net.MalformedURLException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -117,6 +125,7 @@ public class WelcomeMenuController implements Initializable {
         tglLoop.setText("⟳");
         /*String css = this.getClass().getResource("/musicplayer/css/welcomePage.css").toExternalForm();
         welcomeRootAnchor.getStylesheets().add(css);*/
+
 
 
         imgVolume.setImage(new Image("images/VolumeHigh.png"));
@@ -287,8 +296,6 @@ public class WelcomeMenuController implements Initializable {
                     n.setEffect(normal);
                 });
             }
-
-
         }
 
         for (Node n : anchorNews.getChildren()) {
@@ -1262,6 +1269,4 @@ public class WelcomeMenuController implements Initializable {
     }
 
 }
-
-
 

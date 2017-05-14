@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import musicplayer.model.MusicArtist;
+
 import java.net.URL;
 
 public class Main extends Application {
@@ -13,7 +15,7 @@ public class Main extends Application {
         @Override
         public void start(Stage primaryStage) throws Exception{
             //Application.setUserAgentStylesheet(getClass().getResource("css/styleSheet.css").toExternalForm());
-            Parent root = FXMLLoader.load(getClass().getResource("view/welcomeMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("view/logInMenu.fxml"));
             primaryStage.setTitle("Beatroot");
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
