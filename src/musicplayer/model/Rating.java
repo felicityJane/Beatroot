@@ -41,14 +41,20 @@ public class Rating {
 	}
 
 	public void addSumFromAllVoters(User u, float vote) {
-		if (vote >= 1 && vote <= 5 && !votedUsers.contains(u)) {
+		if (vote >= 0 && vote <= 5 && !votedUsers.contains(u)) {
 			sumFromAllVoters += vote;
 			votedUsers.add(u);
 		}
 	}
 
+	public void addSumFromAllVoters(float vote) {
+		if (vote >= 0 && vote <= 5) {
+			sumFromAllVoters += vote;
+		}
+	}
+
 	public void removeSumFromAllVoters(User u, float vote) {
-		if (vote >= 1 && vote <= 5 && votedUsers.contains(u)) {
+		if (vote >= 0 && vote <= 5 && votedUsers.contains(u)) {
 			sumFromAllVoters -= vote;
 			votedUsers.remove(u);
 		}

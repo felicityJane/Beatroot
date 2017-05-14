@@ -20,6 +20,7 @@ public class MusicTrack {
 	public MusicTrack(String trackName, String url) {
 		this.trackName = trackName;
 		this.url = url;
+
 	}
 	/**
 	 *
@@ -143,4 +144,5 @@ public class MusicTrack {
 		setUrl(url);
 		setGenre(genre);
 	}
+
 }

@@ -7,10 +7,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
+import javafx.stage.Modality;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import musicplayer.controller.AlbumPageController;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,6 +45,7 @@ public class SceneManager {
             });
         });
     }
+
     public void changeSceneMenuBar(MenuBar menuBar, String fxmlFileName) throws IOException {
         Stage stage = (Stage) menuBar.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
@@ -65,6 +66,17 @@ public class SceneManager {
             }
         });
     }
+    public void openPopupScene(Event e, String fxmlFileName ) throws IOException {
+        Node node = (Node)e.getSource();
+        Stage stage = (Stage)node.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
+        Scene scene = new Scene(root);
+        stage.setTitle("Beatroot");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.centerOnScreen();
+
+    }
     public void changeSceneMenuItem(AnchorPane anchorPane, String fxmlFileName) throws IOException {
         Stage stage = (Stage) anchorPane.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
@@ -72,14 +84,5 @@ public class SceneManager {
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.centerOnScreen();
-    }
-    public Scene changeSceneReturn(AnchorPane anchorPane, String fxmlFileName) throws IOException {
-        Stage stage = (Stage) anchorPane.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
-        Scene scene = new Scene(root);
-        stage.setTitle("Beatroot");
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        return scene;
     }
 }
