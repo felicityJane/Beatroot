@@ -250,13 +250,13 @@ public class DB_Connector {
 	 */
 	// Patch method only for admins
 	/*
-	 * 
+	 *
 	 * Staff ID column 1; user name col 2; display name col 4; password col 3;
 	 * first name col 5; last name col 6; date of birth col 7; email address col
 	 * 8; physical address col 9;city of residence col 10; postal code col 11;
 	 * country col 12; gender 17; phone num col 13; start date col 14; wage col
 	 * 15; contract hours col 16; playlist link col 18;
-	 * 
+	 *
 	 * @param warningLabel
 	 */
 
@@ -332,5 +332,36 @@ public class DB_Connector {
 	// public void setPremiumUser(PremiumUser premiumUser) {
 	// this.premiumUser = premiumUser;
 	// }
+    public String searchUser(String parameterToSearch, String tableName, String whereStatement, String input) {
 
+        String sqlString = "";
+        try {
+            ResultSet rs = statement.executeQuery("SELECT " + parameterToSearch + " FROM " + tableName + " WHERE " + whereStatement + input);
+            while (rs.next()) {
+                sqlString = rs.getString(1);
+            }
+        }
+        catch (SQLException ex) {
+
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing search query. Please try again.");
+            ex.printStackTrace();
+        }
+
+        return sqlString;
+    }
+    public String changeDisplayName(String displayName, String userName) {
+
+        String sqlString = "";
+        try {
+            int rows = statement.executeUpdate("UPDATE premium_user SET display_name = " + displayName + " WHERE user_name  = " + userName);
+            System.out.println("Updated rows: " + rows);
+        }
+        catch (SQLException ex) {
+
+            DialogBoxManager.errorDialogBox("Cannot run query","Error on executing search query. Please try again.");
+            ex.printStackTrace();
+        }
+
+        return sqlString;
+    }
 }

@@ -3,17 +3,21 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -23,9 +27,11 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import musicplayer.*;
 import musicplayer.model.Album;
+import musicplayer.model.GlobalVariables;
 import musicplayer.model.MusicTrack;
 import musicplayer.model.Rating;
 import org.apache.commons.io.FilenameUtils;
@@ -41,6 +47,10 @@ import java.io.*;
 import java.lang.reflect.Array;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Path;
@@ -97,6 +107,7 @@ public class WelcomeMenuController implements Initializable {
     private MusicTrack trackPlaying;
     private int starsOn;
     private Rating currentSongRating;
+    private Album album;
 
     @FXML private MainMenuController mainMenuController;
 
@@ -242,8 +253,12 @@ public class WelcomeMenuController implements Initializable {
                 n.setEffect(ds);
 
                 n.setOnMouseClicked(event -> {
-                    clickOnImageView(n);
-
+                    if (event.getButton() == MouseButton.PRIMARY){
+                        clickOnImageView(n);
+                    }else if (event.getButton() == MouseButton.SECONDARY){
+                        ImageView im = (ImageView) event.getSource();
+                        popUpMenu(im);
+                    }
                 });
 
                 n.setOnMouseEntered(event ->  {
@@ -763,7 +778,6 @@ public class WelcomeMenuController implements Initializable {
         for (Node n : anchorNews.getChildren()) {
 
             if (n instanceof ImageView) {
-
                String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + Integer.toString(counter));
                ((ImageView) n).setImage(new Image(imgUrl));
                counter--;
@@ -784,6 +798,8 @@ public class WelcomeMenuController implements Initializable {
 
                 String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + Integer.toString(counter));
                 ((ImageView) n).setImage(new Image(imgUrl));
+                //set image id to be able to search database for album info
+                n.setId(String.valueOf(counter));
                 counter++;
                 if (counter > 16) {
                     counter = 1;
@@ -799,8 +815,7 @@ public class WelcomeMenuController implements Initializable {
         String imgUrl = "http://www.webshare.hkr.se/FECO0002/Ellie%20Goulding%20-%20Halcyon%20Days.png";
         int albumId = Integer.parseInt(db_connector.search("album_id", "album", "album_cover_path = " + "'" + imgUrl + "'"));
         String albumName = db_connector.search("album_name", "album", "album_id = " + Integer.toString(albumId));
-        Album album = new Album(albumName, new Image(imgUrl));
-        albumSelected = album;
+        albumSelected = new Album(albumName, new Image(imgUrl));
         String artistName = "";
 
         int musicId;
@@ -892,6 +907,57 @@ public class WelcomeMenuController implements Initializable {
             lblNoConnection1.setVisible(true);
             ex.printStackTrace();
         }
+    }
+    private void popUpMenu(ImageView imageView){
+        final ContextMenu contextMenu = new ContextMenu();
+        final MenuItem songPage = new MenuItem("See song info");
+        final MenuItem artistPage = new MenuItem("See artist info");
+        final MenuItem albumPage = new MenuItem("See album info");
+        contextMenu.getItems().addAll(songPage,artistPage,albumPage);
+
+
+
+
+        GlobalVariables context = GlobalVariables.getInstance();
+        for (Node n : welcomeRootAnchor.getChildren()) {
+
+            if (n instanceof ImageView && n != imgMain && n != imgVolume && n != imgProfilePicture) {
+                n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
+            }
+        }
+        songPage.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    SceneManager.sceneManager.changeSceneMenuItem(welcomeParentAnchorPane,"view/songPage.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        artistPage.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    SceneManager.sceneManager.changeSceneMenuItem(welcomeParentAnchorPane,"view/artistPage.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        albumPage.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + imageView.getId());
+                    context.setAlbumCover(imgUrl);
+                    SceneManager.sceneManager.changeSceneMenuItem(welcomeParentAnchorPane,"view/albumPage.fxml");
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private void clickOnSearchIcon() {
@@ -1175,6 +1241,4 @@ public class WelcomeMenuController implements Initializable {
     }
 
 }
-
-
 

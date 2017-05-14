@@ -6,7 +6,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="mainMenu" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.MainMenuController">
+<AnchorPane styleClass="greyBackground" fx:id="mainMenu" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.MainMenuController">
    <children>
       <MenuBar fx:id="menuBar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
@@ -22,7 +22,6 @@
             </Menu>
             <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
                <items>
-                  <MenuItem fx:id="personalInfoMenu" disable="true" mnemonicParsing="false" onAction="#personalInfoMenuOption" text="Personal Information" />
                   <MenuItem fx:id="settingsMenu" disable="true" mnemonicParsing="false" onAction="#settingsMenuOption" text="Settings" />
                </items>
             </Menu>
