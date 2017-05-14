@@ -8,6 +8,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -21,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import musicplayer.*;
 import musicplayer.model.Album;
@@ -34,10 +36,13 @@ import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
 
+import java.awt.*;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.net.InetAddress;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -75,7 +80,10 @@ public class WelcomeMenuController implements Initializable {
     @FXML private ImageView imgSearchUser;
     @FXML private Label lblNoMatchesFound;
     @FXML private ImageView imgRating;
-    @FXML private ProgressIndicator progressDownload = new ProgressBar(ProgressIndicator.INDETERMINATE_PROGRESS);;
+    @FXML private ProgressIndicator progressDownload = new ProgressBar(ProgressIndicator.INDETERMINATE_PROGRESS);
+    @FXML private Circle btnDownload;
+    @FXML private Circle btnLogOut;
+    @FXML private Label lblRating;
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView;
@@ -113,17 +121,19 @@ public class WelcomeMenuController implements Initializable {
         imgProfilePicture.setImage(new Image("images/Konachan.jpg"));
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
         imgMain.setEffect(dropShadow);
-        lblDisplayName.setText("Hello, " + db_connector.search("display_name", "premium_user", "user_name = 'Misstery'") + "!");
+        lblDisplayName.setText(db_connector.search("display_name", "premium_user", "user_name = 'Misstery'") + "!");
         imgSearchIcon.setImage(new Image("images/SearchIcon.png"));
         imgSearchUser.setImage(new Image("images/SearchIcon.png"));
         lblNoMatchesFound.setText("");
-
+        Image img3 = new Image("images/arrow-download-icon.png");
+        btnDownload.setFill(new ImagePattern(img3));
+        Image img4 = new Image("images/log-off-icon.png");
+        btnLogOut.setFill(new ImagePattern(img4));
         progressDownload.setVisible(false);
 
         setImageNews();
         setImageSuggestions();
         setFirstSong();
-        getRatingFromDatabase();
         setRatingStars();
 
         imgSearchIcon.setOnMouseEntered(event -> {
@@ -148,6 +158,36 @@ public class WelcomeMenuController implements Initializable {
 
         imgSearchIcon.setOnMouseClicked(event -> {
             clickOnSearchIcon();
+        });
+
+        lblDisplayName.setOnMouseEntered(event -> {
+            Scene scene = imgSearchIcon.getScene();
+            scene.setCursor(Cursor.HAND);
+        });
+
+        lblDisplayName.setOnMouseExited(event -> {
+            Scene scene = imgSearchIcon.getScene();
+            scene.setCursor(Cursor.DEFAULT);
+        });
+
+        btnDownload.setOnMouseEntered(event -> {
+            Scene scene = btnDownload.getScene();
+            scene.setCursor(Cursor.HAND);
+        });
+
+        btnDownload.setOnMouseExited(event -> {
+            Scene scene = btnDownload.getScene();
+            scene.setCursor(Cursor.DEFAULT);
+        });
+
+        btnLogOut.setOnMouseEntered(event -> {
+            Scene scene = btnLogOut.getScene();
+            scene.setCursor(Cursor.HAND);
+        });
+
+        btnLogOut.setOnMouseExited(event -> {
+            Scene scene = btnLogOut.getScene();
+            scene.setCursor(Cursor.DEFAULT);
         });
 
         imgRating.setOnMouseEntered(event -> {
@@ -361,7 +401,7 @@ public class WelcomeMenuController implements Initializable {
     }
 
     @FXML
-    protected void onLogOutButtonPressed(ActionEvent event){
+    protected void onLogOutButtonPressed(MouseEvent event){
         boolean answer = DialogBoxManager.confirmationDialogBox("Are you sure you want to log out?","click ok to continue");
         if (answer){
             try {
@@ -528,6 +568,9 @@ public class WelcomeMenuController implements Initializable {
                 lblTrackName.setText(mt.getTrackName());
             } catch (Exception ex) {
                 ex.printStackTrace();
+                imgNoConnection.setVisible(true);
+                lblNoConnection2.setVisible(true);
+                lblNoConnection1.setVisible(true);
             }
 
         } else {
@@ -604,7 +647,7 @@ public class WelcomeMenuController implements Initializable {
             parser.parse(input, handler, metadata, parseCtx);
             input.close();
         } catch (Exception fe) {
-            fe.printStackTrace();
+            System.out.println("It does not find the file but it's okay.");
         }
 
 
@@ -707,6 +750,9 @@ public class WelcomeMenuController implements Initializable {
             runMediaPlayer(path);
         } catch (Exception ex) {
             ex.printStackTrace();
+            imgNoConnection.setVisible(true);
+            lblNoConnection2.setVisible(true);
+            lblNoConnection1.setVisible(true);
         }
     }
 
@@ -798,7 +844,6 @@ public class WelcomeMenuController implements Initializable {
         currentSongRating.setSumFromAllVoters(product);
         currentSongRating.setRatingID(ratingId);
 
-       getRatingFromDatabase();
         lstMainTracks.getItems().clear();
         for (MusicTrack m : album.getSongs()) {
             String trackLength = db_connector.search("track_length",
@@ -815,7 +860,6 @@ public class WelcomeMenuController implements Initializable {
         try {
             url = new URL(album.getSongs().get(0).getUrl());
             trackPlaying = album.getSongs().get(0);
-            //mediaPlayer.stop();
             media = new Media(url.toString());
             mediaPlayer = new MediaPlayer(media);
             sliderVolume.setValue(mediaPlayer.getVolume() * 100);
@@ -828,17 +872,25 @@ public class WelcomeMenuController implements Initializable {
                 }
             });
             if (matches.length == 0) {
-                connector = new Server_Connector(url.toString(), url);
-                progressDownload.visibleProperty().bind(connector.runningProperty());
-                connector.restart();
+                try {
+                    connector = new Server_Connector(url.toString(), url);
+                    progressDownload.visibleProperty().bind(connector.runningProperty());
+                    connector.restart();
+                } catch (Exception ex) {
+                    System.out.println("Exception caught at line 872");
+                    imgNoConnection.setVisible(true);
+                    lblNoConnection2.setVisible(true);
+                    lblNoConnection1.setVisible(true);
+                }
             }
             Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
             runMediaPlayer(path);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            System.out.println("Exception caught at line 881");
             imgNoConnection.setVisible(true);
             lblNoConnection2.setVisible(true);
             lblNoConnection1.setVisible(true);
+            ex.printStackTrace();
         }
     }
 
@@ -1096,11 +1148,32 @@ public class WelcomeMenuController implements Initializable {
                 break;
         }
 
-    }
-
-    private void getRatingFromDatabase() {
+        lblRating.setText(String.format("%d/5", (int)currentSongRating.getFinalRating()));
 
     }
+    @FXML
+    private void onDownloadButtonPressed() {
+        FileChooser fileChooser = new FileChooser();
+
+        //Set extension filter
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("MP3 files (*.mp3)", "*.mp3");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        //Show save file dialog
+        File file = fileChooser.showSaveDialog(imgMain.getScene().getWindow());
+
+        if(file != null){
+            try {
+                URL url = new URL(trackPlaying.getUrl());
+                Server_Connector sc = new Server_Connector(trackPlaying.getUrl(), url, file);
+                progressDownload.visibleProperty().bind(sc.runningProperty());
+                sc.restart();
+            } catch (MalformedURLException me) {
+                me.printStackTrace();
+            }
+        }
+    }
+
 }
 
 

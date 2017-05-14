@@ -2,6 +2,9 @@ package musicplayer;
 
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.*;
@@ -19,11 +22,57 @@ public class Server_Connector extends Service<String> {
 
     private String strUrl;
     private URL url;
+    private File file;
 
     public Server_Connector(String strUrl, URL url) {
         this.strUrl = strUrl;
         this.url = url;
     }
+    public Server_Connector(String strUrl, URL url, File file) {
+        this.strUrl = strUrl;
+        this.url = url;
+        this.file = file;
+    }
+
+    /*
+    public void connectToServer() {
+
+        OutputStream outstream = null;
+        InputStream is = null;
+
+        try {
+            URLConnection conn = new URL(strUrl).openConnection();
+            is = conn.getInputStream();
+
+
+            if (file == null) {
+                outstream = new FileOutputStream(new File("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " "))));
+            } else {
+                outstream = new FileOutputStream(file);
+            };
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = is.read(buffer)) > 0) {
+                outstream.write(buffer, 0, len);
+            }
+
+
+        }
+
+        catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                outstream.close();
+                is.close();
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+
+    }*/
+
 
     @Override
     public Task<String> createTask() {
@@ -31,7 +80,6 @@ public class Server_Connector extends Service<String> {
         return new Task<String>() {
             @Override
             public String call() throws Exception {
-                //DO YOU HARD STUFF HERE
                 OutputStream outstream = null;
                 InputStream is = null;
                 int len = 0;
@@ -40,8 +88,11 @@ public class Server_Connector extends Service<String> {
                     URLConnection conn = new URL(strUrl).openConnection();
                     is = conn.getInputStream();
 
-
-                    outstream = new FileOutputStream(new File("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " "))));
+                    if (file == null) {
+                        outstream = new FileOutputStream(new File("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " "))));
+                    } else {
+                        outstream = new FileOutputStream(file);
+                    }
                     byte[] buffer = new byte[4096];
 
                     while ((len = is.read(buffer)) > 0) {
@@ -64,12 +115,6 @@ public class Server_Connector extends Service<String> {
                 return lenS;
             }
         };
-
-    }
-
-    public void connectToServer() {
-
-
 
     }
 
