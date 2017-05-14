@@ -44,7 +44,7 @@
                       <Font size="14.0" />
                   </font>
               </Label>
-              <Label fx:id="lblTrackName" layoutX="459.0" layoutY="125.0" prefHeight="48.0" prefWidth="263.0">
+              <Label fx:id="lblTrackName" layoutX="459.0" layoutY="125.0" prefHeight="48.0" prefWidth="227.0">
                   <font>
                       <Font size="23.0" />
                   </font>
@@ -73,8 +73,8 @@
                       <Font size="16.0" />
                   </font>
               </Label>
-            <ImageView fx:id="imgProfilePicture" fitHeight="57.0" fitWidth="56.0" layoutX="1057.0" layoutY="22.0" pickOnBounds="true" />
-            <Label fx:id="lblDisplayName" layoutX="968.0" layoutY="15.0" prefHeight="30.0" prefWidth="87.0" textAlignment="RIGHT" textFill="#0c51ff" underline="true">
+            <ImageView fx:id="imgProfilePicture" fitHeight="57.0" fitWidth="56.0" layoutX="1159.0" layoutY="12.0" pickOnBounds="true" />
+            <Label fx:id="lblDisplayName" layoutX="1069.0" layoutY="9.0" prefHeight="30.0" prefWidth="87.0" textAlignment="RIGHT" textFill="#0c51ff" underline="true">
                <font>
                   <Font size="14.0" />
                </font>
@@ -101,12 +101,12 @@
             </Label>
             <ImageView fx:id="imgRating" fitHeight="32.0" fitWidth="116.0" layoutX="802.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
             <ProgressIndicator fx:id="progressDownload" layoutX="726.0" layoutY="131.0" prefHeight="40.0" prefWidth="39.0" progress="-1.0" />
-            <Label fx:id="lblHello" layoutX="932.0" layoutY="20.0" text="Hello,">
+            <Label fx:id="lblHello" layoutX="1036.0" layoutY="14.0" text="Hello,">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Circle fx:id="btnDownload" fill="#f2f2f2" layoutX="1233.0" layoutY="36.0" onMouseClicked="#onDownloadButtonPressed" radius="24.0" stroke="#09b0b9" strokeType="INSIDE" />
+            <Circle fx:id="btnDownload" fill="#f2f2f2" layoutX="1247.0" layoutY="36.0" onMouseClicked="#onDownloadButtonPressed" radius="24.0" stroke="#09b0b9" strokeType="INSIDE" />
             <Circle fx:id="btnLogOut" fill="#f2f2f2" layoutX="1303.0" layoutY="36.0" onMouseClicked="#onLogOutButtonPressed" radius="24.0" stroke="#09b0b9" strokeType="INSIDE" />
             <Label fx:id="lblRating" layoutX="922.0" layoutY="148.0" prefHeight="17.0" prefWidth="21.0" />
             <Rectangle id="imgNoConnection" fx:id="imgNoConnection" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="707.0" layoutX="-15.0" layoutY="-27.0" opacity="0.7" stroke="WHITE" strokeType="INSIDE" visible="false" width="1398.0" />
@@ -120,6 +120,7 @@
                   <Font size="26.0" />
                </font>
             </Label>
+            <Circle fx:id="btnPen" fill="WHITE" layoutX="696.0" layoutY="152.0" onMouseClicked="#onBtnPenPressed" radius="15.0" stroke="#e3b3b300" strokeType="INSIDE" />
             </children></AnchorPane>
 
     </children>

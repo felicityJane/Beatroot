@@ -3,6 +3,7 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
@@ -23,6 +24,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import musicplayer.*;
 import musicplayer.model.Album;
@@ -48,6 +50,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class WelcomeMenuController implements Initializable {
 
@@ -84,6 +88,7 @@ public class WelcomeMenuController implements Initializable {
     @FXML private Circle btnDownload;
     @FXML private Circle btnLogOut;
     @FXML private Label lblRating;
+    @FXML private Circle btnPen;
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView;
@@ -129,6 +134,12 @@ public class WelcomeMenuController implements Initializable {
         btnDownload.setFill(new ImagePattern(img3));
         Image img4 = new Image("images/log-off-icon.png");
         btnLogOut.setFill(new ImagePattern(img4));
+        Image img5 = new Image("images/pencil.png");
+        btnPen.setFill(new ImagePattern(img5));
+        Tooltip.install(
+                btnPen,
+                new Tooltip("Add a comment to the song")
+        );
         progressDownload.setVisible(false);
 
         setImageNews();
@@ -187,6 +198,16 @@ public class WelcomeMenuController implements Initializable {
 
         btnLogOut.setOnMouseExited(event -> {
             Scene scene = btnLogOut.getScene();
+            scene.setCursor(Cursor.DEFAULT);
+        });
+
+        btnPen.setOnMouseEntered(event -> {
+            Scene scene = btnPen.getScene();
+            scene.setCursor(Cursor.HAND);
+        });
+
+        btnPen.setOnMouseExited(event -> {
+            Scene scene = btnPen.getScene();
             scene.setCursor(Cursor.DEFAULT);
         });
 
@@ -1171,6 +1192,25 @@ public class WelcomeMenuController implements Initializable {
             } catch (MalformedURLException me) {
                 me.printStackTrace();
             }
+        }
+    }
+
+    @FXML
+    private void onBtnPenPressed() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("commentWindow.fxml"));
+
+            fxmlLoader.setController("CommentWindowController");
+
+            Scene scene = new Scene(fxmlLoader.load(), 418, 290);
+            Stage stage = new Stage();
+            stage.setTitle("Comment");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
     }
 

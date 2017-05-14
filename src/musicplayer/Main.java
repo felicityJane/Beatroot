@@ -15,7 +15,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// always begin in the logInMenu scene
-		Parent root = FXMLLoader.load(getClass().getResource("view/logInMenu.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("view/AdminlogIn.fxml"));
 		primaryStage.setTitle("Beatroot");
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();
