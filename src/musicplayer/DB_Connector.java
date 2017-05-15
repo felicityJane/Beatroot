@@ -162,6 +162,7 @@ public class DB_Connector {
 					ArrayList<String> userNameAndType = new ArrayList<>();
 					userNameAndType.add(0, userName);
 					userNameAndType.add(1, "PremiumUser");
+					userNameAndType.add(2, rs.getString(3));
 
 					Files.write(path, userNameAndType, StandardOpenOption.CREATE);
 
