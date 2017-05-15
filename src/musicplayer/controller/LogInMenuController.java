@@ -17,23 +17,23 @@ import musicplayer.model.GlobalVariables;
 
 public class LogInMenuController implements Initializable {
 
-    @FXML private TextField userName;
-    @FXML private PasswordField userPassword;
-    @FXML private Button loginButton,signUpButton;
-    @FXML private AnchorPane logInParentAnchorPane;
-    @FXML private Label warningLabel;
+	@FXML private TextField userName;
+	@FXML private PasswordField userPassword;
+	@FXML private Button loginButton,signUpButton;
+	@FXML private AnchorPane logInParentAnchorPane;
+	@FXML private Label warningLabel;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        GlobalVariables globalVariables = GlobalVariables.getInstance();
-        globalVariables.setLogInMenuController(this);
-        globalVariables.getMainMenuController().menuBarFitToParent(logInParentAnchorPane);
-    }
-    @FXML
-    private void handleLoginButton(ActionEvent event) {
-        try {
-            String userNam=userName.getText();
-            String password=userPassword.getText();
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		GlobalVariables globalVariables = GlobalVariables.getInstance();
+		globalVariables.setLogInMenuController(this);
+		globalVariables.getMainMenuController().menuBarFitToParent(logInParentAnchorPane);
+	}
+	@FXML
+	private void handleLoginButton(ActionEvent event) {
+		try {
+			String userNam=userName.getText();
+			String password=userPassword.getText();
 
 			DB_Connector connector = new DB_Connector(
 					"jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");

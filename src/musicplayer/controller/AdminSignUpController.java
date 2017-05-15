@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -118,6 +119,7 @@ public class AdminSignUpController implements Initializable {
 									+ sdf.format(admin.getStartDate()) + "','" + admin.getWage() + "','"
 									+ admin.getContractHours() + "','" + admin.getGender().ordinal() + "','"
 									+ admin.getStaffID() + "')");
+					// connector.insert(("playlist()");
 					// System.out.println("('" + admin.getStaffID() + "', '" +
 					// admin.getUserName() + "','"
 					// + admin.getPassword() + "','" + admin.getDisplayName() +

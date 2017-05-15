@@ -106,4 +106,17 @@ public class SceneManager {
 
     }
 
+    public void openNewWindow(Event e, String fxmlFileName) throws IOException {
+        try {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
+            stage.setTitle("Beatroot");
+            stage.setScene(new Scene((root)));
+            stage.show();
+            stage.centerOnScreen();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }

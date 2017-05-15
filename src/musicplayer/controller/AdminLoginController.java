@@ -1,6 +1,7 @@
 package musicplayer.controller;
 
 import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,7 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import musicplayer.DB_Connector;
 import musicplayer.SceneManager;
-import musicplayer.model.User;
 
 public class AdminLoginController {
 	@FXML
@@ -20,7 +20,6 @@ public class AdminLoginController {
 	private Button signUpButton, logInButton;
 	@FXML
 	private Label warningLabel;
-	private User user;
 
 	public void signUpButtonPress(ActionEvent event) {
 		try {
@@ -38,18 +37,9 @@ public class AdminLoginController {
 			connector.getUrlOfDatabase();
 			connector.logInAdministrator(staffIdField.getText(), userNameField.getText(), passwordField.getText(), e,
 					warningLabel);
-			SceneManager.sceneManager.changeScene(e, "view/welcomeMenu.fxml");
-		} catch (IOException ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public User getUser() {
-		return user;
 	}
 
 }
