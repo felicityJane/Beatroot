@@ -1,16 +1,5 @@
 package musicplayer.controller;
 
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,13 +13,14 @@ import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
 import musicplayer.model.Country;
 import musicplayer.model.GlobalVariables;
+
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.*;
 import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class SignUpMenuController implements Initializable {
 
@@ -202,8 +192,8 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
 				connector.checkPremiumUserName(userNam, warningText, event);
 
 			}
-			Path path = Paths.get("PremiumUserInfo.bin");
 			ArrayList<String> premiumUserInfo = new ArrayList<>();
+            Path path = Paths.get("PremiumUserInfo.bin");
 			try {
 				premiumUserInfo.add(0, userNam);
 				premiumUserInfo.add(1, userPass);

@@ -1,8 +1,5 @@
 package musicplayer.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuBar;
@@ -11,9 +8,10 @@ import javafx.scene.layout.AnchorPane;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
 import musicplayer.model.GlobalVariables;
-import musicplayer.model.User;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
 public class MainMenuController implements Initializable{

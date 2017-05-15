@@ -7,9 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
-import javafx.stage.Modality;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -34,7 +33,7 @@ public class SceneManager {
                 @Override
                 public void run() {
 
-                    File file = new File("tmp");
+                    File file = new File("tmp/");
                     for (File f : file.listFiles()) {
                         if (!f.isDirectory()) {
                             f.delete();
