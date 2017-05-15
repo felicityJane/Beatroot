@@ -40,7 +40,8 @@ public class AlbumPageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         globalVariables.setAlbumPageController(this);
         getAlbumInfo();
-        popUpMenuAlbumPage(imageView);
+        popUpMenuSongPage();
+        popUpMenuArtistPage();
     }
 
     public void getAlbumInfo(){
@@ -62,15 +63,14 @@ public class AlbumPageController implements Initializable {
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
         imageView.setEffect(dropShadow);
     }
-    private void popUpMenuAlbumPage(ImageView imageView){
+    private void popUpMenuSongPage(){
         final ContextMenu contextMenu = new ContextMenu();
         final MenuItem songPage = new MenuItem("See song info");
-        final MenuItem artistPage = new MenuItem("See artist info");
-        contextMenu.getItems().addAll(songPage,artistPage);
+        contextMenu.getItems().addAll(songPage);
         SceneManager sceneManager = new SceneManager();
         for (Node n : albumPageAnchorPane.getChildren()) {
 
-            if (n instanceof ImageView ) {
+            if (n instanceof ListView ) {
                 n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
             }
         }
@@ -83,6 +83,18 @@ public class AlbumPageController implements Initializable {
                 e.printStackTrace();
             }
         });
+    }
+    private void popUpMenuArtistPage(){
+        final ContextMenu contextMenu = new ContextMenu();
+        final MenuItem artistPage = new MenuItem("See artist info");
+        contextMenu.getItems().addAll(artistPage);
+        SceneManager sceneManager = new SceneManager();
+        for (Node n : albumPageAnchorPane.getChildren()) {
+
+            if (n instanceof ImageView ) {
+                n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
+            }
+        }
         artistPage.setOnAction(event -> {
             try {
                 Stage stage = (Stage) albumPageAnchorPane.getScene().getWindow();

@@ -47,7 +47,7 @@ public class SongPageController implements Initializable {
         listView.getItems().clear();
         for (MusicTrack m: musicTracks) {
             counter++;
-            String string = String.format("Track" + counter + " : " + "%-20s", m.getTrackName());
+            String string = String.format("Track" + counter + " : " + "%-20s %-20s", m.getTrackName(), m.getTrackTime());
             int trackId = m.getID();
             musicArtist = db_connector.getArtistDetails(trackId);
             globalVariables.setMusicArtist(musicArtist);

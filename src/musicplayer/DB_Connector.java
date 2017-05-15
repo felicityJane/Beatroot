@@ -395,11 +395,11 @@ public class DB_Connector {
 				if (albumId.equals(rs.getInt(1))) {
 					Integer trackId = rs.getInt(2);
 					String trackName = rs.getString(3);
-					Time trackDuration = rs.getTime(4);
+					String trackTime = rs.getString(4);
 					String trackUrl = rs.getString(5);
 					MusicTrack musicTrack = new MusicTrack(trackName,trackUrl);
 					musicTrack.setID(trackId);
-					//musicTrack.setTrackLength(trackDuration);
+					musicTrack.setTrackTime(trackTime);
 					musicTrackArrayList.add(musicTrack);
 				}
 			}

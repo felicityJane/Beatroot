@@ -8,6 +8,7 @@ public class MusicTrack {
 	private int ID;
 	private String trackName;
 	private Duration trackLength;
+	private String trackTime;
 	private Genre[] genre;
 	private Administrator administrator;
 	private String url;
@@ -163,5 +164,13 @@ public class MusicTrack {
 		if (!albums.contains(al))
 			return;
 		albums.remove(al);
+	}
+
+	public String getTrackTime() {
+		return trackTime;
+	}
+
+	public void setTrackTime(String trackTime) {
+		this.trackTime = trackTime;
 	}
 }
