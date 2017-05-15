@@ -576,6 +576,8 @@ public class WelcomeMenuController implements Initializable {
             String songUrl = db_connector.search("track_url", "music_track",
                     "track_name = " + "'" + selectedItem.replaceAll("'", "''") + "'");
             MusicTrack mt = new MusicTrack(selectedItem, songUrl);
+            mt.setID(Integer.parseInt(db_connector.search("track_id", "music_track", "track_name = '" +
+                    selectedItem + "'")));
             trackPlaying = mt;
             currentSongRating = new Rating(mt);
             int ratingId = Integer.parseInt(db_connector.search("rating_id", "music_track",
@@ -727,6 +729,7 @@ public class WelcomeMenuController implements Initializable {
         artistName = db_connector.search("stage_name", "music_artist", "artist_id = " + artistName);
 
         MusicTrack mt = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+        mt.setID(musicId);
         tempArray.add(mt);
 
         for (int i = 0; i < 15; i++) {
@@ -738,6 +741,7 @@ public class WelcomeMenuController implements Initializable {
                                 + Integer.toString(musicId)));
                 if (musicId != 0) {
                     MusicTrack mt1 = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+                    mt1.setID(musicId);
                     tempArray.add(mt1);
                 }
             } catch (NumberFormatException ne) {
@@ -861,6 +865,7 @@ public class WelcomeMenuController implements Initializable {
         artistName = db_connector.search("stage_name", "music_artist", "artist_id = " + artistName);
 
         MusicTrack mt = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+        mt.setID(musicId);
         tempArray.add(mt);
 
         for (int i = 0; i < 15; i++) {
@@ -872,6 +877,7 @@ public class WelcomeMenuController implements Initializable {
                                 + Integer.toString(musicId)));
                 if (musicId != 0) {
                     MusicTrack mt1 = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+                    mt1.setID(musicId);
                     tempArray.add(mt1);
                 }
             } catch (NumberFormatException ne) {
@@ -1038,6 +1044,7 @@ public class WelcomeMenuController implements Initializable {
 
 
                 MusicTrack mt = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+                mt.setID(musicId);
                 tempArray.add(mt);
 
                 for (int i = 0; i < 15; i++) {
@@ -1049,6 +1056,7 @@ public class WelcomeMenuController implements Initializable {
                                         + Integer.toString(musicId)));
                         if (musicId != 0) {
                             MusicTrack mt1 = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+                            mt1.setID(musicId);
                             tempArray.add(mt1);
                         }
                     } catch (NumberFormatException ne) {
@@ -1290,21 +1298,24 @@ public class WelcomeMenuController implements Initializable {
     }
 
     @FXML
-    private void onBtnPenPressed() {
+    private void onBtnPenPressed(MouseEvent e) {
+
+        writeMusicTrackToBinaryFile();
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("commentWindow.fxml"));
+            SceneManager.sceneManager.openNewWindow(e, "view/commentWindow.fxml");
+        } catch (IOException ie) {
+            ie.printStackTrace();
+        }
 
-            fxmlLoader.setController("CommentWindowController");
+    }
 
-            Scene scene = new Scene(fxmlLoader.load(), 418, 290);
-            Stage stage = new Stage();
-            stage.setTitle("Comment");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            Logger logger = Logger.getLogger(getClass().getName());
-            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+    private void writeMusicTrackToBinaryFile() {
+        try (FileOutputStream fs = new FileOutputStream("MusicTrack.bin"); ObjectOutputStream os = new ObjectOutputStream(fs)) {
+            os.writeObject(trackPlaying);
+        } catch (FileNotFoundException fe) {
+            DialogBoxManager.errorDialogBox("File not found", "File not found. Try again.");
+        } catch (IOException ie) {
+            DialogBoxManager.errorDialogBox("Cannot create file", "Error with creating file.");
         }
     }
 
