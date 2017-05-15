@@ -404,5 +404,27 @@ public class DB_Connector {
 		}
 		return musicTrackArrayList;
 	}
+	public MusicArtist getArtistDetails(Integer musicTrackId) {
+		MusicArtist musicArtist = null;
+		try {
+			ResultSet rs = statement.executeQuery("SELECT music_track.track_id, music_artist.artist_id, music_artist.stage_name from album_has_music_track\n" +
+					"JOIN music_track ON album_has_music_track.music_track_track_id = music_track.track_id\n" +
+					"JOIN music_artist ON music_track.music_artist_artist_id = music_artist.artist_id WHERE music_track.track_id = '" + musicTrackId + "'");
+
+			if (rs.next()) {
+				if (musicTrackId.equals(rs.getInt(1))) {
+					Integer artistId = rs.getInt(2);
+					String stageName = rs.getString(3);
+					musicArtist = new MusicArtist(stageName);
+					musicArtist.setArtistID(artistId);
+				}
+			}
+
+		} catch (SQLException ex) {
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing album details query. Please try again.");
+			ex.printStackTrace();
+		}
+		return musicArtist;
+	}
 
 }

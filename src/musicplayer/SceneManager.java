@@ -1,8 +1,5 @@
 package musicplayer;
 
-/**
- * Created by felic on 19/04/2017.
- */
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -10,8 +7,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -47,7 +45,6 @@ public class SceneManager {
             });
         });
     }
-
     public void changeSceneMenuBar(MenuBar menuBar, String fxmlFileName) throws IOException {
         Stage stage = (Stage) menuBar.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
@@ -55,21 +52,17 @@ public class SceneManager {
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.setOnCloseRequest(event ->  {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
 
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-
-                    File file = new File("tmp");
-                    for (File f : file.listFiles()) {
-                        if (!f.isDirectory()) {
-                            f.delete();
-                        }
+                File file = new File("tmp");
+                for (File f : file.listFiles()) {
+                    if (!f.isDirectory()) {
+                        f.delete();
                     }
                 }
-
-            });
+            }
         });
     }
     public void openPopupScene(Event e, String fxmlFileName ) throws IOException {
@@ -81,23 +74,15 @@ public class SceneManager {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.centerOnScreen();
-        stage.setOnCloseRequest(event ->  {
 
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-
-                    File file = new File("tmp");
-                    for (File f : file.listFiles()) {
-                        if (!f.isDirectory()) {
-                            f.delete();
-                        }
-                    }
-                }
-
-            });
-        });
-
+    }
+    public void popUpWindow(Event e, String fxmlFileName) throws IOException{
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Beatroot");
+        stage.show();
+        stage.centerOnScreen();
     }
     public void changeSceneMenuItem(AnchorPane anchorPane, String fxmlFileName) throws IOException {
         Stage stage = (Stage) anchorPane.getScene().getWindow();
@@ -106,21 +91,19 @@ public class SceneManager {
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.setOnCloseRequest(event ->  {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
 
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-
-                    File file = new File("tmp");
-                    for (File f : file.listFiles()) {
-                        if (!f.isDirectory()) {
-                            f.delete();
-                        }
+                File file = new File("tmp");
+                for (File f : file.listFiles()) {
+                    if (!f.isDirectory()) {
+                        f.delete();
                     }
                 }
-
-            });
+            }
         });
+
     }
+
 }
