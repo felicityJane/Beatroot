@@ -374,8 +374,8 @@ public class DB_Connector {
 		return sqlString;
 	}
 
-	public Album getAlbumDetails(Integer albumId) {
-		Album album = null;
+	public void getAlbumDetails(Integer albumId) {
+
 		try {
 			ResultSet rs = statement.executeQuery(
 					"SELECT album_id, album_name, album_cover_path FROM album WHERE album_id = '" + albumId + "'");
@@ -384,7 +384,8 @@ public class DB_Connector {
 				if (albumId.equals(rs.getInt(1))) {
 					String albumName = rs.getString(2);
 					String albumCover = rs.getString(3);
-					album = new Album(albumName, new Image(albumCover));
+					Album album = new Album(albumName, new Image(albumCover));
+					globalVariables.setAlbum(album);
 				}
 			}
 
@@ -393,10 +394,10 @@ public class DB_Connector {
 					"Error on executing album details query. Please try again.");
 			ex.printStackTrace();
 		}
-		return album;
+		return;
 	}
 
-	public ArrayList<MusicTrack> getTrackDetails(Integer albumId) {
+	public void getTrackDetails(Integer albumId) {
 		ArrayList<MusicTrack> musicTrackArrayList = new ArrayList<MusicTrack>();
 		try {
 			ResultSet rs = statement.executeQuery(
@@ -416,6 +417,7 @@ public class DB_Connector {
 					musicTrack.setTrackTime(trackTime);
 					// musicTrack.setTrackLength(trackDuration);
 					musicTrackArrayList.add(musicTrack);
+					globalVariables.setMusicTracks(musicTrackArrayList);
 				}
 			}
 
@@ -424,11 +426,9 @@ public class DB_Connector {
 					"Error on executing album details query. Please try again.");
 			ex.printStackTrace();
 		}
-		return musicTrackArrayList;
 	}
 
-	public MusicArtist getArtistDetails(Integer musicTrackId) {
-		MusicArtist musicArtist = null;
+	public void getArtistDetails(Integer musicTrackId) {
 		try {
 			ResultSet rs = statement.executeQuery("SELECT music_track.track_id, music_artist.artist_id, music_artist.stage_name from album_has_music_track\n" +
 					"JOIN music_track ON album_has_music_track.music_track_track_id = music_track.track_id\n" +
@@ -438,8 +438,9 @@ public class DB_Connector {
 				if (musicTrackId.equals(rs.getInt(1))) {
 					Integer artistId = rs.getInt(2);
 					String stageName = rs.getString(3);
-					musicArtist = new MusicArtist(stageName);
+					MusicArtist musicArtist = new MusicArtist(stageName);
 					musicArtist.setArtistID(artistId);
+					globalVariables.setMusicArtist(musicArtist);
 				}
 			}
 
@@ -447,7 +448,6 @@ public class DB_Connector {
 			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing album details query. Please try again.");
 			ex.printStackTrace();
 		}
-		return musicArtist;
 	}
 
 }

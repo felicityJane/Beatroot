@@ -977,8 +977,8 @@ public class WelcomeMenuController implements Initializable {
         }
         albumPage.setOnAction(event -> {
             try {
-                globalVariables.setAlbum(db_connector.getAlbumDetails(Integer.parseInt(imageView.getId())));
-                globalVariables.setMusicTracks(db_connector.getTrackDetails(Integer.parseInt(imageView.getId())));
+                db_connector.getAlbumDetails(Integer.parseInt(imageView.getId()));
+                db_connector.getTrackDetails(Integer.parseInt(imageView.getId()));
                 sceneManager.popUpWindow(event, "view/albumPage.fxml");
             } catch (IOException e) {
                 e.printStackTrace();

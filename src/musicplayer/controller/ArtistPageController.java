@@ -49,8 +49,8 @@ public class ArtistPageController implements Initializable {
             counter++;
             String string = String.format("Track" + counter + " : " + "%-20s", m.getTrackName());
             int trackId = m.getID();
-            musicArtist = db_connector.getArtistDetails(trackId);
-            globalVariables.setMusicArtist(musicArtist);
+            db_connector.getArtistDetails(trackId);
+            musicArtist = globalVariables.getMusicArtist();
             listView.getItems().add(string);
             artistLabel.setText("Artist: " + musicArtist.getStageName());
         }
