@@ -210,6 +210,7 @@ public class DB_Connector {
 
 	public void checkPremiumUserName(String userName, Label warningLabel, ActionEvent event) {
 		try {
+
 			ResultSet rs = statement.executeQuery("SELECT user FROM user_link WHERE user='" + userName + "'");
 			if (rs.next()) {
 				warningLabel.setText("Username is already taken");

@@ -1338,7 +1338,6 @@ public class WelcomeMenuController implements Initializable {
         } catch (IOException ie) {
             ie.printStackTrace();
         }
-
     }
 
     private void writeMusicTrackToBinaryFile() {

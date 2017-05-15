@@ -13,7 +13,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// Application.setUserAgentStylesheet(getClass().getResource("css/styleSheet.css").toExternalForm());
-		Parent root = FXMLLoader.load(getClass().getResource("view/AdminLogIn.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("view/logInMenu.fxml"));
 		primaryStage.setTitle("Beatroot");
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
