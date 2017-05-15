@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="faqsPageAnchorPane" prefHeight="336.0" prefWidth="471.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.FAQsPageController">
+    <children>
+        <ImageView fx:id="beatrootImage" fitHeight="150.0" fitWidth="200.0" layoutX="146.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../images/beatrootlogo.png" />
+            </image>
+        </ImageView>
+        <fx:include fx:id="mainMenu" source="mainMenu.fxml" />
+      <TextArea fx:id="textAreaFaqs" editable="false" layoutX="51.0" layoutY="114.0" prefHeight="202.0" prefWidth="369.0" text="Q: What is a beatroot?&#10;A:  beat: a main accent or rhythmic unit in music or poetry;&#10;     root: establish deeply and firmly.&#10;&#10;Q: How long is the trial period?&#10;A: 30 days.&#10;&#10;Q: How much is a premium memebership?&#10;A: 99.99:- per month." />
+    </children>
+</AnchorPane>

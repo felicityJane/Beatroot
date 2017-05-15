@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 import musicplayer.model.Country;
-
+import musicplayer.model.GlobalVariables;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,13 +27,12 @@ public class PaymentMenuController implements Initializable{
     @FXML private RadioButton visaButton,masterButton;
     @FXML private Label warningLabel;
     @FXML private AnchorPane paymentParentAnchorPane;
-    @FXML private MainMenuController mainMenuController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        mainMenuController.init(this);
-        mainMenuController.menuBarFitToParent(paymentParentAnchorPane);
+        GlobalVariables globalVariables = GlobalVariables.getInstance();
+        globalVariables.setPaymentMenuController(this);
+        globalVariables.getMainMenuController().menuBarFitToParent(paymentParentAnchorPane);
 
         for (Country country: Country.values()) {
             countryBox.getItems().addAll(country.name());
@@ -127,6 +126,8 @@ public class PaymentMenuController implements Initializable{
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date convertedCurrentDate = sdf.parse(yearBox.getValue()+"-"+monthBox.getValue()+1+"-01");
             String expritationDate=sdf.format(convertedCurrentDate );
+
+
 
           DB_Connector connector=new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
             connector.insert("user_link(user)","('"+userName+"')");

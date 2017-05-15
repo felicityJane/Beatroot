@@ -1,16 +1,20 @@
 package musicplayer.controller;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -19,22 +23,33 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import musicplayer.*;
 import musicplayer.model.Album;
+import musicplayer.model.GlobalVariables;
 import musicplayer.model.MusicTrack;
 import musicplayer.model.Rating;
 import org.apache.commons.io.FilenameUtils;
+import org.xml.sax.ContentHandler;
+import org.xml.sax.helpers.DefaultHandler;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
-import org.xml.sax.ContentHandler;
-import org.xml.sax.helpers.DefaultHandler;
-
 import java.io.*;
+import java.io.File;
 import java.io.FileInputStream;
-import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.awt.*;
+import java.io.*;
+import java.lang.reflect.Array;
+import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Path;
@@ -74,7 +89,10 @@ public class WelcomeMenuController implements Initializable {
     @FXML private ImageView imgSearchUser;
     @FXML private Label lblNoMatchesFound;
     @FXML private ImageView imgRating;
-    @FXML private ProgressIndicator progressDownload = new ProgressBar(ProgressIndicator.INDETERMINATE_PROGRESS);;
+    @FXML private ProgressIndicator progressDownload = new ProgressBar(ProgressIndicator.INDETERMINATE_PROGRESS);
+    @FXML private Circle btnDownload;
+    @FXML private Circle btnLogOut;
+    @FXML private Label lblRating;
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView;
@@ -84,19 +102,21 @@ public class WelcomeMenuController implements Initializable {
     private URL url;
     private DB_Connector db_connector = new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
     private Server_Connector connector;
+    private Album album;
     private Album albumSelected;
     private MusicTrack trackPlaying;
     private int starsOn;
     private Rating currentSongRating;
 
-    @FXML private MainMenuController mainMenuController;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        mainMenuController.init(this);
-        mainMenuController.setDisabledMenuItemsWelcomeScene();
-        mainMenuController.menuBarFitToParent(welcomeParentAnchorPane);
+        GlobalVariables globalVariables = GlobalVariables.getInstance();
+        globalVariables.setWelcomeMenuController(this);
+        globalVariables.getMainMenuController().menuBarFitToParent(welcomeParentAnchorPane);
+        globalVariables.getMainMenuController().enableMenuItems();
+
         Image img = new Image("images/PlayNormal.jpg");
+        progressDownload = new ProgressBar(0);
         btnPlay.setFill(new ImagePattern(img));
         Image img1 = new Image("images/StopNormal.jpg");
         btnStop.setFill(new ImagePattern(img1));
@@ -112,17 +132,19 @@ public class WelcomeMenuController implements Initializable {
         imgProfilePicture.setImage(new Image("images/Konachan.jpg"));
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
         imgMain.setEffect(dropShadow);
-        lblDisplayName.setText("Hello, " + db_connector.search("display_name", "premium_user", "user_name = 'Misstery'") + "!");
+        lblDisplayName.setText(db_connector.search("display_name", "premium_user", "user_name = 'Misstery'") + "!");
         imgSearchIcon.setImage(new Image("images/SearchIcon.png"));
         imgSearchUser.setImage(new Image("images/SearchIcon.png"));
         lblNoMatchesFound.setText("");
-
+        Image img3 = new Image("images/arrow-download-icon.png");
+        btnDownload.setFill(new ImagePattern(img3));
+        Image img4 = new Image("images/log-off-icon.png");
+        btnLogOut.setFill(new ImagePattern(img4));
         progressDownload.setVisible(false);
 
         setImageNews();
         setImageSuggestions();
         setFirstSong();
-        getRatingFromDatabase();
         setRatingStars();
 
         imgSearchIcon.setOnMouseEntered(event -> {
@@ -147,6 +169,36 @@ public class WelcomeMenuController implements Initializable {
 
         imgSearchIcon.setOnMouseClicked(event -> {
             clickOnSearchIcon();
+        });
+
+        lblDisplayName.setOnMouseEntered(event -> {
+            Scene scene = imgSearchIcon.getScene();
+            scene.setCursor(Cursor.HAND);
+        });
+
+        lblDisplayName.setOnMouseExited(event -> {
+            Scene scene = imgSearchIcon.getScene();
+            scene.setCursor(Cursor.DEFAULT);
+        });
+
+        btnDownload.setOnMouseEntered(event -> {
+            Scene scene = btnDownload.getScene();
+            scene.setCursor(Cursor.HAND);
+        });
+
+        btnDownload.setOnMouseExited(event -> {
+            Scene scene = btnDownload.getScene();
+            scene.setCursor(Cursor.DEFAULT);
+        });
+
+        btnLogOut.setOnMouseEntered(event -> {
+            Scene scene = btnLogOut.getScene();
+            scene.setCursor(Cursor.HAND);
+        });
+
+        btnLogOut.setOnMouseExited(event -> {
+            Scene scene = btnLogOut.getScene();
+            scene.setCursor(Cursor.DEFAULT);
         });
 
         imgRating.setOnMouseEntered(event -> {
@@ -194,15 +246,26 @@ public class WelcomeMenuController implements Initializable {
 
         for (Node n : welcomeRootAnchor.getChildren()) {
 
-            if (n instanceof ImageView && n != imgMain && n != imgVolume && n != imgProfilePicture && n != imgSearchIcon
+            if (n instanceof ImageView){
+                n.setOnMouseClicked(event -> {
+                    if (event.getButton() == MouseButton.SECONDARY){
+                        ImageView im = (ImageView) event.getSource();
+                        popUpMenu(im);
+                    }
+                });
+            }if (n instanceof ImageView && n != imgMain && n != imgVolume && n != imgProfilePicture && n != imgSearchIcon
                     && n != imgSearchUser && n != imgRating) {
 
                 DropShadow ds = new DropShadow(10, 0, 0, Color.GRAY);
                 n.setEffect(ds);
 
                 n.setOnMouseClicked(event -> {
-                    clickOnImageView(n);
-
+                    if (event.getButton() == MouseButton.PRIMARY){
+                        clickOnImageView(n);
+                    }if (event.getButton() == MouseButton.SECONDARY){
+                        ImageView im = (ImageView) event.getSource();
+                        popUpMenu(im);
+                    }
                 });
 
                 n.setOnMouseEntered(event ->  {
@@ -235,10 +298,7 @@ public class WelcomeMenuController implements Initializable {
                     normal.setBrightness(0.0);
                     n.setEffect(normal);
                 });
-
             }
-
-
         }
 
         for (Node n : anchorNews.getChildren()) {
@@ -249,7 +309,12 @@ public class WelcomeMenuController implements Initializable {
                 n.setEffect(ds);
 
                 n.setOnMouseClicked(event -> {
-                    clickOnImageView(n);
+                    if (event.getButton() == MouseButton.PRIMARY){
+                        clickOnImageView(n);
+                    }else if (event.getButton() == MouseButton.SECONDARY){
+                        ImageView im = (ImageView) event.getSource();
+                        popUpMenu(im);
+                    }
                 });
 
                 n.setOnMouseEntered(event ->  {
@@ -353,14 +418,14 @@ public class WelcomeMenuController implements Initializable {
             }
         });
 
-        imgNoConnection.setVisible(false);
-        lblNoConnection1.setVisible(false);
-        lblNoConnection2.setVisible(false);
+//        imgNoConnection.setVisible(false);
+//        lblNoConnection1.setVisible(false);
+//        lblNoConnection2.setVisible(false);
 
     }
 
     @FXML
-    protected void onLogOutButtonPressed(ActionEvent event){
+    protected void onLogOutButtonPressed(MouseEvent event){
         boolean answer = DialogBoxManager.confirmationDialogBox("Are you sure you want to log out?","click ok to continue");
         if (answer){
             try {
@@ -527,6 +592,9 @@ public class WelcomeMenuController implements Initializable {
                 lblTrackName.setText(mt.getTrackName());
             } catch (Exception ex) {
                 ex.printStackTrace();
+//                imgNoConnection.setVisible(true);
+//                lblNoConnection2.setVisible(true);
+//                lblNoConnection1.setVisible(true);
             }
 
         } else {
@@ -603,7 +671,11 @@ public class WelcomeMenuController implements Initializable {
             parser.parse(input, handler, metadata, parseCtx);
             input.close();
         } catch (Exception fe) {
+            System.out.println("It does not find the file but it's okay.");
             fe.printStackTrace();
+//            imgNoConnection.setVisible(true);
+//            lblNoConnection2.setVisible(true);
+//            lblNoConnection1.setVisible(true);
         }
 
 
@@ -706,6 +778,9 @@ public class WelcomeMenuController implements Initializable {
             runMediaPlayer(path);
         } catch (Exception ex) {
             ex.printStackTrace();
+//            imgNoConnection.setVisible(true);
+//            lblNoConnection2.setVisible(true);
+//            lblNoConnection1.setVisible(true);
         }
     }
 
@@ -716,9 +791,10 @@ public class WelcomeMenuController implements Initializable {
         for (Node n : anchorNews.getChildren()) {
 
             if (n instanceof ImageView) {
-
                String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + Integer.toString(counter));
                ((ImageView) n).setImage(new Image(imgUrl));
+                //set image id to be able to search database for album info
+                n.setId(String.valueOf(counter));
                counter--;
             }
         }
@@ -737,6 +813,8 @@ public class WelcomeMenuController implements Initializable {
 
                 String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + Integer.toString(counter));
                 ((ImageView) n).setImage(new Image(imgUrl));
+                //set image id to be able to search database for album info
+                n.setId(String.valueOf(counter));
                 counter++;
                 if (counter > 16) {
                     counter = 1;
@@ -752,7 +830,7 @@ public class WelcomeMenuController implements Initializable {
         String imgUrl = "http://www.webshare.hkr.se/FECO0002/Ellie%20Goulding%20-%20Halcyon%20Days.png";
         int albumId = Integer.parseInt(db_connector.search("album_id", "album", "album_cover_path = " + "'" + imgUrl + "'"));
         String albumName = db_connector.search("album_name", "album", "album_id = " + Integer.toString(albumId));
-        Album album = new Album(albumName, new Image(imgUrl));
+        album = new Album(albumName, new Image(imgUrl));
         albumSelected = album;
         String artistName = "";
 
@@ -797,7 +875,6 @@ public class WelcomeMenuController implements Initializable {
         currentSongRating.setSumFromAllVoters(product);
         currentSongRating.setRatingID(ratingId);
 
-       getRatingFromDatabase();
         lstMainTracks.getItems().clear();
         for (MusicTrack m : album.getSongs()) {
             String trackLength = db_connector.search("track_length",
@@ -808,13 +885,14 @@ public class WelcomeMenuController implements Initializable {
         }
 
         imgMain.setImage(album.getAlbumCover());
+        //set image id to be able to search database for album info
+        imgMain.setId(String.valueOf(albumId));
         lblTrackName.setText(album.getSongs().get(0).getTrackName());
         lblTrackArtist.setText(artistName);
 
         try {
             url = new URL(album.getSongs().get(0).getUrl());
             trackPlaying = album.getSongs().get(0);
-            //mediaPlayer.stop();
             media = new Media(url.toString());
             mediaPlayer = new MediaPlayer(media);
             sliderVolume.setValue(mediaPlayer.getVolume() * 100);
@@ -827,20 +905,91 @@ public class WelcomeMenuController implements Initializable {
                 }
             });
             if (matches.length == 0) {
-                connector = new Server_Connector(url.toString(), url);
-                progressDownload.visibleProperty().bind(connector.runningProperty());
-                connector.restart();
+                try {
+                    connector = new Server_Connector(url.toString(), url);
+                    progressDownload.visibleProperty().bind(connector.runningProperty());
+                    connector.restart();
+                } catch (Exception ex) {
+                    System.out.println("Exception caught at line 872");
+//                    imgNoConnection.setVisible(true);
+//                    lblNoConnection2.setVisible(true);
+//                    lblNoConnection1.setVisible(true);
+                }
             }
             Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
             runMediaPlayer(path);
         } catch (Exception ex) {
             ex.printStackTrace();
-            imgNoConnection.setVisible(true);
-            lblNoConnection2.setVisible(true);
-            lblNoConnection1.setVisible(true);
+//            imgNoConnection.setVisible(true);
+//            lblNoConnection2.setVisible(true);
+//            lblNoConnection1.setVisible(true);
+            System.out.println("Exception caught at line 881");
+//            imgNoConnection.setVisible(true);
+//            lblNoConnection2.setVisible(true);
+//            lblNoConnection1.setVisible(true);
+            ex.printStackTrace();
         }
     }
 
+    private void popUpMenu(ImageView imageView){
+        final ContextMenu contextMenu = new ContextMenu();
+        final MenuItem songPage = new MenuItem("See song info");
+        final MenuItem artistPage = new MenuItem("See artist info");
+        final MenuItem albumPage = new MenuItem("See album info");
+        contextMenu.getItems().addAll(songPage,artistPage,albumPage);
+
+
+        SceneManager sceneManager = new SceneManager();
+        GlobalVariables globalVariables = GlobalVariables.getInstance();
+        for (Node n : welcomeRootAnchor.getChildren()) {
+
+            if (n instanceof ImageView && n != imgVolume && n != imgProfilePicture) {
+                n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
+            }
+        }
+        for (Node n : anchorNews.getChildren()) {
+
+            if (n instanceof ImageView && n != imgVolume && n != imgProfilePicture) {
+                n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
+            }
+        }
+        songPage.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    globalVariables.setAlbum(db_connector.getAlbumDetails(Integer.parseInt(imageView.getId())));
+                    globalVariables.setMusicTracks(db_connector.getTrackDetails(Integer.parseInt(imageView.getId())));
+                    sceneManager.popUpWindow(event, "view/songPage.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        artistPage.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    globalVariables.setAlbum(db_connector.getAlbumDetails(Integer.parseInt(imageView.getId())));
+                    globalVariables.setMusicTracks(db_connector.getTrackDetails(Integer.parseInt(imageView.getId())));
+                    sceneManager.popUpWindow(event, "view/artistPage.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        albumPage.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    globalVariables.setAlbum(db_connector.getAlbumDetails(Integer.parseInt(imageView.getId())));
+                    globalVariables.setMusicTracks(db_connector.getTrackDetails(Integer.parseInt(imageView.getId())));
+                    sceneManager.popUpWindow(event, "view/albumPage.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
     private void clickOnSearchIcon() {
 
         if (rdSong.isSelected()) {
@@ -1095,12 +1244,31 @@ public class WelcomeMenuController implements Initializable {
                 break;
         }
 
-    }
-
-    private void getRatingFromDatabase() {
+        lblRating.setText(String.format("%d/5", (int)currentSongRating.getFinalRating()));
 
     }
+    @FXML
+    private void onDownloadButtonPressed() {
+        FileChooser fileChooser = new FileChooser();
+
+        //Set extension filter
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("MP3 files (*.mp3)", "*.mp3");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        //Show save file dialog
+        File file = fileChooser.showSaveDialog(imgMain.getScene().getWindow());
+
+        if(file != null){
+            try {
+                URL url = new URL(trackPlaying.getUrl());
+                Server_Connector sc = new Server_Connector(trackPlaying.getUrl(), url, file);
+                progressDownload.visibleProperty().bind(sc.runningProperty());
+                sc.restart();
+            } catch (MalformedURLException me) {
+                me.printStackTrace();
+            }
+        }
+    }
+
 }
-
-
 
