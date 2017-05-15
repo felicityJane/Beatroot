@@ -27,6 +27,8 @@ CREATE TABLE `administrator` (
   `user_name` varchar(20) NOT NULL,
   `password` varchar(45) NOT NULL,
   `display_name` varchar(45) NOT NULL,
+  `user_description` mediumtext NOT NULL,
+  `personal_picture_path` varchar(45) NOT NULL,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   `date_of_birth` date NOT NULL,
@@ -35,6 +37,7 @@ CREATE TABLE `administrator` (
   `city_of_residence` varchar(45) NOT NULL,
   `postal_code` varchar(45) NOT NULL,
   `country` varchar(45) NOT NULL,
+  `phone_number` varchar(45) NOT NULL,
   `start_date` date NOT NULL,
   `wage` float NOT NULL,
   `contract_hours` float NOT NULL,
@@ -54,7 +57,7 @@ CREATE TABLE `administrator` (
 
 LOCK TABLES `administrator` WRITE;
 /*!40000 ALTER TABLE `administrator` DISABLE KEYS */;
-INSERT INTO `administrator` VALUES ('beatroot','beatroot','1234','rCoolBeatz','Hercule','Poirot','1873-06-21','rCoolBeatz@beatroot.com','56B Whitehaven Mansions','London','EC1A 9PS','United_Kingdom','2017-04-01',500000,40,1,'1');
+INSERT INTO `administrator` VALUES ('beatroot','beatroot','1234','rCoolBeatz','','','Hercule','Poirot','1873-06-21','rCoolBeatz@beatroot.com','56B Whitehaven Mansions','London','EC1A 9PS','United Kingdom','','2017-04-01',500000,40,1,'1');
 /*!40000 ALTER TABLE `administrator` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,6 +72,7 @@ CREATE TABLE `album` (
   `album_id` int(11) NOT NULL AUTO_INCREMENT,
   `album_name` varchar(45) NOT NULL,
   `album_cover_path` varchar(1024) NOT NULL,
+  `year_of_publication` year(4) NOT NULL,
   `administrator_staff_id` varchar(20) NOT NULL,
   PRIMARY KEY (`album_id`),
   KEY `fk_album_administrator1_idx` (`administrator_staff_id`),
@@ -82,7 +86,7 @@ CREATE TABLE `album` (
 
 LOCK TABLES `album` WRITE;
 /*!40000 ALTER TABLE `album` DISABLE KEYS */;
-INSERT INTO `album` VALUES (1,'No Redemption','http://www.webshare.hkr.se/FECO0002/Combichrist%20-%20No%20Redemption.jpg','beatroot'),(2,'Life','http://www.webshare.hkr.se/FECO0002/Dope%20-%20Life.jpg','beatroot'),(3,'No Regrets','http://www.webshare.hkr.se/FECO0002/Dope%20-%20No%20Regrets.jpg','beatroot'),(4,'Halcyon Days','http://www.webshare.hkr.se/FECO0002/Ellie%20Goulding%20-%20Halcyon%20Days.png','beatroot'),(5,'Misteri','http://www.webshare.hkr.se/FECO0002/Fratello%20Metallo%20-%20Misteri.jpg','beatroot'),(6,'Goa','http://www.webshare.hkr.se/FECO0002/Goa.jpg','beatroot'),(7,'American IV: The Man Comes Around','http://www.webshare.hkr.se/FECO0002/Johnny%20Cash.jpg','beatroot'),(8,'Nashville','http://www.webshare.hkr.se/FECO0002/Keith%20Carradine%20-%20Im%20Easy.jpg','beatroot'),(9,'Greatest Hitz','http://www.webshare.hkr.se/FECO0002/Limpbizkit%20-%20Greatest%20Hitz.jpg','beatroot'),(10,'LIVING THINGS','http://www.webshare.hkr.se/FECO0002/Linkin%20Park%20-%20Living%20Things.jpg','beatroot'),(11,'Buiikikaesu','http://www.webshare.hkr.se/FECO0002/Maximum%20the%20Hormone%20-%20Buiikikaesu.jpg','beatroot'),(12,'PSY 6? (Six Rules), Part 1','http://www.webshare.hkr.se/FECO0002/PSY%20-%20Gangnam%20Style.jpg','beatroot'),(13,'Absolute Greatest','http://www.webshare.hkr.se/FECO0002/Queen%20-%20Absolute%20Greatest.jpg','beatroot'),(14,'Rage Against The Machine','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20the%20Machine%20-%20Rage%20Against%20the%20Machine.jpg','beatroot'),(15,'Tarkan','http://www.webshare.hkr.se/FECO0002/Tarkan%20-%20Tarkan.jpg','beatroot'),(16,'TranceDance Neelix remix','http://www.webshare.hkr.se/FECO0002/Techno-%20Neelix.jpg','beatroot');
+INSERT INTO `album` VALUES (1,'No Redemption','http://www.webshare.hkr.se/FECO0002/Combichrist%20-%20No%20Redemption.jpg',0000,'beatroot'),(2,'Life','http://www.webshare.hkr.se/FECO0002/Dope%20-%20Life.jpg',0000,'beatroot'),(3,'No Regrets','http://www.webshare.hkr.se/FECO0002/Dope%20-%20No%20Regrets.jpg',0000,'beatroot'),(4,'Halcyon Days','http://www.webshare.hkr.se/FECO0002/Ellie%20Goulding%20-%20Halcyon%20Days.png',0000,'beatroot'),(5,'Misteri','http://www.webshare.hkr.se/FECO0002/Fratello%20Metallo%20-%20Misteri.jpg',0000,'beatroot'),(6,'Goa','http://www.webshare.hkr.se/FECO0002/Goa.jpg',0000,'beatroot'),(7,'American IV: The Man Comes Around','http://www.webshare.hkr.se/FECO0002/Johnny%20Cash.jpg',0000,'beatroot'),(8,'Nashville','http://www.webshare.hkr.se/FECO0002/Keith%20Carradine%20-%20Im%20Easy.jpg',0000,'beatroot'),(9,'Greatest Hitz','http://www.webshare.hkr.se/FECO0002/Limpbizkit%20-%20Greatest%20Hitz.jpg',0000,'beatroot'),(10,'LIVING THINGS','http://www.webshare.hkr.se/FECO0002/Linkin%20Park%20-%20Living%20Things.jpg',0000,'beatroot'),(11,'Buiikikaesu','http://www.webshare.hkr.se/FECO0002/Maximum%20the%20Hormone%20-%20Buiikikaesu.jpg',0000,'beatroot'),(12,'PSY 6? (Six Rules), Part 1','http://www.webshare.hkr.se/FECO0002/PSY%20-%20Gangnam%20Style.jpg',0000,'beatroot'),(13,'Absolute Greatest','http://www.webshare.hkr.se/FECO0002/Queen%20-%20Absolute%20Greatest.jpg',0000,'beatroot'),(14,'Rage Against The Machine','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20the%20Machine%20-%20Rage%20Against%20the%20Machine.jpg',0000,'beatroot'),(15,'Tarkan','http://www.webshare.hkr.se/FECO0002/Tarkan%20-%20Tarkan.jpg',0000,'beatroot'),(16,'TranceDance Neelix remix','http://www.webshare.hkr.se/FECO0002/Techno-%20Neelix.jpg',0000,'beatroot');
 /*!40000 ALTER TABLE `album` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +132,7 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`comment_id`),
   KEY `fk_comment_music_track1_idx` (`music_track_track_id`),
   CONSTRAINT `fk_comment_music_track1` FOREIGN KEY (`music_track_track_id`) REFERENCES `music_track` (`track_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,6 +141,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (1,'Test from setFirstSong',19),(2,'Test from clickOnImageView',1),(4,'Test from lstTracks.',38);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,7 +165,7 @@ CREATE TABLE `gender` (
 
 LOCK TABLES `gender` WRITE;
 /*!40000 ALTER TABLE `gender` DISABLE KEYS */;
-INSERT INTO `gender` VALUES (1,'MALE'),(2,'FEMALE'),(3,'NOT_SPECIFIED');
+INSERT INTO `gender` VALUES (0,'MALE'),(1,'FEMALE'),(2,'Not specified');
 /*!40000 ALTER TABLE `gender` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,6 +208,8 @@ CREATE TABLE `music_artist` (
   `stage_name` varchar(128) NOT NULL,
   `administrator_staff_id` varchar(20) NOT NULL,
   `rating_id` int(11) NOT NULL,
+  `year_of_foundation` year(4) NOT NULL,
+  `artist_description` mediumtext NOT NULL,
   PRIMARY KEY (`artist_id`),
   KEY `fk_music_artist_administrator1_idx` (`administrator_staff_id`),
   KEY `fk_music_artist_rating1_idx` (`rating_id`),
@@ -217,7 +224,7 @@ CREATE TABLE `music_artist` (
 
 LOCK TABLES `music_artist` WRITE;
 /*!40000 ALTER TABLE `music_artist` DISABLE KEYS */;
-INSERT INTO `music_artist` VALUES (1,'Combichrist','beatroot',500),(2,'Dope','beatroot',501),(3,'Ellie Goulding','beatroot',502),(4,'Fratello Metallo','beatroot',503),(5,'Goya','beatroot',504),(6,'Johnny Cash','beatroot',505),(7,'Keith Carradine','beatroot',506),(8,'Limp Bizkit','beatroot',507),(9,'Linkin Park','beatroot',508),(10,'Maximum The Hormone','beatroot',509),(11,'PSY','beatroot',510),(12,'Queen','beatroot',511),(13,'Rage Against The Machine','beatroot',512),(14,'Tarkan','beatroot',513),(15,'Neelix','beatroot',514);
+INSERT INTO `music_artist` VALUES (1,'Combichrist','beatroot',500,0000,''),(2,'Dope','beatroot',501,0000,''),(3,'Ellie Goulding','beatroot',502,0000,''),(4,'Fratello Metallo','beatroot',503,0000,''),(5,'Goya','beatroot',504,0000,''),(6,'Johnny Cash','beatroot',505,0000,''),(7,'Keith Carradine','beatroot',506,0000,''),(8,'Limp Bizkit','beatroot',507,0000,''),(9,'Linkin Park','beatroot',508,0000,''),(10,'Maximum The Hormone','beatroot',509,0000,''),(11,'PSY','beatroot',510,0000,''),(12,'Queen','beatroot',511,0000,''),(13,'Rage Against The Machine','beatroot',512,0000,''),(14,'Tarkan','beatroot',513,0000,''),(15,'Neelix','beatroot',514,0000,'');
 /*!40000 ALTER TABLE `music_artist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,6 +242,7 @@ CREATE TABLE `music_track` (
   `track_url` varchar(512) NOT NULL,
   `administrator_staff_id` varchar(20) NOT NULL,
   `rating_id` int(11) NOT NULL,
+  `year_of_publication` year(4) NOT NULL,
   `music_artist_artist_id` int(11) NOT NULL,
   PRIMARY KEY (`track_id`),
   KEY `fk_music_track_administrator1_idx` (`administrator_staff_id`),
@@ -252,7 +260,7 @@ CREATE TABLE `music_track` (
 
 LOCK TABLES `music_track` WRITE;
 /*!40000 ALTER TABLE `music_track` DISABLE KEYS */;
-INSERT INTO `music_track` VALUES (1,'Zombie Fistfight','00:02:00','http://www.webshare.hkr.se/FECO0002/02%20-%20Combichrist%20%20-%20Zombie%20Fistfight.mp3','beatroot',1,1),(2,'Feed The Fire','00:03:59','http://www.webshare.hkr.se/FECO0002/03%20-%20Combichrist%20-%20Feed%20The%20Fire.mp3','beatroot',2,1),(3,'Clouds Of War','00:04:03','http://www.webshare.hkr.se/FECO0002/05%20-%20Combichrist%20-%20Clouds%20of%20War.mp3','beatroot',3,1),(4,'Empty','00:04:31','http://www.webshare.hkr.se/FECO0002/07%20-%20Combichrist%20-%20Empty.mp3','beatroot',4,1),(5,'I Know What I Am Doing (Planet Treason)','00:02:43','http://www.webshare.hkr.se/FECO0002/08%20-%20Combichrist%20-%20I%20Know%20What%20I%20Am%20Doing%20(Planet%20Treason).mp3','beatroot',5,1),(6,'No Redemption','00:02:33','http://www.webshare.hkr.se/FECO0002/09%20-%20Combichrist%20-%20No%20Redemption.mp3','beatroot',6,1),(7,'Falling Apart','00:02:45','http://www.webshare.hkr.se/FECO0002/10%20-%20Combichrist%20-%20Falling%20Apart.mp3','beatroot',7,1),(8,'Gotta Go','00:02:59','http://www.webshare.hkr.se/FECO0002/11%20-%20Combichrist%20-%20Gotta%20Go.mp3','beatroot',8,1),(9,'How Old Is Your Soul?','00:03:32','http://www.webshare.hkr.se/FECO0002/12%20-%20Combichrist%20-%20How%20Old%20Is%20Your%20Soul.mp3','beatroot',9,1),(10,'Now Or Never','00:03:28','http://www.webshare.hkr.se/FECO0002/02%20-%20Dope%20-%20Now%20Or%20Never.mp3','beatroot',10,2),(11,'Nothing (Why)','00:04:01','http://www.webshare.hkr.se/FECO0002/03%20-%20Dope%20-%20Nothing%20(Why).mp3','beatroot',11,2),(12,'Die MF Die','00:03:07','http://www.webshare.hkr.se/FECO0002/06%20-%20Dope%20-%20Die%20Motherfucker%20Die.mp3','beatroot',12,2),(13,'March Of Hope','00:07:30','http://www.webshare.hkr.se/FECO0002/13%20-%20Dope%20-%20March%20Of%20Hope.mp3','beatroot',13,2),(14,'6-6-Sick','00:02:48','http://www.webshare.hkr.se/FECO0002/02%206-6-sick.mp3','beatroot',14,2),(15,'Addiction','00:02:43','http://www.webshare.hkr.se/FECO0002/03%20Addiction.mp3','beatroot',15,2),(16,'No Regrets','00:03:30','http://www.webshare.hkr.se/FECO0002/04%20No%20Regrets.mp3','beatroot',16,2),(17,'Best For Me','00:03:21','http://www.webshare.hkr.se/FECO0002/10%20Best%20for%20Me.mp3','beatroot',17,2),(18,'Rebell Yell','00:04:04','http://www.webshare.hkr.se/FECO0002/13%20Rebel%20Yell.mp3','beatroot',18,2),(19,'Burn','00:03:54','http://www.webshare.hkr.se/FECO0002/Ellie%20Goulding%20-%20Burn.mp3','beatroot',19,3),(20,'Burn (Codeko Dubstep Remix)','00:03:58','http://www.webshare.hkr.se/FECO0002/Ellie%20Goulding%20-%20Burn%20(Codeko%20Dubstep%20Remix).mp3','beatroot',20,3),(21,'Vita','00:04:33','http://www.webshare.hkr.se/FECO0002/04%20-%20Fratello%20Metallo%20-%20Vita.mp3','beatroot',21,4),(22,'Bacco','00:02:56','http://www.webshare.hkr.se/FECO0002/06%20-%20Fratello%20Metallo%20-%20Bacco.mp3','beatroot',22,4),(23,'Maria Maiestatis','00:02:59','http://www.webshare.hkr.se/FECO0002/10%20-%20Fratello%20Metallo%20-%20Maria%20Maiestatis.mp3','beatroot',23,4),(24,'Technosong 7 Usn','00:07:32','http://www.webshare.hkr.se/FECO0002/Tecnosong%20%20GoYA%207%20Usn.mp3','beatroot',24,5),(25,'Technosong 8 Usn','00:05:09','http://www.webshare.hkr.se/FECO0002/Tecnosong%20%20GoYA%208%20Usn.mp3','beatroot',25,5),(26,'Hurt','00:04:02','http://www.webshare.hkr.se/FECO0002/Johnny%20Cash%20-%20Hurt.mp3','beatroot',26,6),(27,'I\'m Easy','00:03:00','http://www.webshare.hkr.se/FECO0002/Keith%20Carradine%20%20-%20I\'m%20Easy.mp3','beatroot',27,7),(28,'Nookie','00:04:27','http://www.webshare.hkr.se/FECO0002/03.Nookie.mp3','beatroot',28,8),(29,'Break Stuff','00:02:48','http://www.webshare.hkr.se/FECO0002/04.Break%20Stuff.mp3','beatroot',29,8),(30,'My Generation','00:03:43','http://www.webshare.hkr.se/FECO0002/08.My%20Generation.mp3','beatroot',30,8),(31,'Rollin\' (Air Raid Vehicle)','00:03:37','http://www.webshare.hkr.se/FECO0002/09.Rollin\'%20(Air%20Raid%20Vehicle).mp3','beatroot',31,8),(32,'I\'LL BE GONE','00:03:31','http://www.webshare.hkr.se/FECO0002/05%20-%20I\'LL%20BE%20GONE.mp3','beatroot',32,9),(33,'CASTLE OF GLASS','00:03:25','http://www.webshare.hkr.se/FECO0002/06%20-%20CASTLE%20OF%20GLASS.mp3','beatroot',33,9),(34,'ROADS UNTRAVELED','00:03:50','http://www.webshare.hkr.se/FECO0002/08%20-%20ROADS%20UNTRAVELED.mp3','beatroot',34,9),(35,'Buiikikaesu','00:03:59','http://www.webshare.hkr.se/FECO0002/Maximum%20the%20Hormone%20-%20Buiikikaesu.mp3','beatroot',35,10),(36,'Koi No Mega Lover','00:05:29','http://www.webshare.hkr.se/FECO0002/Maximum%20the%20Hormone%20-%20Koi%20No%20Mega%20Lover.mp3','beatroot',36,10),(37,'What\'s up, people?!','00:04:10','http://www.webshare.hkr.se/FECO0002/Maximum%20the%20Hormone%20-%20What\'s%20up,people!.mp3','beatroot',37,10),(38,'Zetsubou Billy','00:03:44','http://www.webshare.hkr.se/FECO0002/Maximum%20The%20Hormone%20-%20Zetsubou%20Billy.mp3','beatroot',38,10),(39,'Gangnam Style','00:04:12','http://www.webshare.hkr.se/FECO0002/PSY%20-%20Gangnam%20Style.mp3','beatroot',39,11),(40,'Gangnam Style (T. I. remix)','00:03:00','http://www.webshare.hkr.se/FECO0002/PSY%20-%20Gangnam%20Style%20(Tim%20Ismag%20Trollmix).mp3','beatroot',40,11),(41,'We Will Rock You','00:02:01','http://www.webshare.hkr.se/FECO0002/01%20We%20Will%20Rock%20You.mp3','beatroot',41,12),(42,'We Are The Champions','00:02:58','http://www.webshare.hkr.se/FECO0002/02%20We%20Are%20The%20Champions.mp3','beatroot',42,12),(43,'Radio Ga Ga','00:05:40','http://www.webshare.hkr.se/FECO0002/03%20Radio%20Ga%20Ga.mp3','beatroot',43,12),(44,'Another One Bites The Dust','00:03:31','http://www.webshare.hkr.se/FECO0002/04%20Another%20One%20Bites%20The%20Dust.mp3','beatroot',44,12),(45,'Crazy Little Thing Called Love','00:02:41','http://www.webshare.hkr.se/FECO0002/06%20Crazy%20Little%20Thing%20Called%20Love.mp3','beatroot',45,12),(46,'A Kind Of Magic','00:04:20','http://www.webshare.hkr.se/FECO0002/07%20A%20Kind%20Of%20Magic.mp3','beatroot',46,12),(47,'Under Pressure','00:03:58','http://www.webshare.hkr.se/FECO0002/08%20Under%20Pressure.mp3','beatroot',47,12),(48,'One Vision','00:04:00','http://www.webshare.hkr.se/FECO0002/09%20One%20Vision.mp3','beatroot',48,12),(49,'Don\'t Stop Me Now','00:03:26','http://www.webshare.hkr.se/FECO0002/11%20Don\'t%20Stop%20Me%20Now.mp3','beatroot',49,12),(50,'Seven Seas Of Rhye','00:02:44','http://www.webshare.hkr.se/FECO0002/15%20Seven%20Seas%20Of%20Rhye.mp3','beatroot',50,12),(51,'I Want To Break Free','00:04:14','http://www.webshare.hkr.se/FECO0002/18%20I%20Want%20To%20Break%20Free.mp3','beatroot',51,12),(52,'The Show Must Go On','00:04:27','http://www.webshare.hkr.se/FECO0002/19%20The%20Show%20Must%20Go%20On.mp3','beatroot',52,12),(53,'Bohemian Rhapsody','00:05:48','http://www.webshare.hkr.se/FECO0002/20%20Bohemian%20Rhapsody.mp3','beatroot',53,12),(54,'Bombtrack','00:04:04','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2001%20Bombtrack.mp3','beatroot',54,13),(55,'Killing in the Name','00:05:14','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2002%20Killing%20in%20the%20Name.mp3','beatroot',55,13),(56,'Take the Power Back','00:05:37','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2003%20Take%20the%20Power%20Back.mp3','beatroot',56,13),(57,'Settle for Nothing','00:04:48','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2004%20Settle%20for%20Nothing.mp3','beatroot',57,13),(58,'Bullet in the Head','00:05:09','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2005%20Bullet%20in%20the%20Head.mp3','beatroot',58,13),(59,'Know Your Enemy','00:04:55','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2006%20Know%20Your%20Enemy.mp3','beatroot',59,13),(60,'Wake Up','00:06:04','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2007%20Wake%20Up.mp3','beatroot',60,13),(61,'Fistful of Steel','00:05:31','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2008%20Fistful%20of%20Steel.mp3','beatroot',61,13),(62,'Township Rebelion','00:05:24','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2009%20Township%20Rebelion.mp3','beatroot',62,13),(63,'Freedom','00:06:06','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2010%20Freedom.mp3','beatroot',63,13),(64,'Hepsi Sinin Mi','00:03:54','http://www.webshare.hkr.se/FECO0002/Tarkan%20-%20Hepsi%20Senin%20Mi.mp3','beatroot',64,14),(65,'Simarik','00:04:00','http://www.webshare.hkr.se/FECO0002/Tarkan%20-%20Simarik.mp3','beatroot',65,14),(66,'Kiss kiss','00:03:24','http://www.webshare.hkr.se/FECO0002/Holly%20Valance%20-%20Kiss%20Kiss.mp3','beatroot',66,14),(67,'Shadow of a smile','00:07:38','http://www.webshare.hkr.se/FECO0002/TranceDance%20-%20Klopfgeister%20-%20Shadow%20of%20a%20smile%20(Neelix%20Remix).mp3','beatroot',67,15),(68,'Dirty Buddy','00:07:27','http://www.webshare.hkr.se/FECO0002/TranceDance%20-%20Meller%20-%20Dirty%20Buddy%20(Neelix%20RMX).mp3','beatroot',68,15),(69,'Voices','00:08:10','http://www.webshare.hkr.se/FECO0002/TranceDance%20-%20Official%20-%20Neelix%20-%20Voices.mp3','beatroot',69,15);
+INSERT INTO `music_track` VALUES (1,'Zombie Fistfight','00:02:00','http://www.webshare.hkr.se/FECO0002/02%20-%20Combichrist%20%20-%20Zombie%20Fistfight.mp3','beatroot',1,0000,1),(2,'Feed The Fire','00:03:59','http://www.webshare.hkr.se/FECO0002/03%20-%20Combichrist%20-%20Feed%20The%20Fire.mp3','beatroot',2,0000,1),(3,'Clouds Of War','00:04:03','http://www.webshare.hkr.se/FECO0002/05%20-%20Combichrist%20-%20Clouds%20of%20War.mp3','beatroot',3,0000,1),(4,'Empty','00:04:31','http://www.webshare.hkr.se/FECO0002/07%20-%20Combichrist%20-%20Empty.mp3','beatroot',4,0000,1),(5,'I Know What I Am Doing (Planet Treason)','00:02:43','http://www.webshare.hkr.se/FECO0002/08%20-%20Combichrist%20-%20I%20Know%20What%20I%20Am%20Doing%20(Planet%20Treason).mp3','beatroot',5,0000,1),(6,'No Redemption','00:02:33','http://www.webshare.hkr.se/FECO0002/09%20-%20Combichrist%20-%20No%20Redemption.mp3','beatroot',6,0000,1),(7,'Falling Apart','00:02:45','http://www.webshare.hkr.se/FECO0002/10%20-%20Combichrist%20-%20Falling%20Apart.mp3','beatroot',7,0000,1),(8,'Gotta Go','00:02:59','http://www.webshare.hkr.se/FECO0002/11%20-%20Combichrist%20-%20Gotta%20Go.mp3','beatroot',8,0000,1),(9,'How Old Is Your Soul?','00:03:32','http://www.webshare.hkr.se/FECO0002/12%20-%20Combichrist%20-%20How%20Old%20Is%20Your%20Soul.mp3','beatroot',9,0000,1),(10,'Now Or Never','00:03:28','http://www.webshare.hkr.se/FECO0002/02%20-%20Dope%20-%20Now%20Or%20Never.mp3','beatroot',10,0000,2),(11,'Nothing (Why)','00:04:01','http://www.webshare.hkr.se/FECO0002/03%20-%20Dope%20-%20Nothing%20(Why).mp3','beatroot',11,0000,2),(12,'Die MF Die','00:03:07','http://www.webshare.hkr.se/FECO0002/06%20-%20Dope%20-%20Die%20Motherfucker%20Die.mp3','beatroot',12,0000,2),(13,'March Of Hope','00:07:30','http://www.webshare.hkr.se/FECO0002/13%20-%20Dope%20-%20March%20Of%20Hope.mp3','beatroot',13,0000,2),(14,'6-6-Sick','00:02:48','http://www.webshare.hkr.se/FECO0002/02%206-6-sick.mp3','beatroot',14,0000,2),(15,'Addiction','00:02:43','http://www.webshare.hkr.se/FECO0002/03%20Addiction.mp3','beatroot',15,0000,2),(16,'No Regrets','00:03:30','http://www.webshare.hkr.se/FECO0002/04%20No%20Regrets.mp3','beatroot',16,0000,2),(17,'Best For Me','00:03:21','http://www.webshare.hkr.se/FECO0002/10%20Best%20for%20Me.mp3','beatroot',17,0000,2),(18,'Rebell Yell','00:04:04','http://www.webshare.hkr.se/FECO0002/13%20Rebel%20Yell.mp3','beatroot',18,0000,2),(19,'Burn','00:03:54','http://www.webshare.hkr.se/FECO0002/Ellie%20Goulding%20-%20Burn.mp3','beatroot',19,0000,3),(20,'Burn (Codeko Dubstep Remix)','00:03:58','http://www.webshare.hkr.se/FECO0002/Ellie%20Goulding%20-%20Burn%20(Codeko%20Dubstep%20Remix).mp3','beatroot',20,0000,3),(21,'Vita','00:04:33','http://www.webshare.hkr.se/FECO0002/04%20-%20Fratello%20Metallo%20-%20Vita.mp3','beatroot',21,0000,4),(22,'Bacco','00:02:56','http://www.webshare.hkr.se/FECO0002/06%20-%20Fratello%20Metallo%20-%20Bacco.mp3','beatroot',22,0000,4),(23,'Maria Maiestatis','00:02:59','http://www.webshare.hkr.se/FECO0002/10%20-%20Fratello%20Metallo%20-%20Maria%20Maiestatis.mp3','beatroot',23,0000,4),(24,'Technosong 7 Usn','00:07:32','http://www.webshare.hkr.se/FECO0002/Tecnosong%20%20GoYA%207%20Usn.mp3','beatroot',24,0000,5),(25,'Technosong 8 Usn','00:05:09','http://www.webshare.hkr.se/FECO0002/Tecnosong%20%20GoYA%208%20Usn.mp3','beatroot',25,0000,5),(26,'Hurt','00:04:02','http://www.webshare.hkr.se/FECO0002/Johnny%20Cash%20-%20Hurt.mp3','beatroot',26,0000,6),(27,'I\'m Easy','00:03:00','http://www.webshare.hkr.se/FECO0002/Keith%20Carradine%20%20-%20I\'m%20Easy.mp3','beatroot',27,0000,7),(28,'Nookie','00:04:27','http://www.webshare.hkr.se/FECO0002/03.Nookie.mp3','beatroot',28,0000,8),(29,'Break Stuff','00:02:48','http://www.webshare.hkr.se/FECO0002/04.Break%20Stuff.mp3','beatroot',29,0000,8),(30,'My Generation','00:03:43','http://www.webshare.hkr.se/FECO0002/08.My%20Generation.mp3','beatroot',30,0000,8),(31,'Rollin\' (Air Raid Vehicle)','00:03:37','http://www.webshare.hkr.se/FECO0002/09.Rollin\'%20(Air%20Raid%20Vehicle).mp3','beatroot',31,0000,8),(32,'I\'LL BE GONE','00:03:31','http://www.webshare.hkr.se/FECO0002/05%20-%20I\'LL%20BE%20GONE.mp3','beatroot',32,0000,9),(33,'CASTLE OF GLASS','00:03:25','http://www.webshare.hkr.se/FECO0002/06%20-%20CASTLE%20OF%20GLASS.mp3','beatroot',33,0000,9),(34,'ROADS UNTRAVELED','00:03:50','http://www.webshare.hkr.se/FECO0002/08%20-%20ROADS%20UNTRAVELED.mp3','beatroot',34,0000,9),(35,'Buiikikaesu','00:03:59','http://www.webshare.hkr.se/FECO0002/Maximum%20the%20Hormone%20-%20Buiikikaesu.mp3','beatroot',35,0000,10),(36,'Koi No Mega Lover','00:05:29','http://www.webshare.hkr.se/FECO0002/Maximum%20the%20Hormone%20-%20Koi%20No%20Mega%20Lover.mp3','beatroot',36,0000,10),(37,'What\'s up, people?!','00:04:10','http://www.webshare.hkr.se/FECO0002/Maximum%20the%20Hormone%20-%20What\'s%20up,people!.mp3','beatroot',37,0000,10),(38,'Zetsubou Billy','00:03:44','http://www.webshare.hkr.se/FECO0002/Maximum%20The%20Hormone%20-%20Zetsubou%20Billy.mp3','beatroot',38,0000,10),(39,'Gangnam Style','00:04:12','http://www.webshare.hkr.se/FECO0002/PSY%20-%20Gangnam%20Style.mp3','beatroot',39,0000,11),(40,'Gangnam Style (T. I. remix)','00:03:00','http://www.webshare.hkr.se/FECO0002/PSY%20-%20Gangnam%20Style%20(Tim%20Ismag%20Trollmix).mp3','beatroot',40,0000,11),(41,'We Will Rock You','00:02:01','http://www.webshare.hkr.se/FECO0002/01%20We%20Will%20Rock%20You.mp3','beatroot',41,0000,12),(42,'We Are The Champions','00:02:58','http://www.webshare.hkr.se/FECO0002/02%20We%20Are%20The%20Champions.mp3','beatroot',42,0000,12),(43,'Radio Ga Ga','00:05:40','http://www.webshare.hkr.se/FECO0002/03%20Radio%20Ga%20Ga.mp3','beatroot',43,0000,12),(44,'Another One Bites The Dust','00:03:31','http://www.webshare.hkr.se/FECO0002/04%20Another%20One%20Bites%20The%20Dust.mp3','beatroot',44,0000,12),(45,'Crazy Little Thing Called Love','00:02:41','http://www.webshare.hkr.se/FECO0002/06%20Crazy%20Little%20Thing%20Called%20Love.mp3','beatroot',45,0000,12),(46,'A Kind Of Magic','00:04:20','http://www.webshare.hkr.se/FECO0002/07%20A%20Kind%20Of%20Magic.mp3','beatroot',46,0000,12),(47,'Under Pressure','00:03:58','http://www.webshare.hkr.se/FECO0002/08%20Under%20Pressure.mp3','beatroot',47,0000,12),(48,'One Vision','00:04:00','http://www.webshare.hkr.se/FECO0002/09%20One%20Vision.mp3','beatroot',48,0000,12),(49,'Don\'t Stop Me Now','00:03:26','http://www.webshare.hkr.se/FECO0002/11%20Don\'t%20Stop%20Me%20Now.mp3','beatroot',49,0000,12),(50,'Seven Seas Of Rhye','00:02:44','http://www.webshare.hkr.se/FECO0002/15%20Seven%20Seas%20Of%20Rhye.mp3','beatroot',50,0000,12),(51,'I Want To Break Free','00:04:14','http://www.webshare.hkr.se/FECO0002/18%20I%20Want%20To%20Break%20Free.mp3','beatroot',51,0000,12),(52,'The Show Must Go On','00:04:27','http://www.webshare.hkr.se/FECO0002/19%20The%20Show%20Must%20Go%20On.mp3','beatroot',52,0000,12),(53,'Bohemian Rhapsody','00:05:48','http://www.webshare.hkr.se/FECO0002/20%20Bohemian%20Rhapsody.mp3','beatroot',53,0000,12),(54,'Bombtrack','00:04:04','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2001%20Bombtrack.mp3','beatroot',54,0000,13),(55,'Killing in the Name','00:05:14','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2002%20Killing%20in%20the%20Name.mp3','beatroot',55,0000,13),(56,'Take the Power Back','00:05:37','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2003%20Take%20the%20Power%20Back.mp3','beatroot',56,0000,13),(57,'Settle for Nothing','00:04:48','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2004%20Settle%20for%20Nothing.mp3','beatroot',57,0000,13),(58,'Bullet in the Head','00:05:09','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2005%20Bullet%20in%20the%20Head.mp3','beatroot',58,0000,13),(59,'Know Your Enemy','00:04:55','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2006%20Know%20Your%20Enemy.mp3','beatroot',59,0000,13),(60,'Wake Up','00:06:04','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2007%20Wake%20Up.mp3','beatroot',60,0000,13),(61,'Fistful of Steel','00:05:31','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2008%20Fistful%20of%20Steel.mp3','beatroot',61,0000,13),(62,'Township Rebelion','00:05:24','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2009%20Township%20Rebelion.mp3','beatroot',62,0000,13),(63,'Freedom','00:06:06','http://www.webshare.hkr.se/FECO0002/Rage%20Against%20The%20Machine%2010%20Freedom.mp3','beatroot',63,0000,13),(64,'Hepsi Sinin Mi','00:03:54','http://www.webshare.hkr.se/FECO0002/Tarkan%20-%20Hepsi%20Senin%20Mi.mp3','beatroot',64,0000,14),(65,'Simarik','00:04:00','http://www.webshare.hkr.se/FECO0002/Tarkan%20-%20Simarik.mp3','beatroot',65,0000,14),(66,'Kiss kiss','00:03:24','http://www.webshare.hkr.se/FECO0002/Holly%20Valance%20-%20Kiss%20Kiss.mp3','beatroot',66,0000,14),(67,'Shadow of a smile','00:07:38','http://www.webshare.hkr.se/FECO0002/TranceDance%20-%20Klopfgeister%20-%20Shadow%20of%20a%20smile%20(Neelix%20Remix).mp3','beatroot',67,0000,15),(68,'Dirty Buddy','00:07:27','http://www.webshare.hkr.se/FECO0002/TranceDance%20-%20Meller%20-%20Dirty%20Buddy%20(Neelix%20RMX).mp3','beatroot',68,0000,15),(69,'Voices','00:08:10','http://www.webshare.hkr.se/FECO0002/TranceDance%20-%20Official%20-%20Neelix%20-%20Voices.mp3','beatroot',69,0000,15);
 /*!40000 ALTER TABLE `music_track` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,6 +296,33 @@ LOCK TABLES `playlist` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `playlist_has_music_track`
+--
+
+DROP TABLE IF EXISTS `playlist_has_music_track`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `playlist_has_music_track` (
+  `playlist_playlist_id` int(11) NOT NULL,
+  `music_track_track_id` int(11) NOT NULL,
+  PRIMARY KEY (`playlist_playlist_id`,`music_track_track_id`),
+  KEY `fk_playlist_has_music_track_music_track1_idx` (`music_track_track_id`),
+  KEY `fk_playlist_has_music_track_playlist1_idx` (`playlist_playlist_id`),
+  CONSTRAINT `fk_playlist_has_music_track_music_track1` FOREIGN KEY (`music_track_track_id`) REFERENCES `music_track` (`track_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_playlist_has_music_track_playlist1` FOREIGN KEY (`playlist_playlist_id`) REFERENCES `playlist` (`playlist_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `playlist_has_music_track`
+--
+
+LOCK TABLES `playlist_has_music_track` WRITE;
+/*!40000 ALTER TABLE `playlist_has_music_track` DISABLE KEYS */;
+/*!40000 ALTER TABLE `playlist_has_music_track` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `premium_user`
 --
 
@@ -298,6 +333,8 @@ CREATE TABLE `premium_user` (
   `user_name` varchar(20) NOT NULL,
   `password` varchar(45) NOT NULL,
   `display_name` varchar(45) NOT NULL,
+  `user_description` mediumtext NOT NULL,
+  `personal_picture_path` varchar(45) NOT NULL,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   `date_of_birth` date NOT NULL,
@@ -331,7 +368,7 @@ CREATE TABLE `premium_user` (
 
 LOCK TABLES `premium_user` WRITE;
 /*!40000 ALTER TABLE `premium_user` DISABLE KEYS */;
-INSERT INTO `premium_user` VALUES ('Misstery','12345','MissTery','Jane','Marple','1880-05-08','misstery@gmail.com','382 Mount Dandenong Road','London','EC1A 9DB','United_Kingdom','5555777733331111','2019-05-08','Visa','Jane Marple','382 Mount Dandenong Road','London','EC1A 9DB','United_Kingdom','070 333 1111',2,'2'),('temp','temporary','temp','tempie','temples','2017-01-01','temp@gmail.com',NULL,'malmö','21014','Sverige','111133335555','2025-05-01','Mastercard','tempie',NULL,'malmö','21014','Sverige','0701113333',1,'temp');
+INSERT INTO `premium_user` VALUES ('Misstery','12345','MissTery','','','Jane','Marple','1880-05-08','misstery@gmail.com','382 Mount Dandenong Road','London','EC1A 9DB','United_Kingdom','5555777733331111','2019-05-08','Visa','Jane Marple','382 Mount Dandenong Road','London','EC1A 9DB','United_Kingdom','070 333 1111',2,'2'),('temp','temporary','temp','','','tempie','temples','2017-01-01','temp@gmail.com',NULL,'malmö','21014','Sverige','111133335555','2025-05-01','Mastercard','tempie',NULL,'malmö','21014','Sverige','0701113333',1,'temp');
 /*!40000 ALTER TABLE `premium_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -371,7 +408,7 @@ CREATE TABLE `rating` (
   `sum_from_all_voters` float NOT NULL,
   `final_rating` float NOT NULL,
   PRIMARY KEY (`rating_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=511 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -380,7 +417,7 @@ CREATE TABLE `rating` (
 
 LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
-INSERT INTO `rating` VALUES (1,0,0),(2,0,0),(3,0,0),(4,0,0),(5,0,0),(6,0,0),(7,0,0),(8,0,0),(9,0,0),(10,0,0),(11,0,0),(12,0,0),(13,0,0),(14,1,5),(15,0,0),(16,0,0),(17,0,0),(18,0,0),(19,33,3),(20,0,0),(21,0,0),(22,0,0),(23,0,0),(24,0,0),(25,0,0),(26,0,0),(27,0,0),(28,0,0),(29,0,0),(30,0,0),(31,0,0),(32,0,0),(33,0,0),(34,0,0),(35,0,0),(36,0,0),(37,0,0),(38,0,0),(39,0,0),(40,0,0),(41,0,0),(42,0,0),(43,0,0),(44,0,0),(45,0,0),(46,0,0),(47,0,0),(48,0,0),(49,0,0),(50,0,0),(51,0,0),(52,0,0),(53,0,0),(54,0,0),(55,0,0),(56,0,0),(57,0,0),(58,0,0),(59,0,0),(60,0,0),(61,0,0),(62,0,0),(63,0,0),(64,0,0),(65,0,0),(66,0,0),(67,0,0),(68,0,0),(69,1,5);
+INSERT INTO `rating` VALUES (1,0,0),(2,0,0),(3,0,0),(4,0,0),(5,0,0),(6,0,0),(7,0,0),(8,0,0),(9,0,0),(10,0,0),(11,0,0),(12,0,0),(13,0,0),(14,6,4),(15,0,0),(16,0,0),(17,0,0),(18,0,0),(19,33,3),(20,0,0),(21,0,0),(22,0,0),(23,0,0),(24,0,0),(25,0,0),(26,0,0),(27,0,0),(28,0,0),(29,0,0),(30,0,0),(31,0,0),(32,0,0),(33,0,0),(34,0,0),(35,0,0),(36,0,0),(37,0,0),(38,0,0),(39,0,0),(40,0,0),(41,0,0),(42,0,0),(43,0,0),(44,0,0),(45,0,0),(46,0,0),(47,0,0),(48,0,0),(49,0,0),(50,0,0),(51,0,0),(52,0,0),(53,0,0),(54,0,0),(55,0,0),(56,0,0),(57,0,0),(58,0,0),(59,0,0),(60,0,0),(61,0,0),(62,0,0),(63,0,0),(64,0,0),(65,0,0),(66,0,0),(67,0,0),(68,0,0),(69,1,5);
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,6 +432,8 @@ CREATE TABLE `trial_user` (
   `user_name` varchar(20) NOT NULL,
   `password` varchar(45) NOT NULL,
   `display_name` varchar(45) NOT NULL,
+  `user_description` mediumtext NOT NULL,
+  `personal_picture_path` varchar(45) NOT NULL,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   `date_of_birth` date NOT NULL,
@@ -420,7 +459,7 @@ CREATE TABLE `trial_user` (
 
 LOCK TABLES `trial_user` WRITE;
 /*!40000 ALTER TABLE `trial_user` DISABLE KEYS */;
-INSERT INTO `trial_user` VALUES ('nero','123456','DeadNero','Nero','Wolfe','1934-05-30','nerowolfe@gmail.com','454 W. 35th Street','New York','10001','United_States_of_America','2017-06-08',1,'3');
+INSERT INTO `trial_user` VALUES ('nero','123456','DeadNero','','','Nero','Wolfe','1934-05-30','nerowolfe@gmail.com','454 W. 35th Street','New York','10001','UNITED_STATES_OF_AMERICA','2017-06-08',1,'3');
 /*!40000 ALTER TABLE `trial_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -456,4 +495,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-12 21:10:49
+-- Dump completed on 2017-05-15 13:29:17

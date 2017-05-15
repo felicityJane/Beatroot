@@ -2,6 +2,7 @@ package musicplayer.controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
@@ -24,6 +25,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import musicplayer.*;
 import musicplayer.model.Album;
@@ -52,11 +54,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class WelcomeMenuController implements Initializable {
 
@@ -93,6 +96,8 @@ public class WelcomeMenuController implements Initializable {
     @FXML private Circle btnDownload;
     @FXML private Circle btnLogOut;
     @FXML private Label lblRating;
+    @FXML private Circle btnPen;
+    private String userDisplayName;
     private Media media;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView;
@@ -123,6 +128,7 @@ public class WelcomeMenuController implements Initializable {
         Image img2 = new Image("images/PauseNormal.jpg");
         btnPause.setFill(new ImagePattern(img2));
         tglLoop.setText("⟳");
+        readUserFromBinaryFile();
         /*String css = this.getClass().getResource("/musicplayer/css/welcomePage.css").toExternalForm();
         welcomeRootAnchor.getStylesheets().add(css);*/
 
@@ -132,7 +138,7 @@ public class WelcomeMenuController implements Initializable {
         imgProfilePicture.setImage(new Image("images/Konachan.jpg"));
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
         imgMain.setEffect(dropShadow);
-        lblDisplayName.setText(db_connector.search("display_name", "premium_user", "user_name = 'Misstery'") + "!");
+        lblDisplayName.setText(" " + userDisplayName + "!");
         imgSearchIcon.setImage(new Image("images/SearchIcon.png"));
         imgSearchUser.setImage(new Image("images/SearchIcon.png"));
         lblNoMatchesFound.setText("");
@@ -140,7 +146,12 @@ public class WelcomeMenuController implements Initializable {
         btnDownload.setFill(new ImagePattern(img3));
         Image img4 = new Image("images/log-off-icon.png");
         btnLogOut.setFill(new ImagePattern(img4));
-        progressDownload.setVisible(false);
+        Image img5 = new Image("images/pencil.png");
+        btnPen.setFill(new ImagePattern(img5));
+        Tooltip.install(
+                btnPen,
+                new Tooltip("Add a comment to the song")
+        );
 
         setImageNews();
         setImageSuggestions();
@@ -200,6 +211,15 @@ public class WelcomeMenuController implements Initializable {
             Scene scene = btnLogOut.getScene();
             scene.setCursor(Cursor.DEFAULT);
         });
+        btnPen.setOnMouseEntered(event -> {
+            Scene scene = btnPen.getScene();
+            scene.setCursor(Cursor.HAND);
+        });
+
+        btnPen.setOnMouseExited(event -> {
+            Scene scene = btnPen.getScene();
+            scene.setCursor(Cursor.DEFAULT);
+        });
 
         imgRating.setOnMouseEntered(event -> {
             Scene scene = imgSearchIcon.getScene();
@@ -246,7 +266,7 @@ public class WelcomeMenuController implements Initializable {
 
         for (Node n : welcomeRootAnchor.getChildren()) {
 
-            if (n instanceof ImageView){
+            if (n instanceof ImageView && n != imgSearchIcon){
                 n.setOnMouseClicked(event -> {
                     if (event.getButton() == MouseButton.SECONDARY){
                         ImageView im = (ImageView) event.getSource();
@@ -556,6 +576,8 @@ public class WelcomeMenuController implements Initializable {
             String songUrl = db_connector.search("track_url", "music_track",
                     "track_name = " + "'" + selectedItem.replaceAll("'", "''") + "'");
             MusicTrack mt = new MusicTrack(selectedItem, songUrl);
+            mt.setID(Integer.parseInt(db_connector.search("track_id", "music_track", "track_name = '" +
+                    selectedItem.replaceAll("'", "''") + "'")));
             trackPlaying = mt;
             currentSongRating = new Rating(mt);
             int ratingId = Integer.parseInt(db_connector.search("rating_id", "music_track",
@@ -672,7 +694,6 @@ public class WelcomeMenuController implements Initializable {
             input.close();
         } catch (Exception fe) {
             System.out.println("It does not find the file but it's okay.");
-            fe.printStackTrace();
 //            imgNoConnection.setVisible(true);
 //            lblNoConnection2.setVisible(true);
 //            lblNoConnection1.setVisible(true);
@@ -708,6 +729,7 @@ public class WelcomeMenuController implements Initializable {
         artistName = db_connector.search("stage_name", "music_artist", "artist_id = " + artistName);
 
         MusicTrack mt = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+        mt.setID(musicId);
         tempArray.add(mt);
 
         for (int i = 0; i < 15; i++) {
@@ -719,6 +741,7 @@ public class WelcomeMenuController implements Initializable {
                                 + Integer.toString(musicId)));
                 if (musicId != 0) {
                     MusicTrack mt1 = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+                    mt1.setID(musicId);
                     tempArray.add(mt1);
                 }
             } catch (NumberFormatException ne) {
@@ -842,6 +865,7 @@ public class WelcomeMenuController implements Initializable {
         artistName = db_connector.search("stage_name", "music_artist", "artist_id = " + artistName);
 
         MusicTrack mt = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+        mt.setID(musicId);
         tempArray.add(mt);
 
         for (int i = 0; i < 15; i++) {
@@ -853,6 +877,7 @@ public class WelcomeMenuController implements Initializable {
                                 + Integer.toString(musicId)));
                 if (musicId != 0) {
                     MusicTrack mt1 = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+                    mt1.setID(musicId);
                     tempArray.add(mt1);
                 }
             } catch (NumberFormatException ne) {
@@ -990,6 +1015,7 @@ public class WelcomeMenuController implements Initializable {
 
 
                 MusicTrack mt = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+                mt.setID(musicId);
                 tempArray.add(mt);
 
                 for (int i = 0; i < 15; i++) {
@@ -1001,6 +1027,7 @@ public class WelcomeMenuController implements Initializable {
                                         + Integer.toString(musicId)));
                         if (musicId != 0) {
                             MusicTrack mt1 = new MusicTrack(db_connector.search("track_name", "music_track", "track_id = " + musicId), db_connector.search("track_url", "music_track", "track_id = " + musicId));
+                            mt1.setID(musicId);
                             tempArray.add(mt1);
                         }
                     } catch (NumberFormatException ne) {
@@ -1045,10 +1072,26 @@ public class WelcomeMenuController implements Initializable {
                     mediaPlayer.stop();
                     media = new Media(url.toString());
                     mediaPlayer = new MediaPlayer(media);
-                    sliderVolume.setValue(mediaPlayer.getVolume() * 100);
-                    connector = new Server_Connector(url.toString(), url);
-                    progressDownload.visibleProperty().bind(connector.runningProperty());
-                    connector.restart();
+                    sliderVolume.setValue(mediaPlayer.getVolume() * 100); File dir = new File("tmp");
+                    File[] matches = dir.listFiles(new FilenameFilter()
+                    {
+                        public boolean accept(File dir, String name)
+                        {
+                            return name.startsWith(url.toString().substring(36).replaceAll("%20", " ")) && name.endsWith(".mp3");
+                        }
+                    });
+                    if (matches.length == 0) {
+                        try {
+                            connector = new Server_Connector(url.toString(), url);
+                            progressDownload.visibleProperty().bind(connector.runningProperty());
+                            connector.restart();
+                        } catch (Exception ex) {
+                            System.out.println("Exception caught at line 872");
+//                    imgNoConnection.setVisible(true);
+//                    lblNoConnection2.setVisible(true);
+//                    lblNoConnection1.setVisible(true);
+                        }
+                    }
                     Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
                     runMediaPlayer(path);
                 } catch (Exception ex) {
@@ -1175,10 +1218,26 @@ public class WelcomeMenuController implements Initializable {
             mediaPlayer.stop();
             media = new Media(url.toString());
             mediaPlayer = new MediaPlayer(media);
-            sliderVolume.setValue(mediaPlayer.getVolume() * 100);
-            connector = new Server_Connector(url.toString(), url);
-            progressDownload.visibleProperty().bind(connector.runningProperty());
-            connector.restart();
+            sliderVolume.setValue(mediaPlayer.getVolume() * 100); File dir = new File("tmp");
+            File[] matches = dir.listFiles(new FilenameFilter()
+            {
+                public boolean accept(File dir, String name)
+                {
+                    return name.startsWith(url.toString().substring(36).replaceAll("%20", " ")) && name.endsWith(".mp3");
+                }
+            });
+            if (matches.length == 0) {
+                try {
+                    connector = new Server_Connector(url.toString(), url);
+                    progressDownload.visibleProperty().bind(connector.runningProperty());
+                    connector.restart();
+                } catch (Exception ex) {
+                    System.out.println("Exception caught at line 872");
+//                    imgNoConnection.setVisible(true);
+//                    lblNoConnection2.setVisible(true);
+//                    lblNoConnection1.setVisible(true);
+                }
+            }
             Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
             runMediaPlayer(path);
         } catch (Exception ex) {
@@ -1238,6 +1297,38 @@ public class WelcomeMenuController implements Initializable {
             } catch (MalformedURLException me) {
                 me.printStackTrace();
             }
+        }
+    }
+
+    @FXML
+    private void onBtnPenPressed(MouseEvent e) {
+
+        writeMusicTrackToBinaryFile();
+        try {
+            SceneManager.sceneManager.openNewWindow(e, "view/commentWindow.fxml");
+        } catch (IOException ie) {
+            ie.printStackTrace();
+        }
+    }
+
+    private void writeMusicTrackToBinaryFile() {
+        try (FileOutputStream fs = new FileOutputStream("MusicTrack.bin"); ObjectOutputStream os = new ObjectOutputStream(fs)) {
+            os.writeObject(trackPlaying);
+        } catch (FileNotFoundException fe) {
+            DialogBoxManager.errorDialogBox("File not found", "File not found. Try again.");
+        } catch (IOException ie) {
+            DialogBoxManager.errorDialogBox("Cannot create file", "Error with creating file.");
+        }
+    }
+
+    private void readUserFromBinaryFile() {
+
+        try {
+            Path path = Paths.get("UserName.bin");
+            java.util.List<String> userInfo = Files.readAllLines(path);
+            userDisplayName = userInfo.get(2);
+        } catch (IOException ie) {
+            DialogBoxManager.errorDialogBox("Cannot read user info", "Cannot access user info from UserName.bin");
         }
     }
 

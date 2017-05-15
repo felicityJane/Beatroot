@@ -1,9 +1,10 @@
 package musicplayer.model;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.util.ArrayList;
 
-public class MusicTrack {
+public class MusicTrack implements Serializable {
 
 	private int ID;
 	private String trackName;
