@@ -119,6 +119,7 @@ public class AdminSignUpController implements Initializable {
 									+ sdf.format(admin.getStartDate()) + "','" + admin.getWage() + "','"
 									+ admin.getContractHours() + "','" + admin.getGender().ordinal() + "','"
 									+ admin.getStaffID() + "')");
+					// connector.insert(("playlist()");
 					// System.out.println("('" + admin.getStaffID() + "', '" +
 					// admin.getUserName() + "','"
 					// + admin.getPassword() + "','" + admin.getDisplayName() +
