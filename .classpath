@@ -2,5 +2,10 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="commons-io-2.5-javadoc.jar"/>
+	<classpathentry kind="lib" path="commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="mysql-connector-java-5.1.28-bin.jar"/>
+	<classpathentry kind="lib" path="tika-core-1.4.jar"/>
+	<classpathentry kind="lib" path="tika-parsers-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
