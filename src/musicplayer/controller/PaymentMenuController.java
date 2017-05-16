@@ -54,11 +54,11 @@ public class PaymentMenuController implements Initializable{
         try {
             Path path = Paths.get("PremiumUserInfo.bin");
             ArrayList<String> trialUserInfo = (ArrayList<String>) Files.readAllLines(path);
-            phoneNumber.setText(trialUserInfo.get(13));
-            billingAddress.setText(trialUserInfo.get(7));
-            billingCity.setText(trialUserInfo.get(8));
-            billingPostalCode.setText(trialUserInfo.get(9));
-            countryBox.setValue(trialUserInfo.get(10));
+            phoneNumber.setText(trialUserInfo.get(15));
+            billingAddress.setText(trialUserInfo.get(9));
+            billingCity.setText(trialUserInfo.get(10));
+            billingPostalCode.setText(trialUserInfo.get(11));
+            countryBox.setValue(trialUserInfo.get(12));
         }catch (Exception e){
             DialogBoxManager.errorDialogBox("Error occurred","GetAddress");
             e.printStackTrace();
@@ -74,16 +74,18 @@ public class PaymentMenuController implements Initializable{
             String userName=trialUserInfo.get(0);
             String password=trialUserInfo.get(1);
             String displayName=trialUserInfo.get(2);
-            String firstName=trialUserInfo.get(3);
-            String lastName=trialUserInfo.get(4);
-            String birthDay=trialUserInfo.get(5);
-            String email=trialUserInfo.get(6);
-            String physicalAddress=trialUserInfo.get(7);
-            String cityOfResidence=trialUserInfo.get(8);
-            String postalCode=trialUserInfo.get(9);
+            String userDescription=trialUserInfo.get(3);
+            String userImage=trialUserInfo.get(4);
+            String firstName=trialUserInfo.get(5);
+            String lastName=trialUserInfo.get(6);
+            String birthDay=trialUserInfo.get(7);
+            String email=trialUserInfo.get(8);
+            String physicalAddress=trialUserInfo.get(9);
+            String cityOfResidence=trialUserInfo.get(10);
+            String postalCode=trialUserInfo.get(11);
             String country=countryBox.getValue();
-            String genderId=trialUserInfo.get(11);
-            String playListLink=trialUserInfo.get(12);
+            String genderId=trialUserInfo.get(13);
+            String playListLink=trialUserInfo.get(14);
             String cardHolder=cardHolderName.getText().toLowerCase();
             long bankCardNum=Long.parseLong(bankCardNumber.getText());
             String phoneNum=phoneNumber.getText();
@@ -131,14 +133,14 @@ public class PaymentMenuController implements Initializable{
 
           DB_Connector connector=new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
             connector.insert("user_link(user)","('"+userName+"')");
-            connector.insert("premium_user(user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, bank_card_number, expiration_date, card_type, billing_account_owner_name, billing_address, billing_city, billing_postal_code,billing_country,billing_phone_number, gender_gender_id, playlist_link)", "('"+userName+"','"+password+"','"+displayName+"','"+firstName+"','"+lastName+"','"+birthDay+"','"+email+"','"+physicalAddress+"','"+cityOfResidence+"','"+postalCode+"','"+country+"','"+bankCardNum+"','"+expritationDate+"','"+cardType+"','"+cardHolder+"','"+billingAdd+"','"+billingCit+"','"+billingPostalCod+"','"+country+"','"+phoneNum+"','"+genderId+"','"+playListLink+"')");
+            connector.insert("premium_user(user_name, password,display_name,user_description,personal_picture_path, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, bank_card_number, expiration_date, card_type, billing_account_owner_name, billing_address, billing_city, billing_postal_code,billing_country,billing_phone_number, gender_gender_id, playlist_link)", "('"+userName+"','"+password+"','"+displayName+"','"+userDescription+"','"+userImage+"','"+firstName+"','"+lastName+"','"+birthDay+"','"+email+"','"+physicalAddress+"','"+cityOfResidence+"','"+postalCode+"','"+country+"','"+bankCardNum+"','"+expritationDate+"','"+cardType+"','"+cardHolder+"','"+billingAdd+"','"+billingCit+"','"+billingPostalCod+"','"+country+"','"+phoneNum+"','"+genderId+"','"+playListLink+"')");
 
 
             try {
                 Path path1 = Paths.get("UserName.bin");
                 ArrayList<String> premiumUserName=new ArrayList<>();
                 premiumUserName.add(0,userName);
-                premiumUserName.add(1,"PremiumUser");
+                premiumUserName.add(1,"Premium");
 
                 Files.write(path1,premiumUserName, StandardOpenOption.CREATE);
 

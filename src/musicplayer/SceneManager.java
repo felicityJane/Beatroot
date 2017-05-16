@@ -33,7 +33,7 @@ public class SceneManager {
                 @Override
                 public void run() {
 
-                    File file = new File("tmp/");
+                    File file = new File("tmp");
                     for (File f : file.listFiles()) {
                         if (!f.isDirectory()) {
                             f.delete();
@@ -64,14 +64,14 @@ public class SceneManager {
             }
         });
     }
-    public void openPopupScene(Event e, String fxmlFileName ) throws IOException {
-        Node node = (Node)e.getSource();
-        Stage stage = (Stage)node.getScene().getWindow();
+    public void openPopupScene(Event event, String fxmlFileName ) throws IOException {
+        Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
         Scene scene = new Scene(root);
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
         stage.centerOnScreen();
 
     }

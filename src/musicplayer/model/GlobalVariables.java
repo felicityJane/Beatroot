@@ -26,6 +26,7 @@ public class GlobalVariables {
     @FXML private SignUpMenuController signUpMenuController;
     @FXML private SongPageController songPageController;
     @FXML private WelcomeMenuController welcomeMenuController;
+    @FXML private UserDescriptionController userDescriptionController;
 
 
     public void setAlbum(Album album) {
@@ -146,5 +147,13 @@ public class GlobalVariables {
 
     public void setWelcomeMenuController(WelcomeMenuController welcomeMenuController) {
         this.welcomeMenuController = welcomeMenuController;
+    }
+
+    public UserDescriptionController getUserDescriptionController() {
+        return userDescriptionController;
+    }
+
+    public void setUserDescriptionController(UserDescriptionController userDescriptionController) {
+        this.userDescriptionController = userDescriptionController;
     }
 }

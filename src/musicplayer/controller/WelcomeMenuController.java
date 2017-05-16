@@ -170,6 +170,13 @@ public class WelcomeMenuController implements Initializable {
             Scene scene = imgSearchIcon.getScene();
             scene.setCursor(Cursor.DEFAULT);
         });
+        lblDisplayName.setOnMouseClicked(event -> {
+            try {
+                SceneManager.sceneManager.openPopupScene(event,"view/userDescription.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
         btnDownload.setOnMouseEntered(event -> {
             Scene scene = btnDownload.getScene();
