@@ -78,22 +78,7 @@ public class SceneManager {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
         stage.centerOnScreen();
-        stage.setOnCloseRequest(event ->  {
 
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-
-                    File file = new File("tmp");
-                    for (File f : file.listFiles()) {
-                        if (!f.isDirectory()) {
-                            f.delete();
-                        }
-                    }
-                }
-
-            });
-        });
 
     }
     public void popUpWindow(Event e, String fxmlFileName) throws IOException{
