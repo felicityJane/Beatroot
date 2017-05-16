@@ -22,8 +22,7 @@ import java.util.ResourceBundle;
 public class ArtistPageController implements Initializable {
     @FXML private AnchorPane artistPageAnchorPane;
     @FXML private ImageView imageView;
-    @FXML private Label albumLabel, artistLabel;
-    @FXML private ListView<String> listView;
+    @FXML private Label albumLabel, artistLabel, descriptionLabel;
     private URL url;
     private DB_Connector db_connector = new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
     private Server_Connector connector;
@@ -38,23 +37,28 @@ public class ArtistPageController implements Initializable {
         getAlbumInfo();
     }
     public void getAlbumInfo() {
-        int counter = 0;
         album = globalVariables.getAlbum();
         musicTracks = globalVariables.getMusicTracks();
+        musicArtist = globalVariables.getMusicArtist();
+
         imageView.setImage(album.getAlbumCover());
-        albumLabel.setText("Album: " + album.getAlbumName());
-        listView.getItems().clear();
-        for (MusicTrack m : musicTracks) {
-            counter++;
-            String string = String.format("Track" + counter + " : " + "%-20s", m.getTrackName());
-            int trackId = m.getID();
-            musicArtist = db_connector.getArtistDetails(trackId);
-            globalVariables.setMusicArtist(musicArtist);
-            listView.getItems().add(string);
-            artistLabel.setText("Artist: " + musicArtist.getStageName());
-        }
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
         imageView.setEffect(dropShadow);
+
+        albumLabel.setText(String.format("Album : %-20s" , album.getAlbumName()));
+        albumLabel.getStyleClass().add("albumText");
+        artistLabel.setText(String.format("Artist : %-20s" , musicArtist.getStageName()));
+        artistLabel.getStyleClass().add("artistText");
+        StringBuilder sb = new StringBuilder(musicArtist.getArtistDescription());
+
+        int i = 0;
+        while ((i = sb.indexOf(" ", i + 30)) != -1) {
+            sb.replace(i, i + 1, "\n");
+        }
+        descriptionLabel.setText(String.format("%-20s",String.valueOf(sb)));
+        descriptionLabel.getStyleClass().add("descriptionText");
+
+
     }
 
 }

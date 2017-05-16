@@ -1,10 +1,11 @@
 package musicplayer.model;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.util.ArrayList;
 
 
-public class Playlist {
+public class Playlist implements Serializable {
 
 	private String name;
 	private int numberOfEntries = 0, id;
@@ -60,7 +61,7 @@ public class Playlist {
 
 	public void addMusicTracks(MusicTrack t) {
 		musicTracks.add(t);
-		updateDuration();
+		//updateDuration();
 	}
 
 	// TODO ask how to sum duration

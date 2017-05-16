@@ -1,5 +1,4 @@
 package musicplayer.controller;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
+import musicplayer.controller.MainMenuController;
 import musicplayer.model.Country;
 import musicplayer.model.GlobalVariables;
 
@@ -48,12 +48,12 @@ public class SignUpMenuController implements Initializable {
 	@FXML
 	private ComboBox<Integer> dayBox, monthBox, yearBox;
 
-@Override
-public void initialize(URL location, ResourceBundle resources) {
-        GlobalVariables globalVariables = GlobalVariables.getInstance();
-        globalVariables.setSignUpMenuController(this);
-        globalVariables.getMainMenuController().menuBarFitToParent(signUpParentAnchorPane);
-        lblLogIn.setOnMouseEntered(event ->  {
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		GlobalVariables globalVariables = GlobalVariables.getInstance();
+		globalVariables.setSignUpMenuController(this);
+		globalVariables.getMainMenuController().menuBarFitToParent(signUpParentAnchorPane);
+		lblLogIn.setOnMouseEntered(event ->  {
 
 			Scene scene = lblLogIn.getScene();
 			scene.setCursor(Cursor.HAND);
@@ -193,8 +193,8 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
 				connector.checkPremiumUserName(userNam, warningText, event);
 
 			}
+			Path path = Paths.get("PremiumUserInfo.bin");
 			ArrayList<String> premiumUserInfo = new ArrayList<>();
-            Path path = Paths.get("PremiumUserInfo.bin");
 			try {
 				premiumUserInfo.add(0, userNam);
 				premiumUserInfo.add(1, userPass);

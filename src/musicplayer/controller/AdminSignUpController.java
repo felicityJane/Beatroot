@@ -1,17 +1,5 @@
 package musicplayer.controller;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.util.StringConverter;
-import musicplayer.DB_Connector;
-import musicplayer.DialogBoxManager;
-import musicplayer.SceneManager;
-import musicplayer.model.Administrator;
-import musicplayer.model.Country;
-import musicplayer.model.Gender;
-
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -19,6 +7,23 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.util.StringConverter;
+import musicplayer.DB_Connector;
+import musicplayer.DialogBoxManager;
+import musicplayer.SceneManager;
+import musicplayer.model.Administrator;
+import musicplayer.model.Country;
+import musicplayer.model.Gender;
 
 public class AdminSignUpController implements Initializable {
 
@@ -114,6 +119,7 @@ public class AdminSignUpController implements Initializable {
 									+ sdf.format(admin.getStartDate()) + "','" + admin.getWage() + "','"
 									+ admin.getContractHours() + "','" + admin.getGender().ordinal() + "','"
 									+ admin.getStaffID() + "')");
+					// connector.insert(("playlist()");
 					// System.out.println("('" + admin.getStaffID() + "', '" +
 					// admin.getUserName() + "','"
 					// + admin.getPassword() + "','" + admin.getDisplayName() +

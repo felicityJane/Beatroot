@@ -1,159 +1,208 @@
 package musicplayer.model;
 
-import javafx.fxml.FXML;
-import musicplayer.controller.*;
 import java.util.ArrayList;
+
+import javafx.fxml.FXML;
+import musicplayer.controller.AboutPageController;
+import musicplayer.controller.AlbumPageController;
+import musicplayer.controller.ArtistPageController;
+import musicplayer.controller.FAQsPageController;
+import musicplayer.controller.LogInMenuController;
+import musicplayer.controller.MainMenuController;
+import musicplayer.controller.PaymentMenuController;
+import musicplayer.controller.SettingsPageController;
+import musicplayer.controller.SignUpMenuController;
+import musicplayer.controller.SongPageController;
+import musicplayer.controller.WelcomeMenuController;
 
 public class GlobalVariables {
 
-    private final static GlobalVariables instance = new GlobalVariables();
+	private final static GlobalVariables instance = new GlobalVariables();
 
-    public static GlobalVariables getInstance(){
-        return instance;
-    }
-    private Album album;
-    private String albumCover;
-    private ArrayList<MusicTrack> musicTracks;
-    private MusicArtist musicArtist;
-    @FXML private AboutPageController aboutPageController;
-    @FXML private AlbumPageController albumPageController;
-    @FXML private ArtistPageController artistPageController;
-    @FXML private FAQsPageController faQsPageController;
-    @FXML private LogInMenuController logInMenuController;
-    @FXML private MainMenuController mainMenuController;
-    @FXML private PaymentMenuController paymentMenuController;
-    @FXML private SettingsPageController settingsPageController;
-    @FXML private SignUpMenuController signUpMenuController;
-    @FXML private SongPageController songPageController;
-    @FXML private WelcomeMenuController welcomeMenuController;
-    @FXML private UserDescriptionController userDescriptionController;
+	public static GlobalVariables getInstance() {
+		return instance;
+	}
 
+	private Album album;
+	private String albumCover;
+	private MusicTrack musicTrack;
+	private ArrayList<MusicTrack> musicTracks;
+	private MusicArtist musicArtist;
+	private TrialUser trialuser;
+	private PremiumUser premiumUser;
+	private Administrator administrator;
+	@FXML
+	private AboutPageController aboutPageController;
+	@FXML
+	private AlbumPageController albumPageController;
+	@FXML
+	private ArtistPageController artistPageController;
+	@FXML
+	private FAQsPageController faQsPageController;
+	@FXML
+	private LogInMenuController logInMenuController;
+	@FXML
+	private MainMenuController mainMenuController;
+	@FXML
+	private PaymentMenuController paymentMenuController;
+	@FXML
+	private SettingsPageController settingsPageController;
+	@FXML
+	private SignUpMenuController signUpMenuController;
+	@FXML
+	private SongPageController songPageController;
+	@FXML
+	private WelcomeMenuController welcomeMenuController;
 
-    public void setAlbum(Album album) {
-        this.album = album;
-    }
+	public void setAlbum(Album album) {
+		this.album = album;
+	}
 
-    public Album getAlbum() {
-        return album;
-    }
+	public Album getAlbum() {
+		return album;
+	}
 
-    public String getAlbumCover() {
-        return albumCover;
-    }
+	public String getAlbumCover() {
+		return albumCover;
+	}
 
-    public void setAlbumCover(String albumCover) {
-        this.albumCover = albumCover;
-    }
+	public void setAlbumCover(String albumCover) {
+		this.albumCover = albumCover;
+	}
 
-    public ArrayList<MusicTrack> getMusicTracks() {
-        return musicTracks;
-    }
+	public MusicTrack getMusicTrack() {
+		return musicTrack;
+	}
 
-    public void setMusicTracks(ArrayList<MusicTrack> musicTracks) {
-        this.musicTracks = musicTracks;
-    }
+	public void setMusicTrack(MusicTrack musicTrack) {
+		this.musicTrack = musicTrack;
+	}
 
-    public MusicArtist getMusicArtist() {
-        return musicArtist;
-    }
+	public ArrayList<MusicTrack> getMusicTracks() {
+		return musicTracks;
+	}
 
-    public void setMusicArtist(MusicArtist musicArtist) {
-        this.musicArtist = musicArtist;
-    }
+	public void setMusicTracks(ArrayList<MusicTrack> musicTracks) {
+		this.musicTracks = musicTracks;
+	}
 
-    public MainMenuController getMainMenuController() {
-        return mainMenuController;
-    }
+	public MusicArtist getMusicArtist() {
+		return musicArtist;
+	}
 
-    public void setMainMenuController(MainMenuController mainMenuController) {
-        this.mainMenuController = mainMenuController;
-    }
+	public void setMusicArtist(MusicArtist musicArtist) {
+		this.musicArtist = musicArtist;
+	}
 
-    public SongPageController getSongPageController() {
-        return songPageController;
-    }
+	public MainMenuController getMainMenuController() {
+		return mainMenuController;
+	}
 
-    public void setSongPageController(SongPageController songPageController) {
-        this.songPageController = songPageController;
-    }
+	public void setMainMenuController(MainMenuController mainMenuController) {
+		this.mainMenuController = mainMenuController;
+	}
 
-    public AlbumPageController getAlbumPageController() {
-        return albumPageController;
-    }
+	public SongPageController getSongPageController() {
+		return songPageController;
+	}
 
-    public void setAlbumPageController(AlbumPageController albumPageController) {
-        this.albumPageController = albumPageController;
-    }
+	public void setSongPageController(SongPageController songPageController) {
+		this.songPageController = songPageController;
+	}
 
-    public AboutPageController getAboutPageController() {
-        return aboutPageController;
-    }
+	public AlbumPageController getAlbumPageController() {
+		return albumPageController;
+	}
 
-    public void setAboutPageController(AboutPageController aboutPageController) {
-        this.aboutPageController = aboutPageController;
-    }
+	public void setAlbumPageController(AlbumPageController albumPageController) {
+		this.albumPageController = albumPageController;
+	}
 
-    public ArtistPageController getArtistPageController() {
-        return artistPageController;
-    }
+	public AboutPageController getAboutPageController() {
+		return aboutPageController;
+	}
 
-    public void setArtistPageController(ArtistPageController artistPageController) {
-        this.artistPageController = artistPageController;
-    }
+	public void setAboutPageController(AboutPageController aboutPageController) {
+		this.aboutPageController = aboutPageController;
+	}
 
-    public FAQsPageController getFaQsPageController() {
-        return faQsPageController;
-    }
+	public ArtistPageController getArtistPageController() {
+		return artistPageController;
+	}
 
-    public void setFaQsPageController(FAQsPageController faQsPageController) {
-        this.faQsPageController = faQsPageController;
-    }
+	public void setArtistPageController(ArtistPageController artistPageController) {
+		this.artistPageController = artistPageController;
+	}
 
-    public LogInMenuController getLogInMenuController() {
-        return logInMenuController;
-    }
+	public FAQsPageController getFaQsPageController() {
+		return faQsPageController;
+	}
 
-    public void setLogInMenuController(LogInMenuController logInMenuController) {
-        this.logInMenuController = logInMenuController;
-    }
+	public void setFaQsPageController(FAQsPageController faQsPageController) {
+		this.faQsPageController = faQsPageController;
+	}
 
-    public PaymentMenuController getPaymentMenuController() {
-        return paymentMenuController;
-    }
+	public LogInMenuController getLogInMenuController() {
+		return logInMenuController;
+	}
 
-    public void setPaymentMenuController(PaymentMenuController paymentMenuController) {
-        this.paymentMenuController = paymentMenuController;
-    }
+	public void setLogInMenuController(LogInMenuController logInMenuController) {
+		this.logInMenuController = logInMenuController;
+	}
 
-    public SettingsPageController getSettingsPageController() {
-        return settingsPageController;
-    }
+	public PaymentMenuController getPaymentMenuController() {
+		return paymentMenuController;
+	}
 
-    public void setSettingsPageController(SettingsPageController settingsPageController) {
-        this.settingsPageController = settingsPageController;
-    }
+	public void setPaymentMenuController(PaymentMenuController paymentMenuController) {
+		this.paymentMenuController = paymentMenuController;
+	}
 
-    public SignUpMenuController getSignUpMenuController() {
-        return signUpMenuController;
-    }
+	public SettingsPageController getSettingsPageController() {
+		return settingsPageController;
+	}
 
-    public void setSignUpMenuController(SignUpMenuController signUpMenuController) {
-        this.signUpMenuController = signUpMenuController;
-    }
+	public void setSettingsPageController(SettingsPageController settingsPageController) {
+		this.settingsPageController = settingsPageController;
+	}
 
-    public WelcomeMenuController getWelcomeMenuController() {
-        return welcomeMenuController;
-    }
+	public SignUpMenuController getSignUpMenuController() {
+		return signUpMenuController;
+	}
 
-    public void setWelcomeMenuController(WelcomeMenuController welcomeMenuController) {
-        this.welcomeMenuController = welcomeMenuController;
-    }
+	public void setSignUpMenuController(SignUpMenuController signUpMenuController) {
+		this.signUpMenuController = signUpMenuController;
+	}
 
-    public UserDescriptionController getUserDescriptionController() {
-        return userDescriptionController;
-    }
+	public WelcomeMenuController getWelcomeMenuController() {
+		return welcomeMenuController;
+	}
 
-    public void setUserDescriptionController(UserDescriptionController userDescriptionController) {
-        this.userDescriptionController = userDescriptionController;
-    }
+	public void setWelcomeMenuController(WelcomeMenuController welcomeMenuController) {
+		this.welcomeMenuController = welcomeMenuController;
+	}
+
+	public Administrator getAdministrator() {
+		return administrator;
+	}
+
+	public void setAdministrator(Administrator administrator) {
+		this.administrator = administrator;
+	}
+
+	public PremiumUser getPremiumUser() {
+		return premiumUser;
+	}
+
+	public void setPremiumUser(PremiumUser premiumUser) {
+		this.premiumUser = premiumUser;
+	}
+
+	public TrialUser getTrialuser() {
+		return trialuser;
+	}
+
+	public void setTrialuser(TrialUser trialuser) {
+		this.trialuser = trialuser;
+	}
 }

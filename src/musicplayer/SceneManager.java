@@ -17,6 +17,7 @@ import java.io.IOException;
 public class SceneManager {
 
     public static SceneManager sceneManager = new SceneManager();
+    Main main = new Main();
 
     public void changeScene(Event e, String fxmlFileName ) throws IOException {
         Node node = (Node)e.getSource();
@@ -51,17 +52,21 @@ public class SceneManager {
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.centerOnScreen();
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
+        stage.setOnCloseRequest(event ->  {
 
-                File file = new File("tmp");
-                for (File f : file.listFiles()) {
-                    if (!f.isDirectory()) {
-                        f.delete();
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+
+                    File file = new File("tmp");
+                    for (File f : file.listFiles()) {
+                        if (!f.isDirectory()) {
+                            f.delete();
+                        }
                     }
                 }
-            }
+
+            });
         });
     }
     public void openPopupScene(Event event, String fxmlFileName ) throws IOException {
@@ -73,15 +78,34 @@ public class SceneManager {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
         stage.centerOnScreen();
+        stage.setOnCloseRequest(event ->  {
+
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+
+                    File file = new File("tmp");
+                    for (File f : file.listFiles()) {
+                        if (!f.isDirectory()) {
+                            f.delete();
+                        }
+                    }
+                }
+
+            });
+        });
 
     }
     public void popUpWindow(Event e, String fxmlFileName) throws IOException{
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        main.addCSS(scene);
         stage.setTitle("Beatroot");
+        stage.setScene(scene);
         stage.show();
         stage.centerOnScreen();
+
     }
     public void changeSceneMenuItem(AnchorPane anchorPane, String fxmlFileName) throws IOException {
         Stage stage = (Stage) anchorPane.getScene().getWindow();
@@ -90,19 +114,54 @@ public class SceneManager {
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.centerOnScreen();
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
+        stage.setOnCloseRequest(event ->  {
 
-                File file = new File("tmp");
-                for (File f : file.listFiles()) {
-                    if (!f.isDirectory()) {
-                        f.delete();
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+
+                    File file = new File("tmp");
+                    for (File f : file.listFiles()) {
+                        if (!f.isDirectory()) {
+                            f.delete();
+                        }
                     }
                 }
-            }
+
+            });
         });
 
     }
+
+    public void openNewWindow(Event e, String fxmlFileName, String title) throws IOException {
+        try {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
+            stage.setTitle(title);
+            stage.setScene(new Scene((root)));
+            stage.show();
+            stage.centerOnScreen();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    public Stage openNewWindowReturnStage(Event e, String fxmlFileName, String title) throws IOException {
+
+        Stage stage;
+        try {
+            stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
+            stage.setTitle(title);
+            stage.setScene(new Scene((root)));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+            stage.centerOnScreen();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+            stage = null;
+        }
+        return stage;
+    }
+
 
 }

@@ -1,4 +1,17 @@
 
- .blueBackground{
- -fx-background-color: #f5d6dd;
+ .greyBackground{
+ -fx-background-color: linear-gradient(#dc9556, #ab4642);
+ }
+ .albumText{
+ -fx-font-weight: bold;
+ -fx-font-size: 14;
+ -fx-text-fill: #71767c;
+ }
+  .artistText{
+  -fx-font-weight: bold;
+  -fx-font-size: 12;
+  -fx-text-fill: #71767c;
+ }
+ .descriptionText{
+   -fx-text-fill: #71767c;
  }

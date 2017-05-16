@@ -1,22 +1,27 @@
 package musicplayer.controller;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import musicplayer.DB_Connector;
+import musicplayer.SceneManager;
 import musicplayer.Server_Connector;
 import musicplayer.model.Album;
 import musicplayer.model.GlobalVariables;
 import musicplayer.model.MusicArtist;
 import musicplayer.model.MusicTrack;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 
 public class AlbumPageController implements Initializable {
     @FXML private AnchorPane albumPageAnchorPane;
@@ -28,32 +33,85 @@ public class AlbumPageController implements Initializable {
     private Server_Connector connector;
     private Album album;
     private MusicArtist musicArtist;
+    private MusicTrack musicTrack;
     private ArrayList<MusicTrack> musicTracks;
     GlobalVariables globalVariables = GlobalVariables.getInstance();
+    int counter = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         globalVariables.setAlbumPageController(this);
+        listView.getItems().clear();
         getAlbumInfo();
+        popUpMenuSongPage();
+        popUpMenuArtistPage();
     }
 
     public void getAlbumInfo(){
-        int counter = 0;
+
         album = globalVariables.getAlbum();
         musicTracks = globalVariables.getMusicTracks();
+
         imageView.setImage(album.getAlbumCover());
-        albumLabel.setText("Album: " + album.getAlbumName());
-        listView.getItems().clear();
-        for (MusicTrack m: musicTracks) {
-            counter++;
-            String string = String.format("Track" + counter + " : " + "%-20s", m.getTrackName());
-            int trackId = m.getID();
-            musicArtist = db_connector.getArtistDetails(trackId);
-            globalVariables.setMusicArtist(musicArtist);
-            listView.getItems().add(string);
-            artistLabel.setText("Artist: " + musicArtist.getStageName());
-        }
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
         imageView.setEffect(dropShadow);
+
+        albumLabel.setText("Album: " + album.getAlbumName());
+        albumLabel.getStyleClass().add("albumText");
+
+        for (MusicTrack m: musicTracks) {
+            counter++;
+            int trackId = m.getID();
+            db_connector.getArtistDetails(trackId);
+            musicArtist = globalVariables.getMusicArtist();
+            artistLabel.setText("Artist: " + musicArtist.getStageName());
+            artistLabel.getStyleClass().add("artistText");
+            globalVariables.setMusicTrack(m);
+            listView.getItems().add(String.format("Track " + counter + " : " +  " %-20s",m.getTrackName()));
+        }
+    }
+    private void popUpMenuSongPage(){
+        final ContextMenu contextMenu = new ContextMenu();
+        final MenuItem songPage = new MenuItem("See song info");
+        contextMenu.getItems().addAll(songPage);
+        SceneManager sceneManager = new SceneManager();
+        for (Node n : albumPageAnchorPane.getChildren()) {
+
+            if (n instanceof ListView ) {
+                n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
+            }
+        }
+        songPage.setOnAction(event -> {
+            try {
+                globalVariables.getMusicTrack().setTrackName(listView.getSelectionModel().getSelectedItem());
+                Stage stage = (Stage) albumPageAnchorPane.getScene().getWindow();
+                stage.close();
+                sceneManager.popUpWindow(event, "view/songPage.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+    private void popUpMenuArtistPage(){
+        final ContextMenu contextMenu = new ContextMenu();
+        final MenuItem artistPage = new MenuItem("See artist info");
+        contextMenu.getItems().addAll(artistPage);
+        SceneManager sceneManager = new SceneManager();
+        for (Node n : albumPageAnchorPane.getChildren()) {
+
+            if (n instanceof ImageView ) {
+                n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
+            }
+        }
+        artistPage.setOnAction(event -> {
+            try {
+                Stage stage = (Stage) albumPageAnchorPane.getScene().getWindow();
+                stage.close();
+                sceneManager.popUpWindow(event, "view/artistPage.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 }

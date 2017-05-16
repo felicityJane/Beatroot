@@ -1,11 +1,6 @@
 package musicplayer;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import musicplayer.model.*;
 
+import java.beans.PropertyEditorManager;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,18 +8,32 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.ArrayList;
+import java.sql.Date;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import musicplayer.model.*;
 
 public class DB_Connector {
-
 	private String urlOfDatabase;
 	private Statement statement;
 	private Connection connection;
 	private ResultSet resultSet;
-	// private Administrator admin;
-	// private TrialUser trialUser;
-	// private PremiumUser premiumUser;
-	private User user;
+	private Administrator administrator;
+	private TrialUser trialUser;
+	private PremiumUser premiumUser;
+	private GlobalVariables globalVariables = GlobalVariables.getInstance();
 
 	public DB_Connector(String urlOfDatabase) {
 
@@ -127,6 +136,15 @@ public class DB_Connector {
 
 					Files.write(path, userNameAndType, StandardOpenOption.CREATE);
 
+					TrialUser trialUser = new TrialUser(rs.getString(1), rs.getString(3), rs.getString(2),
+							rs.getString(6), rs.getString(7), rs.getDate(8), rs.getString(9), rs.getString(11),
+							rs.getString(12), rs.getString(13), Country.fromString(rs.getString(14)),
+							Gender.fromString(rs.getString(16)), rs.getString(10), rs.getDate(15));
+					globalVariables.setTrialuser(trialUser);
+					globalVariables.setPremiumUser(null);
+					globalVariables.setAdministrator(null);
+
+
 					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
 
 				} else {
@@ -158,10 +176,24 @@ public class DB_Connector {
 					ArrayList<String> userNameAndType = new ArrayList<>();
 					userNameAndType.add(0, userName);
 					userNameAndType.add(1, "Premium");
+					userNameAndType.add(2, rs.getString(3));
 
 					Files.write(path, userNameAndType, StandardOpenOption.CREATE);
 
+					PremiumUser premiumUser = new PremiumUser(rs.getString(1), rs.getString(3), rs.getString(2),
+							rs.getString(6), rs.getString(7), rs.getDate(8),
+							rs.getString(9), rs.getString(11), rs.getString(12),
+							rs.getString(13), Country.fromString(rs.getString(14)),
+							Gender.values()[Integer.parseInt(rs.getString(24))], rs.getString(10), rs.getString(15),
+							rs.getDate(16), PaymentMethod.valueOf(rs.getString(17).toUpperCase()), rs.getString(18),
+							rs.getString(19), rs.getString(20), rs.getString(21), Country.fromString(rs.getString(22)),
+							rs.getString(23));
+					globalVariables.setPremiumUser(premiumUser);
+					globalVariables.setAdministrator(null);
+					globalVariables.setTrialuser(null);
+
 					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
+
 
 				} else {
 					warningLabel.setText("Invalid username or password!!");
@@ -194,6 +226,7 @@ public class DB_Connector {
 
 	public void checkPremiumUserName(String userName, Label warningLabel, ActionEvent event) {
 		try {
+
 			ResultSet rs = statement.executeQuery("SELECT user FROM user_link WHERE user='" + userName + "'");
 			if (rs.next()) {
 				warningLabel.setText("Username is already taken");
@@ -232,10 +265,6 @@ public class DB_Connector {
 		return urlOfDatabase;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
 	/**
 	 * @author Viktor
 	 */
@@ -262,7 +291,7 @@ public class DB_Connector {
 
 			if (resultSet.next()) {
 				if (password.equals(resultSet.getString(3))) {
-					System.out.println(Gender.fromString(resultSet.getString(20)));
+					System.out.println(Gender.fromString(resultSet.getString(22)));
 					// ResultSet rs = statement.executeQuery(
 					// "select gender.gender from gender left join administrator
 					// on gender.gender_id=administrator.gender_gender_id where
@@ -272,23 +301,28 @@ public class DB_Connector {
 					// Gender gender = Gender.fromString(rs.getString(1));
 					// System.out.println(gender.toString());
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					this.user = new Administrator(resultSet.getString(1), resultSet.getString(2),
-							resultSet.getString(4), resultSet.getString(3), resultSet.getString(5),
-							resultSet.getString(6), resultSet.getDate(7), resultSet.getString(8),
-							resultSet.getString(9), resultSet.getString(10), resultSet.getString(11),
-							Country.fromString(resultSet.getString(12)), Gender.fromString(resultSet.getString(20)),
-							resultSet.getString(13), resultSet.getDate(14), resultSet.getFloat(15),
-							resultSet.getFloat(16));
-					System.out.println(getUser());
-					System.out.println("('" + ((Administrator) user).getStaffID() + "', '" + user.getUserName() + "','"
-							+ user.getPassword() + "','" + user.getDisplayName() + "','" + user.getFirstName() + "','"
-							+ user.getLastName() + "','" + sdf.format(user.getDateOfBirth()) + "','"
-							+ user.getEmailAddress() + "','" + user.getPhysicalAddress().getStreetNameAndNumber()
-							+ "','" + user.getCityOfResidence() + "','" + user.getPostalCode() + "','"
-							+ user.getCountry() + "','" + user.getPhoneNumber() + "','"
-							+ sdf.format(((Administrator) user).getStartDate()) + "','"
-							+ ((Administrator) user).getWage() + "','" + ((Administrator) user).getContractHours()
-							+ "','" + user.getGender().ordinal() + "','" + ((Administrator) user).getStaffID() + "')");
+					administrator = new Administrator(resultSet.getString(1), resultSet.getString(2),
+							resultSet.getString(4), resultSet.getString(3), resultSet.getString(7),
+							resultSet.getString(8), resultSet.getDate(9), resultSet.getString(10),
+							resultSet.getString(11), resultSet.getString(12), resultSet.getString(13),
+							Country.fromString(resultSet.getString(14)), Gender.fromString(resultSet.getString(22)),
+							resultSet.getString(15), resultSet.getDate(16), resultSet.getFloat(17),
+							resultSet.getFloat(18));
+					System.out.println(getAdministrator());
+					System.out.println("('" + administrator.getStaffID() + "', '" + administrator.getUserName() + "','"
+							+ administrator.getPassword() + "','" + administrator.getDisplayName() + "','"
+							+ administrator.getFirstName() + "','" + administrator.getLastName() + "','"
+							+ sdf.format(administrator.getDateOfBirth()) + "','" + administrator.getEmailAddress()
+							+ "','" + administrator.getPhysicalAddress().getStreetNameAndNumber() + "','"
+							+ administrator.getCityOfResidence() + "','" + administrator.getPostalCode() + "','"
+							+ administrator.getCountry() + "','" + administrator.getPhoneNumber() + "','"
+							+ sdf.format(administrator.getStartDate()) + "','" + administrator.getWage() + "','"
+							+ administrator.getContractHours() + "','" + administrator.getGender().ordinal() + "','"
+							+ administrator.getStaffID() + "')");
+					globalVariables.setAdministrator(administrator);
+					globalVariables.setTrialuser(null);
+					globalVariables.setPremiumUser(null);
+					System.out.println(globalVariables.getPremiumUser() + " " + globalVariables.getTrialuser());
 					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
 				}
 			}
@@ -300,110 +334,126 @@ public class DB_Connector {
 		}
 	}
 
-	// public Administrator getAdmin() {
-	// return admin;
-	// }
-	//
-	// public void setAdmin(Administrator admin) {
-	// this.admin = admin;
-	// }
-	//
-	// public TrialUser getTrialUser() {
-	// return trialUser;
-	// }
-	//
-	// public void setTrialUser(TrialUser trialUser) {
-	// this.trialUser = trialUser;
-	// }
-	//
-	// public PremiumUser getPremiumUser() {
-	// return premiumUser;
-	// }
-	//
-	// public void setPremiumUser(PremiumUser premiumUser) {
-	// this.premiumUser = premiumUser;
-	// }
+	public Administrator getAdministrator() {
+		return administrator;
+	}
+
+	public void setAdministrator(Administrator administrator) {
+		this.administrator = administrator;
+	}
+
+	public TrialUser getTrialUser() {
+		return trialUser;
+	}
+
+	public void setTrialUser(TrialUser trialUser) {
+		this.trialUser = trialUser;
+	}
+
+	public PremiumUser getPremiumUser() {
+		return premiumUser;
+	}
+
+	public void setPremiumUser(PremiumUser premiumUser) {
+		this.premiumUser = premiumUser;
+	}
+
 	public String searchUser(String parameterToSearch, String tableName, String whereStatement, String input) {
 
 		String sqlString = "";
 		try {
-			ResultSet rs = statement.executeQuery("SELECT " + parameterToSearch + " FROM " + tableName + " WHERE " + whereStatement + input);
+			ResultSet rs = statement.executeQuery(
+					"SELECT " + parameterToSearch + " FROM " + tableName + " WHERE " + whereStatement + input);
 			while (rs.next()) {
 				sqlString = rs.getString(1);
 			}
-		}
-		catch (SQLException ex) {
+		} catch (SQLException ex) {
 
-			DialogBoxManager.errorDialogBox("Cannot run query","Error on executing search query. Please try again.");
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing search query. Please try again.");
 			ex.printStackTrace();
 		}
 
 		return sqlString;
 	}
+
 	public String changeDisplayName(String displayName, String userName) {
 
 		String sqlString = "";
 		try {
-			int rows = statement.executeUpdate("UPDATE premium_user SET display_name = " + displayName + " WHERE user_name  = " + userName);
+			int rows = statement.executeUpdate(
+					"UPDATE premium_user SET display_name = " + displayName + " WHERE user_name  = " + userName);
 			System.out.println("Updated rows: " + rows);
-		}
-		catch (SQLException ex) {
+		} catch (SQLException ex) {
 
-			DialogBoxManager.errorDialogBox("Cannot run query","Error on executing search query. Please try again.");
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing search query. Please try again.");
 			ex.printStackTrace();
 		}
 
 		return sqlString;
 	}
-	public Album getAlbumDetails(Integer albumId) {
-		Album album = null;
+
+	public void getAlbumDetails(Integer albumId) {
+
 		try {
-			ResultSet rs = statement.executeQuery("SELECT album_id, album_name, album_cover_path FROM album WHERE album_id = '" + albumId + "'");
+			ResultSet rs = statement.executeQuery(
+					"SELECT album_id, album_name, album_cover_path FROM album WHERE album_id = '" + albumId + "'");
 
 			if (rs.next()) {
 				if (albumId.equals(rs.getInt(1))) {
 					String albumName = rs.getString(2);
 					String albumCover = rs.getString(3);
-					album = new Album(albumName, new Image(albumCover));
+					Album album = new Album(albumName, new Image(albumCover));
+					globalVariables.setAlbum(album);
 				}
 			}
 
 		} catch (SQLException ex) {
-			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing album details query. Please try again.");
+			DialogBoxManager.errorDialogBox("Cannot run query",
+					"Error on executing album details query. Please try again.");
 			ex.printStackTrace();
 		}
-		return album;
+
 	}
-	public ArrayList<MusicTrack> getTrackDetails(Integer albumId) {
+
+	public void getTrackDetails(Integer albumId) {
 		ArrayList<MusicTrack> musicTrackArrayList = new ArrayList<MusicTrack>();
 		try {
-			ResultSet rs = statement.executeQuery("SELECT album.album_id, music_track.track_id, music_track.track_name, music_track.track_length, music_track.track_url from album_has_music_track\n" +
-					"JOIN album ON album_has_music_track.album_album_id = album.album_id\n" +
-					"JOIN music_track ON album_has_music_track.music_track_track_id = music_track.track_id WHERE album_has_music_track.album_album_id =  '" + albumId + "'");
+			ResultSet rs = statement.executeQuery(
+					"SELECT album.album_id, music_track.track_id, music_track.track_name, music_track.track_length, music_track.track_url, music_track.administrator_staff_id, music_track.rating_id, music_track.year_of_publication FROM album_has_music_track\n"
+							+ "JOIN album ON album_has_music_track.album_album_id = album.album_id\n"
+							+ "JOIN music_track ON album_has_music_track.music_track_track_id = music_track.track_id WHERE album_has_music_track.album_album_id =  '"
+							+ albumId + "'");
 
 			while (rs.next()) {
 				if (albumId.equals(rs.getInt(1))) {
 					Integer trackId = rs.getInt(2);
 					String trackName = rs.getString(3);
-					Time trackDuration = rs.getTime(4);
+					String trackTime = rs.getString(4);
 					String trackUrl = rs.getString(5);
-					MusicTrack musicTrack = new MusicTrack(trackName,trackUrl);
+					String adminId = rs.getString(6);
+					Integer ratingId = rs.getInt(7);
+					Date publicationYear = rs.getDate(8);
+					MusicTrack musicTrack = new MusicTrack(trackName, trackUrl);
 					musicTrack.setID(trackId);
-					//musicTrack.setTrackLength(trackDuration);
+					musicTrack.setTrackTime(trackTime);
+					musicTrack.setPublicationYear(publicationYear);
+					// musicTrack.setTrackLength(trackDuration);
 					musicTrackArrayList.add(musicTrack);
+					globalVariables.setMusicTracks(musicTrackArrayList);
 				}
 			}
 
 		} catch (SQLException ex) {
-			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing album details query. Please try again.");
+			DialogBoxManager.errorDialogBox("Cannot run query",
+					"Error on executing album details query. Please try again.");
 			ex.printStackTrace();
 		}
-		return musicTrackArrayList;
 	}
-	public MusicArtist getArtistDetails(Integer musicTrackId) {
-		MusicArtist musicArtist = null;
+
+	public void getArtistDetails(Integer musicTrackId) {
 		try {
-			ResultSet rs = statement.executeQuery("SELECT music_track.track_id, music_artist.artist_id, music_artist.stage_name from album_has_music_track\n" +
+			ResultSet rs = statement.executeQuery("SELECT music_track.track_id, music_artist.artist_id, music_artist.stage_name, music_artist.administrator_staff_id, music_artist.rating_id\n"
+					+ ", music_artist.year_of_foundation, music_artist.artist_description FROM album_has_music_track\n" +
 					"JOIN music_track ON album_has_music_track.music_track_track_id = music_track.track_id\n" +
 					"JOIN music_artist ON music_track.music_artist_artist_id = music_artist.artist_id WHERE music_track.track_id = '" + musicTrackId + "'");
 
@@ -411,8 +461,15 @@ public class DB_Connector {
 				if (musicTrackId.equals(rs.getInt(1))) {
 					Integer artistId = rs.getInt(2);
 					String stageName = rs.getString(3);
-					musicArtist = new MusicArtist(stageName);
+					String adminId = rs.getString(4);
+					Integer ratingId = rs.getInt(5);
+					Date publicationYear = rs.getDate(6);
+					String artistDesc = rs.getString(7);
+					MusicArtist musicArtist = new MusicArtist(stageName);
 					musicArtist.setArtistID(artistId);
+					musicArtist.setPublicationYear(publicationYear);
+					musicArtist.setArtistDescription(artistDesc);
+					globalVariables.setMusicArtist(musicArtist);
 				}
 			}
 
@@ -420,7 +477,6 @@ public class DB_Connector {
 			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing album details query. Please try again.");
 			ex.printStackTrace();
 		}
-		return musicArtist;
 	}
 
 }

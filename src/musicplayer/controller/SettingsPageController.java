@@ -15,7 +15,6 @@ import java.util.ResourceBundle;
 
 public class SettingsPageController implements Initializable {
 
-    // have all app settings and personal settings in this scene
     @FXML private AnchorPane settingsAnchorPage;
     @FXML private Button backButton;
     @FXML private TextField editDisplayNameField;
@@ -28,7 +27,6 @@ public class SettingsPageController implements Initializable {
     private String userName = "Misstery";
     private DB_Connector db_connector = new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
     private Statement statement;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,26 +48,13 @@ public class SettingsPageController implements Initializable {
     @FXML private void editDisplayName(){
 
         String displayName = editDisplayNameField.getText();
-        String userName = editDisplayNameLabel.getText();
+        String userName = editPasswordField.getText();
 
         DB_Connector connector = new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
         connector.changeDisplayName("'"+displayName+"'","'"+userName+"'");
-        //connector.searchUser("display_name","trial_user","display_name = ", "'"+displayName+"'");
-        //connector.searchUser("display_name","administrator","display_name = ", "'"+displayName+"'");
-
     }
     @FXML private void editPassword(){
 
-//        String password = editPasswordField.getText();
-//
-//        DB_Connector connector = new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
-//
-//        connector.searchUser("password", "premium_user", "password = ", "'" + password + "'");
-//        connector.insert("premium_user where password = ", password);
-////            connector.searchUser("password","trial_user","password = ", "'"+password+"'");
-////            connector.searchUser("password","administrator","password = ", "'"+password+"'");
-//        System.out.println("success");
 
     }
-
 }

@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.net.URL;
 
 public class Main extends Application {
@@ -17,18 +16,20 @@ public class Main extends Application {
             primaryStage.setTitle("Beatroot");
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-
-            URL url = this.getClass().getResource("css/styleSheet.css");
-            if (url==null){
-                System.out.println("Not found");
-                System.exit(0);
-            }
-            String css = url.toExternalForm();
-            scene.getStylesheets().add(css);
+            addCSS(scene);
             primaryStage.show();
         }
 
 	public static void main(String[] args) {
 		launch(args);
 	}
+	public void addCSS(Scene scene){
+        URL url = this.getClass().getResource("css/styleSheet.css");
+        if (url==null){
+            System.out.println("Not found");
+            System.exit(0);
+        }
+        String css = url.toExternalForm();
+        scene.getStylesheets().add(css);
+    }
 }
