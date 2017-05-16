@@ -146,11 +146,16 @@ public class WelcomeMenuController implements Initializable {
             lblDisplayName.setText(" " + globalVariables.getPremiumUser().getDisplayName()+ "!");
             btnPen.setVisible(true);
             lblRating.setVisible(true);
-        } else if (globalVariables.getTrialuser() != null && globalVariables.getPremiumUser() == null) {
+        } else if (globalVariables.getTrialuser() != null && globalVariables.getPremiumUser() == null && globalVariables.getAdministrator() == null) {
             imgRating.setVisible(false);
             lblDisplayName.setText(" " + globalVariables.getTrialuser().getDisplayName() + "!");
             btnPen.setVisible(false);
             lblRating.setVisible(false);
+        } else if (globalVariables.getAdministrator() != null && globalVariables.getPremiumUser() == null && globalVariables.getTrialuser() == null) {
+            imgRating.setVisible(true);
+            lblDisplayName.setText(" " + globalVariables.getAdministrator().getDisplayName()+ "!");
+            btnPen.setVisible(true);
+            lblRating.setVisible(true);
         }
         imgVolume.setImage(new Image("images/VolumeHigh.png"));
         imgProfilePicture.setImage(new Image("images/Konachan.jpg"));

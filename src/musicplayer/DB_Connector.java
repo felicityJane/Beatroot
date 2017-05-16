@@ -291,7 +291,7 @@ public class DB_Connector {
 
 			if (resultSet.next()) {
 				if (password.equals(resultSet.getString(3))) {
-					System.out.println(Gender.fromString(resultSet.getString(20)));
+					System.out.println(Gender.fromString(resultSet.getString(22)));
 					// ResultSet rs = statement.executeQuery(
 					// "select gender.gender from gender left join administrator
 					// on gender.gender_id=administrator.gender_gender_id where
@@ -302,12 +302,12 @@ public class DB_Connector {
 					// System.out.println(gender.toString());
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					administrator = new Administrator(resultSet.getString(1), resultSet.getString(2),
-							resultSet.getString(4), resultSet.getString(3), resultSet.getString(5),
-							resultSet.getString(6), resultSet.getDate(7), resultSet.getString(8),
-							resultSet.getString(9), resultSet.getString(10), resultSet.getString(11),
-							Country.fromString(resultSet.getString(12)), Gender.fromString(resultSet.getString(20)),
-							resultSet.getString(13), resultSet.getDate(14), resultSet.getFloat(15),
-							resultSet.getFloat(16));
+							resultSet.getString(4), resultSet.getString(3), resultSet.getString(7),
+							resultSet.getString(8), resultSet.getDate(9), resultSet.getString(10),
+							resultSet.getString(11), resultSet.getString(12), resultSet.getString(13),
+							Country.fromString(resultSet.getString(14)), Gender.fromString(resultSet.getString(22)),
+							resultSet.getString(15), resultSet.getDate(16), resultSet.getFloat(17),
+							resultSet.getFloat(18));
 					System.out.println(getAdministrator());
 					System.out.println("('" + administrator.getStaffID() + "', '" + administrator.getUserName() + "','"
 							+ administrator.getPassword() + "','" + administrator.getDisplayName() + "','"
