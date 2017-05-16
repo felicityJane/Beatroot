@@ -16,7 +16,7 @@
          </image>
       </ImageView>
       <Button fx:id="backButton" layoutX="442.0" layoutY="37.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Back" />
-      <Label focusTraversable="false" layoutX="59.0" layoutY="120.0" text="Edit DisplayName" />
+      <Label fx:id="edit" focusTraversable="false" layoutX="59.0" layoutY="120.0" text="Edit DisplayName" />
       <TextField fx:id="editDisplayNameField" layoutX="177.0" layoutY="116.0" />
       <Label fx:id="editDisplayNameLabel" focusTraversable="false" layoutX="385.0" layoutY="120.0" prefHeight="17.0" prefWidth="156.0" text="Label" />
       <Label focusTraversable="false" layoutX="69.0" layoutY="179.0" text="Edit Password" />

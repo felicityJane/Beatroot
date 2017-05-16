@@ -33,35 +33,42 @@ public class AlbumPageController implements Initializable {
     private Server_Connector connector;
     private Album album;
     private MusicArtist musicArtist;
+    private MusicTrack musicTrack;
     private ArrayList<MusicTrack> musicTracks;
     GlobalVariables globalVariables = GlobalVariables.getInstance();
+    int counter = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         globalVariables.setAlbumPageController(this);
+        listView.getItems().clear();
         getAlbumInfo();
         popUpMenuSongPage();
         popUpMenuArtistPage();
     }
 
     public void getAlbumInfo(){
-        int counter = 0;
+
         album = globalVariables.getAlbum();
         musicTracks = globalVariables.getMusicTracks();
+
         imageView.setImage(album.getAlbumCover());
+        DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
+        imageView.setEffect(dropShadow);
+
         albumLabel.setText("Album: " + album.getAlbumName());
-        listView.getItems().clear();
+        albumLabel.getStyleClass().add("albumText");
+
         for (MusicTrack m: musicTracks) {
             counter++;
-            String string = String.format("Track" + counter + " : " + "%-20s", m.getTrackName());
             int trackId = m.getID();
             db_connector.getArtistDetails(trackId);
             musicArtist = globalVariables.getMusicArtist();
-            listView.getItems().add(string);
             artistLabel.setText("Artist: " + musicArtist.getStageName());
+            artistLabel.getStyleClass().add("artistText");
+            globalVariables.setMusicTrack(m);
+            listView.getItems().add(String.format("Track " + counter + " : " +  " %-20s",m.getTrackName()));
         }
-        DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
-        imageView.setEffect(dropShadow);
     }
     private void popUpMenuSongPage(){
         final ContextMenu contextMenu = new ContextMenu();
@@ -76,6 +83,7 @@ public class AlbumPageController implements Initializable {
         }
         songPage.setOnAction(event -> {
             try {
+                globalVariables.getMusicTrack().setTrackName(listView.getSelectionModel().getSelectedItem());
                 Stage stage = (Stage) albumPageAnchorPane.getScene().getWindow();
                 stage.close();
                 sceneManager.popUpWindow(event, "view/songPage.fxml");

@@ -11,7 +11,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.ArrayList;
+import java.sql.Date;
+
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import javafx.event.ActionEvent;
@@ -394,14 +397,14 @@ public class DB_Connector {
 					"Error on executing album details query. Please try again.");
 			ex.printStackTrace();
 		}
-		return;
+
 	}
 
 	public void getTrackDetails(Integer albumId) {
 		ArrayList<MusicTrack> musicTrackArrayList = new ArrayList<MusicTrack>();
 		try {
 			ResultSet rs = statement.executeQuery(
-					"SELECT album.album_id, music_track.track_id, music_track.track_name, music_track.track_length, music_track.track_url from album_has_music_track\n"
+					"SELECT album.album_id, music_track.track_id, music_track.track_name, music_track.track_length, music_track.track_url, music_track.administrator_staff_id, music_track.rating_id, music_track.year_of_publication FROM album_has_music_track\n"
 							+ "JOIN album ON album_has_music_track.album_album_id = album.album_id\n"
 							+ "JOIN music_track ON album_has_music_track.music_track_track_id = music_track.track_id WHERE album_has_music_track.album_album_id =  '"
 							+ albumId + "'");
@@ -412,9 +415,13 @@ public class DB_Connector {
 					String trackName = rs.getString(3);
 					String trackTime = rs.getString(4);
 					String trackUrl = rs.getString(5);
+					String adminId = rs.getString(6);
+					Integer ratingId = rs.getInt(7);
+					Date publicationYear = rs.getDate(8);
 					MusicTrack musicTrack = new MusicTrack(trackName, trackUrl);
 					musicTrack.setID(trackId);
 					musicTrack.setTrackTime(trackTime);
+					musicTrack.setPublicationYear(publicationYear);
 					// musicTrack.setTrackLength(trackDuration);
 					musicTrackArrayList.add(musicTrack);
 					globalVariables.setMusicTracks(musicTrackArrayList);
@@ -430,7 +437,8 @@ public class DB_Connector {
 
 	public void getArtistDetails(Integer musicTrackId) {
 		try {
-			ResultSet rs = statement.executeQuery("SELECT music_track.track_id, music_artist.artist_id, music_artist.stage_name from album_has_music_track\n" +
+			ResultSet rs = statement.executeQuery("SELECT music_track.track_id, music_artist.artist_id, music_artist.stage_name, music_artist.administrator_staff_id, music_artist.rating_id\n"
+					+ ", music_artist.year_of_foundation, music_artist.artist_description FROM album_has_music_track\n" +
 					"JOIN music_track ON album_has_music_track.music_track_track_id = music_track.track_id\n" +
 					"JOIN music_artist ON music_track.music_artist_artist_id = music_artist.artist_id WHERE music_track.track_id = '" + musicTrackId + "'");
 
@@ -438,8 +446,14 @@ public class DB_Connector {
 				if (musicTrackId.equals(rs.getInt(1))) {
 					Integer artistId = rs.getInt(2);
 					String stageName = rs.getString(3);
+					String adminId = rs.getString(4);
+					Integer ratingId = rs.getInt(5);
+					Date publicationYear = rs.getDate(6);
+					String artistDesc = rs.getString(7);
 					MusicArtist musicArtist = new MusicArtist(stageName);
 					musicArtist.setArtistID(artistId);
+					musicArtist.setPublicationYear(publicationYear);
+					musicArtist.setArtistDescription(artistDesc);
 					globalVariables.setMusicArtist(musicArtist);
 				}
 			}

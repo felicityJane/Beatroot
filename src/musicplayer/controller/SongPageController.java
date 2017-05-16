@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -23,14 +22,13 @@ import java.util.ResourceBundle;
 public class SongPageController implements Initializable {
     @FXML private AnchorPane songPageAnchorPane;
     @FXML private ImageView imageView;
-    @FXML private Label albumLabel, artistLabel;
-    @FXML private ListView<String> listView;
+    @FXML private Label albumLabel,artistLabel,trackLabel,trackTimeLabel,publicationLabel;
     private URL url;
     private DB_Connector db_connector = new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
     private Server_Connector connector;
     private Album album;
     private MusicArtist musicArtist;
-    private ArrayList<MusicTrack> musicTracks;
+    private MusicTrack musicTrack;
     GlobalVariables globalVariables = GlobalVariables.getInstance();
 
     @Override
@@ -39,22 +37,23 @@ public class SongPageController implements Initializable {
         getAlbumInfo();
     }
     public void getAlbumInfo(){
-        int counter = 0;
         album = globalVariables.getAlbum();
-        musicTracks = globalVariables.getMusicTracks();
+        musicTrack = globalVariables.getMusicTrack();
+        musicArtist = globalVariables.getMusicArtist();
+
         imageView.setImage(album.getAlbumCover());
-        albumLabel.setText("Album: " + album.getAlbumName());
-        listView.getItems().clear();
-        for (MusicTrack m: musicTracks) {
-            counter++;
-            String string = String.format("Track" + counter + " : " + "%-20s %-20s", m.getTrackName(), m.getTrackTime());
-            int trackId = m.getID();
-            db_connector.getArtistDetails(trackId);
-            musicArtist = globalVariables.getMusicArtist();
-            listView.getItems().add(string);
-            artistLabel.setText("Artist: " + musicArtist.getStageName());
-        }
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
         imageView.setEffect(dropShadow);
+
+        albumLabel.setText(String.format("Album : %-20s" , album.getAlbumName()));
+        albumLabel.getStyleClass().add("albumText");
+        artistLabel.setText(String.format("Artist : %-20s" , musicArtist.getStageName()));
+        artistLabel.getStyleClass().add("artistText");
+        trackLabel.setText(String.format("%-20s", musicTrack.getTrackName()));
+        trackLabel.getStyleClass().add("artistText");
+        trackTimeLabel.setText(String.format("Length : %-20s" , musicTrack.getTrackTime()));
+        trackTimeLabel.getStyleClass().add("artistText");
+        publicationLabel.setText(String.format("Publication Date : %-20s" , musicTrack.getPublicationYear()));
+        publicationLabel.getStyleClass().add("artistText");
     }
 }
