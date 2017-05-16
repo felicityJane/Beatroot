@@ -1,5 +1,6 @@
 package musicplayer.model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class MusicArtist {
@@ -9,6 +10,8 @@ public class MusicArtist {
 	private ArrayList<MusicTrack> songs = new ArrayList<MusicTrack>();
 	private Rating rating;
 	private Administrator administrator;
+	private Date publicationYear;
+	private String artistDescription;
 	// private ArrayList<>
 
 	/**
@@ -63,5 +66,21 @@ public class MusicArtist {
 
 	public void setAdministrator(Administrator administrator) {
 		this.administrator = administrator;
+	}
+
+	public Date getPublicationYear() {
+		return publicationYear;
+	}
+
+	public void setPublicationYear(Date publicationYear) {
+		this.publicationYear = publicationYear;
+	}
+
+	public String getArtistDescription() {
+		return artistDescription;
+	}
+
+	public void setArtistDescription(String artistDescription) {
+		this.artistDescription = artistDescription;
 	}
 }

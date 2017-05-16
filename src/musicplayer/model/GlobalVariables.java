@@ -25,6 +25,7 @@ public class GlobalVariables {
 
 	private Album album;
 	private String albumCover;
+	private MusicTrack musicTrack;
 	private ArrayList<MusicTrack> musicTracks;
 	private MusicArtist musicArtist;
 	private TrialUser trialuser;
@@ -67,6 +68,14 @@ public class GlobalVariables {
 
 	public void setAlbumCover(String albumCover) {
 		this.albumCover = albumCover;
+	}
+
+	public MusicTrack getMusicTrack() {
+		return musicTrack;
+	}
+
+	public void setMusicTrack(MusicTrack musicTrack) {
+		this.musicTrack = musicTrack;
 	}
 
 	public ArrayList<MusicTrack> getMusicTracks() {

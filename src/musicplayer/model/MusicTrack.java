@@ -1,6 +1,7 @@
 package musicplayer.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.Duration;
 import java.util.ArrayList;
 
@@ -9,10 +10,12 @@ public class MusicTrack implements Serializable {
 	private int ID;
 	private String trackName;
 	private Duration trackLength;
+	private String trackTime;
 	private Genre[] genre;
 	private Administrator administrator;
 	private String url;
 	private Rating rating;
+	private Date publicationYear;
 	private ArrayList<Album> albums = new ArrayList<Album>();
 	private ArrayList<MusicArtist> performers = new ArrayList<MusicArtist>();
 	private ArrayList<Comment> comments = new ArrayList<Comment>();
@@ -164,5 +167,21 @@ public class MusicTrack implements Serializable {
 		if (!albums.contains(al))
 			return;
 		albums.remove(al);
+	}
+
+	public String getTrackTime() {
+		return trackTime;
+	}
+
+	public void setTrackTime(String trackTime) {
+		this.trackTime = trackTime;
+	}
+
+	public Date getPublicationYear() {
+		return publicationYear;
+	}
+
+	public void setPublicationYear(Date publicationYear) {
+		this.publicationYear = publicationYear;
 	}
 }

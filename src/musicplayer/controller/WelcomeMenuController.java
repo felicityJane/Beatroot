@@ -1069,11 +1069,8 @@ public class WelcomeMenuController implements Initializable {
 
     private void popUpMenu(ImageView imageView){
         final ContextMenu contextMenu = new ContextMenu();
-        final MenuItem songPage = new MenuItem("See song info");
-        final MenuItem artistPage = new MenuItem("See artist info");
         final MenuItem albumPage = new MenuItem("See album info");
-        contextMenu.getItems().addAll(songPage,artistPage,albumPage);
-
+        contextMenu.getItems().addAll(albumPage);
 
         SceneManager sceneManager = new SceneManager();
         GlobalVariables globalVariables = GlobalVariables.getInstance();
@@ -1089,43 +1086,17 @@ public class WelcomeMenuController implements Initializable {
                 n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
             }
         }
-        songPage.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    globalVariables.setAlbum(db_connector.getAlbumDetails(Integer.parseInt(imageView.getId())));
-                    globalVariables.setMusicTracks(db_connector.getTrackDetails(Integer.parseInt(imageView.getId())));
-                    sceneManager.popUpWindow(event, "view/songPage.fxml");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        artistPage.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    globalVariables.setAlbum(db_connector.getAlbumDetails(Integer.parseInt(imageView.getId())));
-                    globalVariables.setMusicTracks(db_connector.getTrackDetails(Integer.parseInt(imageView.getId())));
-                    sceneManager.popUpWindow(event, "view/artistPage.fxml");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        albumPage.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    globalVariables.setAlbum(db_connector.getAlbumDetails(Integer.parseInt(imageView.getId())));
-                    globalVariables.setMusicTracks(db_connector.getTrackDetails(Integer.parseInt(imageView.getId())));
-                    sceneManager.popUpWindow(event, "view/albumPage.fxml");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        albumPage.setOnAction(event -> {
+            try {
+                db_connector.getAlbumDetails(Integer.parseInt(imageView.getId()));
+                db_connector.getTrackDetails(Integer.parseInt(imageView.getId()));
+                sceneManager.popUpWindow(event, "view/albumPage.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
     }
+
     private void clickOnSearchIcon() {
 
         if (rdSong.isSelected()) {
