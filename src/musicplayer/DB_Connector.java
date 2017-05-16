@@ -1,5 +1,6 @@
 package musicplayer;
 
+import java.beans.PropertyEditorManager;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,15 +20,7 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExceptio
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import musicplayer.model.Administrator;
-import musicplayer.model.Album;
-import musicplayer.model.Country;
-import musicplayer.model.Gender;
-import musicplayer.model.GlobalVariables;
-import musicplayer.model.MusicArtist;
-import musicplayer.model.MusicTrack;
-import musicplayer.model.PremiumUser;
-import musicplayer.model.TrialUser;
+import musicplayer.model.*;
 
 public class DB_Connector {
 	private String urlOfDatabase;
@@ -163,7 +156,7 @@ public class DB_Connector {
 
 		try {
 			ResultSet rs = statement.executeQuery(
-					"SELECT user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, bank_card_number, expiration_date, card_type, billing_account_owner_name, billing_address, billing_city, billing_postal_code,billing_country,billing_phone_number, gender_gender_id, playlist_link FROM premium_user WHERE user_name='"
+					"SELECT user_name, password, display_name, user_description, personal_picture_path, first_name, last_name, date_of_birth, email_address, phone_number, physical_address, city_of_residence, postal_code, country, bank_card_number, expiration_date, card_type, billing_account_owner_name, billing_address, billing_city, billing_postal_code,billing_country,billing_phone_number, gender_gender_id, playlist_link FROM premium_user WHERE user_name='"
 							+ userName + "'");
 
 			if (rs.next()) {
@@ -178,6 +171,20 @@ public class DB_Connector {
 					Files.write(path, userNameAndType, StandardOpenOption.CREATE);
 
 					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
+					/*PremiumUser premiumUser = new PremiumUser(rs.getString(1), rs.getString(3), rs.getString(2),
+							rs.getString(6), rs.getString(7), rs.getDate(8),
+							rs.getString(9), rs.getString(11), rs.getString(12),
+							rs.getString(13), Country.fromString(rs.getString(14)),
+							Gender.values()[Integer.parseInt(rs.getString(24))], rs.getString(10), rs.getString(15),
+							rs.getDate(16), PaymentMethod.valueOf(rs.getString(17).toUpperCase()), rs.getString(18),
+							rs.getString(19), rs.getString(20), rs.getString(21), Country.fromString(rs.getString(22)),
+							rs.getString(23));
+					globalVariables.setPremiumUser(premiumUser);
+					System.out.println(premiumUser.getUserName() + " " + premiumUser.getDisplayName() +
+					" " + premiumUser.getBillingAddress() + " " + premiumUser.getCardHolderName() + " " +
+					premiumUser.getCountry());
+					globalVariables.setAdministrator(null);
+					globalVariables.getInstance().setTrialuser(null);*/
 
 				} else {
 					warningLabel.setText("Invalid username or password!!");
