@@ -72,16 +72,16 @@
                     <Font size="16.0" />
                 </font>
             </Label>
-            <ImageView fx:id="imgProfilePicture" fitHeight="57.0" fitWidth="56.0" layoutX="1057.0" layoutY="22.0" pickOnBounds="true" />
-            <Label fx:id="lblDisplayName" layoutX="968.0" layoutY="15.0" prefHeight="30.0" prefWidth="87.0" textAlignment="RIGHT" textFill="#0c51ff" underline="true">
+            <ImageView fx:id="imgProfilePicture" fitHeight="57.0" fitWidth="56.0" layoutX="1139.0" layoutY="12.0" pickOnBounds="true" />
+            <Label fx:id="lblDisplayName" layoutX="1050.0" layoutY="9.0" prefHeight="30.0" prefWidth="87.0" textAlignment="RIGHT" textFill="#0c51ff" underline="true">
                 <font>
                     <Font size="14.0" />
                 </font>
             </Label>
-            <ListView fx:id="lstPlaylists" layoutX="14.0" layoutY="110.0" onMouseClicked="#clickOnLstPlaylists" prefHeight="287.0" prefWidth="171.0" />
+            <ListView fx:id="lstPlaylists" layoutX="14.0" layoutY="110.0" onMouseClicked="#clickOnLstPlaylists" prefHeight="142.0" prefWidth="171.0" />
             <ListView fx:id="lstContacts" layoutX="1132.0" layoutY="148.0" prefHeight="517.0" prefWidth="200.0" />
-            <ComboBox fx:id="cmbSearchMusic" editable="true" layoutX="428.0" layoutY="14.0" prefHeight="36.0" prefWidth="288.0" />
-            <ImageView fx:id="imgSearchIcon" fitHeight="48.0" fitWidth="48.0" layoutX="373.0" layoutY="8.0" pickOnBounds="true" />
+            <ComboBox fx:id="cmbSearchMusic" editable="true" layoutX="428.0" layoutY="14.0" prefHeight="36.0" prefWidth="288.0" promptText="Search music" />
+            <ImageView fx:id="imgSearchIcon" fitHeight="48.0" fitWidth="48.0" layoutX="372.0" layoutY="8.0" pickOnBounds="true" />
             <RadioButton fx:id="rdSong" layoutX="726.0" layoutY="16.0" mnemonicParsing="false" selected="true" text="Song">
                 <toggleGroup>
                     <ToggleGroup fx:id="search" />
@@ -89,8 +89,8 @@
             </RadioButton>
             <RadioButton fx:id="rdArtist" layoutX="784.0" layoutY="16.0" mnemonicParsing="false" text="Artist" toggleGroup="$search" />
             <RadioButton fx:id="rdAlbum" layoutX="726.0" layoutY="39.0" mnemonicParsing="false" text="Album" toggleGroup="$search" />
-            <ImageView fx:id="imgSearchUser" fitHeight="36.0" fitWidth="39.0" layoutX="1139.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
-            <ComboBox fx:id="cmbSearchUser" editable="true" layoutX="1182.0" layoutY="113.0" prefWidth="150.0" />
+            <ImageView fx:id="imgSearchUser" fitHeight="36.0" fitWidth="39.0" layoutX="1139.0" layoutY="108.0" onMouseClicked="#onImgSearchUserPressed" pickOnBounds="true" preserveRatio="true" />
+            <ComboBox fx:id="cmbSearchUser" editable="true" layoutX="1182.0" layoutY="113.0" prefWidth="150.0" promptText="Search user" />
             <Label fx:id="lblNoMatchesFound" layoutX="331.0" layoutY="57.0" prefHeight="21.0" prefWidth="263.0" textFill="RED">
                 <font>
                     <Font size="15.0" />
@@ -98,7 +98,7 @@
             </Label>
             <ImageView fx:id="imgRating" fitHeight="32.0" fitWidth="116.0" layoutX="802.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
             <ProgressIndicator fx:id="progressDownload" layoutX="726.0" layoutY="131.0" prefHeight="40.0" prefWidth="39.0" progress="-1.0" visible="false" />
-            <Label fx:id="lblHello" layoutX="932.0" layoutY="20.0" text="Hello,">
+            <Label fx:id="lblHello" layoutX="1014.0" layoutY="14.0" text="Hello,">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -107,9 +107,19 @@
             <Circle fx:id="btnLogOut" fill="#f2f2f2" layoutX="1303.0" layoutY="36.0" onMouseClicked="#onLogOutButtonPressed" radius="24.0" stroke="#09b0b9" strokeType="INSIDE" />
             <Label fx:id="lblRating" layoutX="922.0" layoutY="148.0" prefHeight="17.0" prefWidth="21.0" />
             <Circle fx:id="btnPen" fill="WHITE" layoutX="782.0" layoutY="157.0" onMouseClicked="#onBtnPenPressed" radius="15.0" stroke="#e3b3b300" strokeType="INSIDE" />
-            <ListView fx:id="lstPlaylistSongs" layoutX="14.0" layoutY="402.0" onMouseClicked="#clickOnLstPlaylistSongs" prefHeight="260.0" prefWidth="171.0" />
-            <Circle fx:id="btnAddPlaylist" fill="#e6e7e8" layoutX="24.0" layoutY="92.0" onMouseClicked="#onBtnAddPlaylistPressed" radius="13.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
-            <Circle fx:id="btnRemovePlaylist" fill="#e8e8e8" layoutX="50.0" layoutY="92.0" onMouseClicked="#onBtnRemovePlaylistPressed" radius="13.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <ListView fx:id="lstPlaylistSongs" layoutX="14.0" layoutY="298.0" onMouseClicked="#clickOnLstPlaylistSongs" prefHeight="364.0" prefWidth="171.0" />
+            <Circle fx:id="btnAddPlaylist" fill="#e6e7e8" layoutX="146.0" layoutY="92.0" onMouseClicked="#onBtnAddPlaylistPressed" radius="13.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <Circle fx:id="btnRemovePlaylist" fill="#e8e8e8" layoutX="172.0" layoutY="92.0" onMouseClicked="#onBtnRemovePlaylistPressed" radius="13.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <Label layoutX="14.0" layoutY="84.0" text="Playlists">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="272.0" text="Songs">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
             <Rectangle id="imgNoConnection" fx:id="imgNoConnection" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="707.0" layoutX="-15.0" layoutY="-27.0" opacity="0.7" stroke="WHITE" strokeType="INSIDE" visible="false" width="1398.0" />
             <Label fx:id="lblNoConnection1" layoutX="365.0" layoutY="260.0" prefHeight="118.0" prefWidth="667.0" text="Looks like you're not connected to the internet!" textFill="RED" visible="false">
                 <font>

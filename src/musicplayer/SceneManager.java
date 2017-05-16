@@ -78,6 +78,22 @@ public class SceneManager {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.centerOnScreen();
+        stage.setOnCloseRequest(event ->  {
+
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+
+                    File file = new File("tmp");
+                    for (File f : file.listFiles()) {
+                        if (!f.isDirectory()) {
+                            f.delete();
+                        }
+                    }
+                }
+
+            });
+        });
 
     }
     public void popUpWindow(Event e, String fxmlFileName) throws IOException{
@@ -150,6 +166,7 @@ public class SceneManager {
             Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
             stage.setTitle(title);
             stage.setScene(new Scene((root)));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
             stage.centerOnScreen();
         } catch(Exception ex) {

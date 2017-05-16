@@ -84,6 +84,7 @@ public class WelcomeMenuController implements Initializable {
     @FXML private Label lblNoConnection2;
     @FXML private ImageView imgSearchIcon;
     @FXML private ComboBox cmbSearchMusic;
+    @FXML private ComboBox cmbSearchUser;
     @FXML private RadioButton rdSong;
     @FXML private RadioButton rdArtist;
     @FXML private RadioButton rdAlbum;
@@ -140,12 +141,22 @@ public class WelcomeMenuController implements Initializable {
         welcomeRootAnchor.getStylesheets().add(css);*/
 
 
-
+        if(globalVariables.getPremiumUser()!= null && globalVariables.getTrialuser() == null && globalVariables.getAdministrator() == null) {
+            imgRating.setVisible(true);
+            lblDisplayName.setText(" " + globalVariables.getPremiumUser().getDisplayName()+ "!");
+            btnPen.setVisible(true);
+            lblRating.setVisible(true);
+        } else if (globalVariables.getTrialuser() != null && globalVariables.getPremiumUser() == null) {
+            imgRating.setVisible(false);
+            lblDisplayName.setText(" " + globalVariables.getTrialuser().getDisplayName() + "!");
+            btnPen.setVisible(false);
+            lblRating.setVisible(false);
+        }
         imgVolume.setImage(new Image("images/VolumeHigh.png"));
         imgProfilePicture.setImage(new Image("images/Konachan.jpg"));
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
         imgMain.setEffect(dropShadow);
-        lblDisplayName.setText(" " + userDisplayName + "!");
+
         imgSearchIcon.setImage(new Image("images/SearchIcon.png"));
         imgSearchUser.setImage(new Image("images/SearchIcon.png"));
         lblNoMatchesFound.setText("");
@@ -329,11 +340,17 @@ public class WelcomeMenuController implements Initializable {
             db_connector.update("rating", "sum_from_all_voters",
                     Integer.toString(currentSongRating.getNumberOfVoters()), "rating_id = " + Integer.toString(currentSongRating.getRatingID()));
             System.out.println(currentSongRating.getFinalRating());
+            writeMusicTrackToBinaryFile();
+            try {
+                SceneManager.sceneManager.openNewWindow(event, "view/commentWindow.fxml", "Add comment");
+            } catch (IOException ie) {
+                ie.printStackTrace();
+            }
         });
 
         for (Node n : welcomeRootAnchor.getChildren()) {
 
-            if (n instanceof ImageView && n != imgSearchIcon){
+            if (n instanceof ImageView && n != imgSearchIcon && n != imgRating && n != imgSearchUser){
                 n.setOnMouseClicked(event -> {
                     if (event.getButton() == MouseButton.SECONDARY){
                         ImageView im = (ImageView) event.getSource();
@@ -504,6 +521,33 @@ public class WelcomeMenuController implements Initializable {
                 }
             }
         });
+
+        cmbSearchUser.getEditor().textProperty().addListener((obs, oldText, newText) -> {
+            cmbSearchUser.setValue(newText);
+
+            cmbSearchUser.show();
+            ArrayList<String> sqlArrayList = new ArrayList<>();
+
+            if (newText.equals("")) {
+                cmbSearchUser.getItems().clear();
+            } else {
+                for (String s : db_connector.searchMultipleResults("display_name", "premium_user", "(display_name LIKE '%" + newText + "%' OR display_name LIKE '"
+                        + newText + "%')")) {
+
+                    if (!newText.equals("")) {
+                        sqlArrayList.add(s);
+                        cmbSearchUser.getItems().clear();
+                        cmbSearchUser.getItems().addAll(sqlArrayList);
+                    }
+                }
+                if (sqlArrayList.isEmpty()) {
+                    cmbSearchUser.getItems().clear();
+                    cmbSearchUser.getItems().add("No matches found");
+                }
+
+            }
+        });
+
 
 //        imgNoConnection.setVisible(false);
 //        lblNoConnection1.setVisible(false);
@@ -1577,6 +1621,7 @@ public class WelcomeMenuController implements Initializable {
 
     @FXML
     private void clickOnLstPlaylistSongs() {
+        lstMainTracks.getItems().clear();
         MusicTrack songInPlaylist = selectedPlaylist.getMusicTracks().get(lstPlaylistSongs.getSelectionModel().getSelectedIndex());
         selectedItem = selectedPlaylist.getMusicTracks().get(lstPlaylistSongs.getSelectionModel().getSelectedIndex()).getTrackName();
         //plays song only on double click
@@ -1586,7 +1631,7 @@ public class WelcomeMenuController implements Initializable {
             for (MusicTrack m : selectedPlaylist.getMusicTracks()) {
                 albumSelected.addSongs(m);
             }
-            lstMainTracks.getItems().clear();
+
 
             for (MusicTrack mt : selectedPlaylist.getMusicTracks()) {
                 lstMainTracks.getItems().add(mt.getTrackName());
@@ -1640,6 +1685,11 @@ public class WelcomeMenuController implements Initializable {
         } else {
             temp = selectedPlaylist.getMusicTracks().get(lstPlaylistSongs.getSelectionModel().getSelectedIndex()).getTrackName();
         }
+    }
+
+    @FXML
+    private void onImgSearchUserPressed() {
+
     }
 
 

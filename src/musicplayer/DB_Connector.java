@@ -122,7 +122,7 @@ public class DB_Connector {
 	public void logInTrial(String userName, String password, ActionEvent event, Label warningLabel) {
 		try {
 			ResultSet rs = statement.executeQuery(
-					"SELECT user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link FROM trial_user WHERE user_name = '"
+					"SELECT user_name, password,display_name, user_description, personal_picture_path, first_name, last_name, date_of_birth, email_address, phone_number, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link FROM trial_user WHERE user_name = '"
 							+ userName + "'");
 
 			if (rs.next()) {
@@ -133,6 +133,15 @@ public class DB_Connector {
 					userNameAndType.add(1, "TrialUser");
 
 					Files.write(path, userNameAndType, StandardOpenOption.CREATE);
+
+					TrialUser trialUser = new TrialUser(rs.getString(1), rs.getString(3), rs.getString(2),
+							rs.getString(6), rs.getString(7), rs.getDate(8), rs.getString(9), rs.getString(11),
+							rs.getString(12), rs.getString(13), Country.fromString(rs.getString(14)),
+							Gender.fromString(rs.getString(16)), rs.getString(10), rs.getDate(15));
+					globalVariables.setTrialuser(trialUser);
+					globalVariables.setPremiumUser(null);
+					globalVariables.setAdministrator(null);
+
 
 					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
 
@@ -170,8 +179,7 @@ public class DB_Connector {
 
 					Files.write(path, userNameAndType, StandardOpenOption.CREATE);
 
-					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
-					/*PremiumUser premiumUser = new PremiumUser(rs.getString(1), rs.getString(3), rs.getString(2),
+					PremiumUser premiumUser = new PremiumUser(rs.getString(1), rs.getString(3), rs.getString(2),
 							rs.getString(6), rs.getString(7), rs.getDate(8),
 							rs.getString(9), rs.getString(11), rs.getString(12),
 							rs.getString(13), Country.fromString(rs.getString(14)),
@@ -180,11 +188,11 @@ public class DB_Connector {
 							rs.getString(19), rs.getString(20), rs.getString(21), Country.fromString(rs.getString(22)),
 							rs.getString(23));
 					globalVariables.setPremiumUser(premiumUser);
-					System.out.println(premiumUser.getUserName() + " " + premiumUser.getDisplayName() +
-					" " + premiumUser.getBillingAddress() + " " + premiumUser.getCardHolderName() + " " +
-					premiumUser.getCountry());
 					globalVariables.setAdministrator(null);
-					globalVariables.getInstance().setTrialuser(null);*/
+					globalVariables.setTrialuser(null);
+
+					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
+
 
 				} else {
 					warningLabel.setText("Invalid username or password!!");
