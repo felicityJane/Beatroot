@@ -2,9 +2,6 @@ package musicplayer;
 
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.*;

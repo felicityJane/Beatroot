@@ -1,21 +1,17 @@
 package musicplayer.controller;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -28,36 +24,28 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
-import musicplayer.*;
+import musicplayer.DB_Connector;
+import musicplayer.DialogBoxManager;
+import musicplayer.SceneManager;
+import musicplayer.Server_Connector;
 import musicplayer.model.*;
 import org.apache.commons.io.FilenameUtils;
-import org.xml.sax.ContentHandler;
-import org.xml.sax.helpers.DefaultHandler;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
+import org.xml.sax.ContentHandler;
+import org.xml.sax.helpers.DefaultHandler;
+
 import java.io.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.awt.*;
-import java.io.*;
-import java.lang.reflect.Array;
-import java.net.InetAddress;
 import java.net.MalformedURLException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.ResourceBundle;
 
 
 
@@ -240,6 +228,13 @@ public class WelcomeMenuController implements Initializable {
         lblDisplayName.setOnMouseExited(event -> {
             Scene scene = imgSearchIcon.getScene();
             scene.setCursor(Cursor.DEFAULT);
+        });
+        lblDisplayName.setOnMouseClicked(event -> {
+            try {
+                SceneManager.sceneManager.openPopupScene(event,"view/userDescription.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
         btnDownload.setOnMouseEntered(event -> {
@@ -842,6 +837,7 @@ public class WelcomeMenuController implements Initializable {
             input.close();
         } catch (Exception fe) {
             System.out.println("It does not find the file but it's okay.");
+            fe.printStackTrace();
 //            imgNoConnection.setVisible(true);
 //            lblNoConnection2.setVisible(true);
 //            lblNoConnection1.setVisible(true);

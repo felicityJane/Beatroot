@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -123,15 +125,14 @@ public class DB_Connector {
 	public void logInTrial(String userName, String password, ActionEvent event, Label warningLabel) {
 		try {
 			ResultSet rs = statement.executeQuery(
-					"SELECT user_name, password,display_name, user_description, personal_picture_path, first_name, last_name, date_of_birth, email_address, phone_number, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link FROM trial_user WHERE user_name = '"
-							+ userName + "'");
+					"SELECT * FROM trial_user WHERE user_name = '"+ userName + "'");
 
 			if (rs.next()) {
 				if (password.equals(rs.getString(2))) {
 					Path path = Paths.get("UserName.bin");
 					ArrayList<String> userNameAndType = new ArrayList<>();
 					userNameAndType.add(0, userName);
-					userNameAndType.add(1, "TrialUser");
+					userNameAndType.add(1, "Trial");
 
 					Files.write(path, userNameAndType, StandardOpenOption.CREATE);
 
@@ -166,8 +167,7 @@ public class DB_Connector {
 
 		try {
 			ResultSet rs = statement.executeQuery(
-					"SELECT user_name, password, display_name, user_description, personal_picture_path, first_name, last_name, date_of_birth, email_address, phone_number, physical_address, city_of_residence, postal_code, country, bank_card_number, expiration_date, card_type, billing_account_owner_name, billing_address, billing_city, billing_postal_code,billing_country,billing_phone_number, gender_gender_id, playlist_link FROM premium_user WHERE user_name='"
-							+ userName + "'");
+					"SELECT * FROM premium_user WHERE user_name='" + userName + "'");
 
 			if (rs.next()) {
 				if (password.equals(rs.getString(2))) {
@@ -175,7 +175,7 @@ public class DB_Connector {
 					Path path = Paths.get("UserName.bin");
 					ArrayList<String> userNameAndType = new ArrayList<>();
 					userNameAndType.add(0, userName);
-					userNameAndType.add(1, "PremiumUser");
+					userNameAndType.add(1, "Premium");
 					userNameAndType.add(2, rs.getString(3));
 
 					Files.write(path, userNameAndType, StandardOpenOption.CREATE);
