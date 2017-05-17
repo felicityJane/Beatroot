@@ -16,6 +16,7 @@ public class MusicTrack implements Serializable {
 	private String url;
 	private Rating rating;
 	private Date publicationYear;
+	private String albumCoverPath;
 	private ArrayList<Album> albums = new ArrayList<Album>();
 	private ArrayList<MusicArtist> performers = new ArrayList<MusicArtist>();
 	private ArrayList<Comment> comments = new ArrayList<Comment>();
@@ -84,6 +85,14 @@ public class MusicTrack implements Serializable {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public String getAlbumCoverPath() {
+		return albumCoverPath;
+	}
+
+	public void setAlbumCoverPath(String albumCoverPath) {
+		this.albumCoverPath = albumCoverPath;
 	}
 
 	public ArrayList<MusicArtist> getPerformers() {
