@@ -79,15 +79,14 @@ public class SignUpMenuController implements Initializable {
 			yearBox.setValue(2017);
 		}
 
-		for (Country country : Country.values()) {
-			countryBox.getItems().addAll(country.name());
-			countryBox.setValue("Sverige");
-		}
-	}
-
-	@FXML
-	private void handleSignUpButton(ActionEvent event) throws Exception {
-		try {
+    for (Country country: Country.values()) {
+        countryBox.getItems().addAll(country.name());
+        countryBox.setValue("SVERIGE");
+        }
+    }
+@FXML
+private void handleSignUpButton(ActionEvent event) throws Exception{
+        try {
 
 			String userNam = userName.getText();
 			String userPass = userPassword.getText();
@@ -104,6 +103,8 @@ public class SignUpMenuController implements Initializable {
 			String emailRegex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(.+[a-zA-Z0-9-.]+)+$";
 			String nameRegex = "[A-Za-z]+";
 			String genderId = null;
+			String userDescription="Add description";
+			String userImage="Add Image";
 
 			if (userName.getText().length() < 4 || userName.getText().length() > 10) {
 				warningText.setText("Invalid Username Value");
@@ -136,13 +137,13 @@ public class SignUpMenuController implements Initializable {
 				throw new InputMismatchException();
 			}
 			if (male.isSelected()) {
-				genderId = "1";
+				genderId = "0";
 			}
 			if (female.isSelected()) {
-				genderId = "2";
+				genderId = "1";
 			}
 			if (!female.isSelected() && !male.isSelected()) {
-				genderId = "3";
+				genderId = "2";
 			}
 			if (!phoneNum.matches(numberRegex)) {
 				warningText.setText("Invalid phone number");
@@ -173,9 +174,8 @@ public class SignUpMenuController implements Initializable {
 				if (warningText.getText().isEmpty()) {
 					connector.insert("user_link(user)", "('" + userNam + "')");
 					connector.insert(
-							"trial_user(user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link)",
-							"('" + userNam + "','" + userPass + "','" + userNam + "','" + firstNam + "','" + lastNam
-									+ "','" + dateOfBirht + "','" + emal + "','" + physicalAdd + "','" + cit + "','"
+							"trial_user(user_name, password,display_name,user_description,personal_picture_path, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link)",
+							"('" + userNam + "','" + userPass + "','" + userNam + "','"+userDescription+"','"+userImage+"','" + firstNam + "','" + lastNam + "','" + dateOfBirht + "','" + emal + "','" + physicalAdd + "','" + cit + "','"
 									+ postalCo + "','" + country + "','" + freeTrialEndDate + "','" + genderId + "','"
 									+ userNam + "')");
 					connector.logInTrial(userNam, userPass, event, warningText);
@@ -199,17 +199,19 @@ public class SignUpMenuController implements Initializable {
 				premiumUserInfo.add(0, userNam);
 				premiumUserInfo.add(1, userPass);
 				premiumUserInfo.add(2, userNam);
-				premiumUserInfo.add(3, firstNam);
-				premiumUserInfo.add(4, lastNam);
-				premiumUserInfo.add(5, dateOfBirht);
-				premiumUserInfo.add(6, emal);
-				premiumUserInfo.add(7, physicalAdd);
-				premiumUserInfo.add(8, cit);
-				premiumUserInfo.add(9, postalCo);
-				premiumUserInfo.add(10, country);
-				premiumUserInfo.add(11, genderId);
-				premiumUserInfo.add(12, userNam);
-				premiumUserInfo.add(13, phoneNum);
+                premiumUserInfo.add(3, userDescription);
+                premiumUserInfo.add(4, userImage);
+				premiumUserInfo.add(5, firstNam);
+				premiumUserInfo.add(6, lastNam);
+				premiumUserInfo.add(7, dateOfBirht);
+				premiumUserInfo.add(8, emal);
+				premiumUserInfo.add(9, physicalAdd);
+				premiumUserInfo.add(10, cit);
+				premiumUserInfo.add(11, postalCo);
+				premiumUserInfo.add(12, country);
+				premiumUserInfo.add(13, genderId);
+				premiumUserInfo.add(14, userNam);
+				premiumUserInfo.add(15, phoneNum);
 
 				Files.write(path, premiumUserInfo, StandardOpenOption.CREATE);
 

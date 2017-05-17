@@ -1,10 +1,13 @@
 package musicplayer;
 
+import java.beans.PropertyEditorManager;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,15 +23,7 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExceptio
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import musicplayer.model.Administrator;
-import musicplayer.model.Album;
-import musicplayer.model.Country;
-import musicplayer.model.Gender;
-import musicplayer.model.GlobalVariables;
-import musicplayer.model.MusicArtist;
-import musicplayer.model.MusicTrack;
-import musicplayer.model.PremiumUser;
-import musicplayer.model.TrialUser;
+import musicplayer.model.*;
 
 public class DB_Connector {
 	private String urlOfDatabase;
@@ -130,17 +125,25 @@ public class DB_Connector {
 	public void logInTrial(String userName, String password, ActionEvent event, Label warningLabel) {
 		try {
 			ResultSet rs = statement.executeQuery(
-					"SELECT user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link FROM trial_user WHERE user_name = '"
-							+ userName + "'");
+					"SELECT * FROM trial_user WHERE user_name = '"+ userName + "'");
 
 			if (rs.next()) {
 				if (password.equals(rs.getString(2))) {
 					Path path = Paths.get("UserName.bin");
 					ArrayList<String> userNameAndType = new ArrayList<>();
 					userNameAndType.add(0, userName);
-					userNameAndType.add(1, "TrialUser");
+					userNameAndType.add(1, "Trial");
 
 					Files.write(path, userNameAndType, StandardOpenOption.CREATE);
+
+					TrialUser trialUser = new TrialUser(rs.getString(1), rs.getString(3), rs.getString(2),
+							rs.getString(6), rs.getString(7), rs.getDate(8), rs.getString(9), rs.getString(11),
+							rs.getString(12), rs.getString(13), Country.fromString(rs.getString(14)),
+							Gender.fromString(rs.getString(16)), rs.getString(10), rs.getDate(15));
+					globalVariables.setTrialuser(trialUser);
+					globalVariables.setPremiumUser(null);
+					globalVariables.setAdministrator(null);
+
 
 					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
 
@@ -164,8 +167,7 @@ public class DB_Connector {
 
 		try {
 			ResultSet rs = statement.executeQuery(
-					"SELECT user_name, password,display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, bank_card_number, expiration_date, card_type, billing_account_owner_name, billing_address, billing_city, billing_postal_code,billing_country,billing_phone_number, gender_gender_id, playlist_link FROM premium_user WHERE user_name='"
-							+ userName + "'");
+					"SELECT * FROM premium_user WHERE user_name='" + userName + "'");
 
 			if (rs.next()) {
 				if (password.equals(rs.getString(2))) {
@@ -173,12 +175,25 @@ public class DB_Connector {
 					Path path = Paths.get("UserName.bin");
 					ArrayList<String> userNameAndType = new ArrayList<>();
 					userNameAndType.add(0, userName);
-					userNameAndType.add(1, "PremiumUser");
+					userNameAndType.add(1, "Premium");
 					userNameAndType.add(2, rs.getString(3));
 
 					Files.write(path, userNameAndType, StandardOpenOption.CREATE);
 
+					PremiumUser premiumUser = new PremiumUser(rs.getString(1), rs.getString(3), rs.getString(2),
+							rs.getString(6), rs.getString(7), rs.getDate(8),
+							rs.getString(9), rs.getString(11), rs.getString(12),
+							rs.getString(13), Country.fromString(rs.getString(14)),
+							Gender.values()[Integer.parseInt(rs.getString(24))], rs.getString(10), rs.getString(15),
+							rs.getDate(16), PaymentMethod.valueOf(rs.getString(17).toUpperCase()), rs.getString(18),
+							rs.getString(19), rs.getString(20), rs.getString(21), Country.fromString(rs.getString(22)),
+							rs.getString(23));
+					globalVariables.setPremiumUser(premiumUser);
+					globalVariables.setAdministrator(null);
+					globalVariables.setTrialuser(null);
+
 					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
+
 
 				} else {
 					warningLabel.setText("Invalid username or password!!");
@@ -276,7 +291,7 @@ public class DB_Connector {
 
 			if (resultSet.next()) {
 				if (password.equals(resultSet.getString(3))) {
-					System.out.println(Gender.fromString(resultSet.getString(20)));
+					System.out.println(Gender.fromString(resultSet.getString(22)));
 					// ResultSet rs = statement.executeQuery(
 					// "select gender.gender from gender left join administrator
 					// on gender.gender_id=administrator.gender_gender_id where
@@ -287,12 +302,12 @@ public class DB_Connector {
 					// System.out.println(gender.toString());
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					administrator = new Administrator(resultSet.getString(1), resultSet.getString(2),
-							resultSet.getString(4), resultSet.getString(3), resultSet.getString(5),
-							resultSet.getString(6), resultSet.getDate(7), resultSet.getString(8),
-							resultSet.getString(9), resultSet.getString(10), resultSet.getString(11),
-							Country.fromString(resultSet.getString(12)), Gender.fromString(resultSet.getString(20)),
-							resultSet.getString(13), resultSet.getDate(14), resultSet.getFloat(15),
-							resultSet.getFloat(16));
+							resultSet.getString(4), resultSet.getString(3), resultSet.getString(7),
+							resultSet.getString(8), resultSet.getDate(9), resultSet.getString(10),
+							resultSet.getString(11), resultSet.getString(12), resultSet.getString(13),
+							Country.fromString(resultSet.getString(14)), Gender.fromString(resultSet.getString(22)),
+							resultSet.getString(15), resultSet.getDate(16), resultSet.getFloat(17),
+							resultSet.getFloat(18));
 					System.out.println(getAdministrator());
 					System.out.println("('" + administrator.getStaffID() + "', '" + administrator.getUserName() + "','"
 							+ administrator.getPassword() + "','" + administrator.getDisplayName() + "','"
