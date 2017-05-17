@@ -1,19 +1,9 @@
 package musicplayer.model;
 
-import java.util.ArrayList;
-
 import javafx.fxml.FXML;
-import musicplayer.controller.AboutPageController;
-import musicplayer.controller.AlbumPageController;
-import musicplayer.controller.ArtistPageController;
-import musicplayer.controller.FAQsPageController;
-import musicplayer.controller.LogInMenuController;
-import musicplayer.controller.MainMenuController;
-import musicplayer.controller.PaymentMenuController;
-import musicplayer.controller.SettingsPageController;
-import musicplayer.controller.SignUpMenuController;
-import musicplayer.controller.SongPageController;
-import musicplayer.controller.WelcomeMenuController;
+import musicplayer.controller.*;
+
+import java.util.ArrayList;
 
 public class GlobalVariables {
 
@@ -53,6 +43,8 @@ public class GlobalVariables {
 	private SongPageController songPageController;
 	@FXML
 	private WelcomeMenuController welcomeMenuController;
+	@FXML
+	private UserDescriptionController userDescriptionController;
 
 	public void setAlbum(Album album) {
 		this.album = album;
@@ -204,5 +196,13 @@ public class GlobalVariables {
 
 	public void setTrialuser(TrialUser trialuser) {
 		this.trialuser = trialuser;
+	}
+
+	public UserDescriptionController getUserDescriptionController() {
+		return userDescriptionController;
+	}
+
+	public void setUserDescriptionController(UserDescriptionController userDescriptionController) {
+		this.userDescriptionController = userDescriptionController;
 	}
 }
