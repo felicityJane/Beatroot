@@ -16,7 +16,7 @@ import musicplayer.model.MusicTrack;
 /**
  * Created by Federica on 17/05/2017.
  */
-public class ImageTextCell extends ListCell<MusicTrack> {
+public class ImageTextCellMusicTrack extends ListCell<MusicTrack> {
 
     @Override
     protected void updateItem(MusicTrack item, boolean empty) {

@@ -10,6 +10,9 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import musicplayer.controller.UserDescriptionController;
+import musicplayer.model.GlobalVariables;
+import musicplayer.model.User;
 
 import java.io.File;
 import java.io.IOException;
@@ -124,12 +127,15 @@ public class SceneManager {
             Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
             stage.setTitle(title);
             stage.setScene(new Scene((root)));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
             stage.centerOnScreen();
         } catch(Exception ex) {
             ex.printStackTrace();
         }
     }
+
+
     public Stage openNewWindowReturnStage(Event e, String fxmlFileName, String title) throws IOException {
 
         Stage stage;

@@ -21,6 +21,8 @@ public class GlobalVariables {
 	private TrialUser trialuser;
 	private PremiumUser premiumUser;
 	private Administrator administrator;
+	private User contactSelected;
+	private ArrayList<PremiumUser> contactList = new ArrayList<>();
 	@FXML
 	private AboutPageController aboutPageController;
 	@FXML
@@ -44,7 +46,9 @@ public class GlobalVariables {
 	@FXML
 	private WelcomeMenuController welcomeMenuController;
 	@FXML
-	private UserDescriptionController userDescriptionController;
+	private UserDescriptionController ownUserDescriptionController;
+	@FXML
+	private UserDescriptionController contactDescriptionController;
 
 	public void setAlbum(Album album) {
 		this.album = album;
@@ -198,11 +202,33 @@ public class GlobalVariables {
 		this.trialuser = trialuser;
 	}
 
-	public UserDescriptionController getUserDescriptionController() {
-		return userDescriptionController;
+	public UserDescriptionController getOwnUserDescriptionController() {
+		return ownUserDescriptionController;
 	}
 
-	public void setUserDescriptionController(UserDescriptionController userDescriptionController) {
-		this.userDescriptionController = userDescriptionController;
+	public void setOwnUserDescriptionController(UserDescriptionController ownUserDescriptionController) {
+		this.ownUserDescriptionController = ownUserDescriptionController;
+	}
+
+	public UserDescriptionController getContactDescriptionController() { return contactDescriptionController;}
+
+	public void setContactDescriptionController(UserDescriptionController contactDescriptionController) {
+		this.contactDescriptionController = contactDescriptionController;
+	}
+
+	public User getContactSelected() {
+		return contactSelected;
+	}
+
+	public void setContactSelected(User contactSelected) {
+		this.contactSelected = contactSelected;
+	}
+
+	public ArrayList<PremiumUser> getContactList() {
+		return contactList;
+	}
+
+	public void setContactList(ArrayList<PremiumUser> contactList) {
+		this.contactList = contactList;
 	}
 }

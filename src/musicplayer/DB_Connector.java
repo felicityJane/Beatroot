@@ -125,7 +125,7 @@ public class DB_Connector {
 	public void logInTrial(String userName, String password, ActionEvent event, Label warningLabel) {
 		try {
 			ResultSet rs = statement.executeQuery(
-					"SELECT * FROM trial_user WHERE user_name = '"+ userName + "'");
+					"SELECT * FROM trial_user WHERE user_name = '" + userName + "'");
 
 			if (rs.next()) {
 				if (password.equals(rs.getString(2))) {
@@ -136,8 +136,8 @@ public class DB_Connector {
 
 					Files.write(path, userNameAndType, StandardOpenOption.CREATE);
 
-					TrialUser trialUser = new TrialUser(rs.getString(1), rs.getString(3), rs.getString(2),
-							rs.getString(6), rs.getString(7), rs.getDate(8), rs.getString(9), rs.getString(11),
+					TrialUser trialUser = new TrialUser(rs.getString(1), rs.getString(3), rs.getString(2), rs.getString(4),
+							rs.getString(5), rs.getString(6), rs.getString(7), rs.getDate(8), rs.getString(9), rs.getString(11),
 							rs.getString(12), rs.getString(13), Country.fromString(rs.getString(14)),
 							Gender.fromString(rs.getString(16)), rs.getString(10), rs.getDate(15));
 					globalVariables.setTrialuser(trialUser);
@@ -181,6 +181,7 @@ public class DB_Connector {
 					Files.write(path, userNameAndType, StandardOpenOption.CREATE);
 
 					PremiumUser premiumUser = new PremiumUser(rs.getString(1), rs.getString(3), rs.getString(2),
+							rs.getString(4), rs.getString(5),
 							rs.getString(6), rs.getString(7), rs.getDate(8),
 							rs.getString(9), rs.getString(11), rs.getString(12),
 							rs.getString(13), Country.fromString(rs.getString(14)),
@@ -241,7 +242,9 @@ public class DB_Connector {
 		}
 	}
 
-	/** @author Viktor */
+	/**
+	 * @author Viktor
+	 */
 
 	public boolean checkUserName(String userName, Label warningLabel, ActionEvent event) {
 		boolean exists = false;
@@ -279,9 +282,8 @@ public class DB_Connector {
 	 *
 	 * @param warningLabel
 	 */
-
 	public void logInAdministrator(String staffId, String userName, String password, ActionEvent event,
-			Label warningLabel) {
+								   Label warningLabel) {
 		try {
 			resultSet = statement.executeQuery(
 					"select * from administrator left join gender on administrator.gender_gender_id=gender.gender_id where user_name='"
@@ -302,7 +304,8 @@ public class DB_Connector {
 					// System.out.println(gender.toString());
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					administrator = new Administrator(resultSet.getString(1), resultSet.getString(2),
-							resultSet.getString(4), resultSet.getString(3), resultSet.getString(7),
+							resultSet.getString(4), resultSet.getString(3), resultSet.getString(5),
+							resultSet.getString(6), resultSet.getString(7),
 							resultSet.getString(8), resultSet.getDate(9), resultSet.getString(10),
 							resultSet.getString(11), resultSet.getString(12), resultSet.getString(13),
 							Country.fromString(resultSet.getString(14)), Gender.fromString(resultSet.getString(22)),
@@ -479,4 +482,75 @@ public class DB_Connector {
 		}
 	}
 
+	public void getContact(String userName) {
+
+		PremiumUser premiumUser;
+		try {
+			ResultSet rs = statement.executeQuery(
+					"SELECT * FROM premium_user WHERE user_name='" + userName + "'");
+
+			if (rs.next()) {
+				premiumUser = new PremiumUser(rs.getString(1), rs.getString(3), rs.getString(2),
+						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getDate(8),
+						rs.getString(9), rs.getString(11), rs.getString(12),
+						rs.getString(13), Country.fromString(rs.getString(14)),
+						Gender.values()[Integer.parseInt(rs.getString(24))], rs.getString(10), rs.getString(15),
+						rs.getDate(16), PaymentMethod.valueOf(rs.getString(17).toUpperCase()), rs.getString(18),
+						rs.getString(19), rs.getString(20), rs.getString(21), Country.fromString(rs.getString(22)),
+						rs.getString(23));
+				//globalVariables.getContactList().clear();
+				if (premiumUser != null && !globalVariables.getContactList().contains(premiumUser)) {
+					globalVariables.getContactList().add(premiumUser);
+				}
+			}
+		} catch (SQLException sq) {
+			DialogBoxManager.errorDialogBox("Error while running sql select query", "Error from method getContact in DB_Connector");
+
+		}
+	}
+
+	public void findPremiumUser(String userName) {
+		PremiumUser premiumUser = null;
+		try {
+			ResultSet rs = statement.executeQuery(
+					"SELECT * FROM premium_user WHERE user_name='" + userName + "'");
+
+			if (rs.next()) {
+				premiumUser = new PremiumUser(rs.getString(1), rs.getString(3), rs.getString(2),
+						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getDate(8),
+						rs.getString(9), rs.getString(11), rs.getString(12),
+						rs.getString(13), Country.fromString(rs.getString(14)),
+						Gender.values()[Integer.parseInt(rs.getString(24))], rs.getString(10), rs.getString(15),
+						rs.getDate(16), PaymentMethod.valueOf(rs.getString(17).toUpperCase()), rs.getString(18),
+						rs.getString(19), rs.getString(20), rs.getString(21), Country.fromString(rs.getString(22)),
+						rs.getString(23));
+			}
+			if (premiumUser != null) {
+				GlobalVariables.getInstance().setContactSelected(premiumUser);
+			}
+		} catch (SQLException sq) {
+			DialogBoxManager.errorDialogBox("Error while running sql select query", "Error from method findPremiumUser in DB_Connector");
+
+		}
+	}
+	public void findTrialUser(String userName) {
+		TrialUser trialUser = null;
+		try {
+			ResultSet rs = statement.executeQuery(
+					"SELECT * FROM trial_user WHERE user_name='" + userName + "'");
+
+			if (rs.next()) {
+				trialUser = new TrialUser(rs.getString(1), rs.getString(3), rs.getString(2), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getDate(8), rs.getString(9), rs.getString(11),
+						rs.getString(12), rs.getString(13), Country.fromString(rs.getString(14)),
+						Gender.fromString(rs.getString(16)), rs.getString(10), rs.getDate(15));
+			}
+			if (trialUser != null) {
+				GlobalVariables.getInstance().setContactSelected(trialUser);
+			}
+		} catch (SQLException sq) {
+			DialogBoxManager.errorDialogBox("Error while running sql select query", "Error from method findTrialUser in DB_Connector");
+
+		}
+	}
 }
