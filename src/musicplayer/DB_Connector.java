@@ -1,29 +1,34 @@
 package musicplayer;
 
-import java.beans.PropertyEditorManager;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.sql.*;
-import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.time.Year;
 import java.util.ArrayList;
-import java.sql.Date;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import musicplayer.model.*;
+import musicplayer.model.Administrator;
+import musicplayer.model.Album;
+import musicplayer.model.Country;
+import musicplayer.model.Gender;
+import musicplayer.model.GlobalVariables;
+import musicplayer.model.MusicArtist;
+import musicplayer.model.MusicTrack;
+import musicplayer.model.PaymentMethod;
+import musicplayer.model.PremiumUser;
+import musicplayer.model.TrialUser;
 
 public class DB_Connector {
 	private String urlOfDatabase;
@@ -124,8 +129,7 @@ public class DB_Connector {
 
 	public void logInTrial(String userName, String password, ActionEvent event, Label warningLabel) {
 		try {
-			ResultSet rs = statement.executeQuery(
-					"SELECT * FROM trial_user WHERE user_name = '"+ userName + "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM trial_user WHERE user_name = '" + userName + "'");
 
 			if (rs.next()) {
 				if (password.equals(rs.getString(2))) {
@@ -143,7 +147,6 @@ public class DB_Connector {
 					globalVariables.setTrialuser(trialUser);
 					globalVariables.setPremiumUser(null);
 					globalVariables.setAdministrator(null);
-
 
 					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
 
@@ -166,8 +169,7 @@ public class DB_Connector {
 	public void logInPremium(String userName, String password, ActionEvent event, Label warningLabel) {
 
 		try {
-			ResultSet rs = statement.executeQuery(
-					"SELECT * FROM premium_user WHERE user_name='" + userName + "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM premium_user WHERE user_name='" + userName + "'");
 
 			if (rs.next()) {
 				if (password.equals(rs.getString(2))) {
@@ -181,9 +183,8 @@ public class DB_Connector {
 					Files.write(path, userNameAndType, StandardOpenOption.CREATE);
 
 					PremiumUser premiumUser = new PremiumUser(rs.getString(1), rs.getString(3), rs.getString(2),
-							rs.getString(6), rs.getString(7), rs.getDate(8),
-							rs.getString(9), rs.getString(11), rs.getString(12),
-							rs.getString(13), Country.fromString(rs.getString(14)),
+							rs.getString(6), rs.getString(7), rs.getDate(8), rs.getString(9), rs.getString(11),
+							rs.getString(12), rs.getString(13), Country.fromString(rs.getString(14)),
 							Gender.values()[Integer.parseInt(rs.getString(24))], rs.getString(10), rs.getString(15),
 							rs.getDate(16), PaymentMethod.valueOf(rs.getString(17).toUpperCase()), rs.getString(18),
 							rs.getString(19), rs.getString(20), rs.getString(21), Country.fromString(rs.getString(22)),
@@ -193,7 +194,6 @@ public class DB_Connector {
 					globalVariables.setTrialuser(null);
 
 					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
-
 
 				} else {
 					warningLabel.setText("Invalid username or password!!");
@@ -452,10 +452,12 @@ public class DB_Connector {
 
 	public void getArtistDetails(Integer musicTrackId) {
 		try {
-			ResultSet rs = statement.executeQuery("SELECT music_track.track_id, music_artist.artist_id, music_artist.stage_name, music_artist.administrator_staff_id, music_artist.rating_id\n"
-					+ ", music_artist.year_of_foundation, music_artist.artist_description FROM album_has_music_track\n" +
-					"JOIN music_track ON album_has_music_track.music_track_track_id = music_track.track_id\n" +
-					"JOIN music_artist ON music_track.music_artist_artist_id = music_artist.artist_id WHERE music_track.track_id = '" + musicTrackId + "'");
+			ResultSet rs = statement.executeQuery(
+					"SELECT music_track.track_id, music_artist.artist_id, music_artist.stage_name, music_artist.administrator_staff_id, music_artist.rating_id\n"
+							+ ", music_artist.year_of_foundation, music_artist.artist_description FROM album_has_music_track\n"
+							+ "JOIN music_track ON album_has_music_track.music_track_track_id = music_track.track_id\n"
+							+ "JOIN music_artist ON music_track.music_artist_artist_id = music_artist.artist_id WHERE music_track.track_id = '"
+							+ musicTrackId + "'");
 
 			if (rs.next()) {
 				if (musicTrackId.equals(rs.getInt(1))) {
@@ -474,9 +476,30 @@ public class DB_Connector {
 			}
 
 		} catch (SQLException ex) {
-			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing album details query. Please try again.");
+			DialogBoxManager.errorDialogBox("Cannot run query",
+					"Error on executing album details query. Please try again.");
 			ex.printStackTrace();
 		}
 	}
 
+	public void getTrialUsersDetails() {
+		try {
+			resultSet = statement.executeQuery("SELECT * FROM trial_user");
+			while (resultSet.next()) {
+				globalVariables.getModifyUserController().getData()
+						.add(new TrialUser(resultSet.getString("user_name"), resultSet.getString("display_name"),
+								resultSet.getString("password"), resultSet.getString("first_name"),
+								resultSet.getString("last_name"), resultSet.getDate("date_of_birth"),
+								resultSet.getString("email_address"), resultSet.getString("physical_address"),
+								resultSet.getString("city_of_residence"), resultSet.getString("postal_code"),
+								Country.fromString(resultSet.getString("country")),
+								Gender.values()[Integer.parseInt(resultSet.getString("gender_gender_id"))],
+								resultSet.getString("phone_number"), resultSet.getDate("free_trial_end_date")));
+				globalVariables.getModifyUserController().getTrialUsersTable()
+						.setItems(globalVariables.getModifyUserController().getData());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

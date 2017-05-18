@@ -19,6 +19,7 @@
         <fx:include fx:id="mainMenu" source="mainMenu.fxml" />
         <AnchorPane fx:id="welcomeRootAnchor" layoutX="20.0" layoutY="23.0" prefHeight="677.0" prefWidth="1398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="-20.0" AnchorPane.topAnchor="23.0">
         <children>
+        <fx:include fx:id="adminMenu" source="AdminMenu.fxml" layoutY="5"/>
             <ImageView fx:id="imgSugg1" fitHeight="94.0" fitWidth="94.0" layoutX="203.0" layoutY="406.0" pickOnBounds="true" />
             <ImageView fx:id="imgSugg2" fitHeight="94.0" fitWidth="94.0" layoutX="342.0" layoutY="406.0" pickOnBounds="true" />
             <ImageView fx:id="imgSugg3" fitHeight="94.0" fitWidth="94.0" layoutX="478.0" layoutY="406.0" pickOnBounds="true" />

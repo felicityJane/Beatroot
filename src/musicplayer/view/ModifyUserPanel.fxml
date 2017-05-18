@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.ModifyUserController">
+   <children>
+   <fx:include fx:id="adminMenu" layoutX="20" layoutY="25" source="AdminMenu.fxml" />
+      <Button fx:id="premiumUsersButton" layoutX="30.0" layoutY="295.0" mnemonicParsing="false" text="Load premium users" />
+      <Button fx:id="trialUsersButton" layoutX="165.0" layoutY="295.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Load trial users" />
+      <TableView fx:id="trialUsersTable" layoutX="26.0" layoutY="119.0" prefHeight="151.0" prefWidth="548.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="119.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="User name" />
+          <TableColumn prefWidth="85.0" text="Display name" />
+            <TableColumn prefWidth="65.0" text="Password" />
+            <TableColumn prefWidth="75.0" text="First name" />
+            <TableColumn prefWidth="75.0" text="Last name" />
+            <TableColumn prefWidth="92.0" text="Date of birth" />
+            <TableColumn text="Email" />
+            <TableColumn prefWidth="75.0" text="Street address" />
+            <TableColumn prefWidth="75.0" text="City" />
+            <TableColumn prefWidth="75.0" text="Postal code" />
+            <TableColumn prefWidth="75.0" text="Country" />
+            <TableColumn prefWidth="75.0" text="Phone number" />
+            <TableColumn prefWidth="75.0" text="Trial end date" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="adminMenu" prefHeight="195.0" prefWidth="100.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.MainMenuController">
-   <opaqueInsets>
-      <Insets />
-   </opaqueInsets>
+<Pane fx:id="adminMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.AdminMenuController">
    <children>
-      <Button fx:id="uploadSongsButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="291.0" text="Upload songs" />
-      <Button fx:id="createAlbumButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="305.0" text="Create album" />
-      <Button fx:id="addArtistButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="203.0" text="Add artist" />
-      <Button fx:id="usersPanelButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" text="Users panel" />
-      <Button fx:id="modifyAlbumButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Modify album" />
-      <Button fx:id="modifySongButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="Modify song" />
+      <VBox prefHeight="60.0" prefWidth="300.0" spacing="10.0">
+         <children>
+            <HBox prefHeight="25.0" prefWidth="540.0" spacing="10.0">
+               <children>
+                  <Button fx:id="uploadButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Upload" />
+                  <Button fx:id="createAlbumButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Create album" />
+                  <Button fx:id="addArtistButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Add artist" />
+               </children>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button fx:id="modifyUsersButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Modify users" />
+                  <Button fx:id="modifyAlbumButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Modify album" />
+                  <Button fx:id="modifySongsButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Modify song" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
-</VBox>
- 
+</Pane>

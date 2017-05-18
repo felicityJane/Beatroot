@@ -1,9 +1,22 @@
 package musicplayer.model;
 
-import javafx.fxml.FXML;
-import musicplayer.controller.*;
-
 import java.util.ArrayList;
+
+import javafx.fxml.FXML;
+import musicplayer.controller.AboutPageController;
+import musicplayer.controller.AdminMenuController;
+import musicplayer.controller.AlbumPageController;
+import musicplayer.controller.ArtistPageController;
+import musicplayer.controller.FAQsPageController;
+import musicplayer.controller.LogInMenuController;
+import musicplayer.controller.MainMenuController;
+import musicplayer.controller.ModifyUserController;
+import musicplayer.controller.PaymentMenuController;
+import musicplayer.controller.SettingsPageController;
+import musicplayer.controller.SignUpMenuController;
+import musicplayer.controller.SongPageController;
+import musicplayer.controller.UserDescriptionController;
+import musicplayer.controller.WelcomeMenuController;
 
 public class GlobalVariables {
 
@@ -45,6 +58,10 @@ public class GlobalVariables {
 	private WelcomeMenuController welcomeMenuController;
 	@FXML
 	private UserDescriptionController userDescriptionController;
+	@FXML
+	private AdminMenuController adminMenuController;
+	@FXML
+	private ModifyUserController modifyUserController;
 
 	public void setAlbum(Album album) {
 		this.album = album;
@@ -204,5 +221,21 @@ public class GlobalVariables {
 
 	public void setUserDescriptionController(UserDescriptionController userDescriptionController) {
 		this.userDescriptionController = userDescriptionController;
+	}
+
+	public AdminMenuController getAdminMenuController() {
+		return adminMenuController;
+	}
+
+	public void setAdminMenuController(AdminMenuController adminMenuController) {
+		this.adminMenuController = adminMenuController;
+	}
+
+	public ModifyUserController getModifyUserController() {
+		return modifyUserController;
+	}
+
+	public void setModifyUserController(ModifyUserController modifyUserController) {
+		this.modifyUserController = modifyUserController;
 	}
 }
