@@ -198,6 +198,14 @@ public abstract class User {
 		userRatings.remove(r);
 	}
 
+	public Playlist getDefaultPlaylist() {
+		return defaultPlaylist;
+	}
+
+	public void setDefaultPlaylist(Playlist defaultPlaylist) {
+		this.defaultPlaylist = defaultPlaylist;
+	}
+
 	public void changeAccountSettings(String displayName, String password, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
 			Country country, String phoneNumber) {
