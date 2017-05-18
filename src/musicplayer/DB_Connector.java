@@ -430,7 +430,7 @@ public class DB_Connector {
 
 		} catch (SQLException ex) {
 			DialogBoxManager.errorDialogBox("Cannot run query",
-					"Error on executing album details query. Please try again.");
+					"Error on executing getTrackDetails details query. Please try again.");
 			ex.printStackTrace();
 		}
 	}
@@ -459,7 +459,7 @@ public class DB_Connector {
 			}
 
 		} catch (SQLException ex) {
-			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing album details query. Please try again.");
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing artist details query. Please try again.");
 			ex.printStackTrace();
 		}
 	}
