@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 import musicplayer.model.MusicTrack;

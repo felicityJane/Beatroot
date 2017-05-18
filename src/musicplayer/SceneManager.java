@@ -7,9 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
-import javafx.stage.Modality;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -70,15 +69,16 @@ public class SceneManager {
             });
         });
     }
-    public void openPopupScene(Event e, String fxmlFileName ) throws IOException {
-        Node node = (Node)e.getSource();
-        Stage stage = (Stage)node.getScene().getWindow();
+    public void openPopupScene(Event event, String fxmlFileName ) throws IOException {
+        Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
         Scene scene = new Scene(root);
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
         stage.centerOnScreen();
+
 
     }
     public void popUpWindow(Event e, String fxmlFileName) throws IOException{
@@ -118,11 +118,11 @@ public class SceneManager {
 
     }
 
-    public void openNewWindow(Event e, String fxmlFileName) throws IOException {
+    public void openNewWindow(Event e, String fxmlFileName, String title) throws IOException {
         try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
-            stage.setTitle("Beatroot");
+            stage.setTitle(title);
             stage.setScene(new Scene((root)));
             stage.show();
             stage.centerOnScreen();
@@ -130,5 +130,23 @@ public class SceneManager {
             ex.printStackTrace();
         }
     }
+    public Stage openNewWindowReturnStage(Event e, String fxmlFileName, String title) throws IOException {
+
+        Stage stage;
+        try {
+            stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
+            stage.setTitle(title);
+            stage.setScene(new Scene((root)));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+            stage.centerOnScreen();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+            stage = null;
+        }
+        return stage;
+    }
+
 
 }

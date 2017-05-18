@@ -107,6 +107,7 @@ public class AdminSignUpController implements Initializable {
 							countryChoiceBox.getValue(), Gender.MALE, phoneNumberField.getText(), employmentStartDate,
 							wage, workHours);
 					connector.insert("user_link(user)", "('" + admin.getStaffID() + "')");
+					connector.insert("playlist(playlist_owner)", "('" + admin.getStaffID() + "')");
 					connector.insert(
 							"administrator(staff_id, user_name, password, display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, phone_number, start_date, wage, contract_hours, gender_gender_id, playlist_link)",
 							"('" + admin.getStaffID() + "', '" + admin.getUserName() + "','" + admin.getPassword()
@@ -164,6 +165,7 @@ public class AdminSignUpController implements Initializable {
 							countryChoiceBox.getValue(), Gender.FEMALE, phoneNumberField.getText(), employmentStartDate,
 							wage, workHours);
 					connector.insert("user_link(user)", "('" + admin.getStaffID() + "')");
+					connector.insert("playlist(playlist_owner)", "('" + admin.getStaffID() + "')");
 					connector.insert(
 							"administrator(staff_id, user_name, password, display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, phone_number, start_date, wage, contract_hours, gender_gender_id, playlist_link)",
 							"('" + admin.getStaffID() + "', '" + admin.getUserName() + "','" + admin.getPassword()
@@ -188,6 +190,7 @@ public class AdminSignUpController implements Initializable {
 							countryChoiceBox.getValue(), Gender.NOT_SPECIFIED, phoneNumberField.getText(),
 							employmentStartDate, wage, workHours);
 					connector.insert("user_link(user)", "('" + admin.getStaffID() + "')");
+					connector.insert("playlist(playlist_owner)", "('" + admin.getStaffID() + "')");
 					connector.insert(
 							"administrator(staff_id, user_name, password, display_name, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, phone_number, start_date, wage, contract_hours, gender_gender_id, playlist_link)",
 							"('" + admin.getStaffID() + "', '" + admin.getUserName() + "','" + admin.getPassword()
