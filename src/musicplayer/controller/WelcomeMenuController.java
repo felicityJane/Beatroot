@@ -150,7 +150,7 @@ public class WelcomeMenuController implements Initializable {
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
         imgMain.setEffect(dropShadow);
 
-        imgSearchIcon.setImage(new Image("images/SearchIcon.png"));
+        imgSearchIcon.setImage(new Image("images/search_icon.jpg"));
         imgSearchUser.setImage(new Image("images/SearchIcon.png"));
         lblNoMatchesFound.setText("");
         Image img3 = new Image("images/arrow-download-icon.png");
@@ -163,13 +163,13 @@ public class WelcomeMenuController implements Initializable {
                 btnPen,
                 new Tooltip("Add a comment to the song")
         );
-        Image img6 = new Image("images/plus.png");
+        Image img6 = new Image("images/add.png");
         btnAddPlaylist.setFill(new ImagePattern(img6));
         Tooltip.install(
                 btnAddPlaylist,
                 new Tooltip("Create playlist")
         );
-        Image img7 = new Image("images/minus.png");
+        Image img7 = new Image("images/remove.png");
         btnRemovePlaylist.setFill(new ImagePattern(img7));
         Tooltip.install(
                 btnRemovePlaylist,

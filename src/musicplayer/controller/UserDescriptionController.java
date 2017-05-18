@@ -55,7 +55,8 @@ public class UserDescriptionController implements Initializable {
             playlistLabel.setText(": "+String.valueOf(connector.searchMultipleResults("name","playlist", "owner='"+globalVariables.getPremiumUser().getUserName()+"'")));
             descriptionLabel.setText("- "+String.valueOf(connector.search("user_description","Premium_user", "user_name='"+globalVariables.getPremiumUser().getUserName()+"'")));
             descriptionTextArea.setVisible(false);
-            addButton.setVisible(false);
+            addButton.setVisible(true);
+            saveButton.setVisible(false);
             tableName="premium_user";
             userName=globalVariables.getPremiumUser().getUserName();
 
@@ -68,7 +69,7 @@ public class UserDescriptionController implements Initializable {
             descriptionLabel.setText("- "+String.valueOf(connector.search("user_description","Trial_user", "user_name='"+globalVariables.getTrialuser().getUserName()+"'")));
             descriptionTextArea.setVisible(false);
             saveButton.setVisible(false);
-            //addButton.setVisible(false);
+            addButton.setVisible(true);
             tableName="trial_user";
             userName=globalVariables.getTrialuser().getUserName();
 
@@ -76,6 +77,7 @@ public class UserDescriptionController implements Initializable {
         addButton.setImage(new Image("images/add.png"));
         saveButton.setImage(new Image("images/save.png"));
         uploadButton.setImage(new Image("images/upload.png"));
+
         addButton.setOnMouseEntered(event -> {
             Scene scene = addButton.getScene();
             scene.setCursor(Cursor.HAND);
@@ -102,7 +104,7 @@ public class UserDescriptionController implements Initializable {
                //UPDATE trial_user SET user_description ='add again' where user_name='fatih20';
                connector.update(tableName,"user_description","'"+descriptionTextArea.getText()+"'","user_name='"+userName+"'");
                descriptionTextArea.setVisible(false);
-               addButton.setVisible(false);
+               addButton.setVisible(true);
                descriptionLabel.setText("- "+descriptionTextArea.getText());
            }catch (Exception e){
                e.printStackTrace();
