@@ -14,6 +14,7 @@ import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 import musicplayer.model.GlobalVariables;
 import musicplayer.model.PremiumUser;
+import musicplayer.model.TrialUser;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -85,75 +86,105 @@ public class UserDescriptionController implements Initializable {
             }
         }
         if (globalVariables.getOwnUserDescriptionController() == null && globalVariables.getContactDescriptionController() != null) {
-            if (globalVariables.getContactSelected() instanceof PremiumUser) {
-                int counter = 0;
-                for (String s : connector.searchMultipleResults("contact_contact_name", "premium_user_has_contact",
-                        "contact_contact_name = '" + globalVariables.getContactSelected().getUserName() +
-                                "' AND premium_user_user_name = '" + globalVariables.getPremiumUser().getUserName() + "'")) {
-                    if (!s.equals("")) {
-                        counter++;
-                    }
+
+            if (globalVariables.getTrialuser() != null && globalVariables.getPremiumUser() == null) {
+                btnAddContact.setVisible(false);
+                if (globalVariables.getContactSelected() instanceof PremiumUser) {
+                    userImage.setImage(new Image(globalVariables.getContactSelected().getProfilePicturePath()));
+                    displayNameLabel.setText(" : " + globalVariables.getContactSelected().getDisplayName());
+                    genderLabel.setText(" : " + globalVariables.getContactSelected().getGender());
+                    emailAddressLabel.setText(" : " + globalVariables.getContactSelected().getEmailAddress());
+                    playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "'")));
+
+                    descriptionTextArea.setVisible(false);
+                    addButton.setVisible(false);
+                    userName = globalVariables.getContactSelected().getUserName();
+                    userTypeLabel.setText(" : Premium user");
+                    tableName = "premium_user";
+                    descriptionLabel.setText("- " + String.valueOf(connector.search("user_description", "premium_user", "user_name='" + globalVariables.getContactSelected().getUserName() + "'")));
+                } else if (globalVariables.getContactSelected() instanceof TrialUser) {
+                    userImage.setImage(new Image(globalVariables.getContactSelected().getProfilePicturePath()));
+                    displayNameLabel.setText(" : " + globalVariables.getContactSelected().getDisplayName());
+                    genderLabel.setText(" : " + globalVariables.getContactSelected().getGender());
+                    emailAddressLabel.setText(" : " + globalVariables.getContactSelected().getEmailAddress());
+                    playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "'")));
+
+                    descriptionTextArea.setVisible(false);
+                    addButton.setVisible(false);
+                    userName = globalVariables.getContactSelected().getUserName();
+                    userTypeLabel.setText(" : Premium user");
+                    tableName = "premium_user";
+                    descriptionLabel.setText("- " + String.valueOf(connector.search("user_description", "trial_user", "user_name='" + globalVariables.getContactSelected().getUserName() + "'")));
                 }
-                for (String s : connector.searchMultipleResults("premium_user_user_name", "premium_user_has_contact",
-                        "contact_contact_name = '" + globalVariables.getPremiumUser().getUserName() +
-                                "' AND premium_user_user_name = '" + globalVariables.getContactSelected().getUserName() + "'")) {
-                    if (!s.equals("")) {
-                        counter++;
-                    }
-                }
-                if (counter == 0) {
-                    int counter2 = 0;
-                    for (String s : connector.searchMultipleResults("contact_contact_name", "friend_request",
-                            "contact_contact_name = '" + globalVariables.getContactSelected().getUserName() + "'")) {
+            }else if (globalVariables.getPremiumUser() != null && globalVariables.getTrialuser() == null) {
+                if (globalVariables.getContactSelected() instanceof PremiumUser) {
+                    int counter = 0;
+                    for (String s : connector.searchMultipleResults("contact_contact_name", "premium_user_has_contact",
+                            "contact_contact_name = '" + globalVariables.getContactSelected().getUserName() +
+                                    "' AND premium_user_user_name = '" + globalVariables.getPremiumUser().getUserName() + "'")) {
                         if (!s.equals("")) {
-                            counter2++;
+                            counter++;
                         }
                     }
-                    if (counter2 > 0) {
-                        btnAddContact.setVisible(true);
-                        btnAddContact.setDisable(true);
-                        btnAddContact.setText("Request pending");
-                    } else {
-                        String s = connector.search("premium_user_user_name", "friend_request",
-                                "premium_user_user_name = '" + globalVariables.getContactSelected().getUserName()
-                        + "' AND contact_contact_name = '" + globalVariables.getPremiumUser().getUserName() + "'");
-                        if (s.equals("")) {
-                            btnAddContact.setVisible(true);
-                            btnAddContact.setDisable(false);
-                            btnAddContact.setText("Add as a contact");
-                        } else {
+                    for (String s : connector.searchMultipleResults("premium_user_user_name", "premium_user_has_contact",
+                            "contact_contact_name = '" + globalVariables.getPremiumUser().getUserName() +
+                                    "' AND premium_user_user_name = '" + globalVariables.getContactSelected().getUserName() + "'")) {
+                        if (!s.equals("")) {
+                            counter++;
+                        }
+                    }
+                    if (counter == 0) {
+                        int counter2 = 0;
+                        for (String s : connector.searchMultipleResults("contact_contact_name", "friend_request",
+                                "contact_contact_name = '" + globalVariables.getContactSelected().getUserName() + "'")) {
+                            if (!s.equals("")) {
+                                counter2++;
+                            }
+                        }
+                        if (counter2 > 0) {
                             btnAddContact.setVisible(true);
                             btnAddContact.setDisable(true);
                             btnAddContact.setText("Request pending");
+                        } else {
+                            String s = connector.search("premium_user_user_name", "friend_request",
+                                    "premium_user_user_name = '" + globalVariables.getContactSelected().getUserName()
+                                            + "' AND contact_contact_name = '" + globalVariables.getPremiumUser().getUserName() + "'");
+                            if (s.equals("")) {
+                                btnAddContact.setVisible(true);
+                                btnAddContact.setDisable(false);
+                                btnAddContact.setText("Add as a contact");
+                            } else {
+                                btnAddContact.setVisible(true);
+                                btnAddContact.setDisable(true);
+                                btnAddContact.setText("Request pending");
+                            }
                         }
+                    } else {
+                        btnAddContact.setVisible(true);
+                        btnAddContact.setText("✓ Contacts");
+                        btnAddContact.setDisable(true);
                     }
+                    userTypeLabel.setText(" : Premium user");
+                    tableName = "premium_user";
+                    descriptionLabel.setText("- " + String.valueOf(connector.search("user_description", "premium_user", "user_name='" + globalVariables.getContactSelected().getUserName() + "'")));
                 } else {
                     btnAddContact.setVisible(true);
-                    btnAddContact.setText("✓ Contacts");
                     btnAddContact.setDisable(true);
+                    btnAddContact.setText("Trial user");
+                    userTypeLabel.setText(" : Trial user");
+                    tableName = "trial_user";
+                    descriptionLabel.setText("- " + String.valueOf(connector.search("user_description", "trial_user", "user_name='" + globalVariables.getContactSelected().getUserName() + "'")));
                 }
-                userTypeLabel.setText(" : Premium user");
-                tableName = "premium_user";
-                descriptionLabel.setText("- " + String.valueOf(connector.search("user_description", "premium_user", "user_name='" + globalVariables.getContactSelected().getUserName() + "'")));
-            } else {
-                btnAddContact.setVisible(true);
-                btnAddContact.setDisable(true);
-                btnAddContact.setText("Trial user");
-                userTypeLabel.setText(" : Trial user");
-                tableName = "trial_user";
-                descriptionLabel.setText("- " + String.valueOf(connector.search("user_description", "trial_user", "user_name='" + globalVariables.getContactSelected().getUserName() + "'")));
+                userImage.setImage(new Image(globalVariables.getContactSelected().getProfilePicturePath()));
+                displayNameLabel.setText(" : " + globalVariables.getContactSelected().getDisplayName());
+                genderLabel.setText(" : " + globalVariables.getContactSelected().getGender());
+                emailAddressLabel.setText(" : " + globalVariables.getContactSelected().getEmailAddress());
+                playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "'")));
+
+                descriptionTextArea.setVisible(false);
+                addButton.setVisible(false);
+                userName = globalVariables.getContactSelected().getUserName();
             }
-            userImage.setImage(new Image(globalVariables.getContactSelected().getProfilePicturePath()));
-            displayNameLabel.setText(" : " + globalVariables.getContactSelected().getDisplayName());
-            genderLabel.setText(" : " + globalVariables.getContactSelected().getGender());
-            emailAddressLabel.setText(" : " + globalVariables.getContactSelected().getEmailAddress());
-            playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "'")));
-
-            descriptionTextArea.setVisible(false);
-            addButton.setVisible(false);
-            userName = globalVariables.getContactSelected().getUserName();
-
-
         }
         addButton.setImage(new Image("images/add.png"));
         saveButton.setImage(new Image("images/save.png"));

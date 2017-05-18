@@ -1758,12 +1758,22 @@ public class WelcomeMenuController implements Initializable {
                 if (!db_connector.search("user_name",
                         "premium_user", "user_name = '" + userSearched.replaceAll("'", "''") + "'").equals("")) {
                     db_connector.findPremiumUser(cmbSearchUser.getEditor().getText());
-                    if (cmbSearchUser.getEditor().getText().equals(GlobalVariables.getInstance().getPremiumUser().getUserName())) {
-                        GlobalVariables.getInstance().setOwnUserDescriptionController(new UserDescriptionController());
-                        GlobalVariables.getInstance().setContactDescriptionController(null);
-                    }else {
-                        GlobalVariables.getInstance().setOwnUserDescriptionController(null);
-                        GlobalVariables.getInstance().setContactDescriptionController(new UserDescriptionController());
+                    if (GlobalVariables.getInstance().getPremiumUser() != null && GlobalVariables.getInstance().getTrialuser() == null) {
+                        if (cmbSearchUser.getEditor().getText().equals(GlobalVariables.getInstance().getPremiumUser().getUserName())) {
+                            GlobalVariables.getInstance().setOwnUserDescriptionController(new UserDescriptionController());
+                            GlobalVariables.getInstance().setContactDescriptionController(null);
+                        } else {
+                            GlobalVariables.getInstance().setOwnUserDescriptionController(null);
+                            GlobalVariables.getInstance().setContactDescriptionController(new UserDescriptionController());
+                        }
+                    } else if (GlobalVariables.getInstance().getTrialuser()!= null && GlobalVariables.getInstance().getPremiumUser() == null) {
+                        if (cmbSearchUser.getEditor().getText().equals(GlobalVariables.getInstance().getTrialuser().getUserName())) {
+                            GlobalVariables.getInstance().setOwnUserDescriptionController(new UserDescriptionController());
+                            GlobalVariables.getInstance().setContactDescriptionController(null);
+                        } else {
+                            GlobalVariables.getInstance().setOwnUserDescriptionController(null);
+                            GlobalVariables.getInstance().setContactDescriptionController(new UserDescriptionController());
+                        }
                     }
                     try {
                         SceneManager.sceneManager.openNewWindow(e, "view/userDescription.fxml", GlobalVariables.getInstance().getContactSelected().getDisplayName());
