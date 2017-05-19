@@ -1,7 +1,6 @@
 package musicplayer.controller;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -12,8 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import musicplayer.DB_Connector;
+import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
-import musicplayer.Server_Connector;
 import musicplayer.model.Album;
 import musicplayer.model.GlobalVariables;
 import musicplayer.model.MusicArtist;
@@ -26,17 +25,11 @@ import java.util.ResourceBundle;
 public class AlbumPageController implements Initializable {
     @FXML private AnchorPane albumPageAnchorPane;
     @FXML private ImageView imageView;
-    @FXML private Label albumLabel, artistLabel;
+    @FXML private Label albumLabel, artistLabel, releaseDateLabel;
     @FXML private ListView<String> listView;
-    private URL url;
     private DB_Connector db_connector = new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
-    private Server_Connector connector;
-    private Album album;
-    private MusicArtist musicArtist;
-    private MusicTrack musicTrack;
-    private ArrayList<MusicTrack> musicTracks;
     GlobalVariables globalVariables = GlobalVariables.getInstance();
-    int counter = 0;
+    private int counter = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,10 +40,9 @@ public class AlbumPageController implements Initializable {
         popUpMenuArtistPage();
     }
 
-    public void getAlbumInfo(){
-
-        album = globalVariables.getAlbum();
-        musicTracks = globalVariables.getMusicTracks();
+    private void getAlbumInfo(){
+        Album album = globalVariables.getAlbum();
+        ArrayList<MusicTrack> musicTracks = globalVariables.getMusicTracks();
 
         imageView.setImage(album.getAlbumCover());
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
@@ -61,13 +53,15 @@ public class AlbumPageController implements Initializable {
 
         for (MusicTrack m: musicTracks) {
             counter++;
-            int trackId = m.getID();
-            db_connector.getArtistDetails(trackId);
-            musicArtist = globalVariables.getMusicArtist();
+            globalVariables.setMusicTrack(m);
+            db_connector.getArtistDetails(m.getID());
+            MusicArtist musicArtist = globalVariables.getMusicArtist();
             artistLabel.setText("Artist: " + musicArtist.getStageName());
             artistLabel.getStyleClass().add("artistText");
-            globalVariables.setMusicTrack(m);
-            listView.getItems().add(String.format("Track " + counter + " : " +  " %-20s",m.getTrackName()));
+            listView.getItems().add((m.getTrackName()));
+            String publicationDate = String.valueOf(musicArtist.getPublicationYear());
+            releaseDateLabel.setText(String.format("Release Date : %-20s" , publicationDate.substring(0,4)));
+            releaseDateLabel.getStyleClass().add("artistText");
         }
     }
     private void popUpMenuSongPage(){
@@ -76,18 +70,20 @@ public class AlbumPageController implements Initializable {
         contextMenu.getItems().addAll(songPage);
         SceneManager sceneManager = new SceneManager();
         for (Node n : albumPageAnchorPane.getChildren()) {
-
             if (n instanceof ListView ) {
                 n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
             }
         }
         songPage.setOnAction(event -> {
             try {
-                globalVariables.getMusicTrack().setTrackName(listView.getSelectionModel().getSelectedItem());
+                String trackName = listView.getSelectionModel().getSelectedItem();
+                Integer trackId = db_connector.getMusicTrackInfo(trackName);
+                globalVariables.getMusicTrack().setID(trackId);
                 Stage stage = (Stage) albumPageAnchorPane.getScene().getWindow();
                 stage.close();
-                sceneManager.popUpWindow(event, "view/songPage.fxml");
+                sceneManager.popUpWindow( "view/songPage.fxml");
             } catch (IOException e) {
+                DialogBoxManager.errorDialogBox("error occurred","an error has occurred changing to song page scene, please try again");
                 e.printStackTrace();
             }
         });
@@ -98,7 +94,6 @@ public class AlbumPageController implements Initializable {
         contextMenu.getItems().addAll(artistPage);
         SceneManager sceneManager = new SceneManager();
         for (Node n : albumPageAnchorPane.getChildren()) {
-
             if (n instanceof ImageView ) {
                 n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
             }
@@ -107,8 +102,9 @@ public class AlbumPageController implements Initializable {
             try {
                 Stage stage = (Stage) albumPageAnchorPane.getScene().getWindow();
                 stage.close();
-                sceneManager.popUpWindow(event, "view/artistPage.fxml");
+                sceneManager.popUpWindow( "view/artistPage.fxml");
             } catch (IOException e) {
+                DialogBoxManager.errorDialogBox("error occurred","an error has occurred changing to artist page scene, please try again");
                 e.printStackTrace();
             }
         });

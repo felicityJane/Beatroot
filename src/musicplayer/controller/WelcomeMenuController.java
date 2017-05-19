@@ -33,7 +33,6 @@ import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.DefaultHandler;
-
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -44,6 +43,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import static musicplayer.SceneManager.sceneManager;
 
 
 public class WelcomeMenuController implements Initializable {
@@ -114,10 +114,11 @@ public class WelcomeMenuController implements Initializable {
     private Playlist selectedPlaylist;
     private int tempPlaylist;
     private boolean unreadMessage = false;
+    GlobalVariables globalVariables;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        GlobalVariables globalVariables = GlobalVariables.getInstance();
+        globalVariables = GlobalVariables.getInstance();
         globalVariables.setWelcomeMenuController(this);
         globalVariables.getMainMenuController().menuBarFitToParent(welcomeParentAnchorPane);
         globalVariables.getMainMenuController().enableMenuItems();
@@ -185,7 +186,7 @@ public class WelcomeMenuController implements Initializable {
         setImageNews();
         setImageSuggestions();
         setFirstSong();
-        setRatingStars();
+        setRatingStars(lblRating,currentSongRating,imgRating);
         setPlaylists();
         setMessages();
 
@@ -228,7 +229,7 @@ public class WelcomeMenuController implements Initializable {
         });
         lblDisplayName.setOnMouseClicked(event -> {
             try {
-                SceneManager.sceneManager.openPopupScene(event,"view/userDescription.fxml");
+                sceneManager.openPopupScene("view/userDescription.fxml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -344,7 +345,7 @@ public class WelcomeMenuController implements Initializable {
         imgRating.setOnMouseExited(event -> {
             Scene scene = imgSearchIcon.getScene();
             scene.setCursor(Cursor.DEFAULT);
-            setRatingStars();
+            setRatingStars(lblRating,currentSongRating,imgRating);
         });
 
         lblTrackName.setOnMouseClicked(event -> {
@@ -369,7 +370,7 @@ public class WelcomeMenuController implements Initializable {
                 System.out.println(currentSongRating.getFinalRating());
                 writeMusicTrackToBinaryFile();
                 try {
-                    SceneManager.sceneManager.openNewWindow(event, "view/commentWindow.fxml", "Add comment");
+                    sceneManager.openNewWindow( "view/commentWindow.fxml", "Add comment");
                 } catch (IOException ie) {
                     ie.printStackTrace();
                 }
@@ -379,11 +380,17 @@ public class WelcomeMenuController implements Initializable {
 
         for (Node n : welcomeRootAnchor.getChildren()) {
 
-            if (n instanceof ImageView && n != imgSearchIcon && n != imgRating && n != imgSearchUser){
+            if (n instanceof ListView && n != lstPlaylists && n != lstContacts ){
                 n.setOnMouseClicked(event -> {
                     if (event.getButton() == MouseButton.SECONDARY){
-                        ImageView im = (ImageView) event.getSource();
-                        popUpMenu(im);
+                        ListView listView = (ListView) event.getSource();
+                        popUpMenuGoToSongInfo(n);
+                    }
+                });
+            }if (n instanceof ImageView && n != imgSearchIcon && n != imgRating && n != imgSearchUser ){
+                n.setOnMouseClicked(event -> {
+                    if (event.getButton() == MouseButton.SECONDARY){
+                        popUpMenuAlbumPage(n);
                     }
                 });
             }if (n instanceof ImageView && n != imgMain && n != imgVolume && n != imgProfilePicture && n != imgSearchIcon
@@ -396,8 +403,7 @@ public class WelcomeMenuController implements Initializable {
                     if (event.getButton() == MouseButton.PRIMARY){
                         clickOnImageView(n);
                     }if (event.getButton() == MouseButton.SECONDARY){
-                        ImageView im = (ImageView) event.getSource();
-                        popUpMenu(im);
+                        popUpMenuAlbumPage(n);
                     }
                 });
 
@@ -445,8 +451,7 @@ public class WelcomeMenuController implements Initializable {
                     if (event.getButton() == MouseButton.PRIMARY){
                         clickOnImageView(n);
                     }else if (event.getButton() == MouseButton.SECONDARY){
-                        ImageView im = (ImageView) event.getSource();
-                        popUpMenu(im);
+                        popUpMenuAlbumPage(n);
                     }
                 });
 
@@ -591,7 +596,7 @@ public class WelcomeMenuController implements Initializable {
             try {
                 mediaPlayer.stop();
 
-                SceneManager.sceneManager.changeScene(event,"view/logInMenu.fxml");
+                sceneManager.changeScene(event,"view/logInMenu.fxml");
 
             }catch (Exception e){
                 DialogBoxManager.errorDialogBox("Error occurred","Changing from welcome scene to log in scene");
@@ -728,7 +733,7 @@ public class WelcomeMenuController implements Initializable {
             int product = (Integer.parseInt(db_connector.search("sum_from_all_voters", "rating", "rating_id = " + Integer.toString(ratingId)))) * (int)(Double.parseDouble(db_connector.search("final_rating",
                     "rating", "rating_id = " + Integer.toString(ratingId))) + 0.5);
             currentSongRating.setSumFromAllVoters(product);
-            setRatingStars();
+            setRatingStars(lblRating,currentSongRating,imgRating);
             try {
                 url = new URL(songUrl);
                 mediaPlayer.stop();
@@ -834,7 +839,7 @@ public class WelcomeMenuController implements Initializable {
             input.close();
         } catch (Exception fe) {
             System.out.println("It does not find the file but it's okay.");
-            fe.printStackTrace();
+//            fe.printStackTrace();
 //            imgNoConnection.setVisible(true);
 //            lblNoConnection2.setVisible(true);
 //            lblNoConnection1.setVisible(true);
@@ -903,7 +908,7 @@ public class WelcomeMenuController implements Initializable {
         int product = (Integer.parseInt(db_connector.search("sum_from_all_voters", "rating", "rating_id = " + Integer.toString(ratingId)))) * (int)(Double.parseDouble(db_connector.search("final_rating",
                 "rating", "rating_id = " + Integer.toString(ratingId))) + 0.5);
         currentSongRating.setSumFromAllVoters(product);
-        setRatingStars();
+        setRatingStars(lblRating,currentSongRating,imgRating);
 
         lstMainTracks.getItems().clear();
         for (MusicTrack m : album.getSongs()) {
@@ -941,7 +946,7 @@ public class WelcomeMenuController implements Initializable {
             Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
             runMediaPlayer(path);
         } catch (Exception ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
 //            imgNoConnection.setVisible(true);
 //            lblNoConnection2.setVisible(true);
 //            lblNoConnection1.setVisible(true);
@@ -1097,32 +1102,43 @@ public class WelcomeMenuController implements Initializable {
         }
     }
 
-    private void popUpMenu(ImageView imageView){
+    private void popUpMenuAlbumPage(Node n){
         final ContextMenu contextMenu = new ContextMenu();
-        final MenuItem albumPage = new MenuItem("See album info");
+        final MenuItem albumPage = new MenuItem("See album information");
         contextMenu.getItems().addAll(albumPage);
 
-        SceneManager sceneManager = new SceneManager();
-        GlobalVariables globalVariables = GlobalVariables.getInstance();
-        for (Node n : welcomeRootAnchor.getChildren()) {
 
-            if (n instanceof ImageView && n != imgVolume && n != imgProfilePicture) {
-                n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
-            }
-        }
-        for (Node n : anchorNews.getChildren()) {
+        n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
 
-            if (n instanceof ImageView && n != imgVolume && n != imgProfilePicture) {
-                n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
-            }
-        }
         albumPage.setOnAction(event -> {
             try {
-                db_connector.getAlbumDetails(Integer.parseInt(imageView.getId()));
-                db_connector.getTrackDetails(Integer.parseInt(imageView.getId()));
-                sceneManager.popUpWindow(event, "view/albumPage.fxml");
+                db_connector.getAlbumDetails(Integer.parseInt(n.getId()));
+                db_connector.getTrackDetails(Integer.parseInt(n.getId()));
+                sceneManager.popUpWindow( "view/albumPage.fxml");
             } catch (IOException e) {
+                DialogBoxManager.errorDialogBox("error occured in welcome menu controller","an error has occurred changing to album page scene");
                 e.printStackTrace();
+            }
+        });
+    }
+
+    public void popUpMenuGoToSongInfo(Node n){
+        final ContextMenu contextMenu = new ContextMenu();
+        final MenuItem seeSongInfo = new MenuItem("See song information");
+        contextMenu.getItems().addAll(seeSongInfo);
+
+        n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
+
+        seeSongInfo.setOnAction(event -> {
+            try {
+                Integer trackID = db_connector.getMusicTrackInfo(lstMainTracks.getSelectionModel().getSelectedItem());
+                db_connector.getArtistDetails(trackID);
+                Integer albumID = db_connector.getAlbumIdFromTrackId(trackID);
+                db_connector.getAlbumDetails(albumID);
+                sceneManager.popUpWindow( "view/songPage.fxml");
+            } catch (IOException ie) {
+                DialogBoxManager.errorDialogBox("error occured in welcome menu controller","an error has occurred changing to song page scene");
+                ie.printStackTrace();
             }
         });
     }
@@ -1193,7 +1209,7 @@ public class WelcomeMenuController implements Initializable {
                 int product = (Integer.parseInt(db_connector.search("sum_from_all_voters", "rating", "rating_id = " + Integer.toString(ratingId)))) * (int)(Double.parseDouble(db_connector.search("final_rating",
                         "rating", "rating_id = " + Integer.toString(ratingId))) + 0.5);
                 currentSongRating.setSumFromAllVoters(product);
-                setRatingStars();
+                setRatingStars(lblRating,currentSongRating,imgRating);
 
                 imgMain.setImage(album.getAlbumCover());
                 lblTrackName.setText(trackSearched);
@@ -1340,7 +1356,7 @@ public class WelcomeMenuController implements Initializable {
         int product = (Integer.parseInt(db_connector.search("sum_from_all_voters", "rating", "rating_id = " + Integer.toString(ratingId)))) * (int)(Double.parseDouble(db_connector.search("final_rating",
                 "rating", "rating_id = " + Integer.toString(ratingId))) + 0.5);
         currentSongRating.setSumFromAllVoters(product);
-        setRatingStars();
+        setRatingStars(lblRating,currentSongRating,imgRating);
         lstMainTracks.getItems().clear();
         for (MusicTrack m : album.getSongs()) {
             lstMainTracks.getItems().add(m.getTrackName());
@@ -1395,7 +1411,7 @@ public class WelcomeMenuController implements Initializable {
 
     }
 
-    private void setRatingStars() {
+    protected void setRatingStars(Label lblRating, Rating currentSongRating, ImageView imgRating) {
 
 
         switch ((int)currentSongRating.getFinalRating()) {
@@ -1450,7 +1466,7 @@ public class WelcomeMenuController implements Initializable {
 
         writeMusicTrackToBinaryFile();
         try {
-            SceneManager.sceneManager.openNewWindow(e, "view/commentWindow.fxml", "Add comment");
+            sceneManager.openNewWindow( "view/commentWindow.fxml", "Add comment");
         } catch (IOException ie) {
             ie.printStackTrace();
         }
@@ -1481,7 +1497,7 @@ public class WelcomeMenuController implements Initializable {
     @FXML
     private void onBtnAddPlaylistPressed(MouseEvent e) {
         try {
-            Stage childStage = SceneManager.sceneManager.openNewWindowReturnStage(e, "view/playlistWindow.fxml", "Create playlist");
+            Stage childStage = sceneManager.openNewWindowReturnStage( "view/playlistWindow.fxml", "Create playlist");
             childStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 public void handle(WindowEvent we) {
                     setPlaylists();
@@ -1552,7 +1568,7 @@ public class WelcomeMenuController implements Initializable {
 
         addToPlaylist.setOnAction(event -> {
             try {
-                Stage childStage = SceneManager.sceneManager.openNewWindowReturnStage(event, "view/playlistChoiceWindow.fxml", "Choose a playlist");
+                Stage childStage = sceneManager.openNewWindowReturnStage("view/playlistChoiceWindow.fxml", "Choose a playlist");
                 childStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                     public void handle(WindowEvent we) {
                         readPlaylistFromBinaryFile();
@@ -1672,7 +1688,7 @@ public class WelcomeMenuController implements Initializable {
                 int product = (Integer.parseInt(db_connector.search("sum_from_all_voters", "rating", "rating_id = " + Integer.toString(ratingId)))) * (int) (Double.parseDouble(db_connector.search("final_rating",
                         "rating", "rating_id = " + Integer.toString(ratingId))) + 0.5);
                 currentSongRating.setSumFromAllVoters(product);
-                setRatingStars();
+                setRatingStars(lblRating,currentSongRating,imgRating);
 
                 try {
                     url = new URL(songInPlaylist.getUrl());
@@ -1743,7 +1759,7 @@ public class WelcomeMenuController implements Initializable {
 
         if (unreadMessage) {
             try {
-                Stage childStage = SceneManager.sceneManager.openNewWindowReturnStage(event, "view/friendRequestWindow.fxml", "Contact request");
+                Stage childStage = sceneManager.openNewWindowReturnStage( "view/friendRequestWindow.fxml", "Contact request");
                 childStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                     public void handle(WindowEvent we) {
                         unreadMessage = false;
