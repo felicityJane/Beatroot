@@ -75,7 +75,6 @@ public class SceneManager {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
         Scene scene = new Scene(root);
-        main.addCSS(scene);
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
