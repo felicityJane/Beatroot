@@ -40,7 +40,7 @@ public class SettingsPageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         globalVariables.setSettingsPageController(this);
         globalVariables.getMainMenuController().menuBarFitToParent(settingsAnchorPage);
-        globalVariables.getMainMenuController().enableMenuItems();
+        globalVariables.getMainMenuController().disableMenuItems();
 
         if(globalVariables.getTrialuser()!= null && globalVariables.getPremiumUser() == null && globalVariables.getAdministrator() == null) {
             editDisplayNameLabel.setText("Current Display :  " + globalVariables.getTrialuser().getDisplayName());

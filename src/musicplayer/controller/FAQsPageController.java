@@ -19,7 +19,7 @@ public class FAQsPageController implements Initializable {
         GlobalVariables globalVariables = GlobalVariables.getInstance();
         globalVariables.setFaQsPageController(this);
         globalVariables.getMainMenuController().menuBarFitToParent(faqsPageAnchorPane);
-        globalVariables.getMainMenuController().enableMenuItemsFaqsPage();
+        globalVariables.getMainMenuController().disableMenuItems();
         textAreaFaqs.setWrapText(true);
         textAreaFaqs.setText("What is a beatroot?\n" +
                 "beat: a main accent or rhythmic unit in music or poetry;\n" +

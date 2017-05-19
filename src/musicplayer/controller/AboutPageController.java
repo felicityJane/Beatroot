@@ -16,7 +16,7 @@ public class AboutPageController implements Initializable {
         GlobalVariables globalVariables = GlobalVariables.getInstance();
         globalVariables.setAboutPageController(this);
         globalVariables.getMainMenuController().menuBarFitToParent(aboutPageAnchorPane);
-        globalVariables.getMainMenuController().enableMenuItemsAboutPage();
+        globalVariables.getMainMenuController().disableMenuItems();
 
         aboutLabel.setWrapText(true);
         aboutLabel.setText("Beatroot is a music track streaming service, officially launched on 21 May 2017. " +
