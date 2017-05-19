@@ -36,6 +36,10 @@ public class MainMenuController implements Initializable{
 		settingsMenu.setDisable(false);
 		faqsMenu.setDisable(true);
 	}
+	void enableMenuHelpPage(){
+	 	helpMenuItem.setDisable(true);
+	 	logoutMenu.setDisable(false);
+	}
 	//TODO <fx:include fx:id="adminMenu" source="AdminMenu.fxml"/>
 	void menuBarFitToParent(AnchorPane parentAnchor){
 		menuBar.prefWidthProperty().bind(parentAnchor.widthProperty());
@@ -86,11 +90,11 @@ public class MainMenuController implements Initializable{
 		}
 	}
 	@FXML
-	private void setHelpMenuItem(){
+	private void HelpMenuOption(){
 		try {
 			sceneManager.popUpWindow("view/helpPage.fxml");
 		} catch (IOException e) {
-			DialogBoxManager.errorDialogBox("Error occurred","Switching to faqs page from menu bar selection, please try again");
+			DialogBoxManager.errorDialogBox("Error occurred","Switching to help page from menu bar selection, please try again");
 			e.printStackTrace();
 		}
 	}
