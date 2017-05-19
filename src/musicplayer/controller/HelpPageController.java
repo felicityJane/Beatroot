@@ -18,7 +18,7 @@ public class HelpPageController implements Initializable{
         GlobalVariables globalVariables = GlobalVariables.getInstance();
         globalVariables.setHelpPageController(this);
         globalVariables.getMainMenuController().menuBarFitToParent(helpAnchorPane);
-        globalVariables.getMainMenuController().enableMenuHelpPage();
+        globalVariables.getMainMenuController().disableMenuItems();
 
         aboutLabel.setWrapText(true);
         aboutLabel.setText("=================== WELCOME TO THE BEATROOT® COMMUNITY! ====================\n" +

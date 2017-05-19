@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import musicplayer.DialogBoxManager;
 import musicplayer.model.GlobalVariables;
 import static musicplayer.SceneManager.sceneManager;
@@ -22,24 +25,19 @@ public class MainMenuController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		globalVariables.setMainMenuController(this);
 	}
-	 void enableMenuItemsAboutPage(){
-		logoutMenu.setDisable(false);
-		settingsMenu.setDisable(false);
-		aboutMenu.setDisable(true);
+	 void disableMenuItems(){
+		 helpMenuItem.setDisable(true);
+		 settingsMenu.setDisable(true);
+		 aboutMenu.setDisable(true);
+		 faqsMenu.setDisable(true);
+		 logoutMenu.setDisable(false);
 	}
 	void enableMenuItems(){
 		logoutMenu.setDisable(false);
 		settingsMenu.setDisable(false);
 	}
-	 void enableMenuItemsFaqsPage(){
-		logoutMenu.setDisable(false);
-		settingsMenu.setDisable(false);
-		faqsMenu.setDisable(true);
-	}
-	void enableMenuHelpPage(){
-	 	helpMenuItem.setDisable(true);
-	 	logoutMenu.setDisable(false);
-	}
+
+
 	//TODO <fx:include fx:id="adminMenu" source="AdminMenu.fxml"/>
 	void menuBarFitToParent(AnchorPane parentAnchor){
 		menuBar.prefWidthProperty().bind(parentAnchor.widthProperty());
