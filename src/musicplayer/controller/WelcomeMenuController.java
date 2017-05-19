@@ -491,12 +491,15 @@ public class WelcomeMenuController implements Initializable {
 
         for (Node n : welcomeRootAnchor.getChildren()) {
 
-//            if (n instanceof ListView && n != lstPlaylists && n != lstContacts ){
-//                n.setOnMouseClicked(event -> {
-//                    if (event.getButton() == MouseButton.SECONDARY){
-//                        popUpMenuGoToSongInfo(n);
-//                    }
-//                });
+           if (n instanceof ListView && n != lstPlaylists && n != lstContacts && n != lstPlaylistSongs) {
+               n.setOnMouseClicked(event -> {
+                   if (event.getButton() == MouseButton.SECONDARY) {
+                       popUpMenuGoToSongInfo(n);
+                   }else {
+                       clickOnListViewMainTracks();
+                   }
+               });
+           }
             if (n instanceof ImageView && n != imgSearchIcon && n != imgRating && n != imgSearchUser ){
                 n.setOnMouseClicked(event -> {
                     if (event.getButton() == MouseButton.SECONDARY){
