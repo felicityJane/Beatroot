@@ -140,8 +140,17 @@ public class WelcomeMenuController implements Initializable {
             imgRating.setVisible(true);
             lblDisplayName.setText(" " + globalVariables.getPremiumUser().getDisplayName()+ "!");
             btnMessage.setVisible(true);
-            Image image = new Image(globalVariables.getPremiumUser().getProfilePicturePath());
-            imgProfilePicture.setFill(new ImagePattern(image));
+            try {
+                Image image = new Image(globalVariables.getPremiumUser().getProfilePicturePath());
+                imgProfilePicture.setFill(new ImagePattern(image));
+            } catch (IllegalArgumentException ie) {
+                db_connector.update("premium_user", "personal_picture_path",
+                        "'http://www.webshare.hkr.se/FECO0002/default-user.png'", "user_name = '"
+                                + globalVariables.getPremiumUser().getUserName() + "'");
+                globalVariables.getPremiumUser().setProfilePicturePath("http://www.webshare.hkr.se/FECO0002/default-user.png");
+                Image image = new Image(globalVariables.getPremiumUser().getProfilePicturePath());
+                imgProfilePicture.setFill(new ImagePattern(image));
+            }
             lstContacts.setVisible(true);
             lblContacts.setVisible(true);
         } else if (globalVariables.getTrialuser() != null && globalVariables.getPremiumUser() == null && globalVariables.getAdministrator() == null) {
@@ -149,16 +158,34 @@ public class WelcomeMenuController implements Initializable {
             lblDisplayName.setText(" " + globalVariables.getTrialuser().getDisplayName() + "!");
             btnPen.setVisible(false);
             btnMessage.setVisible(false);
-            Image image = new Image(globalVariables.getTrialuser().getProfilePicturePath());
-            imgProfilePicture.setFill(new ImagePattern(image));
+           try {
+                Image image = new Image(globalVariables.getTrialuser().getProfilePicturePath());
+                imgProfilePicture.setFill(new ImagePattern(image));
+            } catch (IllegalArgumentException ie) {
+               db_connector.update("trial_user", "personal_picture_path",
+                       "'http://www.webshare.hkr.se/FECO0002/default-user.png'", "user_name = '"
+               + globalVariables.getTrialuser().getUserName() + "'");
+               globalVariables.getTrialuser().setProfilePicturePath("http://www.webshare.hkr.se/FECO0002/default-user.png");
+               Image image = new Image(globalVariables.getTrialuser().getProfilePicturePath());
+               imgProfilePicture.setFill(new ImagePattern(image));
+           }
             lstContacts.setVisible(false);
             lblContacts.setVisible(false);
         } else if (globalVariables.getAdministrator() != null && globalVariables.getPremiumUser() == null && globalVariables.getTrialuser() == null) {
             imgRating.setVisible(true);
             lblDisplayName.setText(" " + globalVariables.getAdministrator().getDisplayName()+ "!");
             btnMessage.setVisible(false);
-            Image image = new Image(globalVariables.getAdministrator().getProfilePicturePath());
-            imgProfilePicture.setFill(new ImagePattern(image));
+           try {
+                Image image = new Image(globalVariables.getAdministrator().getProfilePicturePath());
+                imgProfilePicture.setFill(new ImagePattern(image));
+            } catch (IllegalArgumentException ie) {
+               db_connector.update("administrator", "personal_picture_path",
+                       "'http://www.webshare.hkr.se/FECO0002/default-user.png'", "staff_id = '"
+                               + globalVariables.getAdministrator().getStaffID() + "'");
+               globalVariables.getAdministrator().setProfilePicturePath("http://www.webshare.hkr.se/FECO0002/default-user.png");
+               Image image = new Image(globalVariables.getAdministrator().getProfilePicturePath());
+               imgProfilePicture.setFill(new ImagePattern(image));
+           }
             lstContacts.setVisible(true);
             lblContacts.setVisible(true);
         }
