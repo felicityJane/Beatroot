@@ -88,6 +88,7 @@ public class SceneManager {
             Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
             stage.setTitle(title);
             stage.setScene(new Scene((root)));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
             stage.centerOnScreen();
         } catch(Exception ex) {
@@ -95,7 +96,6 @@ public class SceneManager {
         }
     }
     public Stage openNewWindowReturnStage(String fxmlFileName, String title) throws IOException {
-
         Stage stage;
         try {
             stage = new Stage();

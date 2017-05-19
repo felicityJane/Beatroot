@@ -5,9 +5,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="aboutPageAnchorPane" prefHeight="419.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.AboutPageController">
+<AnchorPane fx:id="aboutPageAnchorPane" prefHeight="336.0" prefWidth="471.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.AboutPageController">
     <children>
-        <ImageView fitHeight="62.0" fitWidth="230.0" layoutX="181.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="136.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/beatrootlogo.png" />
             </image>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -14,10 +15,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="welcomeParentAnchorPane" prefHeight="700.0" prefWidth="1398.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.WelcomeMenuController">
+<AnchorPane fx:id="welcomeParentAnchorPane" prefHeight="700.0" prefWidth="1398.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.WelcomeMenuController">
     <children>
         <fx:include fx:id="mainMenu" source="mainMenu.fxml" />
-        <AnchorPane fx:id="welcomeRootAnchor" layoutX="20.0" layoutY="23.0" prefHeight="677.0" prefWidth="1398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="-20.0" AnchorPane.topAnchor="23.0">
+        <AnchorPane fx:id="welcomeRootAnchor" layoutX="14.0" layoutY="29.0" prefHeight="677.0" prefWidth="1398.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-14.0" AnchorPane.topAnchor="29.0">
         <children>
             <ImageView fx:id="imgSugg1" fitHeight="94.0" fitWidth="94.0" layoutX="203.0" layoutY="406.0" pickOnBounds="true" />
             <ImageView fx:id="imgSugg2" fitHeight="94.0" fitWidth="94.0" layoutX="342.0" layoutY="406.0" pickOnBounds="true" />
@@ -38,12 +39,12 @@
                 </children>
             </AnchorPane>
             <ImageView fx:id="imgMain" fitHeight="247.0" fitWidth="247.0" layoutX="206.0" layoutY="116.0" pickOnBounds="true" />
-            <Label fx:id="lblTrackArtist" layoutX="459.0" layoutY="103.0" prefHeight="48.0" prefWidth="355.0">
+            <Label fx:id="lblTrackArtist" layoutX="459.0" layoutY="103.0" prefHeight="48.0" prefWidth="355.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css">
                 <font>
                     <Font size="14.0" />
                 </font>
             </Label>
-            <Label fx:id="lblTrackName" layoutX="459.0" layoutY="125.0" prefHeight="48.0" prefWidth="263.0">
+            <Label fx:id="lblTrackName" layoutX="459.0" layoutY="125.0" prefHeight="48.0" prefWidth="263.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" textFill="#141414">
                 <font>
                     <Font size="23.0" />
                 </font>
@@ -51,76 +52,105 @@
             <Circle fx:id="btnStop" fill="#ffffff00" layoutX="475.0" layoutY="193.0" onMouseClicked="#clickOnStopButton" onMouseEntered="#hoverOnStopButton" onMouseExited="#leaveStopButton" onMousePressed="#pressOnStopButton" onMouseReleased="#leaveStopButton" radius="16.0" stroke="WHITE" strokeType="INSIDE" />
             <Circle fx:id="btnPlay" fill="#ffffff00" layoutX="512.0" layoutY="193.0" onMouseClicked="#clickOnPlayButton" onMouseEntered="#hoverOnPlayButton" onMouseExited="#leavePlayButton" onMousePressed="#pressOnPlayButton" onMouseReleased="#leavePlayButton" radius="24.0" stroke="WHITE" strokeType="INSIDE" />
             <Circle fx:id="btnPause" fill="#ffffff00" layoutX="552.0" layoutY="193.0" onMouseClicked="#clickOnPauseButton" onMouseEntered="#hoverOnPauseButton" onMouseExited="#leavePauseButton" onMousePressed="#pressOnPauseButton" onMouseReleased="#leavePauseButton" radius="16.0" stroke="WHITE" strokeType="INSIDE" />
-            <Label fx:id="lblElapsedTime" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="569.0" layoutY="185.0" prefHeight="17.0" prefWidth="56.0" />
+            <Label fx:id="lblElapsedTime" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="569.0" layoutY="185.0" prefHeight="17.0" prefWidth="56.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" />
             <Slider fx:id="sliderPlay" layoutX="631.0" layoutY="175.0" prefHeight="36.0" prefWidth="355.0" />
             <ImageView fx:id="imgVolume" fitHeight="30.0" fitWidth="32.0" layoutX="960.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true" />
             <Slider fx:id="sliderVolume" layoutX="1000.0" layoutY="157.0" prefHeight="14.0" prefWidth="107.0" />
-            <Label fx:id="lblTimeLeft" layoutX="986.0" layoutY="185.0" prefHeight="17.0" prefWidth="66.0" />
-            <ToggleButton fx:id="tglLoop" layoutX="1069.0" layoutY="178.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="32.0">
+            <Label fx:id="lblTimeLeft" layoutX="986.0" layoutY="185.0" prefHeight="17.0" prefWidth="66.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" />
+            <ToggleButton fx:id="tglLoop" layoutX="1069.0" layoutY="178.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="32.0" styleClass="buttonColor" stylesheets="@../css/styleSheet.css" textFill="#c9c5c5">
                 <font>
                     <Font name="System Bold" size="14.0" />
                 </font>
             </ToggleButton>
-            <ListView fx:id="lstMainTracks" layoutX="464.0" layoutY="223.0" onMouseClicked="#clickOnListViewMainTracks" prefHeight="142.0" prefWidth="635.0" />
-            <Label layoutX="202.0" layoutY="378.0" text="Suggestions">
+            <ListView fx:id="lstMainTracks" layoutX="467.0" layoutY="223.0" onMouseClicked="#clickOnListViewMainTracks" prefHeight="142.0" prefWidth="628.0" stylesheets="@../css/styleSheet.css">
+               <styleClass>
+                  <String fx:value="listviewBackground" />
+                  <String fx:value="list-cell" />
+               </styleClass></ListView>
+            <Label layoutX="202.0" layoutY="378.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Suggestions">
                 <font>
                     <Font size="16.0" />
                 </font>
             </Label>
-            <Label layoutX="206.0" layoutY="507.0" text="News">
+            <Label layoutX="206.0" layoutY="507.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="News">
                 <font>
                     <Font size="16.0" />
                 </font>
             </Label>
-            <ImageView fx:id="imgProfilePicture" fitHeight="57.0" fitWidth="56.0" layoutX="1122.0" layoutY="11.0" pickOnBounds="true" />
-            <Label fx:id="lblDisplayName" layoutX="1050.0" layoutY="9.0" prefHeight="30.0" prefWidth="87.0" textAlignment="RIGHT" textFill="#0c51ff" underline="true">
+            <Label fx:id="lblDisplayName" layoutX="1032.0" layoutY="21.0" prefHeight="30.0" prefWidth="87.0" textAlignment="RIGHT" textFill="#327aa0" underline="true">
                 <font>
-                    <Font size="14.0" />
+                    <Font name="Times Bold" size="16.0" />
                 </font>
             </Label>
-            <ListView fx:id="lstPlaylists" layoutX="14.0" layoutY="110.0" onMouseClicked="#clickOnLstPlaylists" prefHeight="142.0" prefWidth="171.0" />
-            <ListView fx:id="lstContacts" layoutX="1132.0" layoutY="148.0" prefHeight="517.0" prefWidth="200.0" />
-            <ComboBox fx:id="cmbSearchMusic" editable="true" layoutX="428.0" layoutY="14.0" prefHeight="36.0" prefWidth="288.0" promptText="Search music" />
-            <ImageView fx:id="imgSearchIcon" fitHeight="48.0" fitWidth="48.0" layoutX="372.0" layoutY="8.0" pickOnBounds="true" />
-            <RadioButton fx:id="rdSong" layoutX="726.0" layoutY="16.0" mnemonicParsing="false" selected="true" text="Song">
+            <ListView fx:id="lstPlaylists" layoutX="14.0" layoutY="123.0" onMouseClicked="#clickOnLstPlaylists" prefHeight="142.0" prefWidth="171.0" stylesheets="@../css/styleSheet.css">
+               <styleClass>
+                  <String fx:value="list-cell" />
+                  <String fx:value="listviewBackground" />
+                  <String fx:value="scroll-bar" />
+                  <String fx:value="track" />
+               </styleClass></ListView>
+            <ListView fx:id="lstContacts" layoutX="1132.0" layoutY="148.0" prefHeight="517.0" prefWidth="200.0" stylesheets="@../css/styleSheet.css">
+               <styleClass>
+                  <String fx:value="list-cell" />
+                  <String fx:value="listviewBackground" />
+               </styleClass></ListView>
+            <ComboBox fx:id="cmbSearchMusic" editable="true" layoutX="409.0" layoutY="19.0" prefHeight="30.0" prefWidth="286.0" promptText="Search music" style=": ;" styleClass="textField" stylesheets="@../css/styleSheet.css" />
+            <ImageView fx:id="imgSearchIcon" fitHeight="28.0" fitWidth="34.0" layoutX="659.0" layoutY="20.0" pickOnBounds="true" />
+            <RadioButton fx:id="rdSong" layoutX="718.0" layoutY="26.0" mnemonicParsing="false" selected="true" stylesheets="@../css/styleSheet.css" text="Song">
                 <toggleGroup>
                     <ToggleGroup fx:id="search" />
                 </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="rdArtist" layoutX="784.0" layoutY="16.0" mnemonicParsing="false" text="Artist" toggleGroup="$search" />
-            <RadioButton fx:id="rdAlbum" layoutX="726.0" layoutY="39.0" mnemonicParsing="false" text="Album" toggleGroup="$search" />
-            <ImageView fx:id="imgSearchUser" fitHeight="36.0" fitWidth="39.0" layoutX="1139.0" layoutY="108.0" onMouseClicked="#onImgSearchUserPressed" pickOnBounds="true" preserveRatio="true" />
-            <ComboBox fx:id="cmbSearchUser" editable="true" layoutX="1182.0" layoutY="113.0" prefWidth="150.0" promptText="Search user" />
-            <Label fx:id="lblNoMatchesFound" layoutX="331.0" layoutY="57.0" prefHeight="21.0" prefWidth="263.0" textFill="RED">
+            <RadioButton fx:id="rdArtist" layoutX="785.0" layoutY="25.0" mnemonicParsing="false" stylesheets="@../css/styleSheet.css" text="Artist" toggleGroup="$search" />
+            <RadioButton fx:id="rdAlbum" layoutX="847.0" layoutY="25.0" mnemonicParsing="false" stylesheets="@../css/styleSheet.css" text="Album" toggleGroup="$search" />
+            <ComboBox fx:id="cmbSearchUser" editable="true" layoutX="1132.0" layoutY="118.0" prefHeight="27.0" prefWidth="200.0" promptText="Search user" styleClass="textField" stylesheets="@../css/styleSheet.css" />
+            <ImageView fx:id="imgSearchUser" fitHeight="25.0" fitWidth="32.0" layoutX="1303.0" layoutY="119.0" onMouseClicked="#onImgSearchUserPressed" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lblNoMatchesFound" layoutX="331.0" layoutY="57.0" prefHeight="21.0" prefWidth="263.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" textFill="RED">
                 <font>
                     <Font size="15.0" />
                 </font>
             </Label>
             <ImageView fx:id="imgRating" fitHeight="32.0" fitWidth="116.0" layoutX="802.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
             <ProgressIndicator fx:id="progressDownload" layoutX="726.0" layoutY="131.0" prefHeight="40.0" prefWidth="39.0" progress="-1.0" visible="false" />
-            <Label fx:id="lblHello" layoutX="1014.0" layoutY="14.0" text="Hello,">
+            <Label fx:id="lblHello" layoutX="978.0" layoutY="26.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Hello,">
                 <font>
                     <Font size="14.0" />
                 </font>
             </Label>
-            <Circle fx:id="btnDownload" fill="#f2f2f2" layoutX="1270.0" layoutY="36.0" onMouseClicked="#onDownloadButtonPressed" radius="24.0" stroke="#09b0b9" strokeType="INSIDE" />
-            <Circle fx:id="btnLogOut" fill="#f2f2f2" layoutX="1325.0" layoutY="36.0" onMouseClicked="#onLogOutButtonPressed" radius="24.0" stroke="#09b0b9" strokeType="INSIDE" />
-            <Label fx:id="lblRating" layoutX="922.0" layoutY="148.0" prefHeight="17.0" prefWidth="21.0" />
+            <Circle fx:id="btnDownload" fill="#f2f2f2" layoutX="1256.0" layoutY="36.0" onMouseClicked="#onDownloadButtonPressed" radius="24.0" stroke="#09b0b9" strokeType="INSIDE" />
+            <Circle fx:id="btnLogOut" fill="#f2f2f2" layoutX="1311.0" layoutY="36.0" onMouseClicked="#onLogOutButtonPressed" radius="24.0" stroke="#09b0b9" strokeType="INSIDE" />
+            <Label fx:id="lblRating" layoutX="922.0" layoutY="148.0" prefHeight="17.0" prefWidth="21.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" />
             <Circle fx:id="btnPen" fill="WHITE" layoutX="782.0" layoutY="157.0" onMouseClicked="#onBtnPenPressed" radius="15.0" stroke="#e3b3b300" strokeType="INSIDE" />
-            <ListView fx:id="lstPlaylistSongs" layoutX="14.0" layoutY="298.0" onMouseClicked="#clickOnLstPlaylistSongs" prefHeight="364.0" prefWidth="171.0" />
-            <Circle fx:id="btnAddPlaylist" fill="#e6e7e8" layoutX="146.0" layoutY="92.0" onMouseClicked="#onBtnAddPlaylistPressed" radius="13.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
-            <Circle fx:id="btnRemovePlaylist" fill="#e8e8e8" layoutX="172.0" layoutY="92.0" onMouseClicked="#onBtnRemovePlaylistPressed" radius="13.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
-            <Label layoutX="14.0" layoutY="84.0" text="Playlists">
+            <ListView fx:id="lstPlaylistSongs" layoutX="14.0" layoutY="298.0" onMouseClicked="#clickOnLstPlaylistSongs" prefHeight="364.0" prefWidth="171.0" stylesheets="@../css/styleSheet.css">
+               <styleClass>
+                  <String fx:value="list-cell" />
+                  <String fx:value="listviewBackground" />
+               </styleClass></ListView>
+            <Circle fx:id="btnAddPlaylist" fill="#e6e7e8" layoutX="146.0" layoutY="103.0" onMouseClicked="#onBtnAddPlaylistPressed" radius="13.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <Circle fx:id="btnRemovePlaylist" fill="#e8e8e8" layoutX="172.0" layoutY="103.0" onMouseClicked="#onBtnRemovePlaylistPressed" radius="13.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <Label layoutX="14.0" layoutY="84.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Playlists">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="272.0" text="Songs">
+            <Label layoutX="14.0" layoutY="272.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Songs">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Circle fx:id="btnMessage" fill="#f2f2f2" layoutX="1214.0" layoutY="36.0" onMouseClicked="#onMessageButtonPressed" radius="24.0" stroke="#e3eeee" strokeType="INSIDE" />
+            <Circle fx:id="btnMessage" fill="#f2f2f2" layoutX="1203.0" layoutY="36.0" onMouseClicked="#onMessageButtonPressed" radius="24.0" stroke="#e3eeee" strokeType="INSIDE" />
+            <Circle fx:id="imgProfilePicture" fill="#f5f5f500" layoutX="1152.0" layoutY="34.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <RadioButton fx:id="rdPremium" layoutX="1128.0" layoutY="95.0" mnemonicParsing="false" selected="true" text="Premium ">
+               <toggleGroup>
+                  <ToggleGroup fx:id="user" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rdTrial" layoutX="1226.0" layoutY="94.0" mnemonicParsing="false" text="Trial" toggleGroup="$user" />
+            <Label fx:id="lblContacts" layoutX="1132.0" layoutY="156.0" text="Contacts">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
             <Rectangle id="imgNoConnection" fx:id="imgNoConnection" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="707.0" layoutX="-15.0" layoutY="-27.0" opacity="0.7" stroke="WHITE" strokeType="INSIDE" visible="false" width="1398.0" />
             <Label fx:id="lblNoConnection1" layoutX="365.0" layoutY="260.0" prefHeight="118.0" prefWidth="667.0" text="Looks like you're not connected to the internet!" textFill="RED" visible="false">
                 <font>

@@ -10,7 +10,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import musicplayer.DialogBoxManager;
 import musicplayer.model.GlobalVariables;
-
 import static musicplayer.SceneManager.sceneManager;
 
 public class MainMenuController implements Initializable{
@@ -47,6 +46,7 @@ public class MainMenuController implements Initializable{
 		boolean answer = DialogBoxManager.confirmationDialogBox("Are you sure you want to log out?","click ok to continue");
 		if (answer){
 			try {
+				GlobalVariables.getInstance().getContactList().clear();
 				sceneManager.changeSceneMenuBar(menuBar,"view/logInMenu.fxml");
 			}catch (Exception e){
 				DialogBoxManager.errorDialogBox("Error occurred","logging out, please try again");

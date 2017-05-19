@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="mainMenu" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.MainMenuController">
+<AnchorPane fx:id="mainMenu" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.MainMenuController">
    <children>
-      <MenuBar fx:id="menuBar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar fx:id="menuBar" style="-: black;" stylesheets="@../css/styleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
             <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
                <items>
@@ -29,6 +30,10 @@
                </items>
             </Menu>
          </menus>
+         <styleClass>
+            <String fx:value="menu" />
+            <String fx:value="menu-bar" />
+         </styleClass>
       </MenuBar>
 
    </children>
