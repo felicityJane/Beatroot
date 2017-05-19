@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,5 +19,9 @@
       <Label fx:id="trackLabel" layoutX="263.0" layoutY="145.0" prefHeight="17.0" prefWidth="213.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Label" />
       <Label fx:id="trackTimeLabel" layoutX="263.0" layoutY="175.0" prefHeight="17.0" prefWidth="213.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Label" />
       <Label fx:id="publicationLabel" layoutX="263.0" layoutY="206.0" prefHeight="17.0" prefWidth="213.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Label" />
+      <Label fx:id="ratingLabel" layoutX="372.0" layoutY="241.0" prefHeight="17.0" prefWidth="73.0" text="ratingLabel" />
+      <ImageView fx:id="starRatingImageView" fitHeight="17.0" fitWidth="106.0" layoutX="263.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true" />
+      <ListView fx:id="userCommentList" layoutX="260.0" layoutY="266.0" prefHeight="91.0" prefWidth="252.0" />
+      <Label fx:id="songNameLabel" layoutX="263.0" layoutY="145.0" text="Song :" />
     </children>
 </AnchorPane>

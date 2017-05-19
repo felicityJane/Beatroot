@@ -2,53 +2,41 @@ package musicplayer.model;
 
 import javafx.fxml.FXML;
 import musicplayer.controller.*;
-
 import java.util.ArrayList;
 
 public class GlobalVariables {
 
 	private final static GlobalVariables instance = new GlobalVariables();
-
 	public static GlobalVariables getInstance() {
 		return instance;
 	}
-
 	private Album album;
 	private String albumCover;
 	private MusicTrack musicTrack;
 	private ArrayList<MusicTrack> musicTracks;
+	private Rating rating;
 	private MusicArtist musicArtist;
+	private ArrayList<Comment> comments;
 	private TrialUser trialuser;
 	private PremiumUser premiumUser;
 	private Administrator administrator;
+	@FXML private AboutPageController aboutPageController;
+	@FXML private AlbumPageController albumPageController;
+	@FXML private ArtistPageController artistPageController;
+	@FXML private FAQsPageController faQsPageController;
+	@FXML private LogInMenuController logInMenuController;
+	@FXML private MainMenuController mainMenuController;
+	@FXML private PaymentMenuController paymentMenuController;
+	@FXML private SettingsPageController settingsPageController;
+	@FXML private SignUpMenuController signUpMenuController;
+	@FXML private SongPageController songPageController;
+	@FXML private WelcomeMenuController welcomeMenuController;
+	@FXML private HelpPageController helpPageController;
+	@FXML private UserDescriptionController userDescriptionController;
 	private User contactSelected;
 	private ArrayList<PremiumUser> contactList = new ArrayList<>();
-	@FXML
-	private AboutPageController aboutPageController;
-	@FXML
-	private AlbumPageController albumPageController;
-	@FXML
-	private ArtistPageController artistPageController;
-	@FXML
-	private FAQsPageController faQsPageController;
-	@FXML
-	private LogInMenuController logInMenuController;
-	@FXML
-	private MainMenuController mainMenuController;
-	@FXML
-	private PaymentMenuController paymentMenuController;
-	@FXML
-	private SettingsPageController settingsPageController;
-	@FXML
-	private SignUpMenuController signUpMenuController;
-	@FXML
-	private SongPageController songPageController;
-	@FXML
-	private WelcomeMenuController welcomeMenuController;
-	@FXML
-	private UserDescriptionController ownUserDescriptionController;
-	@FXML
-	private UserDescriptionController contactDescriptionController;
+	@FXML private UserDescriptionController ownUserDescriptionController;
+	@FXML private UserDescriptionController contactDescriptionController;
 
 	public void setAlbum(Album album) {
 		this.album = album;
@@ -88,6 +76,22 @@ public class GlobalVariables {
 
 	public void setMusicArtist(MusicArtist musicArtist) {
 		this.musicArtist = musicArtist;
+	}
+
+	public Rating getRating() {
+		return rating;
+	}
+
+	public void setRating(Rating rating) {
+		this.rating = rating;
+	}
+
+	public ArrayList<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(ArrayList<Comment> comments) {
+		this.comments = comments;
 	}
 
 	public MainMenuController getMainMenuController() {
@@ -176,6 +180,14 @@ public class GlobalVariables {
 
 	public void setWelcomeMenuController(WelcomeMenuController welcomeMenuController) {
 		this.welcomeMenuController = welcomeMenuController;
+	}
+
+	public HelpPageController getHelpPageController() {
+		return helpPageController;
+	}
+
+	public void setHelpPageController(HelpPageController helpPageController) {
+		this.helpPageController = helpPageController;
 	}
 
 	public Administrator getAdministrator() {

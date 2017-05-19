@@ -22,5 +22,6 @@
             <String fx:value="listviewBackground" />
          </styleClass></ListView>
       <Label fx:id="artistLabel" layoutX="272.0" layoutY="127.0" prefHeight="17.0" prefWidth="240.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
+      <Label fx:id="releaseDateLabel" layoutX="272.0" layoutY="151.0" prefHeight="17.0" prefWidth="213.0" text="release date" />
     </children>
 </AnchorPane>

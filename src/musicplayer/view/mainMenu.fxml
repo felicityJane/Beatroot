@@ -13,9 +13,6 @@
          <menus>
             <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem fx:id="createNewPlaylistMenu" disable="true" mnemonicParsing="false" onAction="#createNewPlaylistMenuOption" text="Create New Playlist" />
-                  <MenuItem fx:id="searchMenu" disable="true" mnemonicParsing="false" onAction="#searchMenuOption" text="Search" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="logoutMenu" disable="true" mnemonicParsing="false" onAction="#logOutMenuOption" text="LogOut" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="exitMenu" mnemonicParsing="false" onAction="#exitMenuOption" text="Exit" />
@@ -30,6 +27,7 @@
                <items>
                   <MenuItem fx:id="aboutMenu" mnemonicParsing="false" onAction="#aboutMenuOption" text="About" />
                   <MenuItem fx:id="faqsMenu" mnemonicParsing="false" onAction="#faqsMenuOption" text="FAQ's" />
+                  <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" text="Help" />
                </items>
             </Menu>
          </menus>

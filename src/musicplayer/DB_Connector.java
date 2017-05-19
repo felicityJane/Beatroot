@@ -1,20 +1,23 @@
 package musicplayer;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.text.SimpleDateFormat;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.sql.Date;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import musicplayer.model.*;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 
 public class DB_Connector {
 	private String urlOfDatabase;
@@ -352,36 +355,13 @@ public class DB_Connector {
 		this.premiumUser = premiumUser;
 	}
 
-	public String searchUser(String parameterToSearch, String tableName, String whereStatement, String input) {
+
+	public String changeDisplayNamePassword(String tableToUpdate, String displayName, String password, String username) throws SQLException {
 
 		String sqlString = "";
-		try {
-			ResultSet rs = statement.executeQuery(
-					"SELECT " + parameterToSearch + " FROM " + tableName + " WHERE " + whereStatement + input);
-			while (rs.next()) {
-				sqlString = rs.getString(1);
-			}
-		} catch (SQLException ex) {
 
-			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing search query. Please try again.");
-			ex.printStackTrace();
-		}
-
-		return sqlString;
-	}
-
-	public String changeDisplayName(String displayName, String userName) {
-
-		String sqlString = "";
-		try {
-			int rows = statement.executeUpdate(
-					"UPDATE premium_user SET display_name = " + displayName + " WHERE user_name  = " + userName);
-			System.out.println("Updated rows: " + rows);
-		} catch (SQLException ex) {
-
-			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing search query. Please try again.");
-			ex.printStackTrace();
-		}
+		int rows = statement.executeUpdate("UPDATE " + tableToUpdate + " SET display_name = '" + displayName +  "' , password = '"  + password + "' WHERE user_name = '" + username +"'");
+		System.out.println("Updated rows: " + rows);
 
 		return sqlString;
 	}
@@ -402,15 +382,14 @@ public class DB_Connector {
 			}
 
 		} catch (SQLException ex) {
-			DialogBoxManager.errorDialogBox("Cannot run query",
-					"Error on executing album details query. Please try again.");
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing album details query. Please try again.");
 			ex.printStackTrace();
 		}
 
 	}
 
 	public void getTrackDetails(Integer albumId) {
-		ArrayList<MusicTrack> musicTrackArrayList = new ArrayList<MusicTrack>();
+		ArrayList<MusicTrack> musicTrackArrayList = new ArrayList<>();
 		try {
 			ResultSet rs = statement.executeQuery(
 					"SELECT album.album_id, music_track.track_id, music_track.track_name, music_track.track_length, music_track.track_url, music_track.administrator_staff_id, music_track.rating_id, music_track.year_of_publication FROM album_has_music_track\n"
@@ -424,7 +403,7 @@ public class DB_Connector {
 					String trackName = rs.getString(3);
 					String trackTime = rs.getString(4);
 					String trackUrl = rs.getString(5);
-					String adminId = rs.getString(6);
+					//String adminId = rs.getString(6);
 					Integer ratingId = rs.getInt(7);
 					Date publicationYear = rs.getDate(8);
 					MusicTrack musicTrack = new MusicTrack(trackName, trackUrl);
@@ -432,14 +411,14 @@ public class DB_Connector {
 					musicTrack.setTrackTime(trackTime);
 					musicTrack.setPublicationYear(publicationYear);
 					// musicTrack.setTrackLength(trackDuration);
+					musicTrack.setRatingId(ratingId);
 					musicTrackArrayList.add(musicTrack);
 					globalVariables.setMusicTracks(musicTrackArrayList);
 				}
 			}
 
 		} catch (SQLException ex) {
-			DialogBoxManager.errorDialogBox("Cannot run query",
-					"Error on executing album details query. Please try again.");
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing get track details details query. Please try again.");
 			ex.printStackTrace();
 		}
 	}
@@ -447,7 +426,7 @@ public class DB_Connector {
 	public void getArtistDetails(Integer musicTrackId) {
 		try {
 			ResultSet rs = statement.executeQuery("SELECT music_track.track_id, music_artist.artist_id, music_artist.stage_name, music_artist.administrator_staff_id, music_artist.rating_id\n"
-					+ ", music_artist.year_of_foundation, music_artist.artist_description FROM album_has_music_track\n" +
+					+ ", music_artist.year_of_foundation, music_artist.artist_description, music_artist.year_of_foundation FROM album_has_music_track\n" +
 					"JOIN music_track ON album_has_music_track.music_track_track_id = music_track.track_id\n" +
 					"JOIN music_artist ON music_track.music_artist_artist_id = music_artist.artist_id WHERE music_track.track_id = '" + musicTrackId + "'");
 
@@ -455,20 +434,110 @@ public class DB_Connector {
 				if (musicTrackId.equals(rs.getInt(1))) {
 					Integer artistId = rs.getInt(2);
 					String stageName = rs.getString(3);
-					String adminId = rs.getString(4);
+					//String adminId = rs.getString(4);
 					Integer ratingId = rs.getInt(5);
 					Date publicationYear = rs.getDate(6);
 					String artistDesc = rs.getString(7);
+					Date yearOfFoundation = rs.getDate(8);
 					MusicArtist musicArtist = new MusicArtist(stageName);
 					musicArtist.setArtistID(artistId);
 					musicArtist.setPublicationYear(publicationYear);
 					musicArtist.setArtistDescription(artistDesc);
+					musicArtist.setRatingId(ratingId);
+					musicArtist.setPublicationYear(yearOfFoundation);
 					globalVariables.setMusicArtist(musicArtist);
 				}
 			}
 
 		} catch (SQLException ex) {
-			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing album details query. Please try again.");
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing get artist details query. Please try again.");
+			ex.printStackTrace();
+		}
+	}
+
+	public void getRating(Integer ratingId){
+		try {
+			ResultSet rs = statement.executeQuery(
+					"SELECT rating_id, final_rating FROM rating WHERE rating_id = '" + ratingId + "'");
+
+			if (rs.next()) {
+				if (ratingId.equals(rs.getInt(1))) {
+					Double finalRating = rs.getDouble(2);
+					Rating rating = new Rating(finalRating);
+					globalVariables.setRating(rating);
+				}
+			}
+
+		} catch (SQLException ex) {
+			DialogBoxManager.errorDialogBox("Cannot run query",
+					"Error on executing get rating query. Please try again.");
+			ex.printStackTrace();
+		}
+	}
+	public Integer getMusicTrackInfo(String trackName){
+		Integer track_id = null;
+		try {
+			ResultSet rs = statement.executeQuery(
+					"SELECT track_name, track_id, track_length, rating_id, year_of_publication FROM music_track WHERE track_name = '" + trackName + "'");
+
+			if (rs.next()) {
+				if (trackName.equals(rs.getString(1))) {
+					track_id = rs.getInt(2);
+					String trackLength = rs.getString(3);
+					Integer ratingId = rs.getInt(4);
+					Date publicationYear = rs.getDate(5);
+					MusicTrack musicTrack = new MusicTrack(trackName);
+					musicTrack.setID(track_id);
+					musicTrack.setTrackTime(trackLength);
+					musicTrack.setRatingId(ratingId);
+					musicTrack.setPublicationYear(publicationYear);
+					globalVariables.setMusicTrack(musicTrack);
+				}
+			}
+
+		} catch (SQLException ex) {
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing get music track info query. Please try again.");
+			ex.printStackTrace();
+		}
+		return track_id;
+	}
+	public Integer getAlbumIdFromTrackId(Integer trackId){
+		Integer album_id = null;
+		try {
+			ResultSet rs = statement.executeQuery(
+					"SELECT music_track_track_id, album_album_id FROM album_has_music_track WHERE music_track_track_id = '" + trackId + "'");
+
+			if (rs.next()) {
+				if (trackId.equals(rs.getInt(1))) {
+					album_id = rs.getInt(2);
+				}
+			}
+
+		} catch (SQLException ex) {
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing get album id from track id query. Please try again.");
+			ex.printStackTrace();
+		}
+		return album_id;
+	}
+	public void getComments(Integer trackId){
+		ArrayList<Comment> comments = new ArrayList<>();
+		try {
+			ResultSet rs = statement.executeQuery(
+					"SELECT music_track_track_id, message FROM comment WHERE music_track_track_id =  '" + trackId + "'");
+
+			while (rs.next()) {
+				if (trackId.equals(rs.getInt(1))) {
+					String message = rs.getString(2);
+					Comment comment = new Comment(message);
+					comments.add(comment);
+					for (Comment c : comments){
+						System.out.println(c.getMessage());
+					}
+					globalVariables.setComments(comments);
+				}
+			}
+		} catch (SQLException ex) {
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing get comments query. Please try again.");
 			ex.printStackTrace();
 		}
 	}

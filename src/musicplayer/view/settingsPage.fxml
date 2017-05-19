@@ -29,17 +29,17 @@
       <Label fx:id="editPasswordLabel" focusTraversable="false" layoutX="385.0" layoutY="179.0" prefHeight="17.0" prefWidth="156.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Label" />
       <Separator layoutX="52.0" layoutY="228.0" prefHeight="0.0" prefWidth="464.0" stylesheets="@../css/styleSheet.css" />
       <Label focusTraversable="false" layoutX="45.0" layoutY="264.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Background Colour Settings" />
-      <Button fx:id="backgroundBlackButton" layoutX="237.0" layoutY="260.0" mnemonicParsing="false" onAction="#onButton" prefHeight="30.0" prefWidth="61.0" stylesheets="@../css/styleSheet.css" text="Black" textFill="#fcf9f9">
+      <Button fx:id="darkThemeButton" layoutX="177.0" layoutY="276.0" mnemonicParsing="false" onAction="#onDarkThemeButton" prefHeight="30.0" prefWidth="61.0" stylesheets="@../css/styleSheet.css" text="Dark Theme" textFill="#fcf9f9">
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />
          </styleClass></Button>
-      <Button fx:id="backgroundWhiteButton" layoutX="317.0" layoutY="260.0" mnemonicParsing="false" onAction="#offButton" stylesheets="@../css/styleSheet.css" text="White">
+      <Button fx:id="LightThemeButton" layoutX="271.0" layoutY="276.0" mnemonicParsing="false" onAction="#onLightThemeButton" stylesheets="@../css/styleSheet.css" text="Light Theme">
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />
          </styleClass></Button>
-      <Button fx:id="saveChangesButton" layoutX="405.0" layoutY="300.0" mnemonicParsing="false" onAction="#editDisplayName" stylesheets="@../css/styleSheet.css" text="Save Changes">
+      <Button fx:id="saveChangesButton" layoutX="377.0" layoutY="323.0" mnemonicParsing="false" onAction="#onSaveButton" stylesheets="@../css/styleSheet.css" text="Save Changes">
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />
