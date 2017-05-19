@@ -35,10 +35,10 @@ public class TrialUser extends User {
 	 * @param phoneNumber
 	 *            User's phone number
 	 */
-	public TrialUser(String userName, String displayName, String password, String firstName, String lastName,
+	public TrialUser(String userName, String displayName, String password, String userDescription, String profilePicturePath, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
 			Country country, Gender gender, String phoneNumber, Date freeTrialEndDate) {
-		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
+		super(userName, displayName, password, userDescription, profilePicturePath, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.freeTrialEndDate = freeTrialEndDate;
 
@@ -51,6 +51,7 @@ public class TrialUser extends User {
 	public void upgradeToPremiumUserWithIdenticalBillingAddress(String bankCardNumber, Date expirationDate,
 			PaymentMethod paymentMethod, String billingAccountOwnerName) {
 		PremiumUser upgradedUser = new PremiumUser(this.getUserName(), this.getDisplayName(), this.getPassword(),
+				this.getUserDescription(), this.getProfilePicturePath(),
 				this.getFirstName(), this.getLastName(), this.getDateOfBirth(), this.getEmailAddress(),
 				this.getStreetNameAndNumber(), this.getCityOfResidence(), this.getPostalCode(), this.getCountry(),
 				this.getGender(), this.getPhoneNumber(), bankCardNumber, expirationDate, paymentMethod,
@@ -61,6 +62,7 @@ public class TrialUser extends User {
 			PaymentMethod paymentMethod, String billingAccountOwnerName, String billingAddress, String billingCity,
 			String billingPostalCode, Country billingCountry, String billingPhoneNumber) {
 		PremiumUser upgradedUser = new PremiumUser(this.getUserName(), this.getDisplayName(), this.getPassword(),
+				this.getUserDescription(), this.getProfilePicturePath(),
 				this.getFirstName(), this.getLastName(), this.getDateOfBirth(), this.getEmailAddress(),
 				this.getStreetNameAndNumber(), this.getCityOfResidence(), this.getPostalCode(), this.getCountry(),
 				this.getGender(), this.getPhoneNumber(), bankCardNumber, expirationDate, paymentMethod,

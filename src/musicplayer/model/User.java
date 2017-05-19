@@ -11,11 +11,13 @@ public abstract class User {
 	private Date dateOfBirth;
 	private Gender gender;
 	private Playlist defaultPlaylist;
+	private String userDescription;
+	private String profilePicturePath;
 	// private ArrayList<Playlist> userPlaylists = new ArrayList<Playlist>();
 	private ArrayList<Comment> userComments = new ArrayList<Comment>();
 	private ArrayList<Rating> userRatings = new ArrayList<Rating>();
 
-	public User(String userName, String displayName, String password, String firstName, String lastName,
+	public User(String userName, String displayName, String password,String userDescription, String profilePicturePath, String firstName, String lastName,
 			// <<<<<<< HEAD
 			// Date dateOfBirth, String emailAddress, String
 			// streetNameAndNumber, String cityOfResidence,
@@ -29,6 +31,8 @@ public abstract class User {
 		this.userName = userName;
 		this.displayName = displayName;
 		this.password = password;
+		this.userDescription = userDescription;
+		this.profilePicturePath = profilePicturePath;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
@@ -142,6 +146,22 @@ public abstract class User {
 		return physicalAddress;
 	}
 
+	public String getUserDescription() {
+		return userDescription;
+	}
+
+	public void setUserDescription(String userDescription) {
+		this.userDescription = userDescription;
+	}
+
+	public String getProfilePicturePath() {
+		return profilePicturePath;
+	}
+
+	public void setProfilePicturePath(String profilePicturePath) {
+		this.profilePicturePath = profilePicturePath;
+	}
+
 	public void setPhysicalAddress(Address physicalAddress) {
 		this.physicalAddress = physicalAddress;
 	}
@@ -206,11 +226,13 @@ public abstract class User {
 		this.defaultPlaylist = defaultPlaylist;
 	}
 
-	public void changeAccountSettings(String displayName, String password, String firstName, String lastName,
+	public void changeAccountSettings(String displayName, String password, String userDescription, String profilePicturePath, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
 			Country country, String phoneNumber) {
 		setDisplayName(displayName);
 		setPassword(password);
+		setUserDescription(userDescription);
+		setProfilePicturePath(profilePicturePath);
 		setFirstName(firstName);
 		setLastName(lastName);
 		setDateOfBirth(dateOfBirth);

@@ -46,11 +46,11 @@ public class PremiumUser extends NonTrialUser {
 	 *            Enum {@link: PaymentMethod} The payment method.
 	 */
 
-	public PremiumUser(String userName, String displayName, String password, String firstName, String lastName,
+	public PremiumUser(String userName, String displayName, String password, String userDescription, String profilePicturePath, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String streetNameAndNumber, String cityOfResidence,
 			String postalCode, Country country, Gender gender, String phoneNumber, String bankCardNumber,
 			Date expirationDate, PaymentMethod PaymentMethod, String billingAccountOwnerName) {
-		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, streetNameAndNumber,
+		super(userName, displayName, password, userDescription, profilePicturePath, firstName, lastName, dateOfBirth, emailAddress, streetNameAndNumber,
 
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
@@ -107,14 +107,14 @@ public class PremiumUser extends NonTrialUser {
 	 *            Account owner's phone number
 	 */
 
-	public PremiumUser(String userName, String displayName, String password, String firstName, String lastName,
+	public PremiumUser(String userName, String displayName, String password, String userDescription, String profilePicturePath, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
 
 			Country country, Gender gender, String phoneNumber, String bankCardNumber, Date expirationDate,
 			PaymentMethod PaymentMethod, String cardHolderName, String billingStreet, String billingCity,
 			String billingPostalCode, Country billingCountry, String billingPhoneNumber) {
 
-		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
+		super(userName, displayName, password, userDescription, profilePicturePath, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 		this.bankCardNumber = bankCardNumber;
 		this.expirationDate = expirationDate;

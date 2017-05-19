@@ -3,6 +3,7 @@ package musicplayer.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -57,6 +58,8 @@ public class FriendRequestWindowController implements Initializable{
                 String senderImgUrl = db_connector.search("personal_picture_path", "premium_user",
                         "user_name = '" + senderNameInFriendRequest + "'");
                 lblDisplayNameAndText.setText(senderDisplayName + " has sent you a contact request");
+                imgContactPicture.setImage(new Image(db_connector.search("personal_picture_path", "premium_user",
+                        "user_name = '" + senderNameInFriendRequest + "'")));
             }
 
         }

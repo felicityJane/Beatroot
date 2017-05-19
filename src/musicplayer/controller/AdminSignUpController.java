@@ -96,7 +96,7 @@ public class AdminSignUpController implements Initializable {
 				float workHours = Float.parseFloat(contractHoursField.getText());
 				if (maleRadio.isSelected()) {
 					Administrator admin = new Administrator(staffIdField.getText(), userNameField.getText(),
-							displayNameField.getText(), passwordField.getText(), firstNameField.getText(),
+							displayNameField.getText(), passwordField.getText(),null, null, firstNameField.getText(),
 							lastNameField.getText(), birthDate, emailAddressField.getText(),
 							physicalAddressField.getText(), cityOfResidenceField.getText(), postalCodeField.getText(),
 							countryChoiceBox.getValue(), Gender.MALE, phoneNumberField.getText(), employmentStartDate,
@@ -154,7 +154,7 @@ public class AdminSignUpController implements Initializable {
 
 				if (femaleRadio.isSelected()) {
 					Administrator admin = new Administrator(staffIdField.getText(), userNameField.getText(),
-							displayNameField.getText(), passwordField.getText(), firstNameField.getText(),
+							displayNameField.getText(), passwordField.getText(),null, null, firstNameField.getText(),
 							lastNameField.getText(), birthDate, emailAddressField.getText(),
 							physicalAddressField.getText(), cityOfResidenceField.getText(), postalCodeField.getText(),
 							countryChoiceBox.getValue(), Gender.FEMALE, phoneNumberField.getText(), employmentStartDate,
@@ -179,7 +179,7 @@ public class AdminSignUpController implements Initializable {
 				}
 				if (otherRadio.isSelected()) {
 					Administrator admin = new Administrator(staffIdField.getText(), userNameField.getText(),
-							displayNameField.getText(), passwordField.getText(), firstNameField.getText(),
+							displayNameField.getText(), passwordField.getText(), null, null, firstNameField.getText(),
 							lastNameField.getText(), birthDate, emailAddressField.getText(),
 							physicalAddressField.getText(), cityOfResidenceField.getText(), postalCodeField.getText(),
 							countryChoiceBox.getValue(), Gender.NOT_SPECIFIED, phoneNumberField.getText(),
