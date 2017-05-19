@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="736.0" prefWidth="475.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.AdminSignUpController">
    <children>
-      <VBox layoutX="118.0" layoutY="84.0" prefHeight="556.0" prefWidth="250.0" spacing="10.0">
+      <VBox layoutX="114.0" layoutY="53.0" prefHeight="556.0" prefWidth="250.0" spacing="10.0">
          <children>
             <TextField fx:id="userNameField" prefWidth="141.0" promptText="User name" styleClass="textField" stylesheets="@../css/styleSheet.css" />
             <TextField fx:id="displayNameField" promptText="Display name" styleClass="textField" stylesheets="@../css/styleSheet.css" />
@@ -47,12 +47,6 @@
          </children>
       </VBox>
       <HBox layoutX="118.0" layoutY="640.0" prefHeight="25.0" prefWidth="250.0" spacing="14.0">
-         <children>
-            <Label text="Gender" />
-            <RadioButton fx:id="maleRadio" mnemonicParsing="false" text="Male" />
-            <RadioButton fx:id="femaleRadio" mnemonicParsing="false" text="Female" />
-            <RadioButton fx:id="otherRadio" mnemonicParsing="false" text="Other" />
-         </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -60,17 +54,21 @@
             <Insets right="10.0" />
          </padding>
       </HBox>
-      <Label layoutX="118.0" layoutY="58.0" prefHeight="17.0" prefWidth="250.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Administrator registration details" />
-      <Button fx:id="cancelButton" layoutX="118.0" layoutY="665.0" mnemonicParsing="false" onAction="#cancelButtonPressed" prefHeight="25.0" prefWidth="77.0" text="Cancel">
+      <Label layoutX="114.0" layoutY="25.0" prefHeight="17.0" prefWidth="250.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Administrator registration details" />
+      <Button fx:id="cancelButton" layoutX="118.0" layoutY="695.0" mnemonicParsing="false" onAction="#cancelButtonPressed" prefHeight="25.0" prefWidth="77.0" text="Cancel">
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />
          </styleClass></Button>
-      <Button fx:id="registerButton" layoutX="205.0" layoutY="665.0" mnemonicParsing="false" onAction="#registerButtonPressed" prefHeight="25.0" prefWidth="77.0" text="Register">
+      <Button fx:id="registerButton" layoutX="205.0" layoutY="695.0" mnemonicParsing="false" onAction="#registerButtonPressed" prefHeight="25.0" prefWidth="77.0" text="Register">
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />
          </styleClass></Button>
       <Label fx:id="warningLabel" layoutX="114.0" layoutY="21.0" prefHeight="27.0" prefWidth="250.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" textFill="#eb0505" />
+      <RadioButton fx:id="maleRadio" layoutX="168.0" layoutY="672.0" mnemonicParsing="false" text="Male" />
+      <RadioButton fx:id="femaleRadio" layoutX="228.0" layoutY="672.0" mnemonicParsing="false" text="Female" />
+      <RadioButton fx:id="otherRadio" layoutX="305.0" layoutY="672.0" mnemonicParsing="false" text="Other" />
+      <Label layoutX="118.0" layoutY="672.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Gender" />
    </children>
 </AnchorPane>

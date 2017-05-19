@@ -48,9 +48,6 @@ import java.util.ResourceBundle;
 
 public class WelcomeMenuController implements Initializable {
 
-    /**
-     * @author Federica
-     */
 
     @FXML private Circle btnPlay;
     @FXML private Circle btnPause;
@@ -68,7 +65,7 @@ public class WelcomeMenuController implements Initializable {
     @FXML private AnchorPane welcomeRootAnchor;
     @FXML private AnchorPane welcomeParentAnchorPane;
     @FXML private Label lblDisplayName;
-    @FXML private ImageView imgProfilePicture;
+    @FXML private Circle imgProfilePicture;
     @FXML private AnchorPane anchorNews;
     @FXML private Rectangle imgNoConnection;
     @FXML private Label lblNoConnection1;
@@ -92,7 +89,9 @@ public class WelcomeMenuController implements Initializable {
     @FXML private ListView lstPlaylists;
     @FXML private ListView<MusicTrack> lstPlaylistSongs;
     @FXML private Circle btnMessage;
-    @FXML private ListView lstContacts;
+    @FXML private ListView<PremiumUser> lstContacts;
+    @FXML private RadioButton rdPremium;
+    @FXML private RadioButton rdTrial;
     private String userDisplayName;
     private Media media;
     private MediaPlayer mediaPlayer;
@@ -139,18 +138,26 @@ public class WelcomeMenuController implements Initializable {
             imgRating.setVisible(true);
             lblDisplayName.setText(" " + globalVariables.getPremiumUser().getDisplayName()+ "!");
             btnMessage.setVisible(true);
+            Image image = new Image(globalVariables.getPremiumUser().getProfilePicturePath());
+            imgProfilePicture.setFill(new ImagePattern(image));
+            lstContacts.setVisible(true);
         } else if (globalVariables.getTrialuser() != null && globalVariables.getPremiumUser() == null && globalVariables.getAdministrator() == null) {
             imgRating.setVisible(true);
             lblDisplayName.setText(" " + globalVariables.getTrialuser().getDisplayName() + "!");
             btnPen.setVisible(false);
             btnMessage.setVisible(false);
+            Image image = new Image(globalVariables.getTrialuser().getProfilePicturePath());
+            imgProfilePicture.setFill(new ImagePattern(image));
+            lstContacts.setVisible(false);
         } else if (globalVariables.getAdministrator() != null && globalVariables.getPremiumUser() == null && globalVariables.getTrialuser() == null) {
             imgRating.setVisible(true);
             lblDisplayName.setText(" " + globalVariables.getAdministrator().getDisplayName()+ "!");
             btnMessage.setVisible(false);
+            Image image = new Image(globalVariables.getAdministrator().getProfilePicturePath());
+            imgProfilePicture.setFill(new ImagePattern(image));
+            lstContacts.setVisible(true);
         }
         imgVolume.setImage(new Image("images/VolumeHigh.png"));
-        imgProfilePicture.setImage(new Image("images/Konachan.jpg"));
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
         imgMain.setEffect(dropShadow);
 
@@ -180,7 +187,8 @@ public class WelcomeMenuController implements Initializable {
                 new Tooltip("Remove playlist")
         );
 
-        lstPlaylistSongs.setCellFactory(listView -> new ImageTextCell());
+        lstPlaylistSongs.setCellFactory(listView -> new ImageTextCellMusicTrack());
+        lstContacts.setCellFactory(listView -> new ImageTextCellContacts());
 
         setImageNews();
         setImageSuggestions();
@@ -227,8 +235,19 @@ public class WelcomeMenuController implements Initializable {
             scene.setCursor(Cursor.DEFAULT);
         });
         lblDisplayName.setOnMouseClicked(event -> {
+            globalVariables.setContactDescriptionController(null);
+            globalVariables.setOwnUserDescriptionController(new UserDescriptionController());
             try {
-                SceneManager.sceneManager.openPopupScene(event,"view/userDescription.fxml");
+                if (globalVariables.getPremiumUser() != null && globalVariables.getAdministrator() == null &&
+                        globalVariables.getTrialuser() == null) {
+                     SceneManager.sceneManager.openNewWindow(event, "view/userDescription.fxml", globalVariables.getPremiumUser().getDisplayName());
+                } else if (globalVariables.getTrialuser()!= null && globalVariables.getPremiumUser() == null &&
+                        globalVariables.getAdministrator() == null) {
+                    SceneManager.sceneManager.openNewWindow(event, "view/userDescription.fxml", globalVariables.getTrialuser().getDisplayName());
+                } else if (globalVariables.getAdministrator()!= null && globalVariables.getPremiumUser() == null &&
+                        globalVariables.getTrialuser() == null) {
+                    SceneManager.sceneManager.openNewWindow(event, "view/userDescription.fxml", globalVariables.getAdministrator().getDisplayName());
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -557,23 +576,44 @@ public class WelcomeMenuController implements Initializable {
             cmbSearchUser.show();
             ArrayList<String> sqlArrayList = new ArrayList<>();
 
-            if (newText.equals("")) {
-                cmbSearchUser.getItems().clear();
-            } else {
-                for (String s : db_connector.searchMultipleResults("display_name", "premium_user", "(display_name LIKE '%" + newText + "%' OR display_name LIKE '"
-                        + newText + "%')")) {
+            if (rdPremium.isSelected()) {
+                if (newText.equals("")) {
+                    cmbSearchUser.getItems().clear();
+                } else {
+                    for (String s : db_connector.searchMultipleResults("user_name", "premium_user", "(user_name LIKE '%" + newText.replaceAll("'", "''") + "%' OR user_name LIKE '"
+                            + newText.replaceAll("'", "''") + "%')")) {
 
-                    if (!newText.equals("")) {
-                        sqlArrayList.add(s);
+                        if (!newText.equals("")) {
+                            sqlArrayList.add(s);
+                            cmbSearchUser.getItems().clear();
+                            cmbSearchUser.getItems().addAll(sqlArrayList);
+                        }
+                    }
+                    if (sqlArrayList.isEmpty()) {
+
                         cmbSearchUser.getItems().clear();
-                        cmbSearchUser.getItems().addAll(sqlArrayList);
+                        cmbSearchUser.getItems().add("No matches found");
                     }
                 }
-                if (sqlArrayList.isEmpty()) {
+            }else if (rdTrial.isSelected()) {
+                if (newText.equals("")) {
                     cmbSearchUser.getItems().clear();
-                    cmbSearchUser.getItems().add("No matches found");
-                }
+                } else {
+                    for (String s : db_connector.searchMultipleResults("user_name", "trial_user", "(user_name LIKE '%" + newText + "%' OR user_name LIKE '"
+                            + newText + "%')")) {
 
+                        if (!newText.equals("")) {
+                            sqlArrayList.add(s);
+                            cmbSearchUser.getItems().clear();
+                            cmbSearchUser.getItems().addAll(sqlArrayList);
+                        }
+                    }
+                    if (sqlArrayList.isEmpty()) {
+                        cmbSearchUser.getItems().clear();
+                        cmbSearchUser.getItems().add("No matches found");
+                    }
+
+                }
             }
         });
 
@@ -590,7 +630,7 @@ public class WelcomeMenuController implements Initializable {
         if (answer){
             try {
                 mediaPlayer.stop();
-
+                GlobalVariables.getInstance().getContactList().clear();
                 SceneManager.sceneManager.changeScene(event,"view/logInMenu.fxml");
 
             }catch (Exception e){
@@ -834,7 +874,6 @@ public class WelcomeMenuController implements Initializable {
             input.close();
         } catch (Exception fe) {
             System.out.println("It does not find the file but it's okay.");
-            fe.printStackTrace();
 //            imgNoConnection.setVisible(true);
 //            lblNoConnection2.setVisible(true);
 //            lblNoConnection1.setVisible(true);
@@ -1712,8 +1751,51 @@ public class WelcomeMenuController implements Initializable {
     }
 
     @FXML
-    private void onImgSearchUserPressed() {
+    private void onImgSearchUserPressed(MouseEvent e) {
 
+        if (rdPremium.isSelected()) {
+            String userSearched = cmbSearchUser.getEditor().getText();
+                if (!db_connector.search("user_name",
+                        "premium_user", "user_name = '" + userSearched.replaceAll("'", "''") + "'").equals("")) {
+                    db_connector.findPremiumUser(cmbSearchUser.getEditor().getText());
+                    if (GlobalVariables.getInstance().getPremiumUser() != null && GlobalVariables.getInstance().getTrialuser() == null) {
+                        if (cmbSearchUser.getEditor().getText().equals(GlobalVariables.getInstance().getPremiumUser().getUserName())) {
+                            GlobalVariables.getInstance().setOwnUserDescriptionController(new UserDescriptionController());
+                            GlobalVariables.getInstance().setContactDescriptionController(null);
+                        } else {
+                            GlobalVariables.getInstance().setOwnUserDescriptionController(null);
+                            GlobalVariables.getInstance().setContactDescriptionController(new UserDescriptionController());
+                        }
+                    } else if (GlobalVariables.getInstance().getTrialuser()!= null && GlobalVariables.getInstance().getPremiumUser() == null) {
+                        if (cmbSearchUser.getEditor().getText().equals(GlobalVariables.getInstance().getTrialuser().getUserName())) {
+                            GlobalVariables.getInstance().setOwnUserDescriptionController(new UserDescriptionController());
+                            GlobalVariables.getInstance().setContactDescriptionController(null);
+                        } else {
+                            GlobalVariables.getInstance().setOwnUserDescriptionController(null);
+                            GlobalVariables.getInstance().setContactDescriptionController(new UserDescriptionController());
+                        }
+                    }
+                    try {
+                        SceneManager.sceneManager.openNewWindow(e, "view/userDescription.fxml", GlobalVariables.getInstance().getContactSelected().getDisplayName());
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+            }
+
+        } else if (rdTrial.isSelected()) {
+            String userSearched = cmbSearchUser.getEditor().getText();
+            if (!db_connector.search("user_name",
+                    "trial_user", "user_name = '" + userSearched.replaceAll("'", "''") + "'").equals("")) {
+                db_connector.findTrialUser(cmbSearchUser.getEditor().getText());
+                GlobalVariables.getInstance().setOwnUserDescriptionController(null);
+                GlobalVariables.getInstance().setContactDescriptionController(new UserDescriptionController());
+                try {
+                    SceneManager.sceneManager.openNewWindow(e, "view/userDescription.fxml", GlobalVariables.getInstance().getContactSelected().getDisplayName());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
     }
 
     private void setMessages() {
@@ -1760,7 +1842,6 @@ public class WelcomeMenuController implements Initializable {
     private void setContacts() {
         lstContacts.getItems().clear();
         ArrayList<String> contactUserNames = new ArrayList<>();
-        ArrayList<String> contactDisplayNames = new ArrayList<>();
 
         for (String s : db_connector.searchMultipleResults("contact_contact_name", "premium_user_has_contact",
                 "premium_user_user_name = '" + GlobalVariables.getInstance().getPremiumUser().getUserName() + "'")) {
@@ -1768,14 +1849,31 @@ public class WelcomeMenuController implements Initializable {
                 contactUserNames.add(s);
             }
         }
+        for (String s : db_connector.searchMultipleResults("premium_user_user_name", "premium_user_has_contact",
+                "contact_contact_name = '" + GlobalVariables.getInstance().getPremiumUser().getUserName() + "'")) {
+            if (!s.equals("")) {
+                contactUserNames.add(s);
+            }
+        }
 
         for (String s : contactUserNames) {
-            contactDisplayNames.add(db_connector.search("display_name", "premium_user", "user_name = '" +
-            s + "'"));
-
+            db_connector.getContact(s);
         }
-        lstContacts.getItems().addAll(contactDisplayNames);
 
+        lstContacts.getItems().addAll(GlobalVariables.getInstance().getContactList());
+    }
+
+    @FXML
+    private void onLstContactsPressed(MouseEvent e) {
+
+        try {
+            GlobalVariables.getInstance().setOwnUserDescriptionController(null);
+            GlobalVariables.getInstance().setContactDescriptionController(new UserDescriptionController());
+            GlobalVariables.getInstance().setContactSelected(GlobalVariables.getInstance().getContactList().get(lstContacts.getSelectionModel().getSelectedIndex()));
+            SceneManager.sceneManager.openNewWindow(e, "view/userDescription.fxml", GlobalVariables.getInstance().getContactList().get(lstContacts.getSelectionModel().getSelectedIndex()).getDisplayName());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 

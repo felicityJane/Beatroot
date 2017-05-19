@@ -8,7 +8,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.TextAlignment;
-import musicplayer.model.MusicTrack;
 import musicplayer.model.PremiumUser;
 
 /**

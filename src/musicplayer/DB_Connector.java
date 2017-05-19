@@ -1,6 +1,12 @@
 package musicplayer;
 
-import java.beans.PropertyEditorManager;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import musicplayer.model.*;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,22 +14,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
-import java.time.Year;
 import java.util.ArrayList;
-import java.sql.Date;
-
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import musicplayer.model.*;
 
 public class DB_Connector {
 	private String urlOfDatabase;

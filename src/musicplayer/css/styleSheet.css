@@ -27,6 +27,11 @@
  -fx-text-fill :#dcdcdc;
 
  }
+ .radio-button{
+ -fx-background-color:#333333;
+ -fx-text-fill : #dcdcdc;
+ -tx-background-radius: 8.0:
+ }
  .menu-bar {
  -fx-background-color: #085562;    /* The menu bar itself */ }
 
@@ -44,7 +49,6 @@
      -fx-font-size: 13;
      -fx-text-fill: #dcdcdc;
      -fx-display-caret:true;
-
  }
 
  .text-area .content {

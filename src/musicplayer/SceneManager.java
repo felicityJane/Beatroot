@@ -10,9 +10,6 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import musicplayer.controller.UserDescriptionController;
-import musicplayer.model.GlobalVariables;
-import musicplayer.model.User;
 
 import java.io.File;
 import java.io.IOException;
