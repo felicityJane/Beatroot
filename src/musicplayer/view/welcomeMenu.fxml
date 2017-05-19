@@ -117,8 +117,8 @@
                     <Font size="14.0" />
                 </font>
             </Label>
-            <Circle fx:id="btnDownload" fill="#f2f2f2" layoutX="1251.0" layoutY="35.0" onMouseClicked="#onDownloadButtonPressed" radius="24.0" stroke="#09b0b9" strokeType="INSIDE" />
-            <Circle fx:id="btnLogOut" fill="#f2f2f2" layoutX="1303.0" layoutY="36.0" onMouseClicked="#onLogOutButtonPressed" radius="24.0" stroke="#09b0b9" strokeType="INSIDE" />
+            <Circle fx:id="btnDownload" fill="#f2f2f2" layoutX="1256.0" layoutY="36.0" onMouseClicked="#onDownloadButtonPressed" radius="24.0" stroke="#09b0b9" strokeType="INSIDE" />
+            <Circle fx:id="btnLogOut" fill="#f2f2f2" layoutX="1311.0" layoutY="36.0" onMouseClicked="#onLogOutButtonPressed" radius="24.0" stroke="#09b0b9" strokeType="INSIDE" />
             <Label fx:id="lblRating" layoutX="922.0" layoutY="148.0" prefHeight="17.0" prefWidth="21.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" />
             <Circle fx:id="btnPen" fill="WHITE" layoutX="782.0" layoutY="157.0" onMouseClicked="#onBtnPenPressed" radius="15.0" stroke="#e3b3b300" strokeType="INSIDE" />
             <ListView fx:id="lstPlaylistSongs" layoutX="14.0" layoutY="298.0" onMouseClicked="#clickOnLstPlaylistSongs" prefHeight="364.0" prefWidth="171.0" stylesheets="@../css/styleSheet.css">
@@ -138,7 +138,19 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Circle fx:id="btnMessage" fill="#f2f2f2" layoutX="1195.0" layoutY="36.0" onMouseClicked="#onMessageButtonPressed" radius="24.0" stroke="#e3eeee" strokeType="INSIDE" />
+            <Circle fx:id="btnMessage" fill="#f2f2f2" layoutX="1203.0" layoutY="36.0" onMouseClicked="#onMessageButtonPressed" radius="24.0" stroke="#e3eeee" strokeType="INSIDE" />
+            <Circle fx:id="imgProfilePicture" fill="#f5f5f500" layoutX="1152.0" layoutY="34.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <RadioButton fx:id="rdPremium" layoutX="1128.0" layoutY="95.0" mnemonicParsing="false" selected="true" text="Premium ">
+               <toggleGroup>
+                  <ToggleGroup fx:id="user" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rdTrial" layoutX="1226.0" layoutY="94.0" mnemonicParsing="false" text="Trial" toggleGroup="$user" />
+            <Label fx:id="lblContacts" layoutX="1132.0" layoutY="156.0" text="Contacts">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
             <Rectangle id="imgNoConnection" fx:id="imgNoConnection" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="707.0" layoutX="-15.0" layoutY="-27.0" opacity="0.7" stroke="WHITE" strokeType="INSIDE" visible="false" width="1398.0" />
             <Label fx:id="lblNoConnection1" layoutX="365.0" layoutY="260.0" prefHeight="118.0" prefWidth="667.0" text="Looks like you're not connected to the internet!" textFill="RED" visible="false">
                 <font>
@@ -150,13 +162,6 @@
                     <Font size="26.0" />
                 </font>
             </Label>
-            <Circle fx:id="imgProfilePicture" fill="#f5f5f500" layoutX="1143.0" layoutY="36.0" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-            <RadioButton fx:id="rdPremium" layoutX="1130.0" layoutY="94.0" mnemonicParsing="false" selected="true" stylesheets="@../css/styleSheet.css" text="Premium ">
-               <toggleGroup>
-                  <ToggleGroup fx:id="user" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="rdTrial" layoutX="1239.0" layoutY="95.0" mnemonicParsing="false" stylesheets="@../css/styleSheet.css" text="Trial" toggleGroup="$user" />
             </children></AnchorPane>
 
     </children>
