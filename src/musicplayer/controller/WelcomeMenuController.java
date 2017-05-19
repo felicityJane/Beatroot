@@ -1858,6 +1858,7 @@ public class WelcomeMenuController implements Initializable {
     private void setContacts() {
         lstContacts.getItems().clear();
         ArrayList<String> contactUserNames = new ArrayList<>();
+        GlobalVariables.getInstance().getContactList().clear();
 
         for (String s : db_connector.searchMultipleResults("contact_contact_name", "premium_user_has_contact",
                 "premium_user_user_name = '" + GlobalVariables.getInstance().getPremiumUser().getUserName() + "'")) {
