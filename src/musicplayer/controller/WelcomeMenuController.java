@@ -1,4 +1,5 @@
 package musicplayer.controller;
+import javafx.beans.binding.Bindings;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -92,6 +93,7 @@ public class WelcomeMenuController implements Initializable {
     @FXML private ListView<PremiumUser> lstContacts;
     @FXML private RadioButton rdPremium;
     @FXML private RadioButton rdTrial;
+    @FXML private Label lblContacts;
     private String userDisplayName;
     private Media media;
     private MediaPlayer mediaPlayer;
@@ -141,6 +143,7 @@ public class WelcomeMenuController implements Initializable {
             Image image = new Image(globalVariables.getPremiumUser().getProfilePicturePath());
             imgProfilePicture.setFill(new ImagePattern(image));
             lstContacts.setVisible(true);
+            lblContacts.setVisible(true);
         } else if (globalVariables.getTrialuser() != null && globalVariables.getPremiumUser() == null && globalVariables.getAdministrator() == null) {
             imgRating.setVisible(true);
             lblDisplayName.setText(" " + globalVariables.getTrialuser().getDisplayName() + "!");
@@ -149,6 +152,7 @@ public class WelcomeMenuController implements Initializable {
             Image image = new Image(globalVariables.getTrialuser().getProfilePicturePath());
             imgProfilePicture.setFill(new ImagePattern(image));
             lstContacts.setVisible(false);
+            lblContacts.setVisible(false);
         } else if (globalVariables.getAdministrator() != null && globalVariables.getPremiumUser() == null && globalVariables.getTrialuser() == null) {
             imgRating.setVisible(true);
             lblDisplayName.setText(" " + globalVariables.getAdministrator().getDisplayName()+ "!");
@@ -156,6 +160,7 @@ public class WelcomeMenuController implements Initializable {
             Image image = new Image(globalVariables.getAdministrator().getProfilePicturePath());
             imgProfilePicture.setFill(new ImagePattern(image));
             lstContacts.setVisible(true);
+            lblContacts.setVisible(true);
         }
         imgVolume.setImage(new Image("images/VolumeHigh.png"));
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
@@ -187,8 +192,67 @@ public class WelcomeMenuController implements Initializable {
                 new Tooltip("Remove playlist")
         );
 
-        lstPlaylistSongs.setCellFactory(listView -> new ImageTextCellMusicTrack());
-        lstContacts.setCellFactory(listView -> new ImageTextCellContacts());
+        lstPlaylistSongs.setCellFactory(listView -> {
+
+            ImageTextCellMusicTrack cell = new ImageTextCellMusicTrack();
+            ContextMenu contextMenu = new ContextMenu();
+
+            MenuItem deleteItem = new MenuItem();
+            deleteItem.textProperty().bind(Bindings.format("Delete"));
+            deleteItem.setOnAction(event -> {
+                selectedPlaylist.getMusicTracks().remove(cell.getItem());
+                userPlaylists.get(lstPlaylists.getSelectionModel().getSelectedIndex()).removeMusicTracks(cell.getItem());
+                db_connector.delete("playlist_has_music_track", "music_track_track_id = " +
+                cell.getItem().getID());
+                listView.getItems().remove(cell.getItem());
+                setPlaylistSongs();
+                setPlaylists();
+            });
+            contextMenu.getItems().addAll(deleteItem);
+            cell.emptyProperty().addListener((obs, wasEmpty, isNowEmpty) -> {
+                if (isNowEmpty) {
+                    cell.setContextMenu(null);
+                } else {
+                    cell.setContextMenu(contextMenu);
+                }
+            });
+
+            return cell;
+        });
+        lstContacts.setCellFactory(listView -> {
+
+            ImageTextCellContacts cell = new ImageTextCellContacts();
+            ContextMenu contextMenu = new ContextMenu();
+
+            MenuItem deleteItem = new MenuItem();
+            deleteItem.textProperty().bind(Bindings.format("Remove from contacts"));
+            deleteItem.setOnAction(event -> {
+
+                boolean answer = DialogBoxManager.confirmationDialogBox("Remove contact?", "Are you sure you want to remove this contact?");
+                if (answer) {
+                    globalVariables.getContactList().remove(cell.getItem());
+                    db_connector.delete("premium_user_has_contact", "contact_contact_name = '" +
+                            cell.getItem().getUserName() + "' AND premium_user_user_name = '" +
+                            globalVariables.getPremiumUser().getUserName() + "'");
+                    db_connector.delete("premium_user_has_contact", "premium_user_user_name = '" +
+                            cell.getItem().getUserName() + "' AND contact_contact_name = '" +
+                            globalVariables.getPremiumUser().getUserName() + "'");
+                    listView.getItems().remove(cell.getItem());
+                    setContacts();
+                }
+            });
+            contextMenu.getItems().addAll(deleteItem);
+            cell.emptyProperty().addListener((obs, wasEmpty, isNowEmpty) -> {
+                if (isNowEmpty) {
+                    cell.setContextMenu(null);
+                } else {
+                    cell.setContextMenu(contextMenu);
+                }
+            });
+
+            return cell;
+
+        });
 
         setImageNews();
         setImageSuggestions();
@@ -1630,55 +1694,7 @@ public class WelcomeMenuController implements Initializable {
     @FXML
     private void clickOnLstPlaylists() {
 
-        String albumId;
-        String albumCoverPath = "";
-
-        selectedPlaylist = userPlaylists.get(lstPlaylists.getSelectionModel().getSelectedIndex());
-        for (MusicTrack m : userPlaylists.get(0).getMusicTracks()) {
-            System.out.println(m.getTrackName());
-        }
-        System.out.println();
-        userPlaylists.get(lstPlaylists.getSelectionModel().getSelectedIndex()).getMusicTracks().clear();
-        selectedPlaylist.getMusicTracks().clear();
-        //System.out.println(userPlaylists.get((lstPlaylists.getSelectionModel().getSelectedIndex())).getMusicTracks().size());
-        if (lstPlaylists.getSelectionModel().getSelectedIndex() == tempPlaylist) {
-            lstPlaylistSongs.getItems().clear();
-
-            ArrayList<String> songsInPlaylistId = new ArrayList<>();
-            ArrayList<String> songsInPlaylist = new ArrayList<>();
-            for (String s : db_connector.searchMultipleResults("music_track_track_id", "playlist_has_music_track",
-                    "playlist_playlist_id = "+ Integer.toString(selectedPlaylist.getId()))) {
-                     songsInPlaylistId.add(s);
-                //System.out.println(songsInPlaylistId.size());
-            }
-
-            int counter = 0;
-            selectedPlaylist = new Playlist(userPlaylists.get(lstPlaylists.getSelectionModel().getSelectedIndex()).getName(),
-                    userPlaylists.get(lstPlaylists.getSelectionModel().getSelectedIndex()).getVisibility());
-            for (String s : songsInPlaylistId) { //19 & 40
-
-                songsInPlaylist.add(db_connector.search("track_name", "music_track",
-                        "track_id = " + s));
-                albumId = db_connector.search("album_album_id", "album_has_music_track",
-                        "music_track_track_id = " + s);
-                albumCoverPath = db_connector.search("album_cover_path", "album", "album_id = " +
-                        albumId);
-                MusicTrack check = new MusicTrack(db_connector.search("track_name", "music_track",
-                        "track_id = " + s), db_connector.search("track_url", "music_track", "track_id = " + s));
-                if (!selectedPlaylist.getMusicTracks().contains(check)) {
-                    selectedPlaylist.addMusicTracks(new MusicTrack(db_connector.search("track_name", "music_track",
-                            "track_id = " + s), db_connector.search("track_url", "music_track", "track_id = " + s)));
-                    selectedPlaylist.getMusicTracks().get(counter).setID(Integer.parseInt(s));
-                    selectedPlaylist.getMusicTracks().get(counter).setAlbumCoverPath(albumCoverPath);
-                }
-                counter++;
-            }
-
-            lstPlaylistSongs.getItems().addAll(selectedPlaylist.getMusicTracks());
-
-        } else {
-            tempPlaylist = lstPlaylists.getSelectionModel().getSelectedIndex();
-        }
+        setPlaylistSongs();
     }
 
     @FXML
@@ -1842,6 +1858,7 @@ public class WelcomeMenuController implements Initializable {
     private void setContacts() {
         lstContacts.getItems().clear();
         ArrayList<String> contactUserNames = new ArrayList<>();
+        GlobalVariables.getInstance().getContactList().clear();
 
         for (String s : db_connector.searchMultipleResults("contact_contact_name", "premium_user_has_contact",
                 "premium_user_user_name = '" + GlobalVariables.getInstance().getPremiumUser().getUserName() + "'")) {
@@ -1866,13 +1883,68 @@ public class WelcomeMenuController implements Initializable {
     @FXML
     private void onLstContactsPressed(MouseEvent e) {
 
-        try {
-            GlobalVariables.getInstance().setOwnUserDescriptionController(null);
-            GlobalVariables.getInstance().setContactDescriptionController(new UserDescriptionController());
-            GlobalVariables.getInstance().setContactSelected(GlobalVariables.getInstance().getContactList().get(lstContacts.getSelectionModel().getSelectedIndex()));
-            SceneManager.sceneManager.openNewWindow(e, "view/userDescription.fxml", GlobalVariables.getInstance().getContactList().get(lstContacts.getSelectionModel().getSelectedIndex()).getDisplayName());
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        if (e.getButton() == MouseButton.PRIMARY) {
+            try {
+                GlobalVariables.getInstance().setOwnUserDescriptionController(null);
+                GlobalVariables.getInstance().setContactDescriptionController(new UserDescriptionController());
+                GlobalVariables.getInstance().setContactSelected(GlobalVariables.getInstance().getContactList().get(lstContacts.getSelectionModel().getSelectedIndex()));
+                SceneManager.sceneManager.openNewWindow(e, "view/userDescription.fxml", GlobalVariables.getInstance().getContactList().get(lstContacts.getSelectionModel().getSelectedIndex()).getDisplayName());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    private void setPlaylistSongs() {
+
+        String albumId;
+        String albumCoverPath = "";
+
+        selectedPlaylist = userPlaylists.get(lstPlaylists.getSelectionModel().getSelectedIndex());
+        for (MusicTrack m : userPlaylists.get(0).getMusicTracks()) {
+            System.out.println(m.getTrackName());
+        }
+        System.out.println();
+        userPlaylists.get(lstPlaylists.getSelectionModel().getSelectedIndex()).getMusicTracks().clear();
+        selectedPlaylist.getMusicTracks().clear();
+        //System.out.println(userPlaylists.get((lstPlaylists.getSelectionModel().getSelectedIndex())).getMusicTracks().size());
+        if (lstPlaylists.getSelectionModel().getSelectedIndex() == tempPlaylist) {
+            lstPlaylistSongs.getItems().clear();
+
+            ArrayList<String> songsInPlaylistId = new ArrayList<>();
+            ArrayList<String> songsInPlaylist = new ArrayList<>();
+            for (String s : db_connector.searchMultipleResults("music_track_track_id", "playlist_has_music_track",
+                    "playlist_playlist_id = "+ Integer.toString(selectedPlaylist.getId()))) {
+                songsInPlaylistId.add(s);
+                //System.out.println(songsInPlaylistId.size());
+            }
+
+            int counter = 0;
+            selectedPlaylist = new Playlist(userPlaylists.get(lstPlaylists.getSelectionModel().getSelectedIndex()).getName(),
+                    userPlaylists.get(lstPlaylists.getSelectionModel().getSelectedIndex()).getVisibility());
+            for (String s : songsInPlaylistId) { //19 & 40
+
+                songsInPlaylist.add(db_connector.search("track_name", "music_track",
+                        "track_id = " + s));
+                albumId = db_connector.search("album_album_id", "album_has_music_track",
+                        "music_track_track_id = " + s);
+                albumCoverPath = db_connector.search("album_cover_path", "album", "album_id = " +
+                        albumId);
+                MusicTrack check = new MusicTrack(db_connector.search("track_name", "music_track",
+                        "track_id = " + s), db_connector.search("track_url", "music_track", "track_id = " + s));
+                if (!selectedPlaylist.getMusicTracks().contains(check)) {
+                    selectedPlaylist.addMusicTracks(new MusicTrack(db_connector.search("track_name", "music_track",
+                            "track_id = " + s), db_connector.search("track_url", "music_track", "track_id = " + s)));
+                    selectedPlaylist.getMusicTracks().get(counter).setID(Integer.parseInt(s));
+                    selectedPlaylist.getMusicTracks().get(counter).setAlbumCoverPath(albumCoverPath);
+                }
+                counter++;
+            }
+
+            lstPlaylistSongs.getItems().addAll(selectedPlaylist.getMusicTracks());
+
+        } else {
+            tempPlaylist = lstPlaylists.getSelectionModel().getSelectedIndex();
         }
     }
 
