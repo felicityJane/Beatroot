@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="songPageAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="314.0" prefWidth="526.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.SongPageController">
+<AnchorPane fx:id="songPageAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="728.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.SongPageController">
     <children>
-        <ImageView fitHeight="56.0" fitWidth="232.0" layoutX="131.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="56.0" fitWidth="232.0" layoutX="252.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/beatrootlogo.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="imageView" fitHeight="205.0" fitWidth="240.0" layoutX="14.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" />
-        <Label fx:id="albumLabel" layoutX="263.0" layoutY="96.0" prefHeight="17.0" prefWidth="213.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Label" />
-        <Label fx:id="artistLabel" layoutX="263.0" layoutY="120.0" prefHeight="17.0" prefWidth="213.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Label" />
-      <Label fx:id="trackLabel" layoutX="263.0" layoutY="145.0" prefHeight="17.0" prefWidth="213.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Label" />
-      <Label fx:id="trackTimeLabel" layoutX="263.0" layoutY="175.0" prefHeight="17.0" prefWidth="213.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Label" />
-      <Label fx:id="publicationLabel" layoutX="263.0" layoutY="206.0" prefHeight="17.0" prefWidth="213.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Label" />
+        <ImageView fx:id="imageView" fitHeight="332.0" fitWidth="356.0" layoutX="37.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="albumLabel" layoutX="431.0" layoutY="90.0" prefHeight="25.0" prefWidth="274.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
+        <Label fx:id="artistLabel" layoutX="431.0" layoutY="127.0" prefHeight="25.0" prefWidth="274.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
+      <Label fx:id="trackLabel" layoutX="500.0" layoutY="161.0" prefHeight="20.0" prefWidth="205.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
+      <Label fx:id="trackTimeLabel" layoutX="431.0" layoutY="193.0" prefHeight="25.0" prefWidth="274.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
+      <Label fx:id="publicationLabel" layoutX="431.0" layoutY="232.0" prefHeight="25.0" prefWidth="274.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
+      <Label fx:id="ratingLabel" layoutX="540.0" layoutY="257.0" prefHeight="25.0" prefWidth="106.0" styleClass="mainLabelColor" text="ratingLabel" />
+      <ImageView fx:id="starRatingImageView" fitHeight="17.0" fitWidth="106.0" layoutX="431.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true" styleClass="buttonColor" />
+      <ListView fx:id="userCommentList" layoutX="431.0" layoutY="324.0" prefHeight="91.0" prefWidth="274.0" />
+      <Label fx:id="songNameLabel" layoutX="431.0" layoutY="161.0" prefHeight="25.0" prefWidth="63.0" styleClass="mainLabelColor" text="Song :" />
+      <Label layoutX="435.0" layoutY="287.0" prefHeight="20.0" prefWidth="79.0" styleClass="mainLabelColor" text="Comments" />
     </children>
 </AnchorPane>

@@ -8,6 +8,7 @@ public class MusicArtist {
 	private int artistID;
 	private String stageName;
 	private ArrayList<MusicTrack> songs = new ArrayList<MusicTrack>();
+	private int ratingId;
 	private Rating rating;
 	private Administrator administrator;
 	private Date publicationYear;
@@ -44,6 +45,14 @@ public class MusicArtist {
 
 	public void setSongs(ArrayList<MusicTrack> songs) {
 		this.songs = songs;
+	}
+
+	public int getRatingId() {
+		return ratingId;
+	}
+
+	public void setRatingId(int ratingId) {
+		this.ratingId = ratingId;
 	}
 
 	public void addSongs(MusicTrack s) {

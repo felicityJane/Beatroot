@@ -18,6 +18,9 @@ public class Rating {
 		this.song = song;
 		this.finalRating = finalRating;
 	}
+	public Rating(double finalRating){
+		this.finalRating = finalRating;
+	}
 
 	public int getRatingID() {
 		return ratingID;

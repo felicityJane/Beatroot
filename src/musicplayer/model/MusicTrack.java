@@ -14,6 +14,7 @@ public class MusicTrack implements Serializable {
 	private Genre[] genre;
 	private Administrator administrator;
 	private String url;
+	private int ratingId;
 	private Rating rating;
 	private Date publicationYear;
 	private String albumCoverPath;
@@ -45,6 +46,10 @@ public class MusicTrack implements Serializable {
 		this.trackLength = trackLength;
 		this.genre = genres;
 		this.url = url;
+	}
+
+	public MusicTrack(String trackName){
+		this.trackName = trackName;
 	}
 
 	public int getID() {
@@ -85,6 +90,14 @@ public class MusicTrack implements Serializable {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public int getRatingId() {
+		return ratingId;
+	}
+
+	public void setRatingId(int ratingId) {
+		this.ratingId = ratingId;
 	}
 
 	public String getAlbumCoverPath() {

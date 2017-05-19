@@ -11,8 +11,7 @@ public class Main extends Application {
 
         @Override
         public void start(Stage primaryStage) throws Exception{
-            //Application.setUserAgentStylesheet(getClass().getResource("css/styleSheet.css").toExternalForm());
-            Parent root = FXMLLoader.load(getClass().getResource("view/logInMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("view/welcomeMenu.fxml"));
             primaryStage.setTitle("Beatroot");
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
@@ -23,7 +22,7 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	public void addCSS(Scene scene){
+	 void addCSS(Scene scene){
         URL url = this.getClass().getResource("css/styleSheet.css");
         if (url==null){
             System.out.println("Not found");

@@ -7,20 +7,21 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="albumPageAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="526.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.AlbumPageController">
+<AnchorPane fx:id="albumPageAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="623.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.AlbumPageController">
     <children>
-        <ImageView fitHeight="65.0" fitWidth="259.0" layoutX="127.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="65.0" fitWidth="259.0" layoutX="175.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/beatrootlogo.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="imageView" fitHeight="237.0" fitWidth="242.0" layoutX="14.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="albumLabel" layoutX="272.0" layoutY="102.0" prefHeight="17.0" prefWidth="213.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
-      <ListView fx:id="listView" layoutX="272.0" layoutY="157.0" prefHeight="170.0" prefWidth="240.0" stylesheets="@../css/styleSheet.css">
+        <ImageView fx:id="imageView" fitHeight="294.0" fitWidth="300.0" layoutX="25.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="albumLabel" layoutX="342.0" layoutY="107.0" prefHeight="17.0" prefWidth="213.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
+      <ListView fx:id="listView" layoutX="342.0" layoutY="192.0" prefHeight="207.0" prefWidth="240.0" stylesheets="@../css/styleSheet.css">
          <styleClass>
             <String fx:value="list-cell" />
             <String fx:value="listviewBackground" />
          </styleClass></ListView>
-      <Label fx:id="artistLabel" layoutX="272.0" layoutY="127.0" prefHeight="17.0" prefWidth="240.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
+      <Label fx:id="artistLabel" layoutX="342.0" layoutY="132.0" prefHeight="17.0" prefWidth="240.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
+      <Label fx:id="releaseDateLabel" layoutX="342.0" layoutY="157.0" prefHeight="25.0" prefWidth="259.0" styleClass="mainLabelColor" text="release date" />
     </children>
 </AnchorPane>
