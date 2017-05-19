@@ -15,7 +15,7 @@ import static musicplayer.SceneManager.sceneManager;
 public class MainMenuController implements Initializable{
 
 	@FXML private MenuBar menuBar;
-	@FXML private MenuItem logoutMenu, settingsMenu, aboutMenu,faqsMenu;
+	@FXML private MenuItem logoutMenu, settingsMenu, aboutMenu,faqsMenu, helpMenuItem;
 	private GlobalVariables globalVariables = GlobalVariables.getInstance();
 	@FXML
 	@Override
@@ -80,6 +80,15 @@ public class MainMenuController implements Initializable{
 	private void faqsMenuOption(){
 		try {
 			sceneManager.popUpWindow("view/faqsPage.fxml");
+		} catch (IOException e) {
+			DialogBoxManager.errorDialogBox("Error occurred","Switching to faqs page from menu bar selection, please try again");
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	private void setHelpMenuItem(){
+		try {
+			sceneManager.popUpWindow("view/helpPage.fxml");
 		} catch (IOException e) {
 			DialogBoxManager.errorDialogBox("Error occurred","Switching to faqs page from menu bar selection, please try again");
 			e.printStackTrace();

@@ -31,6 +31,7 @@ public class GlobalVariables {
 	@FXML private SignUpMenuController signUpMenuController;
 	@FXML private SongPageController songPageController;
 	@FXML private WelcomeMenuController welcomeMenuController;
+	@FXML private HelpPageController helpPageController;
 	@FXML private UserDescriptionController userDescriptionController;
 	private User contactSelected;
 	private ArrayList<PremiumUser> contactList = new ArrayList<>();
@@ -179,6 +180,14 @@ public class GlobalVariables {
 
 	public void setWelcomeMenuController(WelcomeMenuController welcomeMenuController) {
 		this.welcomeMenuController = welcomeMenuController;
+	}
+
+	public HelpPageController getHelpPageController() {
+		return helpPageController;
+	}
+
+	public void setHelpPageController(HelpPageController helpPageController) {
+		this.helpPageController = helpPageController;
 	}
 
 	public Administrator getAdministrator() {

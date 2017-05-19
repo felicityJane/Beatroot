@@ -2,6 +2,7 @@ package musicplayer.controller;
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import musicplayer.model.GlobalVariables;
@@ -9,30 +10,64 @@ import musicplayer.model.GlobalVariables;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class helpMenuController {
+public class HelpPageController implements Initializable{
     @FXML
     private AnchorPane helpPageAnchorPane;
     @FXML private Label aboutLabel;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         GlobalVariables globalVariables = GlobalVariables.getInstance();
-        globalVariables.setAboutPageController(this);
+        globalVariables.setHelpPageController(this);
         globalVariables.getMainMenuController().menuBarFitToParent(helpPageAnchorPane);
         globalVariables.getMainMenuController().enableMenuItemsAboutPage();
 
         aboutLabel.setWrapText(true);
-        aboutLabel.setText("Beatroot is a music track streaming service, officially launched on 21 May 2017. " +
-                "It is developed by startup 3FV in Kristianstad, Sweden. It provides digital rights management-protected content from record labels and media companies. " +
-                "Beatroot is a freemium service, meaning that basic features are free with advertisements, while additional features, including improved streaming quality and " +
-                "offline music downloads, are offered via paid subscriptions.\n" +
+        aboutLabel.setText("=================== WELCOME TO THE BEATROOT® COMMUNITY! ====================\n" +
+                "Instructions:\n" +
                 "\n" +
-                "Beatroot is available in most of Europe, most of the Americas, Australia, New Zealand and parts of Asia. It is available for most modern devices, " +
-                "including Windows, macOS, and Linux computers, as well as iOS and Android smartphones and tablets. Music can be browsed or searched for via various parameters, " +
-                "such as artist, album or playlist. Users can create, edit and share playlists, share tracks on social media, and make playlists with other users. " +
-                "Beatroot provides access to over 69 songs. As of May 2017, it has 5 active users, and as of May 2017, it has 3 paying subscribers.\n" +
+                "General\n" +
                 "\n" +
-                "Unlike physical or download sales, which pay artists a fixed price per song or album sold, Beatroot pays royalties based on the number of artists' " +
-                "streams as a proportion of total songs streamed on the service. They distribute approximately 70% of total revenue to rights holders, who then pay artists " +
-                "based on their individual agreements.");
+                "Click on an album thumbnail to see the whole album and load the first song of the album\n" +
+                "into the player. \n" +
+                "Double-click on a song in the list underneath the player to load into the player.\n" +
+                "The song will play automatically.\n" +
+                "Click on the download button on the top right corner of the welcome menu to download the\n" +
+                "playing song on your computer.\n" +
+                "----------------------------------------------------\n" +
+                "Rating & comments\n" +
+                "\n" +
+                "Only songs loaded into the player can be rated and commented.\n" +
+                "Click on the pen icon next to the rating stars to add a comment to the song loaded in the player.\n" +
+                "Click on the stars to add a rating to the same song.\n" +
+                "Only premium users can rate and comment songs.\n" +
+                "----------------------------------------------------\n" +
+                "Playlists\n" +
+                "\n" +
+                "Click on the green plus button next to the Playlist list to create a new playlist.\n" +
+                "Right-click on the song loaded on the player to add it to a playlist of your choice.\n" +
+                "Select a playlist from the list and click on the red minus button to delete it.\n" +
+                "Right-click on the list of songs underneath the playlist list to remove it from the playlist.\n" +
+                "----------------------------------------------------\n" +
+                "Contacts\n" +
+                "\n" +
+                "Search for a premium or trial user on the search bar on the right of the welcome menu.\n" +
+                "Click on the magnifying lens icon to open their user page.\n" +
+                "If:\n" +
+                " o you are a premium user;\n" +
+                " o the selected contact is a premium user;\n" +
+                " o the selected contact is not your contact already, and\n" +
+                " o the selected contact does not have any pending contact requests\n" +
+                "you will be able to send them a contact request. If they accept, they will be added to your contact list \n" +
+                "underneath the search bar. To remove them, right-click on their name on the list.\n" +
+                "If you are a premium user and have a contact request, you will see a little star on the message icon at the \n" +
+                "top right corner. Click on the icon and you will be able to see who sent you the contact request.\n" +
+                "You can accept it or decline it. \n" +
+                "----------------------------------------------------\n" +
+                "Searching\n" +
+                "\n" +
+                "Search for a song, album or artist on the search bar at the top center of the welcome page.\n" +
+                "Select a matching result and click on the magnifying lens icon to load the song/album \n" +
+                "on the player. If you search for an artist, select one of their suggested albums and click on the\n" +
+                "magnifying lens to load it.");
     }
 }

@@ -1809,7 +1809,7 @@ public class WelcomeMenuController implements Initializable {
                         }
                     }
                     try {
-                        SceneManager.sceneManager.openNewWindow(e, "view/userDescription.fxml", GlobalVariables.getInstance().getContactSelected().getDisplayName());
+                        SceneManager.sceneManager.openNewWindow( "view/userDescription.fxml", GlobalVariables.getInstance().getContactSelected().getDisplayName());
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
@@ -1823,7 +1823,7 @@ public class WelcomeMenuController implements Initializable {
                 GlobalVariables.getInstance().setOwnUserDescriptionController(null);
                 GlobalVariables.getInstance().setContactDescriptionController(new UserDescriptionController());
                 try {
-                    SceneManager.sceneManager.openNewWindow(e, "view/userDescription.fxml", GlobalVariables.getInstance().getContactSelected().getDisplayName());
+                    SceneManager.sceneManager.openNewWindow( "view/userDescription.fxml", GlobalVariables.getInstance().getContactSelected().getDisplayName());
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
