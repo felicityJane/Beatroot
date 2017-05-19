@@ -1,11 +1,14 @@
 package musicplayer.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import musicplayer.SceneManager;
 import musicplayer.model.GlobalVariables;
 
 public class AdminMenuController implements Initializable {
@@ -27,4 +30,11 @@ public class AdminMenuController implements Initializable {
 		this.modifyUsersButton = modifyUsersButton;
 	}
 
+	public void modifyUsersButtonPressed(ActionEvent ev) {
+		try {
+			SceneManager.sceneManager.changeScene(ev, "view/ModifyUserPanel.fxml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

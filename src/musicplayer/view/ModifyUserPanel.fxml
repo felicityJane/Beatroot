@@ -12,7 +12,7 @@
       <Button fx:id="trialUsersButton" layoutX="165.0" layoutY="295.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Load trial users" />
       <TableView fx:id="trialUsersTable" layoutX="26.0" layoutY="119.0" prefHeight="151.0" prefWidth="548.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="119.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="User name" />
+          <TableColumn fx:id="trialUserNameColumn" prefWidth="75.0" text="User name" />
           <TableColumn prefWidth="85.0" text="Display name" />
             <TableColumn prefWidth="65.0" text="Password" />
             <TableColumn prefWidth="75.0" text="First name" />

@@ -18,7 +18,7 @@
             </HBox>
             <HBox prefHeight="25.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button fx:id="modifyUsersButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Modify users" />
+                  <Button fx:id="modifyUsersButton" mnemonicParsing="false" onAction="#modifyUsersButtonPressed" prefHeight="25.0" prefWidth="90.0" text="Modify users" />
                   <Button fx:id="modifyAlbumButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Modify album" />
                   <Button fx:id="modifySongsButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Modify song" />
                </children>

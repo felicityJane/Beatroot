@@ -24,6 +24,8 @@ public class ModifyUserController implements Initializable {
 	private Pane adminMenu;
 	@FXML
 	private TableView<TrialUser> trialUsersTable;
+	// @FXML
+	// private TableColumn<S, T>;
 	final ObservableList<TrialUser> data = FXCollections.observableArrayList();
 	private GlobalVariables variables = GlobalVariables.getInstance();
 	private DB_Connector databaseConnector;
@@ -36,8 +38,6 @@ public class ModifyUserController implements Initializable {
 		databaseConnector = new DB_Connector(
 				"jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
 		databaseConnector.getTrialUsersDetails();
-		System.out.println(data.toString());
-
 	}
 
 	public void modifyUserButtonPressed(ActionEvent event) {
