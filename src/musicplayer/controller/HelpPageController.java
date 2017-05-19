@@ -23,7 +23,7 @@ public class HelpPageController implements Initializable{
 
         aboutLabel.setWrapText(true);
         aboutLabel.setText("=================== WELCOME TO THE BEATROOT® COMMUNITY! ====================\n" +
-                "Instructions:\n" +
+                "Instructions: \n" +
                 "\n" +
                 "General\n" +
                 "\n" +
