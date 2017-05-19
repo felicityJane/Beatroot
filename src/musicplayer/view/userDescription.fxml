@@ -13,7 +13,7 @@
 
 <AnchorPane fx:id="logInParentAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="685.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.UserDescriptionController">
    <children>
-      <AnchorPane layoutX="-2.0" layoutY="35.0" prefHeight="50.0" prefWidth="688.0" style="-fx-background-color: ab1d3e;">
+      <AnchorPane layoutX="-2.0" layoutY="35.0" prefHeight="50.0" prefWidth="688.0" style="-fx-background-color: #085562;" stylesheets="@../css/styleSheet.css">
          <children>
             <Label fx:id="displayNameLabel" layoutX="15.0" layoutY="9.0" prefHeight="33.0" prefWidth="236.0" text="DisplayName" textFill="#f8f5f5">
                <font>

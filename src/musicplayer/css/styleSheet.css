@@ -3,12 +3,14 @@
  -fx-background-color: #333333;
  }
  .listviewBackground{
- -fx-background-color: #085562;
+ -fx-background-color: #333333;
  -fx-background-radius: 8.0;
+ -fx-border-color: #f5f5f5;
+ -fx-border-radius: 8.0;
  }
  .albumText{
  -fx-font-weight: bold;
- -fx-font-size: 14;
+ -fx-font-size: 13;
  -fx-text-fill: #71767c;
  }
   .artistText{
@@ -25,6 +27,18 @@
  -fx-text-fill :#dcdcdc;
 
  }
+ .menu-bar {
+ -fx-background-color: #085562;    /* The menu bar itself */ }
+
+ .menu .label {
+   -fx-text-fill: white;
+   -fx-font-size: 13; /* Styles the text on a menu item */ }
+ .menu:showing .label {
+   -fx-text-fill: black;
+   -fx-font-size: 13;
+ /* Styles the text on a menu item when activated */ }
+
+
  .text-area {
      -fx-font-family: Consolas;
      -fx-font-size: 13;
@@ -58,10 +72,10 @@
      -fx-text-fill: white;
  }
  .list-cell { -fx-text-fill: #dcdcdc;  }
- .list-cell:odd { -fx-background-color:#74747b; }
- .list-cell:even { -fx-background-color: #64646a;  }
+ .list-cell:odd { -fx-background-color:#373636; }
+ .list-cell:even { -fx-background-color: #333333;  }
  .list-cell:filled:hover {
-     -fx-background-color: #ab1d3d;
+     -fx-background-color:#085562 ;
      -fx-text-fill: white;
  }
 

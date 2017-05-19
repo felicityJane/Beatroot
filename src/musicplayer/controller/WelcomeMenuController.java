@@ -155,7 +155,7 @@ public class WelcomeMenuController implements Initializable {
         imgMain.setEffect(dropShadow);
 
         imgSearchIcon.setImage(new Image("images/search_icon.jpg"));
-        imgSearchUser.setImage(new Image("images/SearchIcon.png"));
+        imgSearchUser.setImage(new Image("images/search_icon.jpg"));
         lblNoMatchesFound.setText("");
         Image img3 = new Image("images/arrow-download-icon.png");
         btnDownload.setFill(new ImagePattern(img3));
