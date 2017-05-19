@@ -355,6 +355,7 @@ public class WelcomeMenuController implements Initializable {
             }
         });
 
+
         imgRating.setOnMouseClicked(event -> {
 
             if ((globalVariables.getAdministrator() != null && globalVariables.getPremiumUser() == null && globalVariables.getTrialuser() == null) ||
@@ -380,14 +381,13 @@ public class WelcomeMenuController implements Initializable {
 
         for (Node n : welcomeRootAnchor.getChildren()) {
 
-            if (n instanceof ListView && n != lstPlaylists && n != lstContacts ){
-                n.setOnMouseClicked(event -> {
-                    if (event.getButton() == MouseButton.SECONDARY){
-                        ListView listView = (ListView) event.getSource();
-                        popUpMenuGoToSongInfo(n);
-                    }
-                });
-            }if (n instanceof ImageView && n != imgSearchIcon && n != imgRating && n != imgSearchUser ){
+//            if (n instanceof ListView && n != lstPlaylists && n != lstContacts ){
+//                n.setOnMouseClicked(event -> {
+//                    if (event.getButton() == MouseButton.SECONDARY){
+//                        popUpMenuGoToSongInfo(n);
+//                    }
+//                });
+            if (n instanceof ImageView && n != imgSearchIcon && n != imgRating && n != imgSearchUser ){
                 n.setOnMouseClicked(event -> {
                     if (event.getButton() == MouseButton.SECONDARY){
                         popUpMenuAlbumPage(n);
@@ -583,9 +583,9 @@ public class WelcomeMenuController implements Initializable {
         });
 
 
-//        imgNoConnection.setVisible(false);
-//        lblNoConnection1.setVisible(false);
-//        lblNoConnection2.setVisible(false);
+        imgNoConnection.setVisible(false);
+        lblNoConnection1.setVisible(false);
+        lblNoConnection2.setVisible(false);
 
     }
 
@@ -1082,22 +1082,22 @@ public class WelcomeMenuController implements Initializable {
                     connector.restart();
                 } catch (Exception ex) {
                     System.out.println("Exception caught at line 872");
-//                    imgNoConnection.setVisible(true);
-//                    lblNoConnection2.setVisible(true);
-//                    lblNoConnection1.setVisible(true);
+                    imgNoConnection.setVisible(true);
+                    lblNoConnection2.setVisible(true);
+                    lblNoConnection1.setVisible(true);
                 }
             }
             Path path = Paths.get("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " ")));
             runMediaPlayer(path);
         } catch (Exception ex) {
             ex.printStackTrace();
-//            imgNoConnection.setVisible(true);
-//            lblNoConnection2.setVisible(true);
-//            lblNoConnection1.setVisible(true);
+            imgNoConnection.setVisible(true);
+            lblNoConnection2.setVisible(true);
+            lblNoConnection1.setVisible(true);
             System.out.println("Exception caught at line 881");
-//            imgNoConnection.setVisible(true);
-//            lblNoConnection2.setVisible(true);
-//            lblNoConnection1.setVisible(true);
+            imgNoConnection.setVisible(true);
+            lblNoConnection2.setVisible(true);
+            lblNoConnection1.setVisible(true);
             ex.printStackTrace();
         }
     }
@@ -1122,7 +1122,7 @@ public class WelcomeMenuController implements Initializable {
         });
     }
 
-    public void popUpMenuGoToSongInfo(Node n){
+    public void popUpMenuGoToSongInfo( Node n){
         final ContextMenu contextMenu = new ContextMenu();
         final MenuItem seeSongInfo = new MenuItem("See song information");
         contextMenu.getItems().addAll(seeSongInfo);
