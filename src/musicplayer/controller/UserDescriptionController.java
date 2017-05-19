@@ -246,6 +246,8 @@ public class UserDescriptionController implements Initializable {
                     "('Hello', '" + globalVariables.getPremiumUser().getUserName() + "', '" +
                             globalVariables.getContactSelected().getUserName() + "')");
             DialogBoxManager.confirmationDialogBox("Contact sent", "Your contact request has been to sent to the user");
+            btnAddContact.setText("Request pending");
+            btnAddContact.setDisable(true);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
