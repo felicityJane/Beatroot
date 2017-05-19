@@ -340,7 +340,6 @@ public class WelcomeMenuController implements Initializable {
                         globalVariables.getTrialuser() == null) {
                     SceneManager.sceneManager.openNewWindow( "view/userDescription.fxml", globalVariables.getAdministrator().getDisplayName());
                 }
-                sceneManager.openPopupScene("view/userDescription.fxml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
