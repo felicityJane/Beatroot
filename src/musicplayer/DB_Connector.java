@@ -497,6 +497,7 @@ public class DB_Connector {
 								resultSet.getString("phone_number"), resultSet.getDate("free_trial_end_date")));
 				globalVariables.getModifyUserController().getTrialUsersTable()
 						.setItems(globalVariables.getModifyUserController().getData());
+				// globalVariables.getModifyUserController().getTrialUsersTable().set
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
