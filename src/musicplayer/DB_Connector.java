@@ -530,9 +530,6 @@ public class DB_Connector {
 					String message = rs.getString(2);
 					Comment comment = new Comment(message);
 					comments.add(comment);
-					for (Comment c : comments){
-						System.out.println(c.getMessage());
-					}
 					globalVariables.setComments(comments);
 				}
 			}

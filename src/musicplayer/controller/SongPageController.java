@@ -32,7 +32,6 @@ public class SongPageController implements Initializable {
         Album album = globalVariables.getAlbum();
         MusicTrack musicTrack = globalVariables.getMusicTrack();
         MusicArtist musicArtist = globalVariables.getMusicArtist();
-        System.out.println("music track id " + musicTrack.getID());
         db_connector.getComments(musicTrack.getID());
         ArrayList<Comment> comments = globalVariables.getComments();
         db_connector.getRating(musicTrack.getRatingId());
@@ -43,22 +42,18 @@ public class SongPageController implements Initializable {
         imageView.setEffect(dropShadow);
 
         albumLabel.setText(String.format("Album : %-20s" , album.getAlbumName()));
-        albumLabel.getStyleClass().add("albumText");
         artistLabel.setText(String.format("Artist : %-20s" , musicArtist.getStageName()));
-        artistLabel.getStyleClass().add("artistText");
         trackLabel.setText(String.format("%-20s", musicTrack.getTrackName()));
-        trackLabel.getStyleClass().add("artistText");
         trackTimeLabel.setText(String.format("Length : %-20s" , musicTrack.getTrackTime()));
-        trackTimeLabel.getStyleClass().add("artistText");
         String publicationDate = String.valueOf(musicTrack.getPublicationYear());
         publicationLabel.setText(String.format("Release Date : %-20s" , publicationDate.substring(0,4)));
-        publicationLabel.getStyleClass().add("artistText");
-        songNameLabel.getStyleClass().add("artistText");
 
         if (comments != null){
             for (Comment c : comments){
                 userCommentList.getItems().add(c.getMessage());
             }
+        }else {
+            userCommentList.getItems().add("No comments yet...");
         }
 
         globalVariables.getWelcomeMenuController().setRatingStars(ratingLabel, rating,starRatingImageView);
