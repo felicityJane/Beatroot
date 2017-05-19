@@ -93,6 +93,7 @@ public class WelcomeMenuController implements Initializable {
     @FXML private ListView<PremiumUser> lstContacts;
     @FXML private RadioButton rdPremium;
     @FXML private RadioButton rdTrial;
+    @FXML private Label lblContacts;
     private String userDisplayName;
     private Media media;
     private MediaPlayer mediaPlayer;
@@ -142,6 +143,7 @@ public class WelcomeMenuController implements Initializable {
             Image image = new Image(globalVariables.getPremiumUser().getProfilePicturePath());
             imgProfilePicture.setFill(new ImagePattern(image));
             lstContacts.setVisible(true);
+            lblContacts.setVisible(true);
         } else if (globalVariables.getTrialuser() != null && globalVariables.getPremiumUser() == null && globalVariables.getAdministrator() == null) {
             imgRating.setVisible(true);
             lblDisplayName.setText(" " + globalVariables.getTrialuser().getDisplayName() + "!");
@@ -150,6 +152,7 @@ public class WelcomeMenuController implements Initializable {
             Image image = new Image(globalVariables.getTrialuser().getProfilePicturePath());
             imgProfilePicture.setFill(new ImagePattern(image));
             lstContacts.setVisible(false);
+            lblContacts.setVisible(false);
         } else if (globalVariables.getAdministrator() != null && globalVariables.getPremiumUser() == null && globalVariables.getTrialuser() == null) {
             imgRating.setVisible(true);
             lblDisplayName.setText(" " + globalVariables.getAdministrator().getDisplayName()+ "!");
@@ -157,6 +160,7 @@ public class WelcomeMenuController implements Initializable {
             Image image = new Image(globalVariables.getAdministrator().getProfilePicturePath());
             imgProfilePicture.setFill(new ImagePattern(image));
             lstContacts.setVisible(true);
+            lblContacts.setVisible(true);
         }
         imgVolume.setImage(new Image("images/VolumeHigh.png"));
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
