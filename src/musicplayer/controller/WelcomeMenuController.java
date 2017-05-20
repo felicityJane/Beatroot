@@ -53,6 +53,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -194,6 +195,8 @@ public class WelcomeMenuController implements Initializable {
 	private int tempPlaylist;
 	private boolean unreadMessage = false;
 	GlobalVariables globalVariables;
+	@FXML
+	private Pane adminMenu;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -201,6 +204,7 @@ public class WelcomeMenuController implements Initializable {
 		globalVariables.setWelcomeMenuController(this);
 		globalVariables.getMainMenuController().menuBarFitToParent(welcomeParentAnchorPane);
 		globalVariables.getMainMenuController().enableMenuItems();
+		adminMenu.setVisible(false);
 
 		Image img = new Image("images/PlayNormal.jpg");
 		progressDownload = new ProgressBar(0);
@@ -262,6 +266,7 @@ public class WelcomeMenuController implements Initializable {
 			imgRating.setVisible(true);
 			lblDisplayName.setText(" " + globalVariables.getAdministrator().getDisplayName() + "!");
 			btnMessage.setVisible(false);
+			adminMenu.setVisible(true);
 			try {
 				Image image = new Image(globalVariables.getAdministrator().getProfilePicturePath());
 				imgProfilePicture.setFill(new ImagePattern(image));
