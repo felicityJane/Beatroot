@@ -13,6 +13,6 @@
             </image>
         </ImageView>
         <fx:include fx:id="mainMenu" source="mainMenu.fxml" />
-      <TextArea fx:id="textAreaFaqs" editable="false" layoutX="51.0" layoutY="114.0" prefHeight="202.0" prefWidth="369.0" stylesheets="@../css/styleSheet.css" text="Q: What is a beatroot?&#10;A:  beat: a main accent or rhythmic unit in music or poetry;&#10;     root: establish deeply and firmly.&#10;&#10;Q: How long is the trial period?&#10;A: 30 days.&#10;&#10;Q: How much is a premium memebership?&#10;A: 99.99:- per month." wrapText="true" />
+      <TextArea fx:id="textAreaFaqs" editable="false" layoutX="26.0" layoutY="114.0" prefHeight="202.0" prefWidth="431.0" stylesheets="@../css/styleSheet.css" wrapText="true" />
     </children>
 </AnchorPane>

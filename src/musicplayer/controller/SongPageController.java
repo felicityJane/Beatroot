@@ -9,51 +9,53 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import musicplayer.DB_Connector;
-import musicplayer.Server_Connector;
-import musicplayer.model.Album;
-import musicplayer.model.GlobalVariables;
-import musicplayer.model.MusicArtist;
-import musicplayer.model.MusicTrack;
-
+import musicplayer.model.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class SongPageController implements Initializable {
     @FXML private AnchorPane songPageAnchorPane;
-    @FXML private ImageView imageView;
-    @FXML private Label albumLabel,artistLabel,trackLabel,trackTimeLabel,publicationLabel;
-    private URL url;
+    @FXML private ImageView imageView, starRatingImageView;
+    @FXML private Label albumLabel,artistLabel,trackLabel,trackTimeLabel,publicationLabel, ratingLabel, songNameLabel;
+    @FXML private ListView userCommentList;
     private DB_Connector db_connector = new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
-    private Server_Connector connector;
-    private Album album;
-    private MusicArtist musicArtist;
-    private MusicTrack musicTrack;
     GlobalVariables globalVariables = GlobalVariables.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         globalVariables.setSongPageController(this);
+        userCommentList.getItems().clear();
         getAlbumInfo();
     }
-    public void getAlbumInfo(){
-        album = globalVariables.getAlbum();
-        musicTrack = globalVariables.getMusicTrack();
-        musicArtist = globalVariables.getMusicArtist();
+    private void getAlbumInfo(){
+        Album album = globalVariables.getAlbum();
+        MusicTrack musicTrack = globalVariables.getMusicTrack();
+        MusicArtist musicArtist = globalVariables.getMusicArtist();
+        db_connector.getComments(musicTrack.getID());
+        ArrayList<Comment> comments = globalVariables.getComments();
+        db_connector.getRating(musicTrack.getRatingId());
+        Rating rating = globalVariables.getRating();
 
         imageView.setImage(album.getAlbumCover());
         DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
         imageView.setEffect(dropShadow);
 
         albumLabel.setText(String.format("Album : %-20s" , album.getAlbumName()));
-        albumLabel.getStyleClass().add("albumText");
         artistLabel.setText(String.format("Artist : %-20s" , musicArtist.getStageName()));
-        artistLabel.getStyleClass().add("artistText");
         trackLabel.setText(String.format("%-20s", musicTrack.getTrackName()));
-        trackLabel.getStyleClass().add("artistText");
         trackTimeLabel.setText(String.format("Length : %-20s" , musicTrack.getTrackTime()));
-        trackTimeLabel.getStyleClass().add("artistText");
-        publicationLabel.setText(String.format("Publication Date : %-20s" , musicTrack.getPublicationYear()));
-        publicationLabel.getStyleClass().add("artistText");
+        String publicationDate = String.valueOf(musicTrack.getPublicationYear());
+        publicationLabel.setText(String.format("Release Date : %-20s" , publicationDate.substring(0,4)));
+
+        if (comments != null){
+            for (Comment c : comments){
+                userCommentList.getItems().add(c.getMessage());
+            }
+        }else {
+            userCommentList.getItems().add("No comments yet...");
+        }
+
+        globalVariables.getWelcomeMenuController().setRatingStars(ratingLabel, rating,starRatingImageView);
     }
 }

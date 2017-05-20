@@ -16,16 +16,22 @@ public class DialogBoxManager {
         dialog.showAndWait();
     }
     public static boolean confirmationDialogBox( String header, String context){
-        boolean okButton = true;
+        boolean okButton = false;
         Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
         dialog.setTitle("Confirmation");
         dialog.setHeaderText(header);
         dialog.setContentText(context);
         Optional<ButtonType> result = dialog.showAndWait();
         if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-            return okButton;
-        }else {
-            return !okButton;
+             okButton = true;
         }
+        return okButton;
+    }
+    public static void notificationDialogBox( String header, String context){
+        Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+        dialog.setTitle("Confirmation");
+        dialog.setHeaderText(header);
+        dialog.setContentText(context);
+        dialog.showAndWait();
     }
 }
