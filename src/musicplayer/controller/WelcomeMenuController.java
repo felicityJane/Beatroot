@@ -95,6 +95,7 @@ public class WelcomeMenuController implements Initializable {
     @FXML private RadioButton rdPremium;
     @FXML private RadioButton rdTrial;
     @FXML private Label lblContacts;
+    @FXML private ImageView imgLogo;
     private String userDisplayName;
     private Media media;
     private MediaPlayer mediaPlayer;
@@ -134,6 +135,7 @@ public class WelcomeMenuController implements Initializable {
         btnPause.setFill(new ImagePattern(img2));
         tglLoop.setText("⟳");
         readUserFromBinaryFile();
+        imgLogo.setImage(new Image("images/beatrootlogo.png"));
         /*String css = this.getClass().getResource("/musicplayer/css/welcomePage.css").toExternalForm();
         welcomeRootAnchor.getStylesheets().add(css);*/
 
@@ -491,7 +493,7 @@ public class WelcomeMenuController implements Initializable {
 
         for (Node n : welcomeRootAnchor.getChildren()) {
 
-           if (n instanceof ListView && n != lstPlaylists && n != lstContacts && n != lstPlaylistSongs) {
+           if (n instanceof ListView && n != lstPlaylists && n != lstContacts && n != lstPlaylistSongs && n != imgLogo) {
                n.setOnMouseClicked(event -> {
                    if (event.getButton() == MouseButton.SECONDARY) {
                        popUpMenuGoToSongInfo(n);
@@ -500,14 +502,14 @@ public class WelcomeMenuController implements Initializable {
                    }
                });
            }
-            if (n instanceof ImageView && n != imgSearchIcon && n != imgRating && n != imgSearchUser ){
+            if (n instanceof ImageView && n != imgSearchIcon && n != imgRating && n != imgSearchUser && n != imgLogo ){
                 n.setOnMouseClicked(event -> {
                     if (event.getButton() == MouseButton.SECONDARY){
                         popUpMenuAlbumPage(n);
                     }
                 });
             }if (n instanceof ImageView && n != imgMain && n != imgVolume && n != imgProfilePicture && n != imgSearchIcon
-                    && n != imgSearchUser && n != imgRating) {
+                    && n != imgSearchUser && n != imgRating && n != imgLogo) {
 
                 DropShadow ds = new DropShadow(10, 0, 0, Color.GRAY);
                 n.setEffect(ds);
@@ -555,7 +557,7 @@ public class WelcomeMenuController implements Initializable {
 
         for (Node n : anchorNews.getChildren()) {
 
-            if (n instanceof ImageView) {
+            if (n instanceof ImageView && n != imgLogo) {
 
                 DropShadow ds = new DropShadow(10, 0, 0, Color.GRAY);
                 n.setEffect(ds);
@@ -1111,7 +1113,7 @@ public class WelcomeMenuController implements Initializable {
         for (Node n : welcomeRootAnchor.getChildren()) {
 
             if (n instanceof ImageView && n != imgMain && n != imgVolume && n != imgProfilePicture && n != imgSearchIcon
-                    && n != imgSearchUser && n != imgRating) {
+                    && n != imgSearchUser && n != imgRating && n != imgLogo) {
 
                 String imgUrl = db_connector.search("album_cover_path", "album", "album_id = " + Integer.toString(counter));
                 ((ImageView) n).setImage(new Image(imgUrl));
@@ -1239,7 +1241,6 @@ public class WelcomeMenuController implements Initializable {
         final ContextMenu contextMenu = new ContextMenu();
         final MenuItem albumPage = new MenuItem("See album information");
         contextMenu.getItems().addAll(albumPage);
-
 
         n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
 
