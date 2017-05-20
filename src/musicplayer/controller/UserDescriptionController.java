@@ -94,7 +94,8 @@ public class UserDescriptionController implements Initializable {
                     displayNameLabel.setText(" : " + globalVariables.getContactSelected().getDisplayName());
                     genderLabel.setText(" : " + globalVariables.getContactSelected().getGender());
                     emailAddressLabel.setText(" : " + globalVariables.getContactSelected().getEmailAddress());
-                    playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "'")));
+                    playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "' AND" +
+                            " privacy_level_privacy_id = 1")));
 
                     descriptionTextArea.setVisible(false);
                     addButton.setVisible(false);
@@ -107,7 +108,8 @@ public class UserDescriptionController implements Initializable {
                     displayNameLabel.setText(" : " + globalVariables.getContactSelected().getDisplayName());
                     genderLabel.setText(" : " + globalVariables.getContactSelected().getGender());
                     emailAddressLabel.setText(" : " + globalVariables.getContactSelected().getEmailAddress());
-                    playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "'")));
+                    playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "'" +
+                            "AND privacy_level_privacy_id = 1")));
 
                     descriptionTextArea.setVisible(false);
                     addButton.setVisible(false);
@@ -141,27 +143,39 @@ public class UserDescriptionController implements Initializable {
                                 counter2++;
                             }
                         }
-                        if (counter2 > 0) {
+                        if (counter2 > 0) { //the selected user has a pending request from another user
                             btnAddContact.setVisible(true);
                             btnAddContact.setDisable(true);
                             btnAddContact.setText("Request pending");
+                            descriptionLabel.setText("- " + String.valueOf(connector.search("user_description", "trial_user", "user_name='" + globalVariables.getContactSelected().getUserName() + "'")));
+                            playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "'" +
+                                    "AND privacy_level_privacy_id = 1")));
                         } else {
                             String s = connector.search("premium_user_user_name", "friend_request",
                                     "premium_user_user_name = '" + globalVariables.getContactSelected().getUserName()
                                             + "' AND contact_contact_name = '" + globalVariables.getPremiumUser().getUserName() + "'");
-                            if (s.equals("")) {
+                            if (s.equals("")) { //the selected contact does not have a pending request from us
                                 btnAddContact.setVisible(true);
                                 btnAddContact.setDisable(false);
                                 btnAddContact.setText("Add as a contact");
-                            } else {
+                                descriptionLabel.setText("- " + String.valueOf(connector.search("user_description", "trial_user", "user_name='" + globalVariables.getContactSelected().getUserName() + "'")));
+                                playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "'" +
+                                        "AND privacy_level_privacy_id = 1")));
+                            } else { //the selected contact has a pending request from us
                                 btnAddContact.setVisible(true);
                                 btnAddContact.setDisable(true);
                                 btnAddContact.setText("Request pending");
+                                descriptionLabel.setText("- " + String.valueOf(connector.search("user_description", "trial_user", "user_name='" + globalVariables.getContactSelected().getUserName() + "'")));
+                                playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "'" +
+                                        "AND privacy_level_privacy_id = 1")));
                             }
                         }
                     } else {
                         btnAddContact.setVisible(true);
                         btnAddContact.setText("✓ Contacts");
+                        descriptionLabel.setText("- " + String.valueOf(connector.search("user_description", "trial_user", "user_name='" + globalVariables.getContactSelected().getUserName() + "'")));
+                        playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "'" +
+                                "AND (privacy_level_privacy_id = 1 OR privacy_level_privacy_id = 2)")));
                         btnAddContact.setDisable(true);
                     }
                     userTypeLabel.setText(" : Premium user");
@@ -173,14 +187,12 @@ public class UserDescriptionController implements Initializable {
                     btnAddContact.setText("Trial user");
                     userTypeLabel.setText(" : Trial user");
                     tableName = "trial_user";
-                    descriptionLabel.setText("- " + String.valueOf(connector.search("user_description", "trial_user", "user_name='" + globalVariables.getContactSelected().getUserName() + "'")));
+                    playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "'" + "AND privacy_level_privacy_id = 1")));
                 }
                 userImage.setImage(new Image(globalVariables.getContactSelected().getProfilePicturePath()));
                 displayNameLabel.setText(" : " + globalVariables.getContactSelected().getDisplayName());
                 genderLabel.setText(" : " + globalVariables.getContactSelected().getGender());
                 emailAddressLabel.setText(" : " + globalVariables.getContactSelected().getEmailAddress());
-                playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getContactSelected().getUserName() + "'")));
-
                 descriptionTextArea.setVisible(false);
                 addButton.setVisible(false);
                 userName = globalVariables.getContactSelected().getUserName();

@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
@@ -152,6 +153,11 @@
                   <Font size="17.0" />
                </font>
             </Label>
+            <ImageView fx:id="imgLogo" fitHeight="63.0" fitWidth="355.0" layoutX="8.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/beatrootlogo.png" />
+               </image>
+            </ImageView>
             <Rectangle id="imgNoConnection" fx:id="imgNoConnection" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="707.0" layoutX="-15.0" layoutY="-27.0" opacity="0.7" stroke="WHITE" strokeType="INSIDE" visible="false" width="1398.0" />
             <Label fx:id="lblNoConnection1" layoutX="365.0" layoutY="260.0" prefHeight="118.0" prefWidth="667.0" text="Looks like you're not connected to the internet!" textFill="RED" visible="false">
                 <font>
