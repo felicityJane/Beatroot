@@ -1212,7 +1212,7 @@ public class WelcomeMenuController implements Initializable {
 		for (Node n : welcomeRootAnchor.getChildren()) {
 
 			if (n instanceof ImageView && n != imgMain && n != imgVolume && n != imgProfilePicture && n != imgSearchIcon
-					&& n != imgSearchUser && n != imgRating) {
+					&& n != imgSearchUser && n != imgRating && n != imgLogo) {
 
 				String imgUrl = db_connector.search("album_cover_path", "album",
 						"album_id = " + Integer.toString(counter));
