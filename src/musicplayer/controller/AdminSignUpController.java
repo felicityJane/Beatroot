@@ -1,22 +1,9 @@
 package musicplayer.controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.util.StringConverter;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
@@ -24,6 +11,14 @@ import musicplayer.SceneManager;
 import musicplayer.model.Administrator;
 import musicplayer.model.Country;
 import musicplayer.model.Gender;
+
+import java.io.IOException;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 public class AdminSignUpController implements Initializable {
 
@@ -101,7 +96,7 @@ public class AdminSignUpController implements Initializable {
 				float workHours = Float.parseFloat(contractHoursField.getText());
 				if (maleRadio.isSelected()) {
 					Administrator admin = new Administrator(staffIdField.getText(), userNameField.getText(),
-							displayNameField.getText(), passwordField.getText(), firstNameField.getText(),
+							displayNameField.getText(), passwordField.getText(),null, null, firstNameField.getText(),
 							lastNameField.getText(), birthDate, emailAddressField.getText(),
 							physicalAddressField.getText(), cityOfResidenceField.getText(), postalCodeField.getText(),
 							countryChoiceBox.getValue(), Gender.MALE, phoneNumberField.getText(), employmentStartDate,
@@ -159,7 +154,7 @@ public class AdminSignUpController implements Initializable {
 
 				if (femaleRadio.isSelected()) {
 					Administrator admin = new Administrator(staffIdField.getText(), userNameField.getText(),
-							displayNameField.getText(), passwordField.getText(), firstNameField.getText(),
+							displayNameField.getText(), passwordField.getText(),null, null, firstNameField.getText(),
 							lastNameField.getText(), birthDate, emailAddressField.getText(),
 							physicalAddressField.getText(), cityOfResidenceField.getText(), postalCodeField.getText(),
 							countryChoiceBox.getValue(), Gender.FEMALE, phoneNumberField.getText(), employmentStartDate,
@@ -184,7 +179,7 @@ public class AdminSignUpController implements Initializable {
 				}
 				if (otherRadio.isSelected()) {
 					Administrator admin = new Administrator(staffIdField.getText(), userNameField.getText(),
-							displayNameField.getText(), passwordField.getText(), firstNameField.getText(),
+							displayNameField.getText(), passwordField.getText(), null, null, firstNameField.getText(),
 							lastNameField.getText(), birthDate, emailAddressField.getText(),
 							physicalAddressField.getText(), cityOfResidenceField.getText(), postalCodeField.getText(),
 							countryChoiceBox.getValue(), Gender.NOT_SPECIFIED, phoneNumberField.getText(),

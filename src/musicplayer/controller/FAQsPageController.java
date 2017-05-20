@@ -19,8 +19,16 @@ public class FAQsPageController implements Initializable {
         GlobalVariables globalVariables = GlobalVariables.getInstance();
         globalVariables.setFaQsPageController(this);
         globalVariables.getMainMenuController().menuBarFitToParent(faqsPageAnchorPane);
-        globalVariables.getMainMenuController().enableMenuItemsFaqsPage();
-        DropShadow dropShadow = new DropShadow(10, 0, 0, Color.GRAY);
-        textAreaFaqs.setEffect(dropShadow);
+        globalVariables.getMainMenuController().disableMenuItems();
+        textAreaFaqs.setWrapText(true);
+        textAreaFaqs.setText("What is a beatroot?\n" +
+                "beat: a main accent or rhythmic unit in music or poetry;\n" +
+                "root: establish deeply and firmly.\n" +
+                "\n" +
+                "How long is the trial period?\n" +
+                "30 days.\n" +
+                "\n" +
+                "How much is a premium memebership?\n" +
+                "99.99:- per month.");
     }
 }

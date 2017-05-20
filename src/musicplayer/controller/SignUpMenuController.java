@@ -10,7 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
-import musicplayer.controller.MainMenuController;
 import musicplayer.model.Country;
 import musicplayer.model.GlobalVariables;
 
@@ -174,8 +173,8 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
 				if (warningText.getText().isEmpty()) {
 					connector.insert("user_link(user)", "('" + userNam + "')");
 					connector.insert(
-							"trial_user(user_name, password,display_name,user_description,personal_picture_path, first_name, last_name, date_of_birth, email_address, physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link)",
-							"('" + userNam + "','" + userPass + "','" + userNam + "','"+userDescription+"','"+userImage+"','" + firstNam + "','" + lastNam + "','" + dateOfBirht + "','" + emal + "','" + physicalAdd + "','" + cit + "','"
+							"trial_user(user_name, password,display_name,user_description,personal_picture_path, first_name, last_name, date_of_birth, email_address,phone_number ,physical_address, city_of_residence, postal_code, country, free_trial_end_date, gender_gender_id, playlist_link)",
+							"('" + userNam + "','" + userPass + "','" + userNam + "','"+userDescription+"','"+userImage+"','" + firstNam + "','" + lastNam + "','" + dateOfBirht + "','" + emal + "','" +phoneNum+"','"+ physicalAdd + "','" + cit + "','"
 									+ postalCo + "','" + country + "','" + freeTrialEndDate + "','" + genderId + "','"
 									+ userNam + "')");
 					connector.logInTrial(userNam, userPass, event, warningText);

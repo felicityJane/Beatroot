@@ -164,6 +164,7 @@ CREATE TABLE `contact` (
 
 LOCK TABLES `contact` WRITE;
 /*!40000 ALTER TABLE `contact` DISABLE KEYS */;
+INSERT INTO `contact` VALUES ('temp');
 /*!40000 ALTER TABLE `contact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,7 +185,7 @@ CREATE TABLE `friend_request` (
   KEY `fk_friend_request_contact1_idx` (`contact_contact_name`),
   CONSTRAINT `fk_friend_request_contact1` FOREIGN KEY (`contact_contact_name`) REFERENCES `contact` (`contact_name`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_friend_request_premium_user1` FOREIGN KEY (`premium_user_user_name`) REFERENCES `premium_user` (`user_name`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -334,7 +335,7 @@ CREATE TABLE `playlist` (
   KEY `fk_playlist_user_link1_idx` (`owner`),
   CONSTRAINT `fk_playlist_privacy_level1` FOREIGN KEY (`privacy_level_privacy_id`) REFERENCES `privacy_level` (`privacy_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_playlist_user_link1` FOREIGN KEY (`owner`) REFERENCES `user_link` (`user`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -343,7 +344,7 @@ CREATE TABLE `playlist` (
 
 LOCK TABLES `playlist` WRITE;
 /*!40000 ALTER TABLE `playlist` DISABLE KEYS */;
-INSERT INTO `playlist` VALUES (1,'Metal',0000000002,'00:00:00',1,'Misstery'),(2,'Dance',0000000002,'00:00:00',2,'Misstery');
+INSERT INTO `playlist` VALUES (1,'Metal',0000000002,'00:00:00',1,'Misstery'),(2,'Dance',0000000004,'00:00:00',2,'Misstery'),(10,'Country',0000000001,'00:00:00',0,'Misstery');
 /*!40000 ALTER TABLE `playlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -371,7 +372,7 @@ CREATE TABLE `playlist_has_music_track` (
 
 LOCK TABLES `playlist_has_music_track` WRITE;
 /*!40000 ALTER TABLE `playlist_has_music_track` DISABLE KEYS */;
-INSERT INTO `playlist_has_music_track` VALUES (1,1),(1,2),(2,19),(2,40);
+INSERT INTO `playlist_has_music_track` VALUES (1,1),(1,2),(2,19),(10,27),(2,35),(2,40),(2,69);
 /*!40000 ALTER TABLE `playlist_has_music_track` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,7 +423,7 @@ CREATE TABLE `premium_user` (
 
 LOCK TABLES `premium_user` WRITE;
 /*!40000 ALTER TABLE `premium_user` DISABLE KEYS */;
-INSERT INTO `premium_user` VALUES ('Misstery','12345','MissTery','','','Jane','Marple','1880-05-08','misstery@gmail.com','','382 Mount Dandenong Road','London','EC1A 9DB','United_Kingdom','5555777733331111','2019-05-08','Visa','Jane Marple','382 Mount Dandenong Road','London','EC1A 9DB','United_Kingdom','070 333 1111',2,'Misstery'),('temp','temporary','temp','','','tempie','temples','2017-01-01','temp@gmail.com','',NULL,'malmö','21014','Sverige','111133335555','2025-05-01','Mastercard','tempie',NULL,'malmö','21014','Sverige','0701113333',1,'temp');
+INSERT INTO `premium_user` VALUES ('Misstery','12345','MissTery','I am a nice little old lady','I am a nice little old lady','Jane','Marple','1880-05-08','misstery@gmail.com','070 111 3333','382 Mount Dandenong Road','London','EC1A 9DB','United_Kingdom','5555777733331111','2019-05-08','Visa','Jane Marple','382 Mount Dandenong Road','London','EC1A 9DB','United_Kingdom','070 333 1111',2,'Misstery'),('temp','temporary','temp','','','tempie','temples','2017-01-01','temp@gmail.com','',NULL,'malmö','21014','Sverige','111133335555','2025-05-01','Mastercard','tempie',NULL,'malmö','21014','Sverige','0701113333',1,'temp');
 /*!40000 ALTER TABLE `premium_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -450,6 +451,7 @@ CREATE TABLE `premium_user_has_contact` (
 
 LOCK TABLES `premium_user_has_contact` WRITE;
 /*!40000 ALTER TABLE `premium_user_has_contact` DISABLE KEYS */;
+INSERT INTO `premium_user_has_contact` VALUES ('Misstery','temp');
 /*!40000 ALTER TABLE `premium_user_has_contact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -473,7 +475,7 @@ CREATE TABLE `privacy_level` (
 
 LOCK TABLES `privacy_level` WRITE;
 /*!40000 ALTER TABLE `privacy_level` DISABLE KEYS */;
-INSERT INTO `privacy_level` VALUES (1,'PRIVATE'),(2,'PUBLIC'),(3,'CONTACT');
+INSERT INTO `privacy_level` VALUES (0,'PRIVATE'),(1,'PUBLIC'),(2,'CONTACT');
 /*!40000 ALTER TABLE `privacy_level` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -577,4 +579,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-16 20:45:49
+-- Dump completed on 2017-05-17 19:53:16

@@ -28,46 +28,6 @@ public class Server_Connector extends Service<String> {
         this.file = file;
     }
 
-    /*
-    public void connectToServer() {
-
-        OutputStream outstream = null;
-        InputStream is = null;
-
-        try {
-            URLConnection conn = new URL(strUrl).openConnection();
-            is = conn.getInputStream();
-
-
-            if (file == null) {
-                outstream = new FileOutputStream(new File("tmp/" + FilenameUtils.getName(url.getPath().replaceAll("%20", " "))));
-            } else {
-                outstream = new FileOutputStream(file);
-            };
-            byte[] buffer = new byte[4096];
-            int len;
-            while ((len = is.read(buffer)) > 0) {
-                outstream.write(buffer, 0, len);
-            }
-
-
-        }
-
-        catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            try {
-                outstream.close();
-                is.close();
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-
-    }*/
-
-
     @Override
     public Task<String> createTask() {
 

@@ -8,10 +8,10 @@ public class NonTrialUser extends User {
 	private ArrayList<User> friends = new ArrayList<User>();
 	private ArrayList<User> blocked = new ArrayList<User>();
 
-	public NonTrialUser(String userName, String displayName, String password, String firstName, String lastName,
+	public NonTrialUser(String userName, String displayName, String password, String userDescription, String profilePicturePath, String firstName, String lastName,
 			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
 			Country country, Gender gender, String phoneNumber) {
-		super(userName, displayName, password, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
+		super(userName, displayName, password, userDescription, profilePicturePath, firstName, lastName, dateOfBirth, emailAddress, physicalAddress,
 				cityOfResidence, postalCode, country, gender, phoneNumber);
 	}
 

@@ -8,6 +8,7 @@ import musicplayer.controller.AdminMenuController;
 import musicplayer.controller.AlbumPageController;
 import musicplayer.controller.ArtistPageController;
 import musicplayer.controller.FAQsPageController;
+import musicplayer.controller.HelpPageController;
 import musicplayer.controller.LogInMenuController;
 import musicplayer.controller.MainMenuController;
 import musicplayer.controller.ModifyUserController;
@@ -30,7 +31,9 @@ public class GlobalVariables {
 	private String albumCover;
 	private MusicTrack musicTrack;
 	private ArrayList<MusicTrack> musicTracks;
+	private Rating rating;
 	private MusicArtist musicArtist;
+	private ArrayList<Comment> comments;
 	private TrialUser trialuser;
 	private PremiumUser premiumUser;
 	private Administrator administrator;
@@ -57,7 +60,15 @@ public class GlobalVariables {
 	@FXML
 	private WelcomeMenuController welcomeMenuController;
 	@FXML
+	private HelpPageController helpPageController;
+	@FXML
 	private UserDescriptionController userDescriptionController;
+	private User contactSelected;
+	private ArrayList<PremiumUser> contactList = new ArrayList<>();
+	@FXML
+	private UserDescriptionController ownUserDescriptionController;
+	@FXML
+	private UserDescriptionController contactDescriptionController;
 	@FXML
 	private AdminMenuController adminMenuController;
 	@FXML
@@ -101,6 +112,22 @@ public class GlobalVariables {
 
 	public void setMusicArtist(MusicArtist musicArtist) {
 		this.musicArtist = musicArtist;
+	}
+
+	public Rating getRating() {
+		return rating;
+	}
+
+	public void setRating(Rating rating) {
+		this.rating = rating;
+	}
+
+	public ArrayList<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(ArrayList<Comment> comments) {
+		this.comments = comments;
 	}
 
 	public MainMenuController getMainMenuController() {
@@ -191,6 +218,14 @@ public class GlobalVariables {
 		this.welcomeMenuController = welcomeMenuController;
 	}
 
+	public HelpPageController getHelpPageController() {
+		return helpPageController;
+	}
+
+	public void setHelpPageController(HelpPageController helpPageController) {
+		this.helpPageController = helpPageController;
+	}
+
 	public Administrator getAdministrator() {
 		return administrator;
 	}
@@ -215,12 +250,36 @@ public class GlobalVariables {
 		this.trialuser = trialuser;
 	}
 
-	public UserDescriptionController getUserDescriptionController() {
-		return userDescriptionController;
+	public UserDescriptionController getOwnUserDescriptionController() {
+		return ownUserDescriptionController;
 	}
 
-	public void setUserDescriptionController(UserDescriptionController userDescriptionController) {
-		this.userDescriptionController = userDescriptionController;
+	public void setOwnUserDescriptionController(UserDescriptionController ownUserDescriptionController) {
+		this.ownUserDescriptionController = ownUserDescriptionController;
+	}
+
+	public UserDescriptionController getContactDescriptionController() {
+		return contactDescriptionController;
+	}
+
+	public void setContactDescriptionController(UserDescriptionController contactDescriptionController) {
+		this.contactDescriptionController = contactDescriptionController;
+	}
+
+	public User getContactSelected() {
+		return contactSelected;
+	}
+
+	public void setContactSelected(User contactSelected) {
+		this.contactSelected = contactSelected;
+	}
+
+	public ArrayList<PremiumUser> getContactList() {
+		return contactList;
+	}
+
+	public void setContactList(ArrayList<PremiumUser> contactList) {
+		this.contactList = contactList;
 	}
 
 	public AdminMenuController getAdminMenuController() {
