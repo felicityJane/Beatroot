@@ -1,29 +1,19 @@
 package musicplayer.controller;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
-import musicplayer.SceneManager;
 import musicplayer.model.GlobalVariables;
+
 import java.net.URL;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.InputMismatchException;
 import java.util.ResourceBundle;
-
-import static musicplayer.SceneManager.sceneManager;
 
 public class SettingsPageController implements Initializable {
 

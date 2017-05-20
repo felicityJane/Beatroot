@@ -34,6 +34,7 @@ import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.DefaultHandler;
+
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -224,7 +225,6 @@ public class WelcomeMenuController implements Initializable {
 
             ImageTextCellMusicTrack cell = new ImageTextCellMusicTrack();
             ContextMenu contextMenu = new ContextMenu();
-
             MenuItem deleteItem = new MenuItem();
             deleteItem.textProperty().bind(Bindings.format("Delete"));
             deleteItem.setOnAction(event -> {
@@ -1945,7 +1945,6 @@ public class WelcomeMenuController implements Initializable {
 
         String albumId;
         String albumCoverPath = "";
-
         selectedPlaylist = userPlaylists.get(lstPlaylists.getSelectionModel().getSelectedIndex());
         for (MusicTrack m : userPlaylists.get(0).getMusicTracks()) {
             System.out.println(m.getTrackName());

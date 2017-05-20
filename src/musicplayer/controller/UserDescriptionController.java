@@ -16,6 +16,7 @@ import musicplayer.model.PremiumUser;
 import musicplayer.model.TrialUser;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class UserDescriptionController implements Initializable {
@@ -50,6 +51,8 @@ public class UserDescriptionController implements Initializable {
     GlobalVariables globalVariables = GlobalVariables.getInstance();
     private String tableName;
     private String userName;
+    private ArrayList<String>playList=new ArrayList<>();
+    String pList="";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -61,7 +64,7 @@ public class UserDescriptionController implements Initializable {
                 genderLabel.setText(" : " + globalVariables.getPremiumUser().getGender());
                 userTypeLabel.setText(" : Premium user");
                 emailAddressLabel.setText(" : " + globalVariables.getPremiumUser().getEmailAddress());
-                playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getPremiumUser().getUserName() + "'")));
+                playlistLabel.setText(" : " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getPremiumUser().getUserName() + "'")));
                 descriptionLabel.setText("- " + String.valueOf(connector.search("user_description", "Premium_user", "user_name='" + globalVariables.getPremiumUser().getUserName() + "'")));
                 descriptionTextArea.setVisible(false);
                 addButton.setVisible(true);
@@ -98,6 +101,7 @@ public class UserDescriptionController implements Initializable {
 
                     descriptionTextArea.setVisible(false);
                     addButton.setVisible(false);
+                    saveButton.setVisible(false);
                     userName = globalVariables.getContactSelected().getUserName();
                     userTypeLabel.setText(" : Premium user");
                     tableName = "premium_user";
@@ -111,6 +115,7 @@ public class UserDescriptionController implements Initializable {
 
                     descriptionTextArea.setVisible(false);
                     addButton.setVisible(false);
+                    saveButton.setVisible(false);
                     userName = globalVariables.getContactSelected().getUserName();
                     userTypeLabel.setText(" : Premium user");
                     tableName = "premium_user";
@@ -183,6 +188,7 @@ public class UserDescriptionController implements Initializable {
 
                 descriptionTextArea.setVisible(false);
                 addButton.setVisible(false);
+                saveButton.setVisible(false);
                 userName = globalVariables.getContactSelected().getUserName();
             }
         }
