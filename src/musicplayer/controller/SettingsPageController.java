@@ -1,28 +1,19 @@
 package musicplayer.controller;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
-import musicplayer.Main;
-import musicplayer.SceneManager;
 import musicplayer.model.GlobalVariables;
+
 import java.net.URL;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.InputMismatchException;
 import java.util.ResourceBundle;
-
-import static musicplayer.SceneManager.sceneManager;
 
 public class SettingsPageController implements Initializable {
 
@@ -34,8 +25,6 @@ public class SettingsPageController implements Initializable {
     GlobalVariables globalVariables = GlobalVariables.getInstance();
     private String userName, newPassWord, newDisplayName;
     int user;
-    private AnchorPane welcomeParent, welcomeParentTwo, aboutParent, adminLogInParent, adminSignUpParent, albumParent, artistParent, FAQSParent, helpParent, logInParent,
-    paymentParent, signUpParent, songParent;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -62,6 +51,14 @@ public class SettingsPageController implements Initializable {
             user = 3;
             System.out.println(" type admin");
         }
+    }
+    @FXML private void onDarkThemeButton(ActionEvent event){
+        //TODO Wait for Fatih css update
+        settingsAnchorPage.getStyleClass().add("greyBackground");
+    }
+    @FXML private void onLightThemeButton(ActionEvent event){
+        //TODO Wait for Fatih css update
+        settingsAnchorPage.getStyleClass().removeAll("greyBackground");
     }
     @FXML private void onSaveButton() {
 
