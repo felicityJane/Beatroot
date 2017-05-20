@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.TextAlignment;
@@ -37,6 +38,7 @@ public class ImageTextCellContacts extends ListCell<PremiumUser> {
             Label l = new Label(item.getDisplayName());
             l.setWrapText(true);
             l.setTextAlignment(TextAlignment.CENTER);
+            l.setTextFill(Color.LIGHTGRAY);
             hBox.getChildren().add(l);
 
             setGraphic(hBox);

@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.TextAlignment;
@@ -40,6 +41,7 @@ public class ImageTextCellMusicTrack extends ListCell<MusicTrack> {
             Label l = new Label(item.getTrackName());
             l.setWrapText(true);
             l.setTextAlignment(TextAlignment.CENTER);
+            l.setTextFill(Color.LIGHTGRAY);
             hBox.getChildren().add(l);
 
             setGraphic(hBox);
