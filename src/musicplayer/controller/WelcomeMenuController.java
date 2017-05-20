@@ -1242,7 +1242,6 @@ public class WelcomeMenuController implements Initializable {
         final MenuItem albumPage = new MenuItem("See album information");
         contextMenu.getItems().addAll(albumPage);
 
-
         n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
 
         albumPage.setOnAction(event -> {
