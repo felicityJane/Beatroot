@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="logInParentAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="685.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.UserDescriptionController">
+<AnchorPane fx:id="logInParentAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="690.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.UserDescriptionController">
    <children>
       <AnchorPane layoutX="-2.0" layoutY="35.0" prefHeight="50.0" prefWidth="688.0" style="-fx-background-color: #085562;" stylesheets="@../css/styleSheet.css">
          <children>
@@ -75,11 +75,13 @@
             <Label prefHeight="17.0" prefWidth="54.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Playlist" GridPane.rowIndex="3">
                <font>
                   <Font name="Times Bold" size="14.0" />
-               </font></Label>
+               </font>
+            </Label>
             <Label fx:id="playlistLabel" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="14.0" />
-               </font></Label>
+               </font>
+            </Label>
          </children>
       </GridPane>
       <Label fx:id="descriptionLabel" alignment="TOP_LEFT" layoutX="15.0" layoutY="100.0" prefHeight="139.0" prefWidth="305.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" wrapText="true">

@@ -16,7 +16,6 @@ import musicplayer.model.PremiumUser;
 import musicplayer.model.TrialUser;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class UserDescriptionController implements Initializable {
@@ -51,8 +50,6 @@ public class UserDescriptionController implements Initializable {
     GlobalVariables globalVariables = GlobalVariables.getInstance();
     private String tableName;
     private String userName;
-    private ArrayList<String>playList=new ArrayList<>();
-    String pList="";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

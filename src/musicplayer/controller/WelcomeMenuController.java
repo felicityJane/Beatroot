@@ -1,33 +1,5 @@
 package musicplayer.controller;
 
-import static musicplayer.SceneManager.sceneManager;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.ResourceBundle;
-
-import org.apache.commons.io.FilenameUtils;
-import org.apache.tika.metadata.Metadata;
-import org.apache.tika.parser.ParseContext;
-import org.apache.tika.parser.Parser;
-import org.apache.tika.parser.mp3.Mp3Parser;
-import org.xml.sax.ContentHandler;
-import org.xml.sax.helpers.DefaultHandler;
-
 import javafx.beans.binding.Bindings;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -35,17 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Slider;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -53,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -64,19 +27,27 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
-import musicplayer.DB_Connector;
-import musicplayer.DialogBoxManager;
-import musicplayer.ImageTextCellContacts;
-import musicplayer.ImageTextCellMusicTrack;
-import musicplayer.SceneManager;
-import musicplayer.Server_Connector;
-import musicplayer.model.Album;
-import musicplayer.model.GlobalVariables;
-import musicplayer.model.MusicTrack;
-import musicplayer.model.Playlist;
-import musicplayer.model.PremiumUser;
-import musicplayer.model.PrivacyLevel;
-import musicplayer.model.Rating;
+import musicplayer.*;
+import musicplayer.model.*;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.parser.Parser;
+import org.apache.tika.parser.mp3.Mp3Parser;
+import org.xml.sax.ContentHandler;
+import org.xml.sax.helpers.DefaultHandler;
+
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.ResourceBundle;
+
+import static musicplayer.SceneManager.sceneManager;
 
 public class WelcomeMenuController implements Initializable {
 
@@ -194,6 +165,8 @@ public class WelcomeMenuController implements Initializable {
 	private int tempPlaylist;
 	private boolean unreadMessage = false;
 	GlobalVariables globalVariables;
+	@FXML
+	private Pane adminMenu;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -201,6 +174,7 @@ public class WelcomeMenuController implements Initializable {
 		globalVariables.setWelcomeMenuController(this);
 		globalVariables.getMainMenuController().menuBarFitToParent(welcomeParentAnchorPane);
 		globalVariables.getMainMenuController().enableMenuItems();
+		adminMenu.setVisible(false);
 
 		Image img = new Image("images/PlayNormal.jpg");
 		progressDownload = new ProgressBar(0);
@@ -262,6 +236,7 @@ public class WelcomeMenuController implements Initializable {
 			imgRating.setVisible(true);
 			lblDisplayName.setText(" " + globalVariables.getAdministrator().getDisplayName() + "!");
 			btnMessage.setVisible(false);
+			adminMenu.setVisible(true);
 			try {
 				Image image = new Image(globalVariables.getAdministrator().getProfilePicturePath());
 				imgProfilePicture.setFill(new ImagePattern(image));
@@ -819,6 +794,9 @@ public class WelcomeMenuController implements Initializable {
 			try {
 				mediaPlayer.stop();
 				GlobalVariables.getInstance().getContactList().clear();
+				globalVariables.setAdministrator(null);
+				globalVariables.setTrialuser(null);
+				globalVariables.setPremiumUser(null);
 				sceneManager.changeScene(event, "view/logInMenu.fxml");
 
 			} catch (Exception e) {
@@ -1212,7 +1190,7 @@ public class WelcomeMenuController implements Initializable {
 		for (Node n : welcomeRootAnchor.getChildren()) {
 
 			if (n instanceof ImageView && n != imgMain && n != imgVolume && n != imgProfilePicture && n != imgSearchIcon
-					&& n != imgSearchUser && n != imgRating) {
+					&& n != imgSearchUser && n != imgRating && n != imgLogo) {
 
 				String imgUrl = db_connector.search("album_cover_path", "album",
 						"album_id = " + Integer.toString(counter));
