@@ -824,6 +824,9 @@ public class WelcomeMenuController implements Initializable {
 			try {
 				mediaPlayer.stop();
 				GlobalVariables.getInstance().getContactList().clear();
+				globalVariables.setAdministrator(null);
+				globalVariables.setTrialuser(null);
+				globalVariables.setPremiumUser(null);
 				sceneManager.changeScene(event, "view/logInMenu.fxml");
 
 			} catch (Exception e) {

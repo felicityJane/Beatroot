@@ -3,8 +3,11 @@ package musicplayer.model;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public abstract class User {
-	private String displayName, password, firstName, lastName, emailAddress, phoneNumber;
+	private StringProperty displayName, password, firstName, lastName, emailAddress, phoneNumber;
 	private Address physicalAddress;
 	private final String userName;
 	private UserPlaylistLink userPlaylistLink;
@@ -17,7 +20,8 @@ public abstract class User {
 	private ArrayList<Comment> userComments = new ArrayList<Comment>();
 	private ArrayList<Rating> userRatings = new ArrayList<Rating>();
 
-	public User(String userName, String displayName, String password,String userDescription, String profilePicturePath, String firstName, String lastName,
+	public User(String userName, String displayName, String password, String userDescription, String profilePicturePath,
+			String firstName, String lastName,
 			// <<<<<<< HEAD
 			// Date dateOfBirth, String emailAddress, String
 			// streetNameAndNumber, String cityOfResidence,
@@ -29,14 +33,14 @@ public abstract class User {
 
 		// >>>>>>> refs/heads/master
 		this.userName = userName;
-		this.displayName = displayName;
-		this.password = password;
+		this.displayName = new SimpleStringProperty(displayName);
+		this.password = new SimpleStringProperty(password);
 		this.userDescription = userDescription;
 		this.profilePicturePath = profilePicturePath;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.firstName = new SimpleStringProperty(firstName);
+		this.lastName = new SimpleStringProperty(lastName);
 		this.dateOfBirth = dateOfBirth;
-		this.emailAddress = emailAddress;
+		this.emailAddress = new SimpleStringProperty(emailAddress);
 		// <<<<<<< HEAD
 		this.physicalAddress = new Address(streetNameAndNumber, cityOfResidence, postalCode, country);
 		// this.physicalAddress.setFirstName(firstName);
@@ -52,7 +56,7 @@ public abstract class User {
 		// this.physicalAddress.setLastName(lastName);
 		// >>>>>>> refs/heads/master
 		this.gender = gender;
-		this.phoneNumber = phoneNumber;
+		this.phoneNumber = new SimpleStringProperty(phoneNumber);
 
 		this.defaultPlaylist = new Playlist("Default", PrivacyLevel.PRIVATE);
 		userPlaylistLink = new UserPlaylistLink(userName, defaultPlaylist);
@@ -63,11 +67,11 @@ public abstract class User {
 	}
 
 	public String getDisplayName() {
-		return displayName;
+		return displayName.get();
 	}
 
 	public void setDisplayName(String displayName) {
-		this.displayName = displayName;
+		this.displayName.set(displayName);
 	}
 
 	public Date getDateOfBirth() {
@@ -79,35 +83,35 @@ public abstract class User {
 	}
 
 	public String getPassword() {
-		return password;
+		return password.get();
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password.set(password);
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return firstName.get();
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstName.set(firstName);
 	}
 
 	public String getLastName() {
-		return lastName;
+		return lastName.get();
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lastName.set(lastName);
 	}
 
 	public String getEmailAddress() {
-		return emailAddress;
+		return emailAddress.get();
 	}
 
 	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+		this.emailAddress.set(emailAddress);
 	}
 
 	public String getStreetNameAndNumber() {
@@ -135,11 +139,11 @@ public abstract class User {
 	}
 
 	public String getPhoneNumber() {
-		return phoneNumber;
+		return phoneNumber.get();
 	}
 
 	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+		this.phoneNumber.set(phoneNumber);
 	}
 
 	public Address getPhysicalAddress() {
@@ -226,9 +230,9 @@ public abstract class User {
 		this.defaultPlaylist = defaultPlaylist;
 	}
 
-	public void changeAccountSettings(String displayName, String password, String userDescription, String profilePicturePath, String firstName, String lastName,
-			Date dateOfBirth, String emailAddress, String physicalAddress, String cityOfResidence, String postalCode,
-			Country country, String phoneNumber) {
+	public void changeAccountSettings(String displayName, String password, String userDescription,
+			String profilePicturePath, String firstName, String lastName, Date dateOfBirth, String emailAddress,
+			String physicalAddress, String cityOfResidence, String postalCode, Country country, String phoneNumber) {
 		setDisplayName(displayName);
 		setPassword(password);
 		setUserDescription(userDescription);

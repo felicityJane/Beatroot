@@ -25,6 +25,7 @@
             <TableColumn fx:id="trialUserCountryColumn" prefWidth="75.0" text="Country" />
             <TableColumn fx:id="trialUserPhoneNumberColumn" prefWidth="88.0" text="Phone number" />
             <TableColumn fx:id="trialUserTrialEndColumn" prefWidth="82.0" text="Trial end date" />
+            <TableColumn fx:id="trialUserDescription" prefWidth="75.0" text="User description" />
         </columns>
       </TableView>
    </children>
