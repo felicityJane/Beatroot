@@ -1,5 +1,15 @@
 package musicplayer.controller;
 
+import java.io.IOException;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.ResourceBundle;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,15 +31,6 @@ import musicplayer.SceneManager;
 import musicplayer.model.Country;
 import musicplayer.model.GlobalVariables;
 import musicplayer.model.TrialUser;
-
-import java.io.IOException;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Date;
-import java.util.ResourceBundle;
 
 public class ModifyUserController implements Initializable {
 	@FXML
@@ -78,6 +79,7 @@ public class ModifyUserController implements Initializable {
 	private DB_Connector databaseConnector;
 	private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	private ArrayList<TrialUser> toRemove = new ArrayList<TrialUser>();
 	/*
 	 * <TableColumn fx:id="trialUserNameColumn" prefWidth="75.0"
 	 * text="User name" /> <TableColumn fx:id="trialUserDisplayNameColumn"
@@ -103,7 +105,6 @@ public class ModifyUserController implements Initializable {
 	public void initialize(URL url, ResourceBundle resources) {
 		trialUsersTable.setEditable(true);
 		variables.setModifyUserController(this);
-		System.out.println(adminMenu.getChildren().toString());
 		variables.getAdminMenuController().getModifyUsersButton().setText("Main page");
 		variables.getAdminMenuController().getModifyUsersButton().setOnAction((event) -> {
 			try {
@@ -116,9 +117,40 @@ public class ModifyUserController implements Initializable {
 		databaseConnector = new DB_Connector(
 				"jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
 		databaseConnector.getTrialUsersDetails();
-		System.out.println(data.get(0).getEmailAddress());
-		System.out.println(data.get(0).getCountry());
+		trialUserNameColumn.setEditable(true);
 		trialUserNameColumn.setCellValueFactory(new PropertyValueFactory<>("userName"));
+		trialUserNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		trialUserNameColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, String>>() {
+			@Override
+			public void handle(CellEditEvent<TrialUser, String> event) {
+				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
+				// WHERE `user_name`='nero';
+				databaseConnector.delete("`beatroot`.`trial_user`", "`user_name`='"
+						+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName() + "'");
+				databaseConnector.delete("`beatroot`.`playlist`", "`owner`='"
+						+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName() + "'");
+				databaseConnector.delete("`beatroot`.`user_link`", "`user`='"
+						+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName() + "'");
+				if (event.getNewValue().equalsIgnoreCase("delete")) {
+					for (TrialUser trial : data) {
+						if (trial.getUserName().equalsIgnoreCase(
+								event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName())) {
+							toRemove.add(trial);
+						}
+
+					}
+					System.out.println(toRemove.size());
+					System.out.println(toRemove.get(0).getDisplayName());
+					data.removeAll(toRemove);
+					System.out.println(toRemove.get(0).getDisplayName());
+					// System.out.println(data.contains(
+					// event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()));
+					toRemove.remove(0);
+
+					getTrialUsersTable().refresh();
+				}
+			}
+		});
 		trialUserDisplayNameColumn.setCellValueFactory(new PropertyValueFactory<>("displayName"));
 		trialUserDisplayNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 		trialUserDisplayNameColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, String>>() {
@@ -400,6 +432,14 @@ public class ModifyUserController implements Initializable {
 
 	public TableView<TrialUser> getTrialUsersTable() {
 		return trialUsersTable;
+	}
+
+	public ArrayList<TrialUser> getToRemove() {
+		return toRemove;
+	}
+
+	public void setToRemove(ArrayList<TrialUser> toRemove) {
+		this.toRemove = toRemove;
 	}
 
 }
