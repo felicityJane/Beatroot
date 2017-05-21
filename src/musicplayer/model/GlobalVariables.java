@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import musicplayer.controller.AboutPageController;
+import musicplayer.controller.AddArtistController;
 import musicplayer.controller.AdminMenuController;
 import musicplayer.controller.AlbumPageController;
 import musicplayer.controller.ArtistPageController;
@@ -73,6 +74,8 @@ public class GlobalVariables {
 	private AdminMenuController adminMenuController;
 	@FXML
 	private ModifyUserController modifyUserController;
+	@FXML
+	private AddArtistController addArtistController;
 
 	public void setAlbum(Album album) {
 		this.album = album;
@@ -296,5 +299,13 @@ public class GlobalVariables {
 
 	public void setModifyUserController(ModifyUserController modifyUserController) {
 		this.modifyUserController = modifyUserController;
+	}
+
+	public AddArtistController getAddArtistController() {
+		return addArtistController;
+	}
+
+	public void setAddArtistController(AddArtistController addArtistController) {
+		this.addArtistController = addArtistController;
 	}
 }

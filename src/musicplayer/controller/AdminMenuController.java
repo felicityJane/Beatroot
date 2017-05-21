@@ -14,8 +14,9 @@ import musicplayer.model.GlobalVariables;
 public class AdminMenuController implements Initializable {
 
 	@FXML
-	Button uploadButton, createAlbumButton, addArtistButton, modifyUsersButton, modifyAlbumButton, modifySongsButton;
-	GlobalVariables variables = GlobalVariables.getInstance();
+	private Button uploadButton, createAlbumButton, addArtistButton, modifyUsersButton, modifyAlbumButton,
+			modifySongsButton;
+	private GlobalVariables variables = GlobalVariables.getInstance();
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -33,6 +34,22 @@ public class AdminMenuController implements Initializable {
 	public void modifyUsersButtonPressed(ActionEvent ev) {
 		try {
 			SceneManager.sceneManager.changeScene(ev, "view/ModifyUserPanel.fxml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Button getAddArtistButton() {
+		return addArtistButton;
+	}
+
+	public void setAddArtistButton(Button addArtistButton) {
+		this.addArtistButton = addArtistButton;
+	}
+
+	public void addArtistButtonPressed(ActionEvent ev) {
+		try {
+			SceneManager.sceneManager.changeScene(ev, "view/AddArtistPanel.fxml");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

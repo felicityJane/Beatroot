@@ -5,9 +5,10 @@ import java.util.ArrayList;
 public class Rating {
 	private int ratingID, sumFromAllVoters = 0;
 	private double finalRating;
+	private MusicArtist musicArtist;
 	private MusicTrack song;
 	private ArrayList<User> votedUsers = new ArrayList<User>();
-	//temporary
+	// temporary
 	private int numberOfVoters;
 
 	public Rating(MusicTrack song) {
@@ -18,8 +19,14 @@ public class Rating {
 		this.song = song;
 		this.finalRating = finalRating;
 	}
-	public Rating(double finalRating){
+
+	public Rating(double finalRating) {
 		this.finalRating = finalRating;
+	}
+
+	public Rating(MusicArtist musicArtist, int ratingId) {
+		this.musicArtist = musicArtist;
+		this.ratingID = ratingId;
 	}
 
 	public int getRatingID() {
@@ -51,7 +58,8 @@ public class Rating {
 	}
 
 	public void calculateRating() {
-		this.finalRating = sumFromAllVoters / numberOfVoters /*(votedUsers.size() + 1)*/;
+		this.finalRating = sumFromAllVoters
+				/ numberOfVoters /* (votedUsers.size() + 1) */;
 	}
 
 	public ArrayList<User> getVotedUsers() {
@@ -88,5 +96,13 @@ public class Rating {
 
 	public void setSong(MusicTrack song) {
 		this.song = song;
+	}
+
+	public MusicArtist getMusicArtist() {
+		return musicArtist;
+	}
+
+	public void setMusicArtist(MusicArtist musicArtist) {
+		this.musicArtist = musicArtist;
 	}
 }
