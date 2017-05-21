@@ -27,6 +27,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Pane;
 import javafx.util.StringConverter;
 import musicplayer.DB_Connector;
+import musicplayer.DialogBoxManager;
 import musicplayer.SceneManager;
 import musicplayer.model.Country;
 import musicplayer.model.GlobalVariables;
@@ -125,13 +126,23 @@ public class ModifyUserController implements Initializable {
 			public void handle(CellEditEvent<TrialUser, String> event) {
 				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
 				// WHERE `user_name`='nero';
-				databaseConnector.delete("`beatroot`.`trial_user`", "`user_name`='"
-						+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName() + "'");
-				databaseConnector.delete("`beatroot`.`playlist`", "`owner`='"
-						+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName() + "'");
-				databaseConnector.delete("`beatroot`.`user_link`", "`user`='"
-						+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName() + "'");
-				if (event.getNewValue().equalsIgnoreCase("delete")) {
+
+				if (!event.getNewValue().equalsIgnoreCase("delete")) {
+					trialUserNameColumn.setText(event.getOldValue());
+					getTrialUsersTable().refresh();
+					DialogBoxManager.errorDialogBox("You can only delete",
+							"Editing the user name column can only be done with the delete word to delete the entire row");
+					// event.getTableView().getItems().get(event.getTablePosition().getRow())
+				} else {
+					databaseConnector.delete("`beatroot`.`trial_user`", "`user_name`='"
+							+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+							+ "'");
+					databaseConnector.delete("`beatroot`.`playlist`", "`owner`='"
+							+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+							+ "'");
+					databaseConnector.delete("`beatroot`.`user_link`", "`user`='"
+							+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+							+ "'");
 					for (TrialUser trial : data) {
 						if (trial.getUserName().equalsIgnoreCase(
 								event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName())) {
