@@ -18,14 +18,11 @@ public class SettingsPageController implements Initializable {
 
     @FXML private AnchorPane settingsAnchorPage;
     @FXML private TextField editDisplayNameField, editPasswordField;
-    @FXML private Label editDisplayNameLabel, editPasswordLabel, warningLabel;
-    @FXML private Button darkThemeButton, lightThemeButton;
+    @FXML private Label editDisplayNameLabel, editPasswordLabel;
     private DB_Connector db_connector = new DB_Connector("jdbc:mysql://127.0.0.1:3306/beatroot?user=root&password=root&useSSL=false");
     GlobalVariables globalVariables = GlobalVariables.getInstance();
     private String userName, newPassWord, newDisplayName;
     int user;
-    private AnchorPane welcomeParent, welcomeParentTwo, aboutParent, adminLogInParent, adminSignUpParent, albumParent, artistParent, FAQSParent, helpParent, logInParent,
-    paymentParent, signUpParent, songParent;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -36,21 +33,25 @@ public class SettingsPageController implements Initializable {
         if(globalVariables.getTrialuser()!= null && globalVariables.getPremiumUser() == null && globalVariables.getAdministrator() == null) {
             editDisplayNameLabel.setText("Current Display :  " + globalVariables.getTrialuser().getDisplayName());
             editPasswordLabel.setText("Current Password :  " + globalVariables.getTrialuser().getPassword());
+            editDisplayNameField.setText(globalVariables.getTrialuser().getDisplayName());
+            editPasswordField.setText(globalVariables.getTrialuser().getPassword());
             userName = globalVariables.getTrialuser().getUserName();
             user = 1;
             System.out.println("type trial ");
         } else if (globalVariables.getPremiumUser() != null && globalVariables.getTrialuser() == null && globalVariables.getAdministrator() == null) {
             editDisplayNameLabel.setText("Current Display : " + globalVariables.getPremiumUser().getDisplayName());
             editPasswordLabel.setText("Current Password : " + globalVariables.getPremiumUser().getPassword());
+            editDisplayNameField.setText(globalVariables.getPremiumUser().getDisplayName());
+            editPasswordField.setText(globalVariables.getPremiumUser().getPassword());
             userName = globalVariables.getPremiumUser().getUserName();
             user = 2;
-            System.out.println("type premium");
         } else if (globalVariables.getAdministrator() != null && globalVariables.getPremiumUser() == null && globalVariables.getTrialuser() == null) {
             editDisplayNameLabel.setText("Current Display :  " + globalVariables.getAdministrator().getDisplayName());
             editPasswordLabel.setText("Current Password :  " + globalVariables.getAdministrator().getPassword());
+            editDisplayNameField.setText(globalVariables.getAdministrator().getDisplayName());
+            editPasswordField.setText(globalVariables.getAdministrator().getPassword());
             userName = globalVariables.getTrialuser().getUserName();
             user = 3;
-            System.out.println(" type admin");
         }
     }
     @FXML private void onSaveButton() {
@@ -73,8 +74,7 @@ public class SettingsPageController implements Initializable {
                         globalVariables.getTrialuser().setDisplayName(newDisplayName);
                         globalVariables.getTrialuser().setPassword(newPassWord);
                     } catch (SQLException e) {
-                        DialogBoxManager.errorDialogBox("An error has occurred", "check username and password and try again");
-                        System.out.println("error trial");
+                        DialogBoxManager.errorDialogBox("An error has occurred", "check trial username and password and try again");
                         e.printStackTrace();
                     }
                 } else if (user == 2) {
@@ -85,8 +85,7 @@ public class SettingsPageController implements Initializable {
                         globalVariables.getPremiumUser().setDisplayName(newDisplayName);
                         globalVariables.getPremiumUser().setPassword(newPassWord);
                     } catch (SQLException e) {
-                        DialogBoxManager.errorDialogBox("An error has occurred", "check username and password and try again");
-                        System.out.println("error premium");
+                        DialogBoxManager.errorDialogBox("An error has occurred", "check premium username and password and try again");
                         e.printStackTrace();
                     }
                 } else if (user == 3) {
@@ -97,15 +96,13 @@ public class SettingsPageController implements Initializable {
                         globalVariables.getAdministrator().setDisplayName(newDisplayName);
                         globalVariables.getAdministrator().setPassword(newPassWord);
                     } catch (SQLException e) {
-                        DialogBoxManager.errorDialogBox("An error has occurred", "check username and password and try again");
-                        System.out.println("error admin");
+                        DialogBoxManager.errorDialogBox("An error has occurred", "check administrator username and password and try again");
                         e.printStackTrace();
                     }
                 }
-
             }
         }else{
-            DialogBoxManager.errorDialogBox("Error", "Display name and password must be 6-12 characters");
+            DialogBoxManager.errorDialogBox("Error", "Display name and password must be 6-12 characters, try again");
         }
     }
 }

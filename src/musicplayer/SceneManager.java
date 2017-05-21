@@ -15,7 +15,6 @@ import java.io.IOException;
 public class SceneManager {
 
     public static SceneManager sceneManager = new SceneManager();
-    private Main main = new Main();
 
     public void changeScene(Event e, String fxmlFileName ) throws IOException {
         Node node = (Node)e.getSource();
@@ -60,16 +59,6 @@ public class SceneManager {
                 }
             });
         });
-    }
-    public void openPopupScene(String fxmlFileName) throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
-        Scene scene = new Scene(root);
-        stage.setTitle("Beatroot");
-        stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
-        stage.centerOnScreen();
     }
     public void popUpWindow(String fxmlFileName) throws IOException{
         Stage stage = new Stage();
