@@ -69,4 +69,5 @@ public class TrialUser extends User {
 				billingAccountOwnerName, billingAddress, billingCity, billingPostalCode, billingCountry,
 				billingPhoneNumber);
 	}
+
 }
