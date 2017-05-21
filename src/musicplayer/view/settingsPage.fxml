@@ -8,20 +8,20 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="settingsAnchorPage" prefHeight="290.0" prefWidth="524.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.SettingsPageController">
+<AnchorPane fx:id="settingsAnchorPage" prefHeight="294.0" prefWidth="541.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.SettingsPageController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="145.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="159.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/beatrootlogo.png" />
          </image>
       </ImageView>
-      <Label fx:id="edit" focusTraversable="false" layoutX="29.0" layoutY="117.0" prefHeight="18.0" prefWidth="118.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Edit Display Name" />
-      <TextField fx:id="editDisplayNameField" layoutX="154.0" layoutY="113.0" styleClass="textField" stylesheets="@../css/styleSheet.css" text="enter display name" />
-      <Label fx:id="editDisplayNameLabel" focusTraversable="false" layoutX="316.0" layoutY="117.0" prefHeight="20.0" prefWidth="173.0" styleClass="labelColor" text="Label" />
-      <Label focusTraversable="false" layoutX="29.0" layoutY="177.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Edit Password" />
-      <TextField fx:id="editPasswordField" layoutX="154.0" layoutY="172.0" styleClass="textField" stylesheets="@../css/styleSheet.css" text="enter password" />
-      <Label fx:id="editPasswordLabel" focusTraversable="false" layoutX="316.0" layoutY="176.0" prefHeight="20.0" prefWidth="166.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Label" />
-      <Button fx:id="saveChangesButton" layoutX="345.0" layoutY="230.0" mnemonicParsing="false" onAction="#onSaveButton" stylesheets="@../css/styleSheet.css" text="Save Changes">
+      <Label fx:id="edit" focusTraversable="false" layoutX="27.0" layoutY="121.0" prefHeight="18.0" prefWidth="118.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Edit Display Name" />
+      <TextField fx:id="editDisplayNameField" layoutX="148.0" layoutY="117.0" promptText="enter display name" styleClass="textField" stylesheets="@../css/styleSheet.css" />
+      <Label fx:id="editDisplayNameLabel" focusTraversable="false" layoutX="323.0" layoutY="122.0" prefHeight="18.0" prefWidth="206.0" styleClass="labelColor" text="Label" />
+      <Label focusTraversable="false" layoutX="27.0" layoutY="180.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Edit Password" />
+      <TextField fx:id="editPasswordField" layoutX="148.0" layoutY="176.0" promptText="enter passsword" styleClass="textField" stylesheets="@../css/styleSheet.css" />
+      <Label fx:id="editPasswordLabel" focusTraversable="false" layoutX="323.0" layoutY="181.0" prefHeight="18.0" prefWidth="206.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Label" />
+      <Button fx:id="saveChangesButton" layoutX="372.0" layoutY="226.0" mnemonicParsing="false" onAction="#onSaveButton" stylesheets="@../css/styleSheet.css" text="Save Changes">
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />

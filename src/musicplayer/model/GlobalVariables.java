@@ -1,24 +1,9 @@
 package musicplayer.model;
 
-import java.util.ArrayList;
-
 import javafx.fxml.FXML;
-import musicplayer.controller.AboutPageController;
-import musicplayer.controller.AddArtistController;
-import musicplayer.controller.AdminMenuController;
-import musicplayer.controller.AlbumPageController;
-import musicplayer.controller.ArtistPageController;
-import musicplayer.controller.FAQsPageController;
-import musicplayer.controller.HelpPageController;
-import musicplayer.controller.LogInMenuController;
-import musicplayer.controller.MainMenuController;
-import musicplayer.controller.ModifyUserController;
-import musicplayer.controller.PaymentMenuController;
-import musicplayer.controller.SettingsPageController;
-import musicplayer.controller.SignUpMenuController;
-import musicplayer.controller.SongPageController;
-import musicplayer.controller.UserDescriptionController;
-import musicplayer.controller.WelcomeMenuController;
+import musicplayer.controller.*;
+
+import java.util.ArrayList;
 
 public class GlobalVariables {
 

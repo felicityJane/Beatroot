@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
@@ -16,13 +17,17 @@
         <ImageView fx:id="imageView" fitHeight="332.0" fitWidth="356.0" layoutX="37.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" />
         <Label fx:id="albumLabel" layoutX="431.0" layoutY="90.0" prefHeight="25.0" prefWidth="274.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
         <Label fx:id="artistLabel" layoutX="431.0" layoutY="127.0" prefHeight="25.0" prefWidth="274.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
-      <Label fx:id="trackLabel" layoutX="500.0" layoutY="161.0" prefHeight="20.0" prefWidth="205.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
+      <Label fx:id="trackLabel" layoutX="497.0" layoutY="164.0" prefHeight="20.0" prefWidth="205.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
       <Label fx:id="trackTimeLabel" layoutX="431.0" layoutY="193.0" prefHeight="25.0" prefWidth="274.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
       <Label fx:id="publicationLabel" layoutX="431.0" layoutY="232.0" prefHeight="25.0" prefWidth="274.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" />
       <Label fx:id="ratingLabel" layoutX="540.0" layoutY="257.0" prefHeight="25.0" prefWidth="106.0" styleClass="mainLabelColor" text="ratingLabel" />
       <ImageView fx:id="starRatingImageView" fitHeight="17.0" fitWidth="106.0" layoutX="431.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true" styleClass="buttonColor" />
-      <ListView fx:id="userCommentList" layoutX="431.0" layoutY="324.0" prefHeight="91.0" prefWidth="274.0" />
+      <ListView fx:id="userCommentList" layoutX="431.0" layoutY="324.0" prefHeight="91.0" prefWidth="274.0" stylesheets="@../css/styleSheet.css">
+         <styleClass>
+            <String fx:value="list-cell" />
+            <String fx:value="listviewBackground" />
+         </styleClass></ListView>
       <Label fx:id="songNameLabel" layoutX="431.0" layoutY="161.0" prefHeight="25.0" prefWidth="63.0" styleClass="mainLabelColor" text="Song :" />
-      <Label layoutX="435.0" layoutY="287.0" prefHeight="20.0" prefWidth="79.0" styleClass="mainLabelColor" text="Comments" />
+      <Label layoutX="435.0" layoutY="287.0" prefHeight="20.0" prefWidth="123.0" styleClass="mainLabelColor" text="Comments" />
     </children>
 </AnchorPane>

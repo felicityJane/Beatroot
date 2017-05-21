@@ -1,33 +1,5 @@
 package musicplayer.controller;
 
-import static musicplayer.SceneManager.sceneManager;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.ResourceBundle;
-
-import org.apache.commons.io.FilenameUtils;
-import org.apache.tika.metadata.Metadata;
-import org.apache.tika.parser.ParseContext;
-import org.apache.tika.parser.Parser;
-import org.apache.tika.parser.mp3.Mp3Parser;
-import org.xml.sax.ContentHandler;
-import org.xml.sax.helpers.DefaultHandler;
-
 import javafx.beans.binding.Bindings;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -35,17 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Slider;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -65,19 +27,27 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
-import musicplayer.DB_Connector;
-import musicplayer.DialogBoxManager;
-import musicplayer.ImageTextCellContacts;
-import musicplayer.ImageTextCellMusicTrack;
-import musicplayer.SceneManager;
-import musicplayer.Server_Connector;
-import musicplayer.model.Album;
-import musicplayer.model.GlobalVariables;
-import musicplayer.model.MusicTrack;
-import musicplayer.model.Playlist;
-import musicplayer.model.PremiumUser;
-import musicplayer.model.PrivacyLevel;
-import musicplayer.model.Rating;
+import musicplayer.*;
+import musicplayer.model.*;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.parser.Parser;
+import org.apache.tika.parser.mp3.Mp3Parser;
+import org.xml.sax.ContentHandler;
+import org.xml.sax.helpers.DefaultHandler;
+
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.ResourceBundle;
+
+import static musicplayer.SceneManager.sceneManager;
 
 public class WelcomeMenuController implements Initializable {
 

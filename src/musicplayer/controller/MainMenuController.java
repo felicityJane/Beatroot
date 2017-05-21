@@ -30,15 +30,12 @@ public class MainMenuController implements Initializable{
 		 settingsMenu.setDisable(true);
 		 aboutMenu.setDisable(true);
 		 faqsMenu.setDisable(true);
-		 logoutMenu.setDisable(false);
+		 logoutMenu.setDisable(true);
 	}
 	void enableMenuItems(){
 		logoutMenu.setDisable(false);
 		settingsMenu.setDisable(false);
 	}
-
-
-	//TODO <fx:include fx:id="adminMenu" source="AdminMenu.fxml"/>
 	void menuBarFitToParent(AnchorPane parentAnchor){
 		menuBar.prefWidthProperty().bind(parentAnchor.widthProperty());
 	}

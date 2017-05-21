@@ -61,7 +61,7 @@ public class UserDescriptionController implements Initializable {
                 genderLabel.setText(" : " + globalVariables.getPremiumUser().getGender());
                 userTypeLabel.setText(" : Premium user");
                 emailAddressLabel.setText(" : " + globalVariables.getPremiumUser().getEmailAddress());
-                playlistLabel.setText(": " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getPremiumUser().getUserName() + "'")));
+                playlistLabel.setText(" : " + String.valueOf(connector.searchMultipleResults("name", "playlist", "owner='" + globalVariables.getPremiumUser().getUserName() + "'")));
                 descriptionLabel.setText("- " + String.valueOf(connector.search("user_description", "Premium_user", "user_name='" + globalVariables.getPremiumUser().getUserName() + "'")));
                 descriptionTextArea.setVisible(false);
                 addButton.setVisible(true);
@@ -99,6 +99,7 @@ public class UserDescriptionController implements Initializable {
 
                     descriptionTextArea.setVisible(false);
                     addButton.setVisible(false);
+                    saveButton.setVisible(false);
                     userName = globalVariables.getContactSelected().getUserName();
                     userTypeLabel.setText(" : Premium user");
                     tableName = "premium_user";
@@ -113,6 +114,7 @@ public class UserDescriptionController implements Initializable {
 
                     descriptionTextArea.setVisible(false);
                     addButton.setVisible(false);
+                    saveButton.setVisible(false);
                     userName = globalVariables.getContactSelected().getUserName();
                     userTypeLabel.setText(" : Premium user");
                     tableName = "premium_user";
@@ -195,6 +197,7 @@ public class UserDescriptionController implements Initializable {
                 emailAddressLabel.setText(" : " + globalVariables.getContactSelected().getEmailAddress());
                 descriptionTextArea.setVisible(false);
                 addButton.setVisible(false);
+                saveButton.setVisible(false);
                 userName = globalVariables.getContactSelected().getUserName();
             }
         }

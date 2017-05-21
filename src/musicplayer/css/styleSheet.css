@@ -73,11 +73,11 @@
  .list-cell:filled:selected:focused, .list-cell:filled:selected {
 
      -fx-background-color: #085562;
-     -fx-text-fill: white;
+     -fx-text-fill: #dcdcdc;
  }
- .list-cell { -fx-text-fill: #dcdcdc;  }
+ .list-cell { -fx-text-fill: #dcdcdc ;  }
  .list-cell:odd { -fx-background-color:#373636; }
- .list-cell:even { -fx-background-color: #333333;  }
+ .list-cell:even { -fx-background-color: #333333; }
  .list-cell:filled:hover {
      -fx-background-color:#085562 ;
      -fx-text-fill: white;
