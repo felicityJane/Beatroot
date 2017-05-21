@@ -52,15 +52,15 @@ public class AddArtistController implements Initializable {
 		// 'qwe', '23', 1771, 'asdqwe');
 		try {
 			System.out.println("Here");
-			int i = databaseConnector.insertWithAutoIncrementKey(
+			int ratingId = databaseConnector.insertWithAutoIncrementKey(
 					"`beatroot`.`rating`(rating_id,sum_from_all_voters,final_rating)", "(default,default,default)");
-			System.out.println(i);
+			System.out.println(ratingId);
 			Date debutYear = sdf.parse(foundationYearField.getText());
 			System.out.println(sdf.parse(foundationYearField.getText()));
 			MusicArtist musicArtist = new MusicArtist(artistNameField.getText(), debutYear,
 					artistDescriptionArea.getText());
 			System.out.println(musicArtist.getStageName());
-			Rating rating = new Rating(musicArtist, i);
+			Rating rating = new Rating(musicArtist, ratingId);
 			System.out.println(rating.getRatingID());
 			// musicArtist.set
 			/*
@@ -69,12 +69,20 @@ public class AddArtistController implements Initializable {
 			 * `artist_description`) VALUES ('dfger43', 'beatroot', '80', 1997,
 			 * 'qwrtw6');
 			 */
-			databaseConnector.insert(
+			int musicArtistId = databaseConnector.insertWithAutoIncrementKey(
 					"`beatroot`.`music_artist`(`stage_name`,`administrator_staff_id`,`rating_id`,`year_of_foundation`,`artist_description`)",
 					"('" + artistNameField.getText() + "','" + variables.getAdministrator().getStaffID() + "','"
 							+ rating.getRatingID() + "'," + sdf.format(musicArtist.getPublicationYear()) + ",'"
 							+ artistDescriptionArea.getText() + "')");
-			DialogBoxManager.notificationDialogBox("Success", "The music artist has been added to the database");
+			System.out.println(musicArtistId);
+			Boolean bool = DialogBoxManager.confirmationDialogBox("Success",
+					"The music artist has been added to the database.\nPress cancel to remove");
+			if (!bool) {
+				databaseConnector.delete("`beatroot`.`music_artist`", "`artist_id`='" + musicArtistId + "'");
+				databaseConnector.delete("`beatroot`.`rating`", "`rating_id`='" + ratingId + "'");
+			} else {
+				clear();
+			}
 		} catch (java.text.ParseException ex) {
 			ex.printStackTrace();
 		}
