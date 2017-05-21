@@ -47,7 +47,7 @@ public class MainMenuController implements Initializable{
 			try {
 				GlobalVariables.getInstance().getContactList().clear();
 				sceneManager.changeSceneMenuBar(menuBar,"view/logInMenu.fxml");
-			}catch (Exception e){
+			}catch (IOException e){
 				DialogBoxManager.errorDialogBox("Error occurred","logging out, please try again");
 				e.printStackTrace();
 			}
