@@ -30,7 +30,7 @@
  .radio-button{
  -fx-background-color:#333333;
  -fx-text-fill : #dcdcdc;
- -tx-background-radius: 8.0:
+ -tx-background-radius: 8.0;
  }
  .menu-bar {
  -fx-background-color: #085562;    /* The menu bar itself */ }
@@ -55,7 +55,7 @@
      -fx-background-color: #74747b;
  }
 
- }
+ 
  .labelColor{
  -fx-text-fill: #dcdcdc;
  -fx-font-size: 14;

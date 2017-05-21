@@ -1,7 +1,7 @@
 package musicplayer.model;
 
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MusicArtist {
 
@@ -25,11 +25,20 @@ public class MusicArtist {
 		this.stageName = stageName;
 	}
 
+	public MusicArtist(String stageName, Date publicationYear, String artistDescription) {
+		this.stageName = stageName;
+		// this.rating = new Rating(this);
+		this.publicationYear = publicationYear;
+		this.artistDescription = artistDescription;
+	}
+
 	public int getArtistID() {
 		return artistID;
 	}
 
-	public void setArtistID(int artistID ) {this.artistID = artistID;}
+	public void setArtistID(int artistID) {
+		this.artistID = artistID;
+	}
 
 	public String getStageName() {
 		return stageName;

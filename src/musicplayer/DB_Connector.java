@@ -118,6 +118,30 @@ public class DB_Connector {
 		}
 	}
 
+	public int insertWithAutoIncrementKey(String tableNameAndParameters, String values) {
+
+		try {
+			statement.executeUpdate("INSERT INTO " + tableNameAndParameters + " VALUES " + values,
+					Statement.RETURN_GENERATED_KEYS);
+			resultSet = statement.getGeneratedKeys();
+			if (resultSet.next()) {
+				System.out.println(resultSet.getInt(1));
+			}
+		} catch (MySQLIntegrityConstraintViolationException ignored) {
+			// TODO
+		} catch (SQLException sqlEx) {
+			DialogBoxManager.errorDialogBox("Cannot run query", "Error on executing insert query. Please try again.");
+			sqlEx.printStackTrace();
+		}
+		try {
+			return resultSet.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Nothing found boss");
+		return 0;
+	}
+
 	public void delete(String tableToDeleteFrom, String whereStatement) {
 
 		try {
@@ -656,4 +680,5 @@ public class DB_Connector {
 
 		}
 	}
+
 }

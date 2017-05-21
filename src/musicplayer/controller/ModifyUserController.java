@@ -10,13 +10,14 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.ChoiceBoxTableCell;
@@ -26,7 +27,6 @@ import javafx.scene.layout.Pane;
 import javafx.util.StringConverter;
 import musicplayer.DB_Connector;
 import musicplayer.SceneManager;
-import musicplayer.model.Address;
 import musicplayer.model.Country;
 import musicplayer.model.GlobalVariables;
 import musicplayer.model.TrialUser;
@@ -53,7 +53,7 @@ public class ModifyUserController implements Initializable {
 	@FXML
 	private TableColumn<TrialUser, String> trialUserEmailColumn;
 	@FXML
-	private TableColumn<Address, String> trialUserStreetAddressColumn;
+	private TableColumn<TrialUser, String> trialUserStreetAddressColumn;
 	@FXML
 	private TableColumn<TrialUser, String> trialUserCityColumn;
 	@FXML
@@ -64,6 +64,8 @@ public class ModifyUserController implements Initializable {
 	private TableColumn<TrialUser, String> trialUserPhoneNumberColumn;
 	@FXML
 	private TableColumn<TrialUser, Date> trialUserTrialEndColumn;
+	@FXML
+	private TableColumn<TrialUser, String> trialUserDescription;
 	@FXML
 	private TextField userName;
 	@FXML
@@ -119,12 +121,67 @@ public class ModifyUserController implements Initializable {
 		trialUserNameColumn.setCellValueFactory(new PropertyValueFactory<>("userName"));
 		trialUserDisplayNameColumn.setCellValueFactory(new PropertyValueFactory<>("displayName"));
 		trialUserDisplayNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		trialUserDisplayNameColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, String>>() {
+			@Override
+			public void handle(CellEditEvent<TrialUser, String> event) {
+				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
+				// WHERE `user_name`='nero';
+				databaseConnector.update("`beatroot`.`trial_user`", "`display_name`", "'" + event.getNewValue() + "'",
+						"`user_name`=" + "'"
+								+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+								+ "'");
+				event.getTableView().getItems().get(event.getTablePosition().getRow())
+						.setDisplayName(event.getNewValue());
+				getTrialUsersTable().refresh();
+				System.out.println(data.get(1).getDisplayName());
+			}
+		});
 		trialUserPasswordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
 		trialUserPasswordColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		trialUserPasswordColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, String>>() {
+			@Override
+			public void handle(CellEditEvent<TrialUser, String> event) {
+				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
+				// WHERE `user_name`='nero';
+				databaseConnector.update("`beatroot`.`trial_user`", "`password`", "'" + event.getNewValue() + "'",
+						"`user_name`=" + "'"
+								+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+								+ "'");
+				event.getTableView().getItems().get(event.getTablePosition().getRow()).setPassword(event.getNewValue());
+				getTrialUsersTable().refresh();
+			}
+		});
 		trialUserFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 		trialUserFirstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		trialUserFirstNameColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, String>>() {
+			@Override
+			public void handle(CellEditEvent<TrialUser, String> event) {
+				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
+				// WHERE `user_name`='nero';
+				databaseConnector.update("`beatroot`.`trial_user`", "`first_name`", "'" + event.getNewValue() + "'",
+						"`user_name`=" + "'"
+								+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+								+ "'");
+				event.getTableView().getItems().get(event.getTablePosition().getRow())
+						.setFirstName(event.getNewValue());
+				getTrialUsersTable().refresh();
+			}
+		});
 		trialUserLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 		trialUserLastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		trialUserLastNameColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, String>>() {
+			@Override
+			public void handle(CellEditEvent<TrialUser, String> event) {
+				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
+				// WHERE `user_name`='nero';
+				databaseConnector.update("`beatroot`.`trial_user`", "`last_name`", "'" + event.getNewValue() + "'",
+						"`user_name`=" + "'"
+								+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+								+ "'");
+				event.getTableView().getItems().get(event.getTablePosition().getRow()).setLastName(event.getNewValue());
+				getTrialUsersTable().refresh();
+			}
+		});
 		trialUserDateOfBirthColumn.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
 		trialUserDateOfBirthColumn.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Date>() {
 			@Override
@@ -149,18 +206,129 @@ public class ModifyUserController implements Initializable {
 		}
 
 		));
+		trialUserDateOfBirthColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, Date>>() {
+			@Override
+			public void handle(CellEditEvent<TrialUser, Date> event) {
+				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
+				// WHERE `user_name`='nero';
+				databaseConnector.update("`beatroot`.`trial_user`", "`date_of_birth`", "'" + event.getNewValue() + "'",
+						"`user_name`=" + "'"
+								+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+								+ "'");
+				event.getTableView().getItems().get(event.getTablePosition().getRow())
+						.setDateOfBirth(event.getNewValue());
+				getTrialUsersTable().refresh();
+				System.out.println(data.get(1).getDateOfBirth());
+			}
+		});
 		trialUserEmailColumn.setCellValueFactory(new PropertyValueFactory<>("emailAddress"));
 		trialUserEmailColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		trialUserEmailColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, String>>() {
+			@Override
+			public void handle(CellEditEvent<TrialUser, String> event) {
+				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
+				// WHERE `user_name`='nero';
+				databaseConnector.update("`beatroot`.`trial_user`", "`email_address`", "'" + event.getNewValue() + "'",
+						"`user_name`=" + "'"
+								+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+								+ "'");
+				event.getTableView().getItems().get(event.getTablePosition().getRow())
+						.setEmailAddress(event.getNewValue());
+				getTrialUsersTable().refresh();
+			}
+		});
 		trialUserStreetAddressColumn.setCellValueFactory(new PropertyValueFactory<>("streetNameAndNumber"));
 		trialUserStreetAddressColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		trialUserStreetAddressColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, String>>() {
+			@Override
+			public void handle(CellEditEvent<TrialUser, String> event) {
+				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
+				// WHERE `user_name`='nero';
+				databaseConnector.update("`beatroot`.`trial_user`", "`physical_address`",
+						"'" + event.getNewValue() + "'",
+						"`user_name`=" + "'"
+								+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+								+ "'");
+				event.getTableView().getItems().get(event.getTablePosition().getRow()).getPhysicalAddress()
+						.setStreetNameAndNumber(event.getNewValue());
+				getTrialUsersTable().refresh();
+			}
+		});
+		/**
+		 * event.getTableView().getItems().get(event.getTablePosition().getRow())
+		 * .setPhysicalAddress(new Address(event.getNewValue(),
+		 * event.getTableView().getItems().get(event.getTablePosition().getRow())
+		 * .getPhysicalAddress().getCity(),
+		 * event.getTableView().getItems().get(event.getTablePosition().getRow())
+		 * .getPhysicalAddress().getPostalCode(),
+		 * event.getTableView().getItems().get(event.getTablePosition().getRow())
+		 * .getPhysicalAddress().getCountry()));
+		 */
 		trialUserCityColumn.setCellValueFactory(new PropertyValueFactory<>("cityOfResidence"));
 		trialUserCityColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		trialUserCityColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, String>>() {
+			@Override
+			public void handle(CellEditEvent<TrialUser, String> event) {
+				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
+				// WHERE `user_name`='nero';
+				databaseConnector.update("`beatroot`.`trial_user`", "`city_of_residence`",
+						"'" + event.getNewValue() + "'",
+						"`user_name`=" + "'"
+								+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+								+ "'");
+				event.getTableView().getItems().get(event.getTablePosition().getRow()).getPhysicalAddress()
+						.setCity(event.getNewValue());
+				getTrialUsersTable().refresh();
+			}
+		});
 		trialUserPostalCodeColumn.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
 		trialUserPostalCodeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		trialUserPostalCodeColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, String>>() {
+			@Override
+			public void handle(CellEditEvent<TrialUser, String> event) {
+				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
+				// WHERE `user_name`='nero';
+				databaseConnector.update("`beatroot`.`trial_user`", "`postal_code`", "'" + event.getNewValue() + "'",
+						"`user_name`=" + "'"
+								+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+								+ "'");
+				event.getTableView().getItems().get(event.getTablePosition().getRow()).getPhysicalAddress()
+						.setPostalCode(event.getNewValue());
+				getTrialUsersTable().refresh();
+			}
+		});
 		trialUserCountryColumn.setCellValueFactory(new PropertyValueFactory<>("country"));
 		trialUserCountryColumn.setCellFactory(ChoiceBoxTableCell.forTableColumn(countryList));
+		trialUserCountryColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, Country>>() {
+			@Override
+			public void handle(CellEditEvent<TrialUser, Country> event) {
+				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
+				// WHERE `user_name`='nero';
+				databaseConnector.update("`beatroot`.`trial_user`", "`country`", "'" + event.getNewValue() + "'",
+						"`user_name`=" + "'"
+								+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+								+ "'");
+				event.getTableView().getItems().get(event.getTablePosition().getRow()).getPhysicalAddress()
+						.setCountry(event.getNewValue());
+				getTrialUsersTable().refresh();
+			}
+		});
 		trialUserPhoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
 		trialUserPhoneNumberColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		trialUserPhoneNumberColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, String>>() {
+			@Override
+			public void handle(CellEditEvent<TrialUser, String> event) {
+				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
+				// WHERE `user_name`='nero';
+				databaseConnector.update("`beatroot`.`trial_user`", "`phone_number`", "'" + event.getNewValue() + "'",
+						"`user_name`=" + "'"
+								+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+								+ "'");
+				event.getTableView().getItems().get(event.getTablePosition().getRow())
+						.setPhoneNumber(event.getNewValue());
+				getTrialUsersTable().refresh();
+			}
+		});
 		trialUserTrialEndColumn.setCellValueFactory(new PropertyValueFactory<>("freeTrialEndDate"));
 		trialUserTrialEndColumn.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Date>() {
 			@Override
@@ -185,18 +353,37 @@ public class ModifyUserController implements Initializable {
 		}
 
 		));
-		data.addListener(new ListChangeListener<TrialUser>() {
-
+		trialUserTrialEndColumn.setEditable(false);
+		trialUserDescription.setCellValueFactory(new PropertyValueFactory<>("userDescription"));
+		trialUserDescription.setCellFactory(TextFieldTableCell.forTableColumn());
+		trialUserDescription.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TrialUser, String>>() {
 			@Override
-			public void onChanged(javafx.collections.ListChangeListener.Change<? extends TrialUser> change) {
-				while (change.next()) {
-					if (change.wasUpdated()) {
-						// databaseConnector.update(tableToUpdate,
-						// parameterToUpdate, newParameter, whereStatement);
-					}
-				}
+			public void handle(CellEditEvent<TrialUser, String> event) {
+				// UPDATE `beatroot`.`trial_user` SET `display_name`='nero'
+				// WHERE `user_name`='nero';
+				databaseConnector.update("`beatroot`.`trial_user`", "`user_description`",
+						"'" + event.getNewValue() + "'",
+						"`user_name`=" + "'"
+								+ event.getTableView().getItems().get(event.getTablePosition().getRow()).getUserName()
+								+ "'");
+				event.getTableView().getItems().get(event.getTablePosition().getRow())
+						.setUserDescription(event.getNewValue());
+				getTrialUsersTable().refresh();
 			}
 		});
+
+		// data.addListener(new ListChangeListener<TrialUser>() {
+		//
+		// @Override
+		// public void onChanged(javafx.collections.ListChangeListener.Change<?
+		// extends TrialUser> change) {
+		// while (change.next()) {
+		// if (change.wasUpdated()) {
+		// System.out.println(change);
+		// }
+		// }
+		// }
+		// });
 	}
 
 	public void modifyUserButtonPressed(ActionEvent event) {
