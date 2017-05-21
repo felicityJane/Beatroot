@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.ModifyUserController">
+   <children>
+   <fx:include fx:id="adminMenu" layoutX="20" layoutY="25" source="AdminMenu.fxml" />
+      <Button fx:id="premiumUsersButton" layoutX="30.0" layoutY="295.0" mnemonicParsing="false" text="Load premium users" />
+      <Button fx:id="trialUsersButton" layoutX="165.0" layoutY="295.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Load trial users" />
+      <TableView fx:id="trialUsersTable" layoutX="30.0" layoutY="119.0" prefHeight="127.0" prefWidth="696.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="119.0">
+        <columns>
+          <TableColumn fx:id="trialUserNameColumn" editable="false" prefWidth="75.0" text="User name" />
+          <TableColumn fx:id="trialUserDisplayNameColumn" prefWidth="85.0" text="Display name" />
+            <TableColumn fx:id="trialUserPasswordColumn" prefWidth="65.0" text="Password" />
+            <TableColumn fx:id="trialUserFirstNameColumn" prefWidth="75.0" text="First name" />
+            <TableColumn fx:id="trialUserLastNameColumn" prefWidth="75.0" text="Last name" />
+            <TableColumn fx:id="trialUserDateOfBirthColumn" prefWidth="92.0" text="Date of birth" />
+            <TableColumn fx:id="trialUserEmailColumn" prefWidth="69.0" text="Email" />
+            <TableColumn fx:id="trialUserStreetAddressColumn" prefWidth="86.0" text="Street address" />
+            <TableColumn fx:id="trialUserCityColumn" prefWidth="72.0" text="City" />
+            <TableColumn fx:id="trialUserPostalCodeColumn" prefWidth="78.0" text="Postal code" />
+            <TableColumn fx:id="trialUserCountryColumn" prefWidth="75.0" text="Country" />
+            <TableColumn fx:id="trialUserPhoneNumberColumn" prefWidth="88.0" text="Phone number" />
+            <TableColumn fx:id="trialUserTrialEndColumn" prefWidth="82.0" text="Trial end date" />
+            <TableColumn fx:id="trialUserDescription" prefWidth="75.0" text="User description" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,15 +1,33 @@
 package musicplayer.model;
 
-import javafx.fxml.FXML;
-import musicplayer.controller.*;
 import java.util.ArrayList;
+
+import javafx.fxml.FXML;
+import musicplayer.controller.AboutPageController;
+import musicplayer.controller.AddArtistController;
+import musicplayer.controller.AdminMenuController;
+import musicplayer.controller.AlbumPageController;
+import musicplayer.controller.ArtistPageController;
+import musicplayer.controller.FAQsPageController;
+import musicplayer.controller.HelpPageController;
+import musicplayer.controller.LogInMenuController;
+import musicplayer.controller.MainMenuController;
+import musicplayer.controller.ModifyUserController;
+import musicplayer.controller.PaymentMenuController;
+import musicplayer.controller.SettingsPageController;
+import musicplayer.controller.SignUpMenuController;
+import musicplayer.controller.SongPageController;
+import musicplayer.controller.UserDescriptionController;
+import musicplayer.controller.WelcomeMenuController;
 
 public class GlobalVariables {
 
 	private final static GlobalVariables instance = new GlobalVariables();
+
 	public static GlobalVariables getInstance() {
 		return instance;
 	}
+
 	private Album album;
 	private String albumCover;
 	private MusicTrack musicTrack;
@@ -20,23 +38,44 @@ public class GlobalVariables {
 	private TrialUser trialuser;
 	private PremiumUser premiumUser;
 	private Administrator administrator;
-	@FXML private AboutPageController aboutPageController;
-	@FXML private AlbumPageController albumPageController;
-	@FXML private ArtistPageController artistPageController;
-	@FXML private FAQsPageController faQsPageController;
-	@FXML private LogInMenuController logInMenuController;
-	@FXML private MainMenuController mainMenuController;
-	@FXML private PaymentMenuController paymentMenuController;
-	@FXML private SettingsPageController settingsPageController;
-	@FXML private SignUpMenuController signUpMenuController;
-	@FXML private SongPageController songPageController;
-	@FXML private WelcomeMenuController welcomeMenuController;
-	@FXML private HelpPageController helpPageController;
-	@FXML private UserDescriptionController userDescriptionController;
+	@FXML
+	private AboutPageController aboutPageController;
+	@FXML
+	private AlbumPageController albumPageController;
+	@FXML
+	private ArtistPageController artistPageController;
+	@FXML
+	private FAQsPageController faQsPageController;
+	@FXML
+	private LogInMenuController logInMenuController;
+	@FXML
+	private MainMenuController mainMenuController;
+	@FXML
+	private PaymentMenuController paymentMenuController;
+	@FXML
+	private SettingsPageController settingsPageController;
+	@FXML
+	private SignUpMenuController signUpMenuController;
+	@FXML
+	private SongPageController songPageController;
+	@FXML
+	private WelcomeMenuController welcomeMenuController;
+	@FXML
+	private HelpPageController helpPageController;
+	@FXML
+	private UserDescriptionController userDescriptionController;
 	private User contactSelected;
 	private ArrayList<PremiumUser> contactList = new ArrayList<>();
-	@FXML private UserDescriptionController ownUserDescriptionController;
-	@FXML private UserDescriptionController contactDescriptionController;
+	@FXML
+	private UserDescriptionController ownUserDescriptionController;
+	@FXML
+	private UserDescriptionController contactDescriptionController;
+	@FXML
+	private AdminMenuController adminMenuController;
+	@FXML
+	private ModifyUserController modifyUserController;
+	@FXML
+	private AddArtistController addArtistController;
 
 	public void setAlbum(Album album) {
 		this.album = album;
@@ -222,7 +261,9 @@ public class GlobalVariables {
 		this.ownUserDescriptionController = ownUserDescriptionController;
 	}
 
-	public UserDescriptionController getContactDescriptionController() { return contactDescriptionController;}
+	public UserDescriptionController getContactDescriptionController() {
+		return contactDescriptionController;
+	}
 
 	public void setContactDescriptionController(UserDescriptionController contactDescriptionController) {
 		this.contactDescriptionController = contactDescriptionController;
@@ -242,5 +283,29 @@ public class GlobalVariables {
 
 	public void setContactList(ArrayList<PremiumUser> contactList) {
 		this.contactList = contactList;
+	}
+
+	public AdminMenuController getAdminMenuController() {
+		return adminMenuController;
+	}
+
+	public void setAdminMenuController(AdminMenuController adminMenuController) {
+		this.adminMenuController = adminMenuController;
+	}
+
+	public ModifyUserController getModifyUserController() {
+		return modifyUserController;
+	}
+
+	public void setModifyUserController(ModifyUserController modifyUserController) {
+		this.modifyUserController = modifyUserController;
+	}
+
+	public AddArtistController getAddArtistController() {
+		return addArtistController;
+	}
+
+	public void setAddArtistController(AddArtistController addArtistController) {
+		this.addArtistController = addArtistController;
 	}
 }
