@@ -1,6 +1,5 @@
 package musicplayer.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -25,6 +24,8 @@ public class SettingsPageController implements Initializable {
     GlobalVariables globalVariables = GlobalVariables.getInstance();
     private String userName, newPassWord, newDisplayName;
     int user;
+    private AnchorPane welcomeParent, welcomeParentTwo, aboutParent, adminLogInParent, adminSignUpParent, albumParent, artistParent, FAQSParent, helpParent, logInParent,
+    paymentParent, signUpParent, songParent;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,14 +52,6 @@ public class SettingsPageController implements Initializable {
             user = 3;
             System.out.println(" type admin");
         }
-    }
-    @FXML private void onDarkThemeButton(ActionEvent event){
-        //TODO Wait for Fatih css update
-        settingsAnchorPage.getStyleClass().add("greyBackground");
-    }
-    @FXML private void onLightThemeButton(ActionEvent event){
-        //TODO Wait for Fatih css update
-        settingsAnchorPage.getStyleClass().removeAll("greyBackground");
     }
     @FXML private void onSaveButton() {
 

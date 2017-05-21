@@ -1,36 +1,20 @@
 package musicplayer;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import musicplayer.model.*;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-
-import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import musicplayer.model.Administrator;
-import musicplayer.model.Album;
-import musicplayer.model.Comment;
-import musicplayer.model.Country;
-import musicplayer.model.Gender;
-import musicplayer.model.GlobalVariables;
-import musicplayer.model.MusicArtist;
-import musicplayer.model.MusicTrack;
-import musicplayer.model.PaymentMethod;
-import musicplayer.model.PremiumUser;
-import musicplayer.model.Rating;
-import musicplayer.model.TrialUser;
 
 public class DB_Connector {
 	private String urlOfDatabase;

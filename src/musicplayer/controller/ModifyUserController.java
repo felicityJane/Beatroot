@@ -1,14 +1,5 @@
 package musicplayer.controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Date;
-import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,6 +21,15 @@ import musicplayer.SceneManager;
 import musicplayer.model.Country;
 import musicplayer.model.GlobalVariables;
 import musicplayer.model.TrialUser;
+
+import java.io.IOException;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 public class ModifyUserController implements Initializable {
 	@FXML
