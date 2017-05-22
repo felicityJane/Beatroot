@@ -1,20 +1,36 @@
 package musicplayer;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import musicplayer.model.*;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.sql.*;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
+import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import musicplayer.model.Administrator;
+import musicplayer.model.Album;
+import musicplayer.model.Comment;
+import musicplayer.model.Country;
+import musicplayer.model.Gender;
+import musicplayer.model.GlobalVariables;
+import musicplayer.model.MusicArtist;
+import musicplayer.model.MusicTrack;
+import musicplayer.model.PaymentMethod;
+import musicplayer.model.PremiumUser;
+import musicplayer.model.Rating;
+import musicplayer.model.TrialUser;
 
 public class DB_Connector {
 	private String urlOfDatabase;
@@ -589,6 +605,35 @@ public class DB_Connector {
 				globalVariables.getModifyUserController().getTrialUsersTable()
 						.setItems(globalVariables.getModifyUserController().getData());
 				// globalVariables.getModifyUserController().getTrialUsersTable().set
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void getPremiumUsersDetails() {
+		try {
+			resultSet = statement.executeQuery("SELECT * FROM premium_user");
+			while (resultSet.next()) {
+				globalVariables.getModifyUserController().getPremiumData()
+						.add(new PremiumUser(resultSet.getString("user_name"), resultSet.getString("display_name"),
+								resultSet.getString("password"), resultSet.getString("user_description"),
+								resultSet.getString("personal_picture_path"), resultSet.getString("first_name"),
+								resultSet.getString("last_name"), resultSet.getDate("date_of_birth"),
+								resultSet.getString("email_address"), resultSet.getString("physical_address"),
+								resultSet.getString("city_of_residence"), resultSet.getString("postal_code"),
+								Country.fromString(resultSet.getString("country")),
+								Gender.values()[Integer.parseInt(resultSet.getString("gender_gender_id"))],
+								resultSet.getString("phone_number"), resultSet.getString("bank_card_number"),
+								resultSet.getDate("expiration_date"),
+								PaymentMethod.fromString(resultSet.getString("card_type")),
+								resultSet.getString("billing_account_owner_name"),
+								resultSet.getString("billing_address"), resultSet.getString("billing_city"),
+								resultSet.getString("billing_postal_code"),
+								Country.fromString(resultSet.getString("billing_country")),
+								resultSet.getString("billing_phone_number")));
+				globalVariables.getModifyUserController().getPremiumUsersTable()
+						.setItems(globalVariables.getModifyUserController().getPremiumData());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
