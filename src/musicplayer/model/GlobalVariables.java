@@ -1,9 +1,25 @@
 package musicplayer.model;
 
-import javafx.fxml.FXML;
-import musicplayer.controller.*;
-
 import java.util.ArrayList;
+
+import javafx.fxml.FXML;
+import musicplayer.controller.AboutPageController;
+import musicplayer.controller.AddAlbumController;
+import musicplayer.controller.AddArtistController;
+import musicplayer.controller.AdminMenuController;
+import musicplayer.controller.AlbumPageController;
+import musicplayer.controller.ArtistPageController;
+import musicplayer.controller.FAQsPageController;
+import musicplayer.controller.HelpPageController;
+import musicplayer.controller.LogInMenuController;
+import musicplayer.controller.MainMenuController;
+import musicplayer.controller.ModifyUserController;
+import musicplayer.controller.PaymentMenuController;
+import musicplayer.controller.SettingsPageController;
+import musicplayer.controller.SignUpMenuController;
+import musicplayer.controller.SongPageController;
+import musicplayer.controller.UserDescriptionController;
+import musicplayer.controller.WelcomeMenuController;
 
 public class GlobalVariables {
 
@@ -61,6 +77,8 @@ public class GlobalVariables {
 	private ModifyUserController modifyUserController;
 	@FXML
 	private AddArtistController addArtistController;
+	@FXML
+	private AddAlbumController addAlbumcontroller;
 
 	public void setAlbum(Album album) {
 		this.album = album;
@@ -292,5 +310,13 @@ public class GlobalVariables {
 
 	public void setAddArtistController(AddArtistController addArtistController) {
 		this.addArtistController = addArtistController;
+	}
+
+	public AddAlbumController getAddAlbumcontroller() {
+		return addAlbumcontroller;
+	}
+
+	public void setAddAlbumcontroller(AddAlbumController addAlbumcontroller) {
+		this.addAlbumcontroller = addAlbumcontroller;
 	}
 }

@@ -54,4 +54,20 @@ public class AdminMenuController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
+	public void createAlbumButtonPressed(ActionEvent ev) {
+		try {
+			SceneManager.sceneManager.changeScene(ev, "view/AlbumCreationPanel.fxml");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public Button getCreateAlbumButton() {
+		return createAlbumButton;
+	}
+
+	public void setCreateAlbumButton(Button createAlbumButton) {
+		this.createAlbumButton = createAlbumButton;
+	}
 }

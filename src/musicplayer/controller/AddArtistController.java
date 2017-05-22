@@ -28,7 +28,7 @@ public class AddArtistController implements Initializable {
 
 	private GlobalVariables variables = GlobalVariables.getInstance();
 	private DB_Connector databaseConnector;
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

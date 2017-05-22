@@ -1,6 +1,7 @@
 package musicplayer.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javafx.scene.image.Image;
 
@@ -10,6 +11,8 @@ public class Album {
 	private Image albumCover;
 	private ArrayList<MusicTrack> songs = new ArrayList<MusicTrack>();
 	private Administrator administrator;
+	private MusicArtist[] artists;
+	private Date debutYear;
 
 	/**
 	 * @param albumName
@@ -17,10 +20,25 @@ public class Album {
 	 * @param albumCover
 	 *            Image Album's cover
 	 */
-
 	public Album(String albumName, Image albumCover) {
 		this.albumName = albumName;
 		this.albumCover = albumCover;
+	}
+
+	public Album(String albumName, Image albumCover, Date debutYear) {
+		this.albumName = albumName;
+		this.albumCover = albumCover;
+		this.debutYear = debutYear;
+	}
+
+	public Album(String albumName, Image albumCover, Administrator administrator, Date debutYear,
+			MusicArtist... artists) {
+		this.albumName = albumName;
+		this.albumCover = albumCover;
+		this.debutYear = debutYear;
+		this.administrator = administrator;
+		this.artists = artists;
+
 	}
 
 	public int getAlbumID() {
@@ -45,6 +63,14 @@ public class Album {
 
 	public void setAlbumCover(Image albumCover) {
 		this.albumCover = albumCover;
+	}
+
+	public Date getDebutYear() {
+		return debutYear;
+	}
+
+	public void setDebutYear(Date debutYear) {
+		this.debutYear = debutYear;
 	}
 
 	public ArrayList<MusicTrack> getSongs() {
@@ -73,5 +99,13 @@ public class Album {
 
 	public void setAdministrator(Administrator administrator) {
 		this.administrator = administrator;
+	}
+
+	public MusicArtist[] getArtists() {
+		return artists;
+	}
+
+	public void setArtists(MusicArtist[] artists) {
+		this.artists = artists;
 	}
 }

@@ -17,7 +17,7 @@
                         <String fx:value="buttonColor" />
                         <String fx:value="labelColor" />
                      </styleClass></Button>
-                  <Button fx:id="createAlbumButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" stylesheets="@../css/styleSheet.css" text="Create album">
+                  <Button fx:id="createAlbumButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" stylesheets="@../css/styleSheet.css" text="Create album" onAction="#createAlbumButtonPressed">
                      <styleClass>
                         <String fx:value="buttonColor" />
                         <String fx:value="labelColor" />
