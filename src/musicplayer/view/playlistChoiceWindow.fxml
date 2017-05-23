@@ -5,14 +5,14 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="282.0" prefWidth="293.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.PlaylistChoiceWindowController">
+<AnchorPane id="anchorpane"  prefHeight="282.0" prefWidth="293.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.PlaylistChoiceWindowController">
    <children>
-      <ListView fx:id="lstPlaylists" layoutX="47.0" layoutY="23.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/styleSheet.css">
+      <ListView fx:id="lstPlaylists" layoutX="47.0" layoutY="23.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/darkAndGloomy.css">
          <styleClass>
             <String fx:value="list-cell" />
             <String fx:value="listviewBackground" />
          </styleClass></ListView>
-      <Button fx:id="btnChoosePlaylist" layoutX="121.0" layoutY="243.0" mnemonicParsing="false" onAction="#onBtnChoosePlaylistPressed" stylesheets="@../css/styleSheet.css" text="Done!">
+      <Button fx:id="btnChoosePlaylist" layoutX="121.0" layoutY="243.0" mnemonicParsing="false" onAction="#onBtnChoosePlaylistPressed"  text="Done!">
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />

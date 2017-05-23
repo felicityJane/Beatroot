@@ -107,7 +107,7 @@ public class ModifyUserController implements Initializable {
 		variables.getAdminMenuController().getModifyUsersButton().setText("Main page");
 		variables.getAdminMenuController().getModifyUsersButton().setOnAction((event) -> {
 			try {
-				SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
+				SceneManager.getInstance().changeScene(event, "view/welcomeMenu.fxml");
 			} catch (IOException ex) {
 				ex.printStackTrace();
 			}
@@ -388,7 +388,7 @@ public class ModifyUserController implements Initializable {
 
 	public void modifyUserButtonPressed(ActionEvent event) {
 		try {
-			SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
+			SceneManager.getInstance().changeScene(event, "view/welcomeMenu.fxml");
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}

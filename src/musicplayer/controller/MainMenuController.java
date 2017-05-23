@@ -12,8 +12,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import musicplayer.DialogBoxManager;
+import musicplayer.SceneManager;
 import musicplayer.model.GlobalVariables;
-import static musicplayer.SceneManager.sceneManager;
 
 public class MainMenuController implements Initializable{
 
@@ -46,7 +46,7 @@ public class MainMenuController implements Initializable{
 		if (answer){
 			try {
 				GlobalVariables.getInstance().getContactList().clear();
-				sceneManager.changeSceneMenuBar(menuBar,"view/logInMenu.fxml");
+				SceneManager.getInstance().changeSceneMenuBar(menuBar,"view/logInMenu.fxml");
 			}catch (IOException e){
 				DialogBoxManager.errorDialogBox("Error occurred","logging out, please try again");
 				e.printStackTrace();
@@ -60,7 +60,7 @@ public class MainMenuController implements Initializable{
 	@FXML
 	private void settingsMenuOption(){
 		try {
-			sceneManager.popUpWindow("view/settingsPage.fxml");
+			SceneManager.getInstance().popUpWindow("view/settingsPage.fxml");
 		} catch (IOException e) {
 			DialogBoxManager.errorDialogBox("Error occurred","Switching to settings page from menu bar selection, please try again");
 			e.printStackTrace();
@@ -69,7 +69,7 @@ public class MainMenuController implements Initializable{
 	@FXML
 	private void aboutMenuOption(){
 		try {
-			sceneManager.popUpWindow("view/aboutPage.fxml");
+			SceneManager.getInstance().popUpWindow("view/aboutPage.fxml");
 		} catch (IOException e) {
 			DialogBoxManager.errorDialogBox("Error occurred","Switching to about page from menu bar selection, please try again");
 			e.printStackTrace();
@@ -78,7 +78,7 @@ public class MainMenuController implements Initializable{
 	@FXML
 	private void faqsMenuOption(){
 		try {
-			sceneManager.popUpWindow("view/faqsPage.fxml");
+			SceneManager.getInstance().popUpWindow("view/faqsPage.fxml");
 		} catch (IOException e) {
 			DialogBoxManager.errorDialogBox("Error occurred","Switching to faqs page from menu bar selection, please try again");
 			e.printStackTrace();
@@ -87,7 +87,7 @@ public class MainMenuController implements Initializable{
 	@FXML
 	private void HelpMenuOption(){
 		try {
-			sceneManager.popUpWindow("view/helpPage.fxml");
+			SceneManager.getInstance().popUpWindow("view/helpPage.fxml");
 		} catch (IOException e) {
 			DialogBoxManager.errorDialogBox("Error occurred","Switching to help page from menu bar selection, please try again");
 			e.printStackTrace();

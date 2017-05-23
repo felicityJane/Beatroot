@@ -68,7 +68,6 @@ public class AlbumPageController implements Initializable {
         final ContextMenu contextMenu = new ContextMenu();
         final MenuItem songPage = new MenuItem("See song info");
         contextMenu.getItems().addAll(songPage);
-        SceneManager sceneManager = new SceneManager();
         for (Node n : albumPageAnchorPane.getChildren()) {
             if (n instanceof ListView ) {
                 n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
@@ -81,7 +80,7 @@ public class AlbumPageController implements Initializable {
                 globalVariables.getMusicTrack().setID(trackId);
                 Stage stage = (Stage) albumPageAnchorPane.getScene().getWindow();
                 stage.close();
-                sceneManager.popUpWindow( "view/songPage.fxml");
+                SceneManager.getInstance().popUpWindow( "view/songPage.fxml");
             } catch (IOException e) {
                 DialogBoxManager.errorDialogBox("error occurred","an error has occurred changing to song page scene, please try again");
                 e.printStackTrace();
@@ -92,7 +91,6 @@ public class AlbumPageController implements Initializable {
         final ContextMenu contextMenu = new ContextMenu();
         final MenuItem artistPage = new MenuItem("See artist info");
         contextMenu.getItems().addAll(artistPage);
-        SceneManager sceneManager = new SceneManager();
         for (Node n : albumPageAnchorPane.getChildren()) {
             if (n instanceof ImageView ) {
                 n.setOnContextMenuRequested(event -> contextMenu.show(n, event.getScreenX(), event.getScreenY()));
@@ -102,7 +100,7 @@ public class AlbumPageController implements Initializable {
             try {
                 Stage stage = (Stage) albumPageAnchorPane.getScene().getWindow();
                 stage.close();
-                sceneManager.popUpWindow( "view/artistPage.fxml");
+                SceneManager.getInstance().popUpWindow( "view/artistPage.fxml");
             } catch (IOException e) {
                 DialogBoxManager.errorDialogBox("error occurred","an error has occurred changing to artist page scene, please try again");
                 e.printStackTrace();

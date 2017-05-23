@@ -1,0 +1,73 @@
+  #anchorpane{
+     -fx-background-color: 	lightpink;
+ }
+    .listviewBackground{
+     -fx-background-color: lightpink;
+     -fx-background-radius: 8.0;
+     -fx-border-color: hotpink;
+     -fx-border-radius: 8.0;
+ }
+ .textField{
+     -fx-background-color: peachpuff;
+     -fx-background-radius: 8.0;
+     -fx-text-fill: white;
+ }
+ .radio-button{
+     -fx-background-color: lightpink;
+     -fx-text-fill : hotpink;
+     -tx-background-radius: 8.0;
+ }
+ .menu-bar {
+    -fx-background-color: peachpuff;
+    -fx-text-fill: white;
+    /* The menu bar itself */
+ }
+ .menu .label {
+   -fx-text-fill: white;
+   -fx-font-size: 13; /* Styles the text on a menu item */
+ }
+ .menu:showing .label {
+    -fx-text-fill: black;
+    -fx-font-size: 13;
+    /* Styles the text on a menu item when activated */
+ }
+ .text-area {
+     -fx-font-family: Consolas;
+     -fx-font-size: 13;
+     -fx-text-fill: white;
+     -fx-display-caret:true;
+ }
+ .text-area .content {
+     -fx-background-color: pink;
+ }
+ .labelColor{
+    -fx-text-fill: salmon;
+     -fx-font-size: 14;
+ }
+ .mainLabelColor{
+     -fx-text-fill: salmon;
+     -fx-font-size: 16;
+ }
+ .buttonColor{
+     -fx-background-color: plum;
+     -fx-background-radius: 8.0;
+     -fx-border-color: violet;
+     -fx-border-radius: 8.0;
+ }
+ .list-cell:filled:selected:focused, .list-cell:filled:selected {
+   -fx-background-color: plum;
+   -fx-text-fill: white;
+ }
+ .list-cell {
+    -fx-text-fill: white ;
+ }
+ .list-cell:odd {
+    -fx-background-color: plum;
+ }
+ .list-cell:even {
+    -fx-background-color: pink;
+ }
+ .list-cell:filled:hover {
+     -fx-background-color: lightpink;
+     -fx-text-fill: white;
+ }

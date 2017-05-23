@@ -7,10 +7,13 @@ import java.util.ArrayList;
 
 public class GlobalVariables {
 
-	private final static GlobalVariables instance = new GlobalVariables();
+	private static GlobalVariables globalVariables;
 
 	public static GlobalVariables getInstance() {
-		return instance;
+		if(globalVariables == null){
+			globalVariables = new GlobalVariables();
+		}
+		return globalVariables;
 	}
 
 	private Album album;

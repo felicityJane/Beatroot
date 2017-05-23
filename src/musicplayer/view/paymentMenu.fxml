@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="paymentParentAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="744.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.PaymentMenuController">
+<AnchorPane id="anchorpane"  fx:id="paymentParentAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="744.0"  xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.PaymentMenuController">
    <children>
       <fx:include fx:id="mainMenu" source="mainMenu.fxml" />
       <GridPane layoutX="352.0" layoutY="108.0" prefHeight="97.0" prefWidth="260.0">
@@ -28,32 +28,32 @@
           <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="cardHolderName" prefHeight="28.0" prefWidth="272.0" styleClass="textField" stylesheets="@../css/styleSheet.css" GridPane.rowIndex="1" />
-            <TextField fx:id="bankCardNumber" prefHeight="23.0" prefWidth="272.0" styleClass="textField" stylesheets="@../css/styleSheet.css" GridPane.rowIndex="2" />
-            <Label fx:id="warningLabel" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" textFill="#e40606">
+            <TextField fx:id="cardHolderName" prefHeight="28.0" prefWidth="272.0" styleClass="textField"  GridPane.rowIndex="1" />
+            <TextField fx:id="bankCardNumber" prefHeight="23.0" prefWidth="272.0" styleClass="textField"  GridPane.rowIndex="2" />
+            <Label fx:id="warningLabel" styleClass="mainLabelColor"  textFill="#e40606">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
          </children>
       </GridPane>
-      <RadioButton fx:id="visaButton" layoutX="352.0" layoutY="225.0" mnemonicParsing="false" styleClass="textField" stylesheets="@../css/styleSheet.css" text="Visa">
+      <RadioButton fx:id="visaButton" layoutX="352.0" layoutY="225.0" mnemonicParsing="false" styleClass="textField"  text="Visa">
          <toggleGroup>
             <ToggleGroup fx:id="cardType" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="masterButton" layoutX="508.0" layoutY="225.0" mnemonicParsing="false" styleClass="textField" stylesheets="@../css/styleSheet.css" text="Mastercard" toggleGroup="$cardType" />
-      <ComboBox fx:id="monthBox" layoutX="353.0" layoutY="264.0" prefHeight="27.0" prefWidth="71.0" stylesheets="@../css/styleSheet.css">
+      <RadioButton fx:id="masterButton" layoutX="508.0" layoutY="225.0" mnemonicParsing="false" styleClass="textField"  text="Mastercard" toggleGroup="$cardType" />
+      <ComboBox fx:id="monthBox" layoutX="353.0" layoutY="264.0" prefHeight="27.0" prefWidth="71.0" stylesheets="@../css/darkAndGloomy.css">
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />
          </styleClass></ComboBox>
-      <ComboBox fx:id="yearBox" layoutX="442.0" layoutY="264.0" prefHeight="27.0" prefWidth="94.0" stylesheets="@../css/styleSheet.css">
+      <ComboBox fx:id="yearBox" layoutX="442.0" layoutY="264.0" prefHeight="27.0" prefWidth="94.0" stylesheets="@../css/darkAndGloomy.css">
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />
          </styleClass></ComboBox>
-      <Button fx:id="getAddress" layoutX="353.0" layoutY="319.0" mnemonicParsing="false" onAction="#handleGetAddressButton" prefHeight="27.0" prefWidth="142.0" stylesheets="@../css/styleSheet.css" text="Get Address">
+      <Button fx:id="getAddress" layoutX="353.0" layoutY="319.0" mnemonicParsing="false" onAction="#handleGetAddressButton" prefHeight="27.0" prefWidth="142.0"  text="Get Address">
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />
@@ -69,18 +69,18 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="phoneNumber" prefHeight="25.0" prefWidth="272.0" styleClass="textField" stylesheets="@../css/styleSheet.css" />
-            <TextField fx:id="billingAddress" styleClass="textField" stylesheets="@../css/styleSheet.css" GridPane.rowIndex="1" />
-            <TextField fx:id="billingCity" prefHeight="28.0" prefWidth="254.0" styleClass="textField" stylesheets="@../css/styleSheet.css" GridPane.rowIndex="2" />
-            <TextField fx:id="billingPostalCode" prefHeight="12.0" prefWidth="253.0" styleClass="textField" stylesheets="@../css/styleSheet.css" GridPane.rowIndex="3" />
+            <TextField fx:id="phoneNumber" prefHeight="25.0" prefWidth="272.0" styleClass="textField"  />
+            <TextField fx:id="billingAddress" styleClass="textField" GridPane.rowIndex="1" />
+            <TextField fx:id="billingCity" prefHeight="28.0" prefWidth="254.0" styleClass="textField"  GridPane.rowIndex="2" />
+            <TextField fx:id="billingPostalCode" prefHeight="12.0" prefWidth="253.0" styleClass="textField"  GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <ComboBox fx:id="countryBox" layoutX="353.0" layoutY="511.0" prefWidth="150.0" stylesheets="@../css/styleSheet.css">
+      <ComboBox fx:id="countryBox" layoutX="353.0" layoutY="511.0" prefWidth="150.0" >
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />
          </styleClass></ComboBox>
-      <Button fx:id="paymentButton" layoutX="353.0" layoutY="562.0" mnemonicParsing="false" onAction="#handlePaymentButton" prefHeight="27.0" prefWidth="272.0" stylesheets="@../css/styleSheet.css" text="Confirm Payment">
+      <Button fx:id="paymentButton" layoutX="353.0" layoutY="562.0" mnemonicParsing="false" onAction="#handlePaymentButton" prefHeight="27.0" prefWidth="272.0" text="Confirm Payment">
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />
@@ -102,16 +102,16 @@
             <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="17.0" prefWidth="174.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Card Holder Name" />
-            <Label styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Bank Card Number" GridPane.rowIndex="1" />
-            <Label styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Expritation Date" GridPane.rowIndex="3" />
-            <Label prefHeight="17.0" prefWidth="142.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Get Resident Address" GridPane.rowIndex="4" />
-            <Label prefHeight="33.0" prefWidth="92.0" styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Phone Number" GridPane.rowIndex="5" />
-            <Label styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Billing Address" GridPane.rowIndex="6" />
-            <Label styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Billing City" GridPane.rowIndex="7" />
-            <Label styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Billing Postal Code" GridPane.rowIndex="8" />
-            <Label styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Billing Country" GridPane.rowIndex="9" />
-            <Label styleClass="labelColor" stylesheets="@../css/styleSheet.css" text="Card Type" GridPane.rowIndex="2" />
+            <Label prefHeight="17.0" prefWidth="174.0" styleClass="labelColor"  text="Card Holder Name" />
+            <Label styleClass="labelColor" stylesheets="@../css/darkAndGloomy.css" text="Bank Card Number" GridPane.rowIndex="1" />
+            <Label styleClass="labelColor" stylesheets="@../css/darkAndGloomy.css" text="Expritation Date" GridPane.rowIndex="3" />
+            <Label prefHeight="17.0" prefWidth="142.0" styleClass="labelColor"  text="Get Resident Address" GridPane.rowIndex="4" />
+            <Label prefHeight="33.0" prefWidth="92.0" styleClass="labelColor"  text="Phone Number" GridPane.rowIndex="5" />
+            <Label styleClass="labelColor" stylesheets="@../css/darkAndGloomy.css" text="Billing Address" GridPane.rowIndex="6" />
+            <Label styleClass="labelColor" stylesheets="@../css/darkAndGloomy.css" text="Billing City" GridPane.rowIndex="7" />
+            <Label styleClass="labelColor" stylesheets="@../css/darkAndGloomy.css" text="Billing Postal Code" GridPane.rowIndex="8" />
+            <Label styleClass="labelColor" stylesheets="@../css/darkAndGloomy.css" text="Billing Country" GridPane.rowIndex="9" />
+            <Label styleClass="labelColor" stylesheets="@../css/darkAndGloomy.css" text="Card Type" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <ImageView fitHeight="82.0" fitWidth="308.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">

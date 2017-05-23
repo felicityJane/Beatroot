@@ -9,18 +9,53 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.IOException;
 
 public class SceneManager {
 
-    public static SceneManager sceneManager = new SceneManager();
+    private static SceneManager sceneManager;
+    private String cssFile;
+
+    private SceneManager() {
+        this.setBrightMode(false);
+    }
+
+    public static SceneManager getInstance(){
+        if (sceneManager == null){
+            sceneManager = new SceneManager();
+        }
+        return sceneManager;
+    }
+
+    public void changeSceneMain(Stage stage, String fxml) {
+        try {
+            Parent root = FXMLLoader.load(Main.class.getResource(fxml));
+            Scene scene = new Scene(root);
+            this.applyCurrentCss(scene);
+            stage.setScene(scene);
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    public void applyCurrentCss(Scene scene) {
+        scene.getStylesheets().add(this.cssFile);
+    }
+    public void setBrightMode(boolean active) {
+        if(active) {
+            this.cssFile = "musicplayer/css/brightAndBubbly.css";
+        }else {
+            this.cssFile = "musicplayer/css/darkAndGloomy.css";
+        }
+    }
 
     public void changeScene(Event e, String fxmlFileName ) throws IOException {
         Node node = (Node)e.getSource();
         Stage stage = (Stage)node.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
         Scene scene = new Scene(root);
+        this.applyCurrentCss(scene);
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.centerOnScreen();
@@ -43,6 +78,7 @@ public class SceneManager {
         Stage stage = (Stage) menuBar.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
         Scene scene = new Scene(root);
+        this.applyCurrentCss(scene);
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.centerOnScreen();
@@ -64,6 +100,7 @@ public class SceneManager {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
         Scene scene = new Scene(root);
+        this.applyCurrentCss(scene);
         stage.setTitle("Beatroot");
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -74,8 +111,10 @@ public class SceneManager {
         try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
+            Scene scene = new Scene(root);
+            this.applyCurrentCss(scene);
             stage.setTitle(title);
-            stage.setScene(new Scene((root)));
+            stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
             stage.centerOnScreen();
@@ -88,8 +127,10 @@ public class SceneManager {
         try {
             stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource(fxmlFileName));
+            Scene scene = new Scene(root);
+            this.applyCurrentCss(scene);
             stage.setTitle(title);
-            stage.setScene(new Scene((root)));
+            stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
             stage.centerOnScreen();

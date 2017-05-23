@@ -6,16 +6,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="152.0" prefWidth="362.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.FriendRequestWindowController">
+<AnchorPane id="anchorpane"  prefHeight="152.0" prefWidth="362.0"  xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.FriendRequestWindowController">
    <children>
       <ImageView fx:id="imgContactPicture" fitHeight="47.0" fitWidth="47.0" layoutX="50.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="lblDisplayNameAndText" layoutX="108.0" layoutY="38.0" styleClass="mainLabelColor" stylesheets="@../css/styleSheet.css" text="Label" wrapText="true" />
-      <Button fx:id="btnAccept" layoutX="66.0" layoutY="98.0" mnemonicParsing="false" onAction="#onBtnAcceptPressed" prefHeight="25.0" prefWidth="83.0" stylesheets="@../css/styleSheet.css" text="Accept">
+      <Label fx:id="lblDisplayNameAndText" layoutX="108.0" layoutY="38.0" styleClass="mainLabelColor" stylesheets="@../css/darkAndGloomy.css" text="Label" wrapText="true" />
+      <Button fx:id="btnAccept" layoutX="66.0" layoutY="98.0" mnemonicParsing="false" onAction="#onBtnAcceptPressed" prefHeight="25.0" prefWidth="83.0"  text="Accept">
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />
          </styleClass></Button>
-      <Button fx:id="btnDecline" layoutX="211.0" layoutY="98.0" mnemonicParsing="false" onAction="#onBtnDeclinePressed" prefHeight="25.0" prefWidth="83.0" stylesheets="@../css/styleSheet.css" text="Decline">
+      <Button fx:id="btnDecline" layoutX="211.0" layoutY="98.0" mnemonicParsing="false" onAction="#onBtnDeclinePressed" prefHeight="25.0" prefWidth="83.0"  text="Decline">
          <styleClass>
             <String fx:value="buttonColor" />
             <String fx:value="labelColor" />

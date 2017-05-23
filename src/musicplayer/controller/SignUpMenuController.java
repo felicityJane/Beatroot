@@ -231,7 +231,7 @@ private void handleSignUpButton(ActionEvent event) throws Exception{
 	@FXML
 	private void clickOnLogInLabel(MouseEvent me) {
 		try {
-			SceneManager.sceneManager.changeScene(me, "view/logInMenu.fxml");
+			SceneManager.getInstance().changeScene(me, "view/logInMenu.fxml");
 
 		} catch (Exception e) {
 			DialogBoxManager.errorDialogBox("Error occurred", "Changing from sign up scene to log in scene");

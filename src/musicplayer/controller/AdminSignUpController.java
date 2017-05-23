@@ -135,7 +135,7 @@ public class AdminSignUpController implements Initializable {
 					// + admin.getStaffID() + "')");
 					DialogBoxManager.confirmationDialogBox("Registration successful",
 							"The user " + admin.getUserName() + " has been successfully registered");
-					SceneManager.sceneManager.changeScene(event, "view/AdminLogIn.fxml");
+					SceneManager.getInstance().changeScene(event, "view/AdminLogIn.fxml");
 				}
 				// 23:42:44 insert into administrator(staff_id, user_name,
 				// password, display_name, first_name, last_name, date_of_birth,
@@ -175,7 +175,7 @@ public class AdminSignUpController implements Initializable {
 									+ admin.getStaffID() + "')");
 					DialogBoxManager.confirmationDialogBox("Registration successful",
 							"The user " + admin.getUserName() + " has been successfully registered");
-					SceneManager.sceneManager.changeScene(event, "view/AdminLogIn.fxml");
+					SceneManager.getInstance().changeScene(event, "view/AdminLogIn.fxml");
 				}
 				if (otherRadio.isSelected()) {
 					Administrator admin = new Administrator(staffIdField.getText(), userNameField.getText(),
@@ -200,7 +200,7 @@ public class AdminSignUpController implements Initializable {
 									+ admin.getStaffID() + "')");
 					DialogBoxManager.confirmationDialogBox("Registration successful",
 							"The user " + admin.getUserName() + " has been successfully registered");
-					SceneManager.sceneManager.changeScene(event, "view/AdminLogIn.fxml");
+					SceneManager.getInstance().changeScene(event, "view/AdminLogIn.fxml");
 				}
 			} else {
 				DialogBoxManager.errorDialogBox("Registration error", "Username is already taken");
@@ -212,7 +212,7 @@ public class AdminSignUpController implements Initializable {
 
 	public void cancelButtonPressed(ActionEvent e) {
 		try {
-			SceneManager.sceneManager.changeScene(e, "view/AdminLogIn.fxml");
+			SceneManager.getInstance().changeScene(e, "view/AdminLogIn.fxml");
 
 		} catch (IOException ex) {
 			ex.printStackTrace();

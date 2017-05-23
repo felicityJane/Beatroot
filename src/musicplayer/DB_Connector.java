@@ -160,7 +160,7 @@ public class DB_Connector {
 					globalVariables.setPremiumUser(null);
 					globalVariables.setAdministrator(null);
 
-					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
+					SceneManager.getInstance().changeScene(event, "view/welcomeMenu.fxml");
 
 				} else {
 					warningLabel.setText("Invalid username or password!!");
@@ -205,7 +205,7 @@ public class DB_Connector {
 					globalVariables.setAdministrator(null);
 					globalVariables.setTrialuser(null);
 
-					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
+					SceneManager.getInstance().changeScene(event, "view/welcomeMenu.fxml");
 
 				} else {
 					warningLabel.setText("Invalid username or password!!");
@@ -243,7 +243,7 @@ public class DB_Connector {
 			if (rs.next()) {
 				warningLabel.setText("Username is already taken");
 			} else {
-				SceneManager.sceneManager.changeScene(event, "view/paymentMenu.fxml");
+				SceneManager.getInstance().changeScene(event, "view/paymentMenu.fxml");
 			}
 		} catch (SQLException ex) {
 			DialogBoxManager.errorDialogBox("Cannot run query", "Error on User Name. Please try again.");
@@ -335,7 +335,7 @@ public class DB_Connector {
 					globalVariables.setTrialuser(null);
 					globalVariables.setPremiumUser(null);
 					System.out.println(globalVariables.getPremiumUser() + " " + globalVariables.getTrialuser());
-					SceneManager.sceneManager.changeScene(event, "view/welcomeMenu.fxml");
+					SceneManager.getInstance().changeScene(event, "view/welcomeMenu.fxml");
 				}
 			}
 

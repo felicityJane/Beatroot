@@ -1,40 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="mainMenu" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.MainMenuController">
+<AnchorPane id="anchorpane" fx:id="mainMenu" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.MainMenuController">
    <children>
-      <MenuBar fx:id="menuBar" style="-: black;" stylesheets="@../css/styleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar fx:id="menuBar" style="-: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
-            <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+            <Menu fx:id="fileMenu" mnemonicParsing="false" styleClass="menu-bar" text="File">
                <items>
-                  <MenuItem fx:id="logoutMenu" disable="true" mnemonicParsing="false" onAction="#logOutMenuOption" text="LogOut" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="exitMenu" mnemonicParsing="false" onAction="#exitMenuOption" text="Exit" />
+                  <MenuItem fx:id="logoutMenu" disable="true" mnemonicParsing="false" onAction="#logOutMenuOption" styleClass="menu-bar" text="LogOut" />
+                  <SeparatorMenuItem mnemonicParsing="false" styleClass="separator" />
+                  <MenuItem fx:id="exitMenu" mnemonicParsing="false" onAction="#exitMenuOption" styleClass="menu-bar" text="Exit" />
                </items>
             </Menu>
-            <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
+            <Menu fx:id="editMenu" mnemonicParsing="false" styleClass="menu-bar" text="Edit">
                <items>
-                  <MenuItem fx:id="settingsMenu" disable="true" mnemonicParsing="false" onAction="#settingsMenuOption" text="Settings" />
+                  <MenuItem fx:id="settingsMenu" disable="true" mnemonicParsing="false" onAction="#settingsMenuOption" styleClass="menu-bar" text="Settings" />
                </items>
             </Menu>
-            <Menu fx:id="HelpMenu" mnemonicParsing="false" text="Help">
+            <Menu fx:id="HelpMenu" mnemonicParsing="false" styleClass="menu-bar" text="Help">
                <items>
-                  <MenuItem fx:id="aboutMenu" mnemonicParsing="false" onAction="#aboutMenuOption" text="About" />
-                  <MenuItem fx:id="faqsMenu" mnemonicParsing="false" onAction="#faqsMenuOption" text="FAQ's" />
-                  <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#HelpMenuOption" text="Help" />
+                  <MenuItem fx:id="aboutMenu" mnemonicParsing="false" onAction="#aboutMenuOption" styleClass="menu-bar" text="About" />
+                  <MenuItem fx:id="faqsMenu" mnemonicParsing="false" onAction="#faqsMenuOption" styleClass="menu-bar" text="FAQ's" />
+                  <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#HelpMenuOption" styleClass="menu-bar" text="Help" />
                </items>
             </Menu>
          </menus>
-         <styleClass>
-            <String fx:value="menu" />
-            <String fx:value="menu-bar" />
-         </styleClass>
       </MenuBar>
 
    </children>

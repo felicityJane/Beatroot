@@ -6,23 +6,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane fx:id="adminMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="73.0" prefWidth="300.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.AdminMenuController">
+<Pane id="anchorpane"  fx:id="adminMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="73.0" prefWidth="300.0"  xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.AdminMenuController">
    <children>
       <VBox prefHeight="73.0" prefWidth="300.0" spacing="10.0">
          <children>
             <HBox prefHeight="25.0" prefWidth="540.0" spacing="10.0">
                <children>
-                  <Button fx:id="uploadButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../css/styleSheet.css" text="Upload">
+                  <Button fx:id="uploadButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0"  text="Upload">
                      <styleClass>
                         <String fx:value="buttonColor" />
                         <String fx:value="labelColor" />
                      </styleClass></Button>
-                  <Button fx:id="createAlbumButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" stylesheets="@../css/styleSheet.css" text="Create album">
+                  <Button fx:id="createAlbumButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0"  text="Create album">
                      <styleClass>
                         <String fx:value="buttonColor" />
                         <String fx:value="labelColor" />
                      </styleClass></Button>
-                  <Button fx:id="addArtistButton" mnemonicParsing="false" onAction="#addArtistButtonPressed" prefHeight="25.0" prefWidth="90.0" stylesheets="@../css/styleSheet.css" text="Add artist">
+                  <Button fx:id="addArtistButton" mnemonicParsing="false" onAction="#addArtistButtonPressed" prefHeight="25.0" prefWidth="90.0"  text="Add artist">
                      <styleClass>
                         <String fx:value="buttonColor" />
                         <String fx:value="labelColor" />
@@ -31,17 +31,17 @@
             </HBox>
             <HBox prefHeight="25.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button fx:id="modifyUsersButton" mnemonicParsing="false" onAction="#modifyUsersButtonPressed" prefHeight="25.0" prefWidth="90.0" stylesheets="@../css/styleSheet.css" text="Modify users">
+                  <Button fx:id="modifyUsersButton" mnemonicParsing="false" onAction="#modifyUsersButtonPressed" prefHeight="25.0" prefWidth="90.0"  text="Modify users">
                      <styleClass>
                         <String fx:value="buttonColor" />
                         <String fx:value="labelColor" />
                      </styleClass></Button>
-                  <Button fx:id="modifyAlbumButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" stylesheets="@../css/styleSheet.css" text="Modify album">
+                  <Button fx:id="modifyAlbumButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0"  text="Modify album">
                      <styleClass>
                         <String fx:value="buttonColor" />
                         <String fx:value="labelColor" />
                      </styleClass></Button>
-                  <Button fx:id="modifySongsButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../css/styleSheet.css" text="Modify song">
+                  <Button fx:id="modifySongsButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0"  text="Modify song">
                      <styleClass>
                         <String fx:value="buttonColor" />
                         <String fx:value="labelColor" />

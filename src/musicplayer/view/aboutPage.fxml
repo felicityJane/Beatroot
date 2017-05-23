@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="aboutPageAnchorPane" prefHeight="459.0" prefWidth="843.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.AboutPageController">
+<AnchorPane id="anchorpane" fx:id="aboutPageAnchorPane" prefHeight="459.0" prefWidth="843.0"  xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.AboutPageController">
     <children>
         <ImageView fitHeight="75.0" fitWidth="242.0" layoutX="235.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
             <image>

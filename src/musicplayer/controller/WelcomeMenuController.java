@@ -47,7 +47,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-import static musicplayer.SceneManager.sceneManager;
 
 public class WelcomeMenuController implements Initializable {
 
@@ -175,6 +174,7 @@ public class WelcomeMenuController implements Initializable {
 		globalVariables.getMainMenuController().menuBarFitToParent(welcomeParentAnchorPane);
 		globalVariables.getMainMenuController().enableMenuItems();
 		adminMenu.setVisible(false);
+
 
 		Image img = new Image("images/PlayNormal.jpg");
 		progressDownload = new ProgressBar(0);
@@ -389,15 +389,15 @@ public class WelcomeMenuController implements Initializable {
 			try {
 				if (globalVariables.getPremiumUser() != null && globalVariables.getAdministrator() == null
 						&& globalVariables.getTrialuser() == null) {
-					SceneManager.sceneManager.openNewWindow("view/userDescription.fxml",
+					SceneManager.getInstance().openNewWindow("view/userDescription.fxml",
 							globalVariables.getPremiumUser().getDisplayName());
 				} else if (globalVariables.getTrialuser() != null && globalVariables.getPremiumUser() == null
 						&& globalVariables.getAdministrator() == null) {
-					SceneManager.sceneManager.openNewWindow("view/userDescription.fxml",
+					SceneManager.getInstance().openNewWindow("view/userDescription.fxml",
 							globalVariables.getTrialuser().getDisplayName());
 				} else if (globalVariables.getAdministrator() != null && globalVariables.getPremiumUser() == null
 						&& globalVariables.getTrialuser() == null) {
-					SceneManager.sceneManager.openNewWindow("view/userDescription.fxml",
+					SceneManager.getInstance().openNewWindow("view/userDescription.fxml",
 							globalVariables.getAdministrator().getDisplayName());
 				}
 			} catch (IOException e) {
@@ -543,7 +543,7 @@ public class WelcomeMenuController implements Initializable {
 				System.out.println(currentSongRating.getFinalRating());
 				writeMusicTrackToBinaryFile();
 				try {
-					sceneManager.openNewWindow("view/commentWindow.fxml", "Add comment");
+					SceneManager.getInstance().openNewWindow("view/commentWindow.fxml", "Add comment");
 				} catch (IOException ie) {
 					ie.printStackTrace();
 				}
@@ -797,7 +797,7 @@ public class WelcomeMenuController implements Initializable {
 				globalVariables.setAdministrator(null);
 				globalVariables.setTrialuser(null);
 				globalVariables.setPremiumUser(null);
-				sceneManager.changeScene(event, "view/logInMenu.fxml");
+				SceneManager.getInstance().changeScene(event, "view/logInMenu.fxml");
 
 			} catch (Exception e) {
 				DialogBoxManager.errorDialogBox("Error occurred", "Changing from welcome scene to log in scene");
@@ -1331,7 +1331,7 @@ public class WelcomeMenuController implements Initializable {
 			try {
 				db_connector.getAlbumDetails(Integer.parseInt(n.getId()));
 				db_connector.getTrackDetails(Integer.parseInt(n.getId()));
-				sceneManager.popUpWindow("view/albumPage.fxml");
+				SceneManager.getInstance().popUpWindow("view/albumPage.fxml");
 			} catch (IOException e) {
 				DialogBoxManager.errorDialogBox("error occured in welcome menu controller",
 						"an error has occurred changing to album page scene");
@@ -1340,7 +1340,7 @@ public class WelcomeMenuController implements Initializable {
 		});
 	}
 
-	public void popUpMenuGoToSongInfo(Node n) {
+	private void popUpMenuGoToSongInfo(Node n) {
 		final ContextMenu contextMenu = new ContextMenu();
 		final MenuItem seeSongInfo = new MenuItem("See song information");
 		contextMenu.getItems().addAll(seeSongInfo);
@@ -1353,7 +1353,7 @@ public class WelcomeMenuController implements Initializable {
 				db_connector.getArtistDetails(trackID);
 				Integer albumID = db_connector.getAlbumIdFromTrackId(trackID);
 				db_connector.getAlbumDetails(albumID);
-				sceneManager.popUpWindow("view/songPage.fxml");
+				SceneManager.getInstance().popUpWindow("view/songPage.fxml");
 			} catch (IOException ie) {
 				DialogBoxManager.errorDialogBox("error occured in welcome menu controller",
 						"an error has occurred changing to song page scene");
@@ -1689,7 +1689,7 @@ public class WelcomeMenuController implements Initializable {
 
 		writeMusicTrackToBinaryFile();
 		try {
-			sceneManager.openNewWindow("view/commentWindow.fxml", "Add comment");
+			SceneManager.getInstance().openNewWindow("view/commentWindow.fxml", "Add comment");
 		} catch (IOException ie) {
 			ie.printStackTrace();
 		}
@@ -1721,7 +1721,7 @@ public class WelcomeMenuController implements Initializable {
 	@FXML
 	private void onBtnAddPlaylistPressed(MouseEvent e) {
 		try {
-			Stage childStage = sceneManager.openNewWindowReturnStage("view/playlistWindow.fxml", "Create playlist");
+			Stage childStage = SceneManager.getInstance().openNewWindowReturnStage("view/playlistWindow.fxml", "Create playlist");
 			childStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				public void handle(WindowEvent we) {
 					setPlaylists();
@@ -1796,7 +1796,7 @@ public class WelcomeMenuController implements Initializable {
 
 		addToPlaylist.setOnAction(event -> {
 			try {
-				Stage childStage = sceneManager.openNewWindowReturnStage("view/playlistChoiceWindow.fxml",
+				Stage childStage = SceneManager.getInstance().openNewWindowReturnStage("view/playlistChoiceWindow.fxml",
 						"Choose a playlist");
 				childStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 					public void handle(WindowEvent we) {
@@ -1946,7 +1946,7 @@ public class WelcomeMenuController implements Initializable {
 					}
 				}
 				try {
-					SceneManager.sceneManager.openNewWindow("view/userDescription.fxml",
+					SceneManager.getInstance().openNewWindow("view/userDescription.fxml",
 							GlobalVariables.getInstance().getContactSelected().getDisplayName());
 				} catch (Exception ex) {
 					ex.printStackTrace();
@@ -1962,7 +1962,7 @@ public class WelcomeMenuController implements Initializable {
 				GlobalVariables.getInstance().setOwnUserDescriptionController(null);
 				GlobalVariables.getInstance().setContactDescriptionController(new UserDescriptionController());
 				try {
-					SceneManager.sceneManager.openNewWindow("view/userDescription.fxml",
+					SceneManager.getInstance().openNewWindow("view/userDescription.fxml",
 							GlobalVariables.getInstance().getContactSelected().getDisplayName());
 				} catch (Exception ex) {
 					ex.printStackTrace();
@@ -2000,7 +2000,7 @@ public class WelcomeMenuController implements Initializable {
 
 		if (unreadMessage) {
 			try {
-				Stage childStage = sceneManager.openNewWindowReturnStage("view/friendRequestWindow.fxml",
+				Stage childStage = SceneManager.getInstance().openNewWindowReturnStage("view/friendRequestWindow.fxml",
 						"Contact request");
 				childStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 					public void handle(WindowEvent we) {
@@ -2049,7 +2049,7 @@ public class WelcomeMenuController implements Initializable {
 				GlobalVariables.getInstance().setContactDescriptionController(new UserDescriptionController());
 				GlobalVariables.getInstance().setContactSelected(GlobalVariables.getInstance().getContactList()
 						.get(lstContacts.getSelectionModel().getSelectedIndex()));
-				SceneManager.sceneManager.openNewWindow("view/userDescription.fxml", GlobalVariables.getInstance()
+				SceneManager.getInstance().openNewWindow("view/userDescription.fxml", GlobalVariables.getInstance()
 						.getContactList().get(lstContacts.getSelectionModel().getSelectedIndex()).getDisplayName());
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -2107,6 +2107,12 @@ public class WelcomeMenuController implements Initializable {
 		} else {
 			tempPlaylist = lstPlaylists.getSelectionModel().getSelectedIndex();
 		}
+	}
+	public AnchorPane getParent(){
+		return welcomeRootAnchor;
+	}
+	public AnchorPane getParentTwo(){
+		return welcomeParentAnchorPane;
 	}
 
 }

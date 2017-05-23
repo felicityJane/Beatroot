@@ -1,15 +1,22 @@
 package musicplayer.controller;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import musicplayer.DB_Connector;
 import musicplayer.DialogBoxManager;
+import musicplayer.SceneManager;
 import musicplayer.model.GlobalVariables;
 
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -26,7 +33,6 @@ public class SettingsPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        globalVariables.setSettingsPageController(this);
         globalVariables.getMainMenuController().menuBarFitToParent(settingsAnchorPage);
         globalVariables.getMainMenuController().disableMenuItems();
 
@@ -54,7 +60,26 @@ public class SettingsPageController implements Initializable {
             user = 3;
         }
     }
-    @FXML private void onSaveButton() {
+    @FXML
+    private void onDarkTheme(){
+        SceneManager.getInstance().setBrightMode(false);
+        settingsAnchorPage.getScene().getStylesheets().remove("musicplayer/css/brightAndBubbly.css");
+        SceneManager.getInstance().applyCurrentCss(settingsAnchorPage.getScene());
+        AnchorPane anchorPane = GlobalVariables.getInstance().getWelcomeMenuController().getParent();
+        anchorPane.getScene().getStylesheets().remove("musicplayer/css/brightAndBubbly.css");
+        SceneManager.getInstance().applyCurrentCss(anchorPane.getScene());
+    }
+    @FXML
+    private void onLightTheme(){
+        SceneManager.getInstance().setBrightMode(true);
+        settingsAnchorPage.getScene().getStylesheets().remove("musicplayer/css/darkAndGloomy.css");
+        SceneManager.getInstance().applyCurrentCss(settingsAnchorPage.getScene());
+        AnchorPane anchorPane = GlobalVariables.getInstance().getWelcomeMenuController().getParent();
+        anchorPane.getScene().getStylesheets().remove("musicplayer/css/darkAndGloomy.css");
+        SceneManager.getInstance().applyCurrentCss(anchorPane.getScene());
+    }
+    @FXML
+    private void onSaveButton() {
 
         if (editDisplayNameField.getText().length() > 5 && editDisplayNameField.getText().length() < 12 && editPasswordField.getText().length() > 5 && editPasswordField.getText().length() < 12) {
             newDisplayName = editDisplayNameField.getText();

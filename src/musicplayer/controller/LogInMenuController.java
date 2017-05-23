@@ -45,7 +45,7 @@ public class LogInMenuController implements Initializable {
 
 				if (keyPressed[0] != null && keyPressed[1] != null && keyPressed[2] != null) {
 					try {
-						SceneManager.sceneManager.changeScene(event, "view/AdminLogIn.fxml");
+						SceneManager.getInstance().changeScene(event, "view/AdminLogIn.fxml");
 					} catch (IOException ie) {
 						ie.printStackTrace();
 					}
@@ -72,12 +72,11 @@ public class LogInMenuController implements Initializable {
 	@FXML
 	private void handleSignUpButton(ActionEvent event) {
 		try {
-			SceneManager.sceneManager.changeScene(event, "view/signUpMenu.fxml");
+			SceneManager.getInstance().changeScene(event, "view/signUpMenu.fxml");
 		} catch (Exception e) {
 			DialogBoxManager.errorDialogBox("Error occurred", "Changing from login scene to sign up scene");
 			e.printStackTrace();
 		}
 
 	}
-
 }

@@ -33,7 +33,7 @@ public class AdminMenuController implements Initializable {
 
 	public void modifyUsersButtonPressed(ActionEvent ev) {
 		try {
-			SceneManager.sceneManager.changeScene(ev, "view/ModifyUserPanel.fxml");
+			SceneManager.getInstance().changeScene(ev, "view/ModifyUserPanel.fxml");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -49,7 +49,7 @@ public class AdminMenuController implements Initializable {
 
 	public void addArtistButtonPressed(ActionEvent ev) {
 		try {
-			SceneManager.sceneManager.changeScene(ev, "view/AddArtistPanel.fxml");
+			SceneManager.getInstance().changeScene(ev, "view/AddArtistPanel.fxml");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

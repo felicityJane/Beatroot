@@ -23,7 +23,7 @@ public class AdminLoginController {
 
 	public void signUpButtonPress(ActionEvent event) {
 		try {
-			SceneManager.sceneManager.changeScene(event, "view/AdminSignUp.fxml");
+			SceneManager.getInstance().changeScene(event, "view/AdminSignUp.fxml");
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}

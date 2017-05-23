@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="logInParentAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="352.0" styleClass="greyBackground" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.LogInMenuController">
+<AnchorPane id="anchorpane" fx:id="logInParentAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="352.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.controller.LogInMenuController">
    <children>
       <GridPane alignment="CENTER" layoutX="54.0" layoutY="174.0" prefHeight="238.0" prefWidth="248.0">
         <columnConstraints>
@@ -26,14 +26,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="userName" prefHeight="17.0" prefWidth="246.0" promptText="Beatroot username" styleClass="textField" stylesheets="@../css/styleSheet.css" />
-            <PasswordField fx:id="userPassword" promptText="Beatroot password" styleClass="textField" stylesheets="@../css/styleSheet.css" GridPane.rowIndex="1" />
-            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="33.0" prefWidth="246.0" stylesheets="@../css/styleSheet.css" text="Login" textFill="#f5f2f2" GridPane.rowIndex="2">
+            <TextField fx:id="userName" prefHeight="17.0" prefWidth="246.0" promptText="Beatroot username" styleClass="textField" />
+            <PasswordField fx:id="userPassword" promptText="Beatroot password" styleClass="textField" GridPane.rowIndex="1" />
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="33.0" prefWidth="246.0" text="Login" textFill="#f5f2f2" GridPane.rowIndex="2">
                <styleClass>
                   <String fx:value="buttonColor" />
                   <String fx:value="labelColor" />
                </styleClass></Button>
-            <Button fx:id="signUpButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="31.0" prefWidth="246.0" stylesheets="@../css/styleSheet.css" text="Sign Up" GridPane.rowIndex="3">
+            <Button fx:id="signUpButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="31.0" prefWidth="246.0" text="Sign Up" GridPane.rowIndex="3">
                <styleClass>
                   <String fx:value="buttonColor" />
                   <String fx:value="labelColor" />
